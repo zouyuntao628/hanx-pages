@@ -20,7 +20,7 @@
     .hero { padding: 32px 36px; margin-bottom: 20px; }
     .section { padding: 28px; margin-top: 20px; }
     .card { padding: 18px; box-shadow:none; }
-    .quick { display:grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap:12px; margin: 0 0 18px; }
+    .quick { display:grid; grid-template-columns: repeat(5, minmax(0,1fr)); gap:12px; margin: 0 0 18px; }
     .quick a { display:block; padding: 14px 16px; border-radius: 8px; background:#fff; border:1px solid var(--line); color: var(--text); box-shadow: var(--shadow); font-weight:600; }
     .related { display:grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap:10px; margin-top:14px; }
     .mini-link { display:block; padding:10px 12px; border:1px solid var(--line); border-radius:8px; color: var(--text); background:#fbfcfe; font-size:13px; font-weight:600; }
@@ -46,6 +46,17 @@
     .glossary { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:12px; }
     .note { padding:14px 16px; border:1px solid #f0c99a; border-radius:8px; background:#fffaf3; color:#5d3a05; }
     .quote { padding:16px 18px; border-left:4px solid var(--green); background:#f2fbf6; border-radius:0 8px 8px 0; color:#124c37; }
+
+    .operator-table { width:100%; border-collapse:separate; border-spacing:0; overflow:hidden; margin:14px 0 18px; border:1px solid var(--line); border-radius:10px; background:var(--panel); }
+    .operator-table th, .operator-table td { padding:12px 14px; border-bottom:1px solid var(--line); vertical-align:top; text-align:left; }
+    .operator-table th { background:rgba(31,95,191,.10); color:var(--blue); font-weight:800; }
+    .operator-table tr:last-child td { border-bottom:0; }
+    .operator-table td { font-size:14px; }
+    .plain-box { padding:16px 18px; border:1px solid var(--line); border-radius:10px; background:rgba(31,95,191,.06); margin:12px 0 18px; }
+    .plain-box strong { color:var(--blue); }
+    .operator-list { margin:0; padding-left:20px; }
+    .operator-list li { margin:5px 0; }
+
     @media (max-width: 900px) { .quick, .two-col, .three-col, .step-grid, .glossary, .related { grid-template-columns: 1fr; } .hero, .section { padding:22px; } }
   </style>
 </head>
@@ -61,6 +72,7 @@
       <a href="#why">为什么要做</a>
       <a href="#effect">做成什么效果</a>
       <a href="#steps">具体步骤</a>
+      <a href="#operator-guide">上手操作</a>
     </div>
 
     <section class="hero">
@@ -94,6 +106,45 @@
     <section class="section" id="steps">
       <h2>四、具体怎么做</h2>
       <div class="step-grid"><div class="step"><strong>第 1 步：先明确要比较哪些适应症</strong><p>可按癌种、分子亚型或已有项目方向先圈定范围。</p></div><div class="step"><strong>第 2 步：把公开数据和内部结果放到一起看</strong><p>例如表达、突变、repair 背景、历史敏感性和组合结果。</p></div><div class="step"><strong>第 3 步：匹配 payload 机制与疾病生物学</strong><p>看某个癌种是否更符合该 payload 的作用逻辑。</p></div><div class="step"><strong>第 4 步：做优先级评分</strong><p>不仅看机制，还看实验可行性、竞争程度和后续验证价值。</p></div><div class="step"><strong>第 5 步：让公司做聚焦验证</strong><p>挑 2-3 个最值得的方向做更深入实验。</p></div><div class="step"><strong>第 6 步：形成适应症地图</strong><p>沉淀成可复用的匹配规则。</p></div></div>
+    </section>
+
+
+
+    <section class="section" id="operator-guide">
+      <h2>操作人员上手版：软件、模型、数据集和特征</h2>
+      <div class="plain-box"><strong>普通人先看这一段：</strong>同一个 payload 不一定适合所有癌种；这页要给出优先适应症地图。</div>
+
+      <h3>1. 推荐使用的软件 / 平台</h3>
+      <table class="operator-table">
+        <thead><tr><th>用途</th><th>建议工具</th><th>操作人员要做什么</th></tr></thead>
+        <tbody><tr><td>癌种数据查询</td><td>TCGA、cBioPortal、GEO、HPA、GTEx</td><td>比较不同癌种中的目标表达、通路和正常组织风险。</td></tr><tr><td>细胞系依赖</td><td>DepMap、GDSC、PRISM</td><td>看 payload 敏感性与癌种/分子背景关系。</td></tr><tr><td>竞争格局</td><td>ClinicalTrials.gov、公司管线库、公开数据库</td><td>评估哪些癌种有差异化机会。</td></tr></tbody>
+      </table>
+
+      <h3>2. 需要的专属 AI 模型</h3>
+      <table class="operator-table">
+        <thead><tr><th>模型</th><th>作用</th><th>训练或调参需要的数据</th></tr></thead>
+        <tbody><tr><td>适应症优先级模型</td><td>综合生物学、样本、竞争和验证成本给癌种排序。</td><td>癌种表达、payload 敏感性、临床格局、样本可得性。</td></tr><tr><td>Biology-fit 评分模型</td><td>判断 payload 机制和疾病背景是否合拍。</td><td>通路状态、DNA repair、抗原表达、免疫微环境。</td></tr><tr><td>验证成本模型</td><td>估算每个癌种进入实验验证的难度。</td><td>模型资源、样本数量、实验周期、预算。</td></tr></tbody>
+      </table>
+
+      <h3>3. 数据集准备清单</h3>
+      <table class="operator-table">
+        <thead><tr><th>数据集</th><th>来源</th><th>最低要求</th></tr></thead>
+        <tbody><tr><td>癌种组学</td><td>TCGA、GEO、cBioPortal、HPA。</td><td>要能覆盖目标表达、突变、通路状态。</td></tr><tr><td>payload 响应</td><td>GDSC、PRISM、内部实验。</td><td>最好能按癌种和分子背景分层。</td></tr><tr><td>业务信息</td><td>竞争药物、样本可得性、临床路径、合作资源。</td><td>帮助排序不只停留在生物学。</td></tr></tbody>
+      </table>
+
+      <h3>4. 必须抽取的特征字段</h3>
+      <table class="operator-table">
+        <thead><tr><th>特征类型</th><th>具体字段</th><th>为什么重要</th></tr></thead>
+        <tbody><tr><td>机制匹配</td><td>target expression、DNA repair、TOP1/微管相关通路、细胞周期。</td><td>判断 payload 是否可能在该癌种有效。</td></tr><tr><td>癌种机会</td><td>患者数量、未满足需求、竞争强度、入组难度。</td><td>判断是否值得优先推进。</td></tr><tr><td>实验可行性</td><td>可用细胞系、PDX、organoid、样本渠道。</td><td>决定推荐能否快速落地。</td></tr></tbody>
+      </table>
+
+      <h3>5. 分阶段操作与成果表</h3>
+      <table class="operator-table">
+        <thead><tr><th>阶段</th><th>操作人员要做的事</th><th>阶段成果</th><th>验收标准</th></tr></thead>
+        <tbody><tr><td>阶段 1：数据盘点</td><td>整理已有样本、实验、文献、公开数据库和内部项目记录。</td><td>数据清单、字段字典、缺失项列表。</td><td>每条数据能追溯来源，关键字段缺失率可被统计。</td></tr><tr><td>阶段 2：特征工程</td><td>把原始数据转成可比较字段，例如表达量、突变、评分、毒性标签、实验条件。</td><td>标准化特征表和 QC 报告。</td><td>同一字段在不同批次、不同实验人员之间含义一致。</td></tr><tr><td>阶段 3：模型/仿真</td><td>运行候选排序、分层、剂量窗口、机制解释或知识图谱模型。</td><td>模型输出表、推荐理由、风险标注。</td><td>每个推荐都有可解释依据，不只给黑箱分数。</td></tr><tr><td>阶段 4：实验设计</td><td>把模型结果转成实验矩阵、样本选择、对照组和 readout。</td><td>可执行实验方案和 plate map / SOP 草案。</td><td>实验团队能直接执行，不需要再反复问“怎么做”。</td></tr><tr><td>阶段 5：结果回流</td><td>把原始数据、失败原因、异常说明和结论写回数据库。</td><td>回流数据包、复盘报告、下一轮建议。</td><td>结果能支持继续、停止或调整方向的决策。</td></tr></tbody>
+      </table>
+
+      <div class="plain-box"><strong>重要边界：</strong>这里的 AI 模型用于排序、解释、设计实验和发现风险信号，不能替代湿实验、临床试验、医学判断或监管判断。页面中提到的软件也不是强制唯一选择，实际可按公司已有平台替换。</div>
     </section>
 
     <section class="section">

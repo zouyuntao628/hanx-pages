@@ -19,7 +19,7 @@
     .hero { padding:30px; margin-bottom:20px; }
     .section { padding:26px; margin-top:20px; }
     .card { padding:18px; box-shadow:none; }
-    .quick { display:grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap:12px; margin:0 0 18px; }
+    .quick { display:grid; grid-template-columns: repeat(5, minmax(0,1fr)); gap:12px; margin:0 0 18px; }
     .quick a { display:block; padding:14px 16px; border-radius:16px; background:rgba(255,255,255,.06); border:1px solid var(--line); color:#e3f3ff; }
     h1 { margin:0 0 12px; font-size: clamp(34px, 5vw, 58px); line-height:1.08; letter-spacing:-.03em; }
     h2 { margin:0 0 14px; font-size:32px; line-height:1.15; }
@@ -45,6 +45,17 @@
     .related { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:10px; margin-top:14px; }
     .mini-link { display:block; padding:12px 14px; border-radius:16px; border:1px solid var(--line); color:#e8f6ff; background:rgba(255,255,255,.05); font-size:13px; font-weight:600; }
     .mini-link.active { border-color: rgba(111,255,233,.4); background: rgba(111,255,233,.08); color: var(--cyan); }
+
+    .operator-table { width:100%; border-collapse:separate; border-spacing:0; overflow:hidden; margin:14px 0 18px; border:1px solid var(--line); border-radius:10px; background:var(--panel); }
+    .operator-table th, .operator-table td { padding:12px 14px; border-bottom:1px solid var(--line); vertical-align:top; text-align:left; }
+    .operator-table th { background:rgba(31,95,191,.10); color:var(--blue); font-weight:800; }
+    .operator-table tr:last-child td { border-bottom:0; }
+    .operator-table td { font-size:14px; }
+    .plain-box { padding:16px 18px; border:1px solid var(--line); border-radius:10px; background:rgba(31,95,191,.06); margin:12px 0 18px; }
+    .plain-box strong { color:var(--blue); }
+    .operator-list { margin:0; padding-left:20px; }
+    .operator-list li { margin:5px 0; }
+
     @media (max-width: 900px) { .quick, .grid-2, .grid-3, .steps, .glossary, .related { grid-template-columns:1fr; } .hero, .section { padding:22px; } }
   </style>
 </head>
@@ -60,6 +71,7 @@
       <a href="#why">为什么要做</a>
       <a href="#effect">做成什么效果</a>
       <a href="#steps">具体步骤</a>
+      <a href="#operator-guide">上手操作</a>
     </div>
 
     <section class="hero">
@@ -95,6 +107,45 @@
     <section class="section" id="steps">
       <h2>四、具体怎么推进</h2>
       <div class="steps"><div class="step"><strong>第 1 步：先把要验证的核心问题定清楚</strong><p>明确这轮是重点验证 PD-1 rescue、巨噬细胞吞噬，还是三方共培养中的综合效果。</p></div><div class="step"><strong>第 2 步：确定实验模型和对照</strong><p>选合适的肿瘤细胞、T 细胞、巨噬细胞模型，并安排阳性和阴性对照。</p></div><div class="step"><strong>第 3 步：执行机制实验</strong><p>重点做 PD-1 rescue assay、macrophage phagocytosis assay 和三方共培养模型。</p></div><div class="step"><strong>第 4 步：执行安全性初筛</strong><p>同步做 RBC binding、platelet binding 和 cytokine release 等风险相关实验。</p></div><div class="step"><strong>第 5 步：让 AI 帮忙分析和整合</strong><p>把 flow、ELISA、imaging 等数据转成可解释图表和评分。</p></div><div class="step"><strong>第 6 步：形成可复用证据包</strong><p>整理成 SOP、QC 数据、结论图和下一轮验证建议。</p></div></div>
+    </section>
+
+
+
+    <section class="section" id="operator-guide">
+      <h2>操作人员上手版：软件、模型、数据集和特征</h2>
+      <div class="plain-box"><strong>普通人先看这一段：</strong>这页要把 HX009 的“药物故事”变成能被验证的证据：它是否真的能激活 T 细胞、促进巨噬细胞吞噬，同时安全性是否可控。</div>
+
+      <h3>1. 推荐使用的软件 / 平台</h3>
+      <table class="operator-table">
+        <thead><tr><th>用途</th><th>建议工具</th><th>操作人员要做什么</th></tr></thead>
+        <tbody><tr><td>流式细胞分析</td><td>FlowJo、Cytobank、FCS Express</td><td>导入 FCS 文件，统一 gating，输出 T 细胞活化、巨噬细胞吞噬、RBC/platelet binding 指标。</td></tr><tr><td>成像与吞噬定量</td><td>ImageJ/Fiji、CellProfiler、Imaris</td><td>对吞噬实验和共培养成像进行细胞识别、阳性事件统计和批量导出。</td></tr><tr><td>统计与图表</td><td>GraphPad Prism、R/Python、Jupyter</td><td>计算 fold change、显著性、剂量反应曲线和 BD-ready 图表。</td></tr><tr><td>实验记录与质控</td><td>ELN/LIMS、Excel/CSV 模板</td><td>记录样本、批次、抗体、细胞状态、仪器参数和异常说明。</td></tr></tbody>
+      </table>
+
+      <h3>2. 需要的专属 AI 模型</h3>
+      <table class="operator-table">
+        <thead><tr><th>模型</th><th>作用</th><th>训练或调参需要的数据</th></tr></thead>
+        <tbody><tr><td>流式 gating 辅助模型</td><td>帮助统一圈门标准，减少不同操作人员带来的偏差。</td><td>历史 FCS 文件、人工 gating 结果、细胞类型标签。</td></tr><tr><td>安全性信号整合模型</td><td>把 RBC binding、platelet binding、cytokine release 等指标合成安全性风险评分。</td><td>安全性实验原始值、阳性/阴性对照、历史项目阈值。</td></tr><tr><td>证据包自动生成模型</td><td>把实验结果转成机制图、结论摘要和对外沟通话术。</td><td>实验结果表、图表、项目背景、历史 BD 材料。</td></tr></tbody>
+      </table>
+
+      <h3>3. 数据集准备清单</h3>
+      <table class="operator-table">
+        <thead><tr><th>数据集</th><th>来源</th><th>最低要求</th></tr></thead>
+        <tbody><tr><td>机制实验数据</td><td>PD-1 rescue、巨噬细胞吞噬、三方共培养实验。</td><td>每个实验要有对照组、重复孔、批次号和原始读数。</td></tr><tr><td>安全性初筛数据</td><td>RBC binding、platelet binding、cytokine release。</td><td>必须保留原始强度值、阴阳性对照和异常说明。</td></tr><tr><td>样本与细胞信息</td><td>细胞系、免疫细胞来源、抗体批次、培养条件。</td><td>能解释批次差异和失败原因。</td></tr></tbody>
+      </table>
+
+      <h3>4. 必须抽取的特征字段</h3>
+      <table class="operator-table">
+        <thead><tr><th>特征类型</th><th>具体字段</th><th>为什么重要</th></tr></thead>
+        <tbody><tr><td>T 细胞活化</td><td>IFN-γ、IL-2、CD69、CD25、T cell killing、PD-1 rescue fold change。</td><td>判断药物是否真的恢复 T 细胞功能。</td></tr><tr><td>巨噬细胞吞噬</td><td>phagocytosis index、吞噬阳性率、肿瘤细胞残留比例。</td><td>判断 CD47/SIRPα 相关机制是否成立。</td></tr><tr><td>安全性</td><td>RBC binding MFI、platelet binding、cytokine release 倍数。</td><td>回答外部最关心的安全性质疑。</td></tr><tr><td>质控</td><td>细胞活率、批次号、仪器参数、对照组是否通过。</td><td>防止把实验失败误判成药物无效。</td></tr></tbody>
+      </table>
+
+      <h3>5. 分阶段操作与成果表</h3>
+      <table class="operator-table">
+        <thead><tr><th>阶段</th><th>操作人员要做的事</th><th>阶段成果</th><th>验收标准</th></tr></thead>
+        <tbody><tr><td>阶段 1：数据盘点</td><td>整理已有样本、实验、文献、公开数据库和内部项目记录。</td><td>数据清单、字段字典、缺失项列表。</td><td>每条数据能追溯来源，关键字段缺失率可被统计。</td></tr><tr><td>阶段 2：特征工程</td><td>把原始数据转成可比较字段，例如表达量、突变、评分、毒性标签、实验条件。</td><td>标准化特征表和 QC 报告。</td><td>同一字段在不同批次、不同实验人员之间含义一致。</td></tr><tr><td>阶段 3：模型/仿真</td><td>运行候选排序、分层、剂量窗口、机制解释或知识图谱模型。</td><td>模型输出表、推荐理由、风险标注。</td><td>每个推荐都有可解释依据，不只给黑箱分数。</td></tr><tr><td>阶段 4：实验设计</td><td>把模型结果转成实验矩阵、样本选择、对照组和 readout。</td><td>可执行实验方案和 plate map / SOP 草案。</td><td>实验团队能直接执行，不需要再反复问“怎么做”。</td></tr><tr><td>阶段 5：结果回流</td><td>把原始数据、失败原因、异常说明和结论写回数据库。</td><td>回流数据包、复盘报告、下一轮建议。</td><td>结果能支持继续、停止或调整方向的决策。</td></tr></tbody>
+      </table>
+
+      <div class="plain-box"><strong>重要边界：</strong>这里的 AI 模型用于排序、解释、设计实验和发现风险信号，不能替代湿实验、临床试验、医学判断或监管判断。页面中提到的软件也不是强制唯一选择，实际可按公司已有平台替换。</div>
     </section>
 
     <section class="section">

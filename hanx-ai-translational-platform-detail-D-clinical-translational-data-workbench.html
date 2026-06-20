@@ -19,7 +19,7 @@
     .hero { padding:30px; margin-bottom:20px; }
     .section { padding:26px; margin-top:20px; }
     .card { padding:18px; box-shadow:none; }
-    .quick { display:grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap:12px; margin:0 0 18px; }
+    .quick { display:grid; grid-template-columns: repeat(5, minmax(0,1fr)); gap:12px; margin:0 0 18px; }
     .quick a { display:block; padding:14px 16px; border-radius:16px; background:rgba(255,255,255,.06); border:1px solid var(--line); color:#e3f3ff; }
     h1 { margin:0 0 12px; font-size: clamp(34px, 5vw, 58px); line-height:1.08; letter-spacing:-.03em; }
     h2 { margin:0 0 14px; font-size:32px; line-height:1.15; }
@@ -45,6 +45,17 @@
     .related { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:10px; margin-top:14px; }
     .mini-link { display:block; padding:12px 14px; border-radius:16px; border:1px solid var(--line); color:#e8f6ff; background:rgba(255,255,255,.05); font-size:13px; font-weight:600; }
     .mini-link.active { border-color: rgba(111,255,233,.4); background: rgba(111,255,233,.08); color: var(--cyan); }
+
+    .operator-table { width:100%; border-collapse:separate; border-spacing:0; overflow:hidden; margin:14px 0 18px; border:1px solid var(--line); border-radius:10px; background:var(--panel); }
+    .operator-table th, .operator-table td { padding:12px 14px; border-bottom:1px solid var(--line); vertical-align:top; text-align:left; }
+    .operator-table th { background:rgba(31,95,191,.10); color:var(--blue); font-weight:800; }
+    .operator-table tr:last-child td { border-bottom:0; }
+    .operator-table td { font-size:14px; }
+    .plain-box { padding:16px 18px; border:1px solid var(--line); border-radius:10px; background:rgba(31,95,191,.06); margin:12px 0 18px; }
+    .plain-box strong { color:var(--blue); }
+    .operator-list { margin:0; padding-left:20px; }
+    .operator-list li { margin:5px 0; }
+
     @media (max-width: 900px) { .quick, .grid-2, .grid-3, .steps, .glossary, .related { grid-template-columns:1fr; } .hero, .section { padding:22px; } }
   </style>
 </head>
@@ -60,6 +71,7 @@
       <a href="#why">为什么要做</a>
       <a href="#effect">做成什么效果</a>
       <a href="#steps">具体步骤</a>
+      <a href="#operator-guide">上手操作</a>
     </div>
 
     <section class="hero">
@@ -95,6 +107,45 @@
     <section class="section" id="steps">
       <h2>四、具体怎么推进</h2>
       <div class="steps"><div class="step"><strong>第 1 步：先定义要纳入的数据范围</strong><p>包括疗效、安全性、dose、PK/PD、IHC、flow、RNA、ctDNA、病理图像等。</p></div><div class="step"><strong>第 2 步：把数据统一格式</strong><p>把不同来源的数据清洗成一个可以对齐和查询的结构。</p></div><div class="step"><strong>第 3 步：建立核心分析视图</strong><p>先做队列概览、病例时间线、biomarker 对照和安全性看板。</p></div><div class="step"><strong>第 4 步：生成病例级解释</strong><p>把每个关键病例的疗效、安全性和样本结果串成一页说明。</p></div><div class="step"><strong>第 5 步：让团队持续使用</strong><p>不是只做一次展示，而是随着新数据不断补充。</p></div><div class="step"><strong>第 6 步：把结果反哺前面几个模块</strong><p>把新的样本和结果继续喂给 biomarker、适应症和联用分析。</p></div></div>
+    </section>
+
+
+
+    <section class="section" id="operator-guide">
+      <h2>操作人员上手版：软件、模型、数据集和特征</h2>
+      <div class="plain-box"><strong>普通人先看这一段：</strong>这页要把散落的临床、样本、实验和检测结果变成一个团队都能看的仪表盘，帮助解释疗效和安全性。</div>
+
+      <h3>1. 推荐使用的软件 / 平台</h3>
+      <table class="operator-table">
+        <thead><tr><th>用途</th><th>建议工具</th><th>操作人员要做什么</th></tr></thead>
+        <tbody><tr><td>临床数据采集</td><td>REDCap、EDC、Excel/CSV 模板</td><td>录入去标识化患者信息、疗效、安全性和样本时间点。</td></tr><tr><td>数据标准化</td><td>OMOP、FHIR、PostgreSQL、Python ETL</td><td>统一字段名、单位、时间轴和缺失值。</td></tr><tr><td>可视化看板</td><td>Metabase、Superset、Tableau、Power BI</td><td>展示患者时间线、biomarker 分布、疗效和 AE。</td></tr><tr><td>影像/病理辅助</td><td>QuPath、ImageJ、DICOM viewer</td><td>提取病理和影像相关结构化信息。</td></tr></tbody>
+      </table>
+
+      <h3>2. 需要的专属 AI 模型</h3>
+      <table class="operator-table">
+        <thead><tr><th>模型</th><th>作用</th><th>训练或调参需要的数据</th></tr></thead>
+        <tbody><tr><td>患者时间线抽取模型</td><td>从病例记录中整理治疗、采样、疗效和 AE 时间线。</td><td>病例文本、结构化字段、人工校对时间线。</td></tr><tr><td>Responder 对比模型</td><td>比较 responder 和 non-responder 的差异。</td><td>疗效标签、biomarker、实验结果、临床协变量。</td></tr><tr><td>数据质控模型</td><td>发现单位错误、缺失字段、异常时间点和不合理数值。</td><td>历史数据、字段规则、人工标注异常。</td></tr></tbody>
+      </table>
+
+      <h3>3. 数据集准备清单</h3>
+      <table class="operator-table">
+        <thead><tr><th>数据集</th><th>来源</th><th>最低要求</th></tr></thead>
+        <tbody><tr><td>临床数据</td><td>用药、剂量、疗效、AE、实验室检查、影像评价。</td><td>必须去标识化，并统一时间轴。</td></tr><tr><td>转化医学数据</td><td>IHC、RNA、流式、ctDNA、组织/血液样本结果。</td><td>要能和患者、时间点、疗效标签对应。</td></tr><tr><td>操作元数据</td><td>采样时间、检测平台、批次、质控结果。</td><td>用于解释为什么某些数据不能直接比较。</td></tr></tbody>
+      </table>
+
+      <h3>4. 必须抽取的特征字段</h3>
+      <table class="operator-table">
+        <thead><tr><th>特征类型</th><th>具体字段</th><th>为什么重要</th></tr></thead>
+        <tbody><tr><td>患者时间线</td><td>治疗开始、采样、影像评价、AE 发生、停药/进展时间。</td><td>帮助解释疗效、安全性和 biomarker 变化。</td></tr><tr><td>疗效标签</td><td>CR/PR/SD/PD、ORR、DCR、PFS、DoR。</td><td>用于把实验和真实结果连接起来。</td></tr><tr><td>安全性</td><td>AE grade、实验室指标、剂量调整、停药原因。</td><td>判断方案是否有开发风险。</td></tr><tr><td>数据质量</td><td>缺失率、平台、批次、样本质量、字段单位。</td><td>决定哪些数据能进入分析。</td></tr></tbody>
+      </table>
+
+      <h3>5. 分阶段操作与成果表</h3>
+      <table class="operator-table">
+        <thead><tr><th>阶段</th><th>操作人员要做的事</th><th>阶段成果</th><th>验收标准</th></tr></thead>
+        <tbody><tr><td>阶段 1：数据盘点</td><td>整理已有样本、实验、文献、公开数据库和内部项目记录。</td><td>数据清单、字段字典、缺失项列表。</td><td>每条数据能追溯来源，关键字段缺失率可被统计。</td></tr><tr><td>阶段 2：特征工程</td><td>把原始数据转成可比较字段，例如表达量、突变、评分、毒性标签、实验条件。</td><td>标准化特征表和 QC 报告。</td><td>同一字段在不同批次、不同实验人员之间含义一致。</td></tr><tr><td>阶段 3：模型/仿真</td><td>运行候选排序、分层、剂量窗口、机制解释或知识图谱模型。</td><td>模型输出表、推荐理由、风险标注。</td><td>每个推荐都有可解释依据，不只给黑箱分数。</td></tr><tr><td>阶段 4：实验设计</td><td>把模型结果转成实验矩阵、样本选择、对照组和 readout。</td><td>可执行实验方案和 plate map / SOP 草案。</td><td>实验团队能直接执行，不需要再反复问“怎么做”。</td></tr><tr><td>阶段 5：结果回流</td><td>把原始数据、失败原因、异常说明和结论写回数据库。</td><td>回流数据包、复盘报告、下一轮建议。</td><td>结果能支持继续、停止或调整方向的决策。</td></tr></tbody>
+      </table>
+
+      <div class="plain-box"><strong>重要边界：</strong>这里的 AI 模型用于排序、解释、设计实验和发现风险信号，不能替代湿实验、临床试验、医学判断或监管判断。页面中提到的软件也不是强制唯一选择，实际可按公司已有平台替换。</div>
     </section>
 
     <section class="section">

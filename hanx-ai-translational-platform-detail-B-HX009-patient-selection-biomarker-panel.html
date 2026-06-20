@@ -19,7 +19,7 @@
     .hero { padding:30px; margin-bottom:20px; }
     .section { padding:26px; margin-top:20px; }
     .card { padding:18px; box-shadow:none; }
-    .quick { display:grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap:12px; margin:0 0 18px; }
+    .quick { display:grid; grid-template-columns: repeat(5, minmax(0,1fr)); gap:12px; margin:0 0 18px; }
     .quick a { display:block; padding:14px 16px; border-radius:16px; background:rgba(255,255,255,.06); border:1px solid var(--line); color:#e3f3ff; }
     h1 { margin:0 0 12px; font-size: clamp(34px, 5vw, 58px); line-height:1.08; letter-spacing:-.03em; }
     h2 { margin:0 0 14px; font-size:32px; line-height:1.15; }
@@ -45,6 +45,17 @@
     .related { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:10px; margin-top:14px; }
     .mini-link { display:block; padding:12px 14px; border-radius:16px; border:1px solid var(--line); color:#e8f6ff; background:rgba(255,255,255,.05); font-size:13px; font-weight:600; }
     .mini-link.active { border-color: rgba(111,255,233,.4); background: rgba(111,255,233,.08); color: var(--cyan); }
+
+    .operator-table { width:100%; border-collapse:separate; border-spacing:0; overflow:hidden; margin:14px 0 18px; border:1px solid var(--line); border-radius:10px; background:var(--panel); }
+    .operator-table th, .operator-table td { padding:12px 14px; border-bottom:1px solid var(--line); vertical-align:top; text-align:left; }
+    .operator-table th { background:rgba(31,95,191,.10); color:var(--blue); font-weight:800; }
+    .operator-table tr:last-child td { border-bottom:0; }
+    .operator-table td { font-size:14px; }
+    .plain-box { padding:16px 18px; border:1px solid var(--line); border-radius:10px; background:rgba(31,95,191,.06); margin:12px 0 18px; }
+    .plain-box strong { color:var(--blue); }
+    .operator-list { margin:0; padding-left:20px; }
+    .operator-list li { margin:5px 0; }
+
     @media (max-width: 900px) { .quick, .grid-2, .grid-3, .steps, .glossary, .related { grid-template-columns:1fr; } .hero, .section { padding:22px; } }
   </style>
 </head>
@@ -60,6 +71,7 @@
       <a href="#why">为什么要做</a>
       <a href="#effect">做成什么效果</a>
       <a href="#steps">具体步骤</a>
+      <a href="#operator-guide">上手操作</a>
     </div>
 
     <section class="hero">
@@ -95,6 +107,45 @@
     <section class="section" id="steps">
       <h2>四、具体怎么推进</h2>
       <div class="steps"><div class="step"><strong>第 1 步：先定义要解决的分层问题</strong><p>例如是预测谁更可能响应，还是解释为什么已经响应。</p></div><div class="step"><strong>第 2 步：拆成组织、外周血和分子层面</strong><p>不要把所有指标混在一起，而是分层整理。</p></div><div class="step"><strong>第 3 步：筛出第一批候选 biomarker</strong><p>例如 PD-L1、CD47、SIRPα、CD8、巨噬细胞相关标记、EBV 状态等。</p></div><div class="step"><strong>第 4 步：设计检测和评分方法</strong><p>明确 IHC、mIHC、flow、RNA signature 各自怎么用。</p></div><div class="step"><strong>第 5 步：让公司补充检测和数据</strong><p>基于已有样本做验证，看看哪些指标真有解释力。</p></div><div class="step"><strong>第 6 步：把结果整理成 panel v1.0</strong><p>形成可视化分层逻辑和下一轮采样建议。</p></div></div>
+    </section>
+
+
+
+    <section class="section" id="operator-guide">
+      <h2>操作人员上手版：软件、模型、数据集和特征</h2>
+      <div class="plain-box"><strong>普通人先看这一段：</strong>这页要解决“哪些患者更可能有效”。不是把所有患者当成一样，而是先找出能提示疗效的体检线索。</div>
+
+      <h3>1. 推荐使用的软件 / 平台</h3>
+      <table class="operator-table">
+        <thead><tr><th>用途</th><th>建议工具</th><th>操作人员要做什么</th></tr></thead>
+        <tbody><tr><td>组学分析</td><td>R/Bioconductor、Python、Jupyter、DESeq2、limma</td><td>处理 RNA-seq、突变、表达和免疫特征。</td></tr><tr><td>单细胞/空间分析</td><td>Seurat、Scanpy、CellChat、Squidpy</td><td>分析免疫细胞组成、T 细胞状态和巨噬细胞状态。</td></tr><tr><td>公开数据查询</td><td>cBioPortal、TCGA、GEO、DepMap、Human Protein Atlas</td><td>查找目标表达、癌种差异和公开响应线索。</td></tr><tr><td>患者数据管理</td><td>REDCap、Excel/CSV 模板、LIMS</td><td>统一样本时间点、检测项目和响应标签。</td></tr></tbody>
+      </table>
+
+      <h3>2. 需要的专属 AI 模型</h3>
+      <table class="operator-table">
+        <thead><tr><th>模型</th><th>作用</th><th>训练或调参需要的数据</th></tr></thead>
+        <tbody><tr><td>Responder 分类模型</td><td>预测样本更像 responder 还是 non-responder。</td><td>患者 biomarker、疗效标签、样本时间点、治疗方案。</td></tr><tr><td>Biomarker 选择模型</td><td>筛出最值得进入 panel 的少数标志物。</td><td>表达、突变、IHC、流式、临床响应结果。</td></tr><tr><td>样本缺失与批次校正模型</td><td>发现不同批次和平台造成的假信号。</td><td>批次信息、平台信息、重复样本、质控指标。</td></tr></tbody>
+      </table>
+
+      <h3>3. 数据集准备清单</h3>
+      <table class="operator-table">
+        <thead><tr><th>数据集</th><th>来源</th><th>最低要求</th></tr></thead>
+        <tbody><tr><td>患者样本数据</td><td>组织、血液、RNA、IHC、流式、临床记录。</td><td>必须有采样时间点、治疗线数、疗效评价和样本质量。</td></tr><tr><td>公开癌种数据</td><td>TCGA、GEO、cBioPortal、HPA。</td><td>至少能比较目标表达、免疫浸润和癌种差异。</td></tr><tr><td>历史响应数据</td><td>内部试验、同类机制药物公开数据。</td><td>要保留 responder/non-responder 定义和评估时间点。</td></tr></tbody>
+      </table>
+
+      <h3>4. 必须抽取的特征字段</h3>
+      <table class="operator-table">
+        <thead><tr><th>特征类型</th><th>具体字段</th><th>为什么重要</th></tr></thead>
+        <tbody><tr><td>靶点/通路</td><td>PD-1/PD-L1、CD47/SIRPα、抗原呈递、IFN-γ signature。</td><td>判断机制是否有发挥空间。</td></tr><tr><td>免疫微环境</td><td>T cell inflamed score、macrophage score、M1/M2 ratio、Treg signature。</td><td>判断肿瘤是否处在适合免疫治疗的状态。</td></tr><tr><td>临床响应</td><td>ORR、DCR、PFS、RECIST、治疗线数、合并用药。</td><td>把 biomarker 和真实疗效连接起来。</td></tr><tr><td>样本质量</td><td>肿瘤含量、RNA 质量、采样时间、检测平台。</td><td>避免低质量样本影响分层规则。</td></tr></tbody>
+      </table>
+
+      <h3>5. 分阶段操作与成果表</h3>
+      <table class="operator-table">
+        <thead><tr><th>阶段</th><th>操作人员要做的事</th><th>阶段成果</th><th>验收标准</th></tr></thead>
+        <tbody><tr><td>阶段 1：数据盘点</td><td>整理已有样本、实验、文献、公开数据库和内部项目记录。</td><td>数据清单、字段字典、缺失项列表。</td><td>每条数据能追溯来源，关键字段缺失率可被统计。</td></tr><tr><td>阶段 2：特征工程</td><td>把原始数据转成可比较字段，例如表达量、突变、评分、毒性标签、实验条件。</td><td>标准化特征表和 QC 报告。</td><td>同一字段在不同批次、不同实验人员之间含义一致。</td></tr><tr><td>阶段 3：模型/仿真</td><td>运行候选排序、分层、剂量窗口、机制解释或知识图谱模型。</td><td>模型输出表、推荐理由、风险标注。</td><td>每个推荐都有可解释依据，不只给黑箱分数。</td></tr><tr><td>阶段 4：实验设计</td><td>把模型结果转成实验矩阵、样本选择、对照组和 readout。</td><td>可执行实验方案和 plate map / SOP 草案。</td><td>实验团队能直接执行，不需要再反复问“怎么做”。</td></tr><tr><td>阶段 5：结果回流</td><td>把原始数据、失败原因、异常说明和结论写回数据库。</td><td>回流数据包、复盘报告、下一轮建议。</td><td>结果能支持继续、停止或调整方向的决策。</td></tr></tbody>
+      </table>
+
+      <div class="plain-box"><strong>重要边界：</strong>这里的 AI 模型用于排序、解释、设计实验和发现风险信号，不能替代湿实验、临床试验、医学判断或监管判断。页面中提到的软件也不是强制唯一选择，实际可按公司已有平台替换。</div>
     </section>
 
     <section class="section">

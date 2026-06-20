@@ -20,7 +20,7 @@
     .hero { padding: 32px 36px; margin-bottom: 20px; }
     .section { padding: 28px; margin-top: 20px; }
     .card { padding: 18px; box-shadow:none; }
-    .quick { display:grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap:12px; margin: 0 0 18px; }
+    .quick { display:grid; grid-template-columns: repeat(5, minmax(0,1fr)); gap:12px; margin: 0 0 18px; }
     .quick a { display:block; padding: 14px 16px; border-radius: 8px; background:#fff; border:1px solid var(--line); color: var(--text); box-shadow: var(--shadow); font-weight:600; }
     .related { display:grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap:10px; margin-top:14px; }
     .mini-link { display:block; padding:10px 12px; border:1px solid var(--line); border-radius:8px; color: var(--text); background:#fbfcfe; font-size:13px; font-weight:600; }
@@ -46,6 +46,17 @@
     .glossary { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:12px; }
     .note { padding:14px 16px; border:1px solid #f0c99a; border-radius:8px; background:#fffaf3; color:#5d3a05; }
     .quote { padding:16px 18px; border-left:4px solid var(--green); background:#f2fbf6; border-radius:0 8px 8px 0; color:#124c37; }
+
+    .operator-table { width:100%; border-collapse:separate; border-spacing:0; overflow:hidden; margin:14px 0 18px; border:1px solid var(--line); border-radius:10px; background:var(--panel); }
+    .operator-table th, .operator-table td { padding:12px 14px; border-bottom:1px solid var(--line); vertical-align:top; text-align:left; }
+    .operator-table th { background:rgba(31,95,191,.10); color:var(--blue); font-weight:800; }
+    .operator-table tr:last-child td { border-bottom:0; }
+    .operator-table td { font-size:14px; }
+    .plain-box { padding:16px 18px; border:1px solid var(--line); border-radius:10px; background:rgba(31,95,191,.06); margin:12px 0 18px; }
+    .plain-box strong { color:var(--blue); }
+    .operator-list { margin:0; padding-left:20px; }
+    .operator-list li { margin:5px 0; }
+
     @media (max-width: 900px) { .quick, .two-col, .three-col, .step-grid, .glossary, .related { grid-template-columns: 1fr; } .hero, .section { padding:22px; } }
   </style>
 </head>
@@ -61,6 +72,7 @@
       <a href="#why">为什么要做</a>
       <a href="#effect">做成什么效果</a>
       <a href="#steps">具体步骤</a>
+      <a href="#operator-guide">上手操作</a>
     </div>
 
     <section class="hero">
@@ -94,6 +106,45 @@
     <section class="section" id="steps">
       <h2>四、具体怎么做</h2>
       <div class="step-grid"><div class="step"><strong>第 1 步：定义要跟踪的关键 biomarker</strong><p>先明确这轮最值得看的背景因素，例如 SLFN11、TP53、HRD、TOP1、ABCB1 等。</p></div><div class="step"><strong>第 2 步：整理模型背景信息</strong><p>把细胞系或样本的突变、表达、通路特征统一整理成结构化表格。</p></div><div class="step"><strong>第 3 步：把实验结果和 biomarker 对齐</strong><p>不是只看平均 synergy，而是按高表达/低表达、突变/野生型分开看。</p></div><div class="step"><strong>第 4 步：提出第一版分层假设</strong><p>例如“SLFN11 高表达模型更容易对 exatecan + ATR 抑制剂响应”。</p></div><div class="step"><strong>第 5 步：让公司做验证实验</strong><p>选择匹配和不匹配的模型，验证这条分层规则是不是真的成立。</p></div><div class="step"><strong>第 6 步：把规则固化成工具</strong><p>逐步从零散发现变成 biomarker 评分表或分层面板。</p></div></div>
+    </section>
+
+
+
+    <section class="section" id="operator-guide">
+      <h2>操作人员上手版：软件、模型、数据集和特征</h2>
+      <div class="plain-box"><strong>普通人先看这一段：</strong>不是只看平均疗效，而是找出在哪类细胞或患者背景下更容易有效。</div>
+
+      <h3>1. 推荐使用的软件 / 平台</h3>
+      <table class="operator-table">
+        <thead><tr><th>用途</th><th>建议工具</th><th>操作人员要做什么</th></tr></thead>
+        <tbody><tr><td>组学与细胞系分析</td><td>DepMap/CCLE、GDSC、PRISM、R/Python</td><td>把细胞系背景和药物响应合并分析。</td></tr><tr><td>单细胞/表达分析</td><td>Seurat、Scanpy、DESeq2、limma</td><td>分析表达、突变和通路状态。</td></tr><tr><td>可视化</td><td>GraphPad、Jupyter、Tableau/Power BI</td><td>展示 responder 与 non-responder 差异。</td></tr></tbody>
+      </table>
+
+      <h3>2. 需要的专属 AI 模型</h3>
+      <table class="operator-table">
+        <thead><tr><th>模型</th><th>作用</th><th>训练或调参需要的数据</th></tr></thead>
+        <tbody><tr><td>Responder 分类模型</td><td>判断哪类背景更可能对 payload 或组合响应。</td><td>细胞系/样本组学、药物响应、biomarker 标签。</td></tr><tr><td>Biomarker 筛选模型</td><td>从大量候选特征中选出最可解释、最可验证的少数指标。</td><td>表达、突变、CNV、蛋白、药效矩阵。</td></tr><tr><td>分层规则生成模型</td><td>把统计结果转成实验团队可执行的分层规则。</td><td>历史响应标签、候选 biomarker、验证结果。</td></tr></tbody>
+      </table>
+
+      <h3>3. 数据集准备清单</h3>
+      <table class="operator-table">
+        <thead><tr><th>数据集</th><th>来源</th><th>最低要求</th></tr></thead>
+        <tbody><tr><td>细胞系组学</td><td>DepMap/CCLE、内部测序。</td><td>表达、突变、CNV、关键通路状态要能对齐到细胞系。</td></tr><tr><td>药物响应数据</td><td>GDSC、PRISM、内部 dose response。</td><td>需要单药和组合响应，最好有重复实验。</td></tr><tr><td>目标/抗原信息</td><td>IHC、RNA、蛋白表达、公开数据库。</td><td>用于判断 payload/ADC 是否有进入细胞或发挥作用的基础。</td></tr></tbody>
+      </table>
+
+      <h3>4. 必须抽取的特征字段</h3>
+      <table class="operator-table">
+        <thead><tr><th>特征类型</th><th>具体字段</th><th>为什么重要</th></tr></thead>
+        <tbody><tr><td>分子特征</td><td>基因表达、突变、CNV、DNA repair、cell cycle、apoptosis。</td><td>解释为什么某些背景更敏感。</td></tr><tr><td>响应标签</td><td>IC50、AUC、responder/non-responder、synergy score。</td><td>训练和验证分层模型。</td></tr><tr><td>实验条件</td><td>剂量、时间、细胞密度、批次、readout。</td><td>避免把实验条件差异误认为 biomarker。</td></tr></tbody>
+      </table>
+
+      <h3>5. 分阶段操作与成果表</h3>
+      <table class="operator-table">
+        <thead><tr><th>阶段</th><th>操作人员要做的事</th><th>阶段成果</th><th>验收标准</th></tr></thead>
+        <tbody><tr><td>阶段 1：数据盘点</td><td>整理已有样本、实验、文献、公开数据库和内部项目记录。</td><td>数据清单、字段字典、缺失项列表。</td><td>每条数据能追溯来源，关键字段缺失率可被统计。</td></tr><tr><td>阶段 2：特征工程</td><td>把原始数据转成可比较字段，例如表达量、突变、评分、毒性标签、实验条件。</td><td>标准化特征表和 QC 报告。</td><td>同一字段在不同批次、不同实验人员之间含义一致。</td></tr><tr><td>阶段 3：模型/仿真</td><td>运行候选排序、分层、剂量窗口、机制解释或知识图谱模型。</td><td>模型输出表、推荐理由、风险标注。</td><td>每个推荐都有可解释依据，不只给黑箱分数。</td></tr><tr><td>阶段 4：实验设计</td><td>把模型结果转成实验矩阵、样本选择、对照组和 readout。</td><td>可执行实验方案和 plate map / SOP 草案。</td><td>实验团队能直接执行，不需要再反复问“怎么做”。</td></tr><tr><td>阶段 5：结果回流</td><td>把原始数据、失败原因、异常说明和结论写回数据库。</td><td>回流数据包、复盘报告、下一轮建议。</td><td>结果能支持继续、停止或调整方向的决策。</td></tr></tbody>
+      </table>
+
+      <div class="plain-box"><strong>重要边界：</strong>这里的 AI 模型用于排序、解释、设计实验和发现风险信号，不能替代湿实验、临床试验、医学判断或监管判断。页面中提到的软件也不是强制唯一选择，实际可按公司已有平台替换。</div>
     </section>
 
     <section class="section">

@@ -20,7 +20,7 @@
     .hero { padding: 32px 36px; margin-bottom: 20px; }
     .section { padding: 28px; margin-top: 20px; }
     .card { padding: 18px; box-shadow:none; }
-    .quick { display:grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap:12px; margin: 0 0 18px; }
+    .quick { display:grid; grid-template-columns: repeat(5, minmax(0,1fr)); gap:12px; margin: 0 0 18px; }
     .quick a { display:block; padding: 14px 16px; border-radius: 8px; background:#fff; border:1px solid var(--line); color: var(--text); box-shadow: var(--shadow); font-weight:600; }
     .related { display:grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap:10px; margin-top:14px; }
     .mini-link { display:block; padding:10px 12px; border:1px solid var(--line); border-radius:8px; color: var(--text); background:#fbfcfe; font-size:13px; font-weight:600; }
@@ -46,6 +46,17 @@
     .glossary { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:12px; }
     .note { padding:14px 16px; border:1px solid #f0c99a; border-radius:8px; background:#fffaf3; color:#5d3a05; }
     .quote { padding:16px 18px; border-left:4px solid var(--green); background:#f2fbf6; border-radius:0 8px 8px 0; color:#124c37; }
+
+    .operator-table { width:100%; border-collapse:separate; border-spacing:0; overflow:hidden; margin:14px 0 18px; border:1px solid var(--line); border-radius:10px; background:var(--panel); }
+    .operator-table th, .operator-table td { padding:12px 14px; border-bottom:1px solid var(--line); vertical-align:top; text-align:left; }
+    .operator-table th { background:rgba(31,95,191,.10); color:var(--blue); font-weight:800; }
+    .operator-table tr:last-child td { border-bottom:0; }
+    .operator-table td { font-size:14px; }
+    .plain-box { padding:16px 18px; border:1px solid var(--line); border-radius:10px; background:rgba(31,95,191,.06); margin:12px 0 18px; }
+    .plain-box strong { color:var(--blue); }
+    .operator-list { margin:0; padding-left:20px; }
+    .operator-list li { margin:5px 0; }
+
     @media (max-width: 900px) { .quick, .two-col, .three-col, .step-grid, .glossary, .related { grid-template-columns: 1fr; } .hero, .section { padding:22px; } }
   </style>
 </head>
@@ -61,6 +72,7 @@
       <a href="#why">为什么要做</a>
       <a href="#effect">做成什么效果</a>
       <a href="#steps">具体步骤</a>
+      <a href="#operator-guide">上手操作</a>
     </div>
 
     <section class="hero">
@@ -94,6 +106,45 @@
     <section class="section" id="steps">
       <h2>四、具体怎么做</h2>
       <div class="step-grid"><div class="step"><strong>第 1 步：定义耐药问题</strong><p>先确认是 exatecan 类 payload 耐药，还是某个组合耐药，或者是某类模型普遍不响应。</p></div><div class="step"><strong>第 2 步：建立耐药假设树</strong><p>把可能原因拆成外排泵、DNA repair 增强、复制压力耐受、抗凋亡依赖等几类。</p></div><div class="step"><strong>第 3 步：匹配逆转策略</strong><p>针对每类耐药原因配对 संभाव在 rescue partner，例如阻断 repair、阻断 efflux 关联路径、增强凋亡执行。</p></div><div class="step"><strong>第 4 步：让公司做耐药模型验证</strong><p>在耐药株或不敏感模型里验证是否真的能把药效拉回来。</p></div><div class="step"><strong>第 5 步：比较耐药前后差异</strong><p>分析为什么这个 rescue 方案成立，哪些 biomarker 能支持解释。</p></div><div class="step"><strong>第 6 步：形成下一轮更精准推荐</strong><p>把验证成功和失败的耐药逆转经验写进系统。</p></div></div>
+    </section>
+
+
+
+    <section class="section" id="operator-guide">
+      <h2>操作人员上手版：软件、模型、数据集和特征</h2>
+      <div class="plain-box"><strong>普通人先看这一段：</strong>当肿瘤学会“躲药”后，找出躲药原因，再推荐能把药效拉回来的 rescue partner。</div>
+
+      <h3>1. 推荐使用的软件 / 平台</h3>
+      <table class="operator-table">
+        <thead><tr><th>用途</th><th>建议工具</th><th>操作人员要做什么</th></tr></thead>
+        <tbody><tr><td>耐药组学分析</td><td>RNA-seq pipeline、DESeq2、GSEA、Proteomics tools</td><td>比较敏感模型和耐药模型差异。</td></tr><tr><td>CRISPR/筛选分析</td><td>MAGeCK、DepMap、CERES</td><td>找出耐药相关基因和依赖通路。</td></tr><tr><td>机制网络</td><td>Cytoscape、STRING、Reactome、KEGG</td><td>把耐药机制和可用药物连接起来。</td></tr></tbody>
+      </table>
+
+      <h3>2. 需要的专属 AI 模型</h3>
+      <table class="operator-table">
+        <thead><tr><th>模型</th><th>作用</th><th>训练或调参需要的数据</th></tr></thead>
+        <tbody><tr><td>耐药机制分类模型</td><td>判断耐药更像外排泵、DNA repair、抗凋亡还是复制压力耐受。</td><td>敏感/耐药配对模型、组学、功能实验。</td></tr><tr><td>Rescue partner 推荐模型</td><td>推荐针对失效原因的补救联用药。</td><td>耐药机制标签、药物靶点库、历史 rescue 实验。</td></tr><tr><td>反转效果预测模型</td><td>预测某个 partner 是否能恢复 payload 敏感性。</td><td>敏感/耐药 dose response、组合实验、机制 readout。</td></tr></tbody>
+      </table>
+
+      <h3>3. 数据集准备清单</h3>
+      <table class="operator-table">
+        <thead><tr><th>数据集</th><th>来源</th><th>最低要求</th></tr></thead>
+        <tbody><tr><td>配对模型</td><td>内部建立的 sensitive/resistant cell line 或 PDX。</td><td>必须成对比较，记录建立耐药的方法和代次。</td></tr><tr><td>组学数据</td><td>RNA、蛋白、突变、CRISPR、药物响应。</td><td>能解释耐药原因，而不是只看到药效下降。</td></tr><tr><td>救援实验数据</td><td>rescue combination dose matrix。</td><td>需要耐药模型和亲本模型同时测试。</td></tr></tbody>
+      </table>
+
+      <h3>4. 必须抽取的特征字段</h3>
+      <table class="operator-table">
+        <thead><tr><th>特征类型</th><th>具体字段</th><th>为什么重要</th></tr></thead>
+        <tbody><tr><td>耐药强度</td><td>fold resistance、IC50 shift、AUC shift。</td><td>量化耐药是否真实存在。</td></tr><tr><td>机制特征</td><td>ABCB1/efflux、DNA repair、TOP1、BCL2、replication stress。</td><td>决定应该找哪类 rescue partner。</td></tr><tr><td>反转指标</td><td>rescue index、敏感性恢复比例、毒性增加幅度。</td><td>判断是不是“拉回药效”而不是单纯更毒。</td></tr></tbody>
+      </table>
+
+      <h3>5. 分阶段操作与成果表</h3>
+      <table class="operator-table">
+        <thead><tr><th>阶段</th><th>操作人员要做的事</th><th>阶段成果</th><th>验收标准</th></tr></thead>
+        <tbody><tr><td>阶段 1：数据盘点</td><td>整理已有样本、实验、文献、公开数据库和内部项目记录。</td><td>数据清单、字段字典、缺失项列表。</td><td>每条数据能追溯来源，关键字段缺失率可被统计。</td></tr><tr><td>阶段 2：特征工程</td><td>把原始数据转成可比较字段，例如表达量、突变、评分、毒性标签、实验条件。</td><td>标准化特征表和 QC 报告。</td><td>同一字段在不同批次、不同实验人员之间含义一致。</td></tr><tr><td>阶段 3：模型/仿真</td><td>运行候选排序、分层、剂量窗口、机制解释或知识图谱模型。</td><td>模型输出表、推荐理由、风险标注。</td><td>每个推荐都有可解释依据，不只给黑箱分数。</td></tr><tr><td>阶段 4：实验设计</td><td>把模型结果转成实验矩阵、样本选择、对照组和 readout。</td><td>可执行实验方案和 plate map / SOP 草案。</td><td>实验团队能直接执行，不需要再反复问“怎么做”。</td></tr><tr><td>阶段 5：结果回流</td><td>把原始数据、失败原因、异常说明和结论写回数据库。</td><td>回流数据包、复盘报告、下一轮建议。</td><td>结果能支持继续、停止或调整方向的决策。</td></tr></tbody>
+      </table>
+
+      <div class="plain-box"><strong>重要边界：</strong>这里的 AI 模型用于排序、解释、设计实验和发现风险信号，不能替代湿实验、临床试验、医学判断或监管判断。页面中提到的软件也不是强制唯一选择，实际可按公司已有平台替换。</div>
     </section>
 
     <section class="section">

@@ -20,7 +20,7 @@
     .hero { padding: 32px 36px; margin-bottom: 20px; }
     .section { padding: 28px; margin-top: 20px; }
     .card { padding: 18px; box-shadow:none; }
-    .quick { display:grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap:12px; margin: 0 0 18px; }
+    .quick { display:grid; grid-template-columns: repeat(5, minmax(0,1fr)); gap:12px; margin: 0 0 18px; }
     .quick a { display:block; padding: 14px 16px; border-radius: 8px; background:#fff; border:1px solid var(--line); color: var(--text); box-shadow: var(--shadow); font-weight:600; }
     .related { display:grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap:10px; margin-top:14px; }
     .mini-link { display:block; padding:10px 12px; border:1px solid var(--line); border-radius:8px; color: var(--text); background:#fbfcfe; font-size:13px; font-weight:600; }
@@ -46,6 +46,17 @@
     .glossary { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:12px; }
     .note { padding:14px 16px; border:1px solid #f0c99a; border-radius:8px; background:#fffaf3; color:#5d3a05; }
     .quote { padding:16px 18px; border-left:4px solid var(--green); background:#f2fbf6; border-radius:0 8px 8px 0; color:#124c37; }
+
+    .operator-table { width:100%; border-collapse:separate; border-spacing:0; overflow:hidden; margin:14px 0 18px; border:1px solid var(--line); border-radius:10px; background:var(--panel); }
+    .operator-table th, .operator-table td { padding:12px 14px; border-bottom:1px solid var(--line); vertical-align:top; text-align:left; }
+    .operator-table th { background:rgba(31,95,191,.10); color:var(--blue); font-weight:800; }
+    .operator-table tr:last-child td { border-bottom:0; }
+    .operator-table td { font-size:14px; }
+    .plain-box { padding:16px 18px; border:1px solid var(--line); border-radius:10px; background:rgba(31,95,191,.06); margin:12px 0 18px; }
+    .plain-box strong { color:var(--blue); }
+    .operator-list { margin:0; padding-left:20px; }
+    .operator-list li { margin:5px 0; }
+
     @media (max-width: 900px) { .quick, .two-col, .three-col, .step-grid, .glossary, .related { grid-template-columns: 1fr; } .hero, .section { padding:22px; } }
   </style>
 </head>
@@ -61,6 +72,7 @@
       <a href="#why">为什么要做</a>
       <a href="#effect">做成什么效果</a>
       <a href="#steps">具体步骤</a>
+      <a href="#operator-guide">上手操作</a>
     </div>
 
     <section class="hero">
@@ -94,6 +106,45 @@
     <section class="section" id="steps">
       <h2>四、具体怎么做</h2>
       <div class="step-grid"><div class="step"><strong>第 1 步：先定义要管哪些毒性</strong><p>至少把骨髓、肝、肾、GI、神经、心脏等关键系统列清楚。</p></div><div class="step"><strong>第 2 步：给每个药建立毒性向量</strong><p>不是简单写“有毒性”，而是按器官系统做结构化评分。</p></div><div class="step"><strong>第 3 步：和疗效结果一起计算</strong><p>让高协同组合也要接受毒性惩罚，避免只看正向信号。</p></div><div class="step"><strong>第 4 步：让公司补做必要的毒性 proxy</strong><p>例如正常细胞或类器官对照，用来初步判断选择性。</p></div><div class="step"><strong>第 5 步：重新排序并淘汰高风险组合</strong><p>把“看起来很强但很难开发”的方向提前排掉。</p></div><div class="step"><strong>第 6 步：沉淀成通用规则</strong><p>为后续更多 payload 复用。</p></div></div>
+    </section>
+
+
+
+    <section class="section" id="operator-guide">
+      <h2>操作人员上手版：软件、模型、数据集和特征</h2>
+      <div class="plain-box"><strong>普通人先看这一段：</strong>不要只找最强杀伤组合，还要找未来可能用得上的组合；强但太毒的方向要提前降权。</div>
+
+      <h3>1. 推荐使用的软件 / 平台</h3>
+      <table class="operator-table">
+        <thead><tr><th>用途</th><th>建议工具</th><th>操作人员要做什么</th></tr></thead>
+        <tbody><tr><td>毒性数据库</td><td>ToxCast、Open Targets Safety、FAERS、SIDER、文献库</td><td>整理器官毒性、临床 AE、DLT 和黑框风险。</td></tr><tr><td>正常细胞分析</td><td>GraphPad、Python/R、CellTiter-Glo 数据模板</td><td>比较肿瘤细胞和正常细胞杀伤。</td></tr><tr><td>组织表达</td><td>GTEx、Human Protein Atlas、Single Cell Atlas</td><td>看靶点或通路在正常组织中的表达。</td></tr></tbody>
+      </table>
+
+      <h3>2. 需要的专属 AI 模型</h3>
+      <table class="operator-table">
+        <thead><tr><th>模型</th><th>作用</th><th>训练或调参需要的数据</th></tr></thead>
+        <tbody><tr><td>Toxicity vector 模型</td><td>把毒性按器官系统结构化成向量。</td><td>临床 AE、文献毒性、正常组织表达、正常细胞实验。</td></tr><tr><td>Safety margin 预测模型</td><td>预测组合是否有足够安全窗口。</td><td>肿瘤/正常细胞剂量反应、动物/临床安全性。</td></tr><tr><td>毒性惩罚排序模型</td><td>在组合推荐时自动降低高风险组合优先级。</td><td>组合药物毒性、重叠器官、剂量窗口。</td></tr></tbody>
+      </table>
+
+      <h3>3. 数据集准备清单</h3>
+      <table class="operator-table">
+        <thead><tr><th>数据集</th><th>来源</th><th>最低要求</th></tr></thead>
+        <tbody><tr><td>正常细胞毒性</td><td>内部实验、公开细胞数据。</td><td>最好包含肝、血液、心肌/内皮等相关细胞。</td></tr><tr><td>临床安全性</td><td>公开标签、ClinicalTrials.gov、FAERS、文献。</td><td>记录 AE 类型、等级、频率、DLT。</td></tr><tr><td>组织表达</td><td>GTEx、HPA、内部表达数据。</td><td>用于判断 on-target/off-tumor 风险。</td></tr></tbody>
+      </table>
+
+      <h3>4. 必须抽取的特征字段</h3>
+      <table class="operator-table">
+        <thead><tr><th>特征类型</th><th>具体字段</th><th>为什么重要</th></tr></thead>
+        <tbody><tr><td>安全窗口</td><td>tumor IC50、normal cell IC50、selectivity index、therapeutic index。</td><td>判断是否有开发空间。</td></tr><tr><td>器官毒性</td><td>hematologic、hepatic、cardiac、GI、neurologic toxicity。</td><td>判断两个药是否伤同一系统。</td></tr><tr><td>可开发性</td><td>DLT、剂量调整、停药率、暴露范围。</td><td>避免早期推荐不可转化组合。</td></tr></tbody>
+      </table>
+
+      <h3>5. 分阶段操作与成果表</h3>
+      <table class="operator-table">
+        <thead><tr><th>阶段</th><th>操作人员要做的事</th><th>阶段成果</th><th>验收标准</th></tr></thead>
+        <tbody><tr><td>阶段 1：数据盘点</td><td>整理已有样本、实验、文献、公开数据库和内部项目记录。</td><td>数据清单、字段字典、缺失项列表。</td><td>每条数据能追溯来源，关键字段缺失率可被统计。</td></tr><tr><td>阶段 2：特征工程</td><td>把原始数据转成可比较字段，例如表达量、突变、评分、毒性标签、实验条件。</td><td>标准化特征表和 QC 报告。</td><td>同一字段在不同批次、不同实验人员之间含义一致。</td></tr><tr><td>阶段 3：模型/仿真</td><td>运行候选排序、分层、剂量窗口、机制解释或知识图谱模型。</td><td>模型输出表、推荐理由、风险标注。</td><td>每个推荐都有可解释依据，不只给黑箱分数。</td></tr><tr><td>阶段 4：实验设计</td><td>把模型结果转成实验矩阵、样本选择、对照组和 readout。</td><td>可执行实验方案和 plate map / SOP 草案。</td><td>实验团队能直接执行，不需要再反复问“怎么做”。</td></tr><tr><td>阶段 5：结果回流</td><td>把原始数据、失败原因、异常说明和结论写回数据库。</td><td>回流数据包、复盘报告、下一轮建议。</td><td>结果能支持继续、停止或调整方向的决策。</td></tr></tbody>
+      </table>
+
+      <div class="plain-box"><strong>重要边界：</strong>这里的 AI 模型用于排序、解释、设计实验和发现风险信号，不能替代湿实验、临床试验、医学判断或监管判断。页面中提到的软件也不是强制唯一选择，实际可按公司已有平台替换。</div>
     </section>
 
     <section class="section">
