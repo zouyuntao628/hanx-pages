@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>方案完善路线图与阶段成果表</title>
+  <style>
+    :root { --bg:#07111f; --panel:rgba(255,255,255,.075); --line:rgba(255,255,255,.16); --text:#eef6ff; --muted:#a8b7c9; --blue:#68d5ff; --cyan:#6fffe9; --green:#8ef6a3; --purple:#caa7ff; --yellow:#ffe08a; --shadow:0 22px 70px rgba(0,0,0,.35); }
+    * { box-sizing:border-box; }
+    body { margin:0; color:var(--text); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif; background:radial-gradient(circle at 10% -10%, rgba(104,213,255,.25), transparent 33%), radial-gradient(circle at 95% 10%, rgba(142,246,163,.16), transparent 28%), radial-gradient(circle at 50% 105%, rgba(202,167,255,.18), transparent 30%), var(--bg); line-height:1.68; }
+    a { color:var(--cyan); text-decoration:none; font-weight:700; }
+    a:hover { text-decoration:underline; }
+    .wrap { width:min(1180px, calc(100% - 40px)); margin:0 auto; }
+    nav { position:sticky; top:0; z-index:20; backdrop-filter:blur(18px); background:rgba(7,17,31,.72); border-bottom:1px solid var(--line); }
+    nav .wrap { display:flex; justify-content:space-between; align-items:center; gap:16px; padding:14px 0; }
+    .brand { display:flex; align-items:center; gap:10px; font-weight:850; }
+    .logo { width:34px; height:34px; border-radius:11px; background:linear-gradient(135deg,var(--blue),var(--green)); box-shadow:0 0 32px rgba(104,213,255,.42); }
+    .navlinks { display:flex; gap:14px; flex-wrap:wrap; font-size:14px; }
+    .navlinks a { color:var(--muted); }
+    header { padding:72px 0 32px; }
+    .eyebrow { display:inline-flex; padding:7px 12px; border:1px solid var(--line); border-radius:999px; background:rgba(255,255,255,.06); color:var(--cyan); font-weight:800; font-size:14px; }
+    h1 { margin:20px 0 16px; max-width:1000px; font-size:clamp(38px,6vw,68px); line-height:1.05; letter-spacing:-.04em; }
+    .lead { max-width:920px; color:#d7e7f7; font-size:clamp(18px,2vw,23px); }
+    section { padding:34px 0; }
+    .card, .status, table { background:var(--panel); border:1px solid var(--line); border-radius:24px; box-shadow:var(--shadow); }
+    .card { padding:24px; }
+    .status { padding:22px 24px; border-color:rgba(255,224,138,.38); background:rgba(255,224,138,.08); }
+    h2 { margin:0 0 14px; font-size:clamp(28px,4vw,42px); line-height:1.15; }
+    h3 { margin:0 0 10px; font-size:23px; }
+    .sub { color:var(--muted); max-width:880px; margin:0 0 20px; }
+    .grid-2 { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:18px; }
+    .grid-3 { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px; }
+    .pill { display:inline-flex; margin:4px 6px 4px 0; padding:6px 10px; border-radius:999px; border:1px solid var(--line); color:#dcecff; background:rgba(255,255,255,.06); font-size:13px; }
+    table { width:100%; border-collapse:separate; border-spacing:0; overflow:hidden; margin-top:16px; font-size:14px; }
+    th, td { padding:13px 14px; border-bottom:1px solid var(--line); vertical-align:top; text-align:left; }
+    th { color:#061622; background:linear-gradient(135deg,var(--blue),var(--green)); font-weight:850; }
+    tr:last-child td { border-bottom:0; }
+    td { color:#e5f0fb; }
+    ul { margin:8px 0 0; padding-left:20px; }
+    li { margin:6px 0; }
+    .muted { color:var(--muted); }
+    .note { padding:16px 18px; border-left:4px solid var(--green); background:rgba(142,246,163,.08); border-radius:0 18px 18px 0; }
+    @media (max-width:900px) { .grid-2, .grid-3 { grid-template-columns:1fr; } .navlinks { display:none; } table { display:block; overflow-x:auto; white-space:nowrap; } }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="wrap">
+      <div class="brand"><div class="logo"></div><span>方案完善路线图</span></div>
+      <div class="navlinks"><a href="./index.html">首页</a><a href="./hanx-ai-translational-platform.html">AI 平台</a><a href="./ADC毒素组合用药算法沟通网页/ADC协作型方案总览网页.html">ADC 方案库</a></div>
+    </div>
+  </nav>
+
+  <header class="wrap">
+    <div class="eyebrow">公开进度页｜阶段成果表正在持续更新</div>
+    <h1>方案完善路线图与阶段成果表</h1>
+    <p class="lead">这个页面用于持续展示两个方案库的完善进度：已有条件是什么、还缺什么、每个阶段要做哪些工作，以及每个阶段应该交付什么成果。</p>
+  </header>
+
+  <main>
+    <section class="wrap">
+      <div class="status">
+        <h2>当前状态：分析中</h2>
+        <p>多代理 workflow 正在分析现有网页、协作条件、缺口、阶段工作和成果表。当前页面先上线“进度版”；分析完成后会更新为正式版路线图。</p>
+        <p class="muted">最近更新：2026-06-21</p>
+      </div>
+    </section>
+
+    <section class="wrap">
+      <h2>已经具备的条件</h2>
+      <p class="sub">目前已经不是从零开始，已有两个可对外展示的方案库雏形。</p>
+      <table>
+        <thead><tr><th>已有条件</th><th>具体内容</th><th>可以怎么用</th></tr></thead>
+        <tbody>
+          <tr><td>页面资产</td><td>AI 驱动转化免疫学验证平台总览页 + 4 个详情页；ADC 协作型方案库总览页 + 8 个详情页。</td><td>作为客户沟通、内部讨论、项目拆解的第一版材料。</td></tr>
+          <tr><td>方案结构</td><td>每个方案已经包含“做什么、为什么做、做成什么效果、具体步骤、术语解释”。</td><td>适合继续补充分工、输入材料、验收标准和成果模板。</td></tr>
+          <tr><td>跨库跳转</td><td>两个方案库之间已经可以互相跳转，详情页也有返回入口。</td><td>可以把 ADC 与免疫转化验证包装成一个组合型产品体系。</td></tr>
+          <tr><td>公开访问</td><td>已部署到 GitHub Pages。</td><td>可以让团队通过网页随时查看最新版本。</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="wrap">
+      <h2>还需要补充的关键工作</h2>
+      <div class="grid-2">
+        <div class="card"><h3>内容层面</h3><ul><li>把每个方案的输入材料写清楚。</li><li>补充每阶段成果物样例。</li><li>增加普通人能看懂的业务场景解释。</li><li>补充“客户需要提供什么、我们交付什么”。</li></ul></div>
+        <div class="card"><h3>执行层面</h3><ul><li>定义项目启动清单。</li><li>定义实验回传数据模板。</li><li>定义每轮分析报告格式。</li><li>定义验收标准和下一阶段进入条件。</li></ul></div>
+      </div>
+    </section>
+
+    <section class="wrap">
+      <h2>阶段路线图草案</h2>
+      <p class="sub">正式 workflow 完成后，这张表会被扩展成更细的阶段成果表。</p>
+      <table>
+        <thead><tr><th>阶段</th><th>目标</th><th>需要做的工作</th><th>阶段成果</th><th>验收标准</th></tr></thead>
+        <tbody>
+          <tr><td>阶段 0：方案包装</td><td>让普通人和客户能看懂。</td><td>统一话术、补充图表、补充输入/输出说明。</td><td>可对外展示的网页方案库。</td><td>客户能在 10 分钟内理解方案价值和合作方式。</td></tr>
+          <tr><td>阶段 1：项目启动</td><td>确定首批试点方向。</td><td>选择 1-2 个 ADC 方向或 1 个 HX009/HX044 转化方向。</td><td>试点项目 charter、问题定义、数据清单。</td><td>双方确认目标、样本、实验条件、时间表。</td></tr>
+          <tr><td>阶段 2：首轮验证</td><td>产出第一批真实实验或数据结果。</td><td>执行湿实验/数据整理/机制解释。</td><td>首轮实验设计、原始数据、分析报告。</td><td>结果可复核，能判断是否进入下一轮。</td></tr>
+          <tr><td>阶段 3：模型迭代</td><td>把回流数据变成可复用规则。</td><td>更新评分逻辑、biomarker 分层、推荐规则。</td><td>第二版推荐引擎、分层规则、下一轮实验建议。</td><td>能解释命中/失败原因，并收敛下一批候选。</td></tr>
+          <tr><td>阶段 4：BD-ready 资产</td><td>形成可用于对外沟通的证据包。</td><td>整理图表、机制图、SOP、QC、结论页。</td><td>BD-ready evidence pack、data room 材料。</td><td>可以支持管理层决策、合作沟通或融资/BD 讨论。</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="wrap">
+      <div class="note">
+        <strong>下一步：</strong>workflow 完成后，本页面会更新为正式版，包括“已有条件表、缺口表、总体阶段路线表、每阶段成果表、网页新增模块建议”。
+      </div>
+    </section>
+  </main>
+</body>
+</html>
