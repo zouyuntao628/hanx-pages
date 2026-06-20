@@ -1,0 +1,780 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ADC 组合算法术语字典</title>
+  <style>
+    :root {
+      --bg: #f7f8fa;
+      --panel: #fff;
+      --text: #18202a;
+      --muted: #5b6675;
+      --line: #dfe4ea;
+      --blue: #1f5fbf;
+      --green: #157f5b;
+      --orange: #b75f00;
+      --red: #b42318;
+      --shadow: 0 10px 28px rgba(24, 32, 42, 0.08);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--text);
+      background: var(--bg);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
+      line-height: 1.65;
+    }
+    .page { max-width: 1180px; margin: 0 auto; padding: 32px 24px 56px; }
+    .topbar { display: flex; justify-content: space-between; gap: 12px; align-items: center; margin-bottom: 18px; color: var(--muted); font-size: 14px; }
+    a { color: var(--blue); text-decoration: none; font-weight: 700; }
+    .hero, .section, table { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; box-shadow: var(--shadow); }
+    .hero { padding: 34px 36px; margin-bottom: 22px; }
+    .section { padding: 28px; margin-top: 20px; }
+    h1 { margin: 0 0 12px; font-size: clamp(30px, 4vw, 44px); line-height: 1.16; letter-spacing: 0; }
+    h2 { margin: 0 0 16px; font-size: 24px; line-height: 1.3; letter-spacing: 0; }
+    p { margin: 0 0 12px; }
+    .lead { color: var(--muted); font-size: 18px; max-width: 940px; }
+    .quick-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 18px;
+    }
+    .quick-nav a {
+      display: inline-flex;
+      padding: 6px 10px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: #fbfcfe;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    table { width: 100%; border-collapse: collapse; overflow: hidden; }
+    th, td { padding: 12px 13px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; font-size: 14px; }
+    th { background: #f3f5f8; color: #2c3644; font-weight: 800; }
+    tr:last-child td { border-bottom: 0; }
+    .term { font-weight: 900; color: var(--blue); white-space: nowrap; }
+    .cn { font-weight: 800; }
+    .hint { color: var(--muted); }
+    .tag {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: #f5f8fd;
+      border: 1px solid #cddaf0;
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 800;
+    }
+    @media (max-width: 900px) {
+      .hero, .section { padding: 22px; }
+      table { display: block; overflow-x: auto; white-space: nowrap; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="topbar">
+      <a href="./ADC毒素组合用药算法需求沟通页.html">← 返回总览页</a>
+      <span>集中术语字典 | ADC 组合算法</span>
+    </div>
+
+    <section class="hero">
+      <h1>ADC 组合算法术语字典</h1>
+      <p class="lead">
+        本页把项目中出现的英文缩写和特有名词集中解释，供学生查阅。建议学生先看本页，再阅读方案页和工作计划。
+      </p>
+      <div class="quick-nav">
+        <a href="#adc">ADC 与载荷</a>
+        <a href="#targets">靶点与抗原</a>
+        <a href="#payloads">Payload 类型</a>
+        <a href="#ddr">DNA 损伤修复</a>
+        <a href="#immune">免疫与微环境</a>
+        <a href="#cmc">CMC / 药代 / 安全性</a>
+        <a href="#biomarker">Biomarker</a>
+        <a href="#assay">湿实验与读出</a>
+        <a href="#algorithm">算法评分</a>
+      </div>
+    </section>
+
+    <section class="section" id="adc">
+      <h2>一、ADC 与载荷基础</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>英文/缩写</th>
+            <th>全称</th>
+            <th>中文</th>
+            <th>一句话解释</th>
+            <th>本项目中怎么用</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="term">ADC</td>
+            <td>Antibody-Drug Conjugate</td>
+            <td class="cn">抗体偶联药物</td>
+            <td>由抗体、连接子和毒素载荷组成，用抗体把毒素送到肿瘤细胞附近或内部。</td>
+            <td>本项目所有组合设计的核心载体。</td>
+          </tr>
+          <tr>
+            <td class="term">Payload</td>
+            <td>Payload</td>
+            <td class="cn">载荷/毒素</td>
+            <td>ADC 上真正发挥杀伤或免疫激活作用的小分子。</td>
+            <td>分为细胞毒 payload 和免疫激动 payload。</td>
+          </tr>
+          <tr>
+            <td class="term">Dual-payload ADC</td>
+            <td>Dual-payload Antibody-Drug Conjugate</td>
+            <td class="cn">双载药 ADC</td>
+            <td>同一个 ADC 上同时携带两种不同 payload。</td>
+            <td>例如 Topo I payload + STING agonist 的 [毒+免] ADC。</td>
+          </tr>
+          <tr>
+            <td class="term">iADC</td>
+            <td>Immunostimulatory ADC</td>
+            <td class="cn">免疫刺激型 ADC</td>
+            <td>ADC 不只直接杀伤肿瘤，还携带免疫激动剂来激活肿瘤局部免疫。</td>
+            <td>本方案中 STING agonist ADC 或 [Topo I + STING] 双载药 ADC 都属于这个方向。</td>
+          </tr>
+          <tr>
+            <td class="term">Linker</td>
+            <td>Linker</td>
+            <td class="cn">连接子</td>
+            <td>把 payload 接到抗体上的化学结构，决定释放稳定性和安全性。</td>
+            <td>STING payload 的 linker 稳定性直接关系 CRS 风险。</td>
+          </tr>
+          <tr>
+            <td class="term">Cleavable linker</td>
+            <td>Cleavable linker</td>
+            <td class="cn">可切割连接子</td>
+            <td>进入细胞或特定环境后可断裂释放 payload。</td>
+            <td>适合释放毒素，但 STING agonist 需要谨慎，避免血液中提前释放。</td>
+          </tr>
+          <tr>
+            <td class="term">Non-cleavable linker</td>
+            <td>Non-cleavable linker</td>
+            <td class="cn">不可切割连接子</td>
+            <td>更稳定，payload 通常需要抗体降解后释放。</td>
+            <td>可降低游离 STING agonist 系统性释放风险。</td>
+          </tr>
+          <tr>
+            <td class="term">Bystander effect</td>
+            <td>Bystander effect</td>
+            <td class="cn">旁观者效应</td>
+            <td>payload 从靶细胞释放后扩散到邻近细胞，杀伤抗原低表达细胞。</td>
+            <td>有利于肿瘤异质性覆盖，但也可能增加正常组织风险。</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section" id="targets">
+      <h2>二、靶点与抗原</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>英文/缩写</th>
+            <th>全称</th>
+            <th>中文</th>
+            <th>一句话解释</th>
+            <th>本项目中怎么用</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="term">TROP2</td>
+            <td>Trophoblast cell-surface antigen 2</td>
+            <td class="cn">滋养层细胞表面抗原 2</td>
+            <td>多种实体瘤中高表达的细胞表面抗原，是 ADC 常用靶点。</td>
+            <td>作为 ADC 的“导航地址”，适合 TROP2 高表达肿瘤模型。</td>
+          </tr>
+          <tr>
+            <td class="term">HER2</td>
+            <td>Human epidermal growth factor receptor 2</td>
+            <td class="cn">人表皮生长因子受体 2</td>
+            <td>乳腺癌、胃癌等肿瘤中的成熟 ADC 靶点。</td>
+            <td>适合作为验证靶点，已有 Enhertu 等成功经验。</td>
+          </tr>
+          <tr>
+            <td class="term">HER3</td>
+            <td>Human epidermal growth factor receptor 3</td>
+            <td class="cn">人表皮生长因子受体 3</td>
+            <td>HER 家族成员，部分肿瘤中表达升高。</td>
+            <td>可作为后续扩展靶点。</td>
+          </tr>
+          <tr>
+            <td class="term">B7-H3</td>
+            <td>B7 homolog 3</td>
+            <td class="cn">B7-H3 免疫调节分子</td>
+            <td>多种肿瘤高表达，正常组织表达相对有限。</td>
+            <td>可作为新型 ADC 靶点和免疫相关靶点。</td>
+          </tr>
+          <tr>
+            <td class="term">CLDN18.2</td>
+            <td>Claudin 18.2</td>
+            <td class="cn">紧密连接蛋白 18.2</td>
+            <td>胃癌等消化道肿瘤中的重要表面靶点。</td>
+            <td>可作为胃癌方向的 ADC 靶点。</td>
+          </tr>
+          <tr>
+            <td class="term">Nectin-4</td>
+            <td>Nectin cell adhesion molecule 4</td>
+            <td class="cn">黏附分子 Nectin-4</td>
+            <td>尿路上皮癌等肿瘤中的 ADC 靶点。</td>
+            <td>可作为 ADC 联用策略扩展靶点。</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section" id="payloads">
+      <h2>三、Payload 类型</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>英文/缩写</th>
+            <th>全称</th>
+            <th>中文</th>
+            <th>一句话解释</th>
+            <th>本项目中怎么用</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="term">Topo I</td>
+            <td>Topoisomerase I</td>
+            <td class="cn">拓扑异构酶 I</td>
+            <td>DNA 复制时负责缓解 DNA 扭曲的酶。</td>
+            <td>Topo I payload 抑制该酶，造成 DNA damage 和 replication stress。</td>
+          </tr>
+          <tr>
+            <td class="term">Topo I payload</td>
+            <td>Topoisomerase I inhibitor payload</td>
+            <td class="cn">Topo I 抑制剂载荷</td>
+            <td>以 Topo I 抑制为机制的 ADC payload。</td>
+            <td>本方案中的“毒”模块。</td>
+          </tr>
+          <tr>
+            <td class="term">Exatecan</td>
+            <td>Exatecan</td>
+            <td class="cn">依沙替康</td>
+            <td>强效 Topo I 抑制剂，常用于 ADC payload 设计。</td>
+            <td>本方案首个示范 payload。</td>
+          </tr>
+          <tr>
+            <td class="term">DXd</td>
+            <td>Deruxtecan</td>
+            <td class="cn">德曲替康类 payload</td>
+            <td>Topo I 抑制剂 payload，Enhertu 中使用相关 payload。</td>
+            <td>可作为 Topo I payload 族群参考。</td>
+          </tr>
+          <tr>
+            <td class="term">SN-38</td>
+            <td>SN-38</td>
+            <td class="cn">伊立替康活性代谢物</td>
+            <td>Topo I 抑制剂，是 irinotecan 的活性代谢产物。</td>
+            <td>可作为 Topo I payload 或联用机制参考。</td>
+          </tr>
+          <tr>
+            <td class="term">MMAE</td>
+            <td>Monomethyl auristatin E</td>
+            <td class="cn">单甲基澳瑞他汀 E</td>
+            <td>微管抑制类 ADC payload。</td>
+            <td>与 Topo I payload 不同机制，可用于对比不同 payload 族群。</td>
+          </tr>
+          <tr>
+            <td class="term">MMAF</td>
+            <td>Monomethyl auristatin F</td>
+            <td class="cn">单甲基澳瑞他汀 F</td>
+            <td>微管抑制类 payload，细胞膜通透性通常低于 MMAE。</td>
+            <td>影响 bystander effect 和毒性谱。</td>
+          </tr>
+          <tr>
+            <td class="term">DM1 / DM4</td>
+            <td>Maytansinoid payloads</td>
+            <td class="cn">美登素类 payload</td>
+            <td>微管抑制类 ADC payload。</td>
+            <td>用于 payload 族群比较。</td>
+          </tr>
+          <tr>
+            <td class="term">PBD</td>
+            <td>Pyrrolobenzodiazepine</td>
+            <td class="cn">吡咯并苯二氮卓</td>
+            <td>DNA 交联类强效 payload。</td>
+            <td>毒性强，组合时需重点关注治疗窗口。</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section" id="ddr">
+      <h2>四、DNA 损伤修复与细胞周期</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>英文/缩写</th>
+            <th>全称</th>
+            <th>中文</th>
+            <th>一句话解释</th>
+            <th>本项目中怎么用</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="term">DDR</td>
+            <td>DNA Damage Response</td>
+            <td class="cn">DNA 损伤应答</td>
+            <td>细胞感知和修复 DNA 损伤的一整套机制。</td>
+            <td>外源调控药物多围绕 DDR 通路设计。</td>
+          </tr>
+          <tr>
+            <td class="term">ATRi</td>
+            <td>ATR inhibitor</td>
+            <td class="cn">ATR 抑制剂</td>
+            <td>阻断复制压力应答，使细胞更难处理 DNA damage。</td>
+            <td>可能增强 Topo I payload 杀伤，但骨髓毒性风险高。</td>
+          </tr>
+          <tr>
+            <td class="term">WEE1i</td>
+            <td>WEE1 inhibitor</td>
+            <td class="cn">WEE1 抑制剂</td>
+            <td>解除 G2/M checkpoint，让带损伤的细胞进入有丝分裂。</td>
+            <td>适合 TP53 突变、高复制压力模型。</td>
+          </tr>
+          <tr>
+            <td class="term">PARPi</td>
+            <td>PARP inhibitor</td>
+            <td class="cn">PARP 抑制剂</td>
+            <td>阻断 DNA 单链损伤修复。</td>
+            <td>适合 HRD/BRCA 缺陷背景。</td>
+          </tr>
+          <tr>
+            <td class="term">CHK1i</td>
+            <td>CHK1 inhibitor</td>
+            <td class="cn">CHK1 抑制剂</td>
+            <td>阻断 DNA damage checkpoint。</td>
+            <td>可减少肿瘤细胞修复窗口。</td>
+          </tr>
+          <tr>
+            <td class="term">DNA-PKi</td>
+            <td>DNA-PK inhibitor</td>
+            <td class="cn">DNA-PK 抑制剂</td>
+            <td>阻断 DNA 双链断裂的 NHEJ 修复。</td>
+            <td>探索 DNA repair blockade 组合。</td>
+          </tr>
+          <tr>
+            <td class="term">ATM</td>
+            <td>Ataxia telangiectasia mutated</td>
+            <td class="cn">ATM 激酶</td>
+            <td>DNA 双链损伤应答关键激酶。</td>
+            <td>ATM 抑制剂可作为 DDR 组合候选。</td>
+          </tr>
+          <tr>
+            <td class="term">HRD</td>
+            <td>Homologous recombination deficiency</td>
+            <td class="cn">同源重组修复缺陷</td>
+            <td>DNA 双链修复能力缺陷状态。</td>
+            <td>PARPi 和 DNA damage 组合的重要 biomarker。</td>
+          </tr>
+          <tr>
+            <td class="term">NHEJ</td>
+            <td>Non-homologous end joining</td>
+            <td class="cn">非同源末端连接</td>
+            <td>DNA 双链断裂修复方式之一。</td>
+            <td>DNA-PK 参与该通路。</td>
+          </tr>
+          <tr>
+            <td class="term">G2/M checkpoint</td>
+            <td>G2/M checkpoint</td>
+            <td class="cn">G2/M 细胞周期检查点</td>
+            <td>细胞进入有丝分裂前的损伤检查机制。</td>
+            <td>WEE1i/CHK1i 组合逻辑的重要基础。</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section" id="immune">
+      <h2>五、免疫与肿瘤微环境</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>英文/缩写</th>
+            <th>全称</th>
+            <th>中文</th>
+            <th>一句话解释</th>
+            <th>本项目中怎么用</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="term">STING</td>
+            <td>Stimulator of Interferon Genes</td>
+            <td class="cn">干扰素基因刺激因子</td>
+            <td>先天免疫报警通路关键节点。</td>
+            <td>作为免疫 payload 的核心靶点。</td>
+          </tr>
+          <tr>
+            <td class="term">STING agonist</td>
+            <td>STING agonist</td>
+            <td class="cn">STING 激动剂</td>
+            <td>激活 STING 通路的分子。</td>
+            <td>双载药 ADC 中的“免疫”模块。</td>
+          </tr>
+          <tr>
+            <td class="term">Type I IFN</td>
+            <td>Type I interferon</td>
+            <td class="cn">I 型干扰素</td>
+            <td>先天免疫激活后的关键细胞因子。</td>
+            <td>衡量 STING 激活的重要读出。</td>
+          </tr>
+          <tr>
+            <td class="term">CXCL10</td>
+            <td>C-X-C motif chemokine ligand 10</td>
+            <td class="cn">趋化因子 CXCL10</td>
+            <td>可吸引免疫细胞进入肿瘤微环境。</td>
+            <td>STING 激活和免疫细胞募集读出。</td>
+          </tr>
+          <tr>
+            <td class="term">PD-1 / PD-L1</td>
+            <td>Programmed death 1 / ligand 1</td>
+            <td class="cn">程序性死亡受体及其配体</td>
+            <td>免疫检查点通路，抑制 T 细胞活性。</td>
+            <td>可作为 STING 激活后的免疫增强模块。</td>
+          </tr>
+          <tr>
+            <td class="term">CSF1R</td>
+            <td>Colony stimulating factor 1 receptor</td>
+            <td class="cn">集落刺激因子 1 受体</td>
+            <td>与肿瘤相关巨噬细胞有关。</td>
+            <td>用于调节髓系免疫抑制。</td>
+          </tr>
+          <tr>
+            <td class="term">TGF-beta</td>
+            <td>Transforming growth factor beta</td>
+            <td class="cn">转化生长因子 beta</td>
+            <td>与免疫抑制和肿瘤微环境重塑有关。</td>
+            <td>可作为解除免疫抑制的候选方向。</td>
+          </tr>
+          <tr>
+            <td class="term">TME</td>
+            <td>Tumor microenvironment</td>
+            <td class="cn">肿瘤微环境</td>
+            <td>肿瘤细胞周围的免疫细胞、基质、血管和信号环境。</td>
+            <td>STING、CSF1R、TGF-beta 等都属于 TME 调控相关。</td>
+          </tr>
+          <tr>
+            <td class="term">Cold tumor</td>
+            <td>Cold tumor</td>
+            <td class="cn">冷肿瘤</td>
+            <td>免疫细胞浸润少、对免疫治疗反应差的肿瘤。</td>
+            <td>STING agonist 的目标之一是把冷肿瘤变热。</td>
+          </tr>
+          <tr>
+            <td class="term">Hot tumor</td>
+            <td>Hot tumor</td>
+            <td class="cn">热肿瘤</td>
+            <td>免疫细胞浸润较多、免疫反应更活跃的肿瘤。</td>
+            <td>免疫激活成功后的理想状态。</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section" id="cmc">
+      <h2>六、CMC / 药代 / 安全性</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>英文/缩写</th>
+            <th>全称</th>
+            <th>中文</th>
+            <th>一句话解释</th>
+            <th>本项目中怎么用</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="term">CMC</td>
+            <td>Chemistry, Manufacturing and Controls</td>
+            <td class="cn">化学、生产与质量控制</td>
+            <td>药物生产和质量控制体系。</td>
+            <td>双载药 ADC 的 DAR、payload ratio、纯度和稳定性都属于 CMC 风险。</td>
+          </tr>
+          <tr>
+            <td class="term">DAR</td>
+            <td>Drug-to-Antibody Ratio</td>
+            <td class="cn">药物抗体比</td>
+            <td>平均每个抗体上连接多少个 payload。</td>
+            <td>双载药 ADC 要分别记录毒素 DAR、免疫 payload DAR 和总 DAR。</td>
+          </tr>
+          <tr>
+            <td class="term">Payload ratio</td>
+            <td>Payload ratio</td>
+            <td class="cn">双载荷比例</td>
+            <td>两种 payload 在 ADC 上的比例。</td>
+            <td>决定 [毒+免] 平衡，是双载药 ADC 的核心参数。</td>
+          </tr>
+          <tr>
+            <td class="term">PK</td>
+            <td>Pharmacokinetics</td>
+            <td class="cn">药代动力学</td>
+            <td>药物在体内吸收、分布、代谢和清除的过程。</td>
+            <td>高 DAR 或不稳定 linker 可能导致 PK 变差。</td>
+          </tr>
+          <tr>
+            <td class="term">PD</td>
+            <td>Pharmacodynamics</td>
+            <td class="cn">药效动力学</td>
+            <td>药物对机体或肿瘤产生作用的过程。</td>
+            <td>如 DNA damage、STING activation、cytokine changes。</td>
+          </tr>
+          <tr>
+            <td class="term">Cmax</td>
+            <td>Maximum plasma concentration</td>
+            <td class="cn">最高血药浓度</td>
+            <td>给药后血液中的最高浓度。</td>
+            <td>判断小分子是否达到有效浓度。</td>
+          </tr>
+          <tr>
+            <td class="term">AUC</td>
+            <td>Area under the curve</td>
+            <td class="cn">药时曲线下面积</td>
+            <td>反映药物总体暴露量。</td>
+            <td>剂量窗口匹配的重要依据。</td>
+          </tr>
+          <tr>
+            <td class="term">DLT</td>
+            <td>Dose-limiting toxicity</td>
+            <td class="cn">剂量限制毒性</td>
+            <td>限制继续加量的主要毒性。</td>
+            <td>组合药物毒性是否重叠的核心判断。</td>
+          </tr>
+          <tr>
+            <td class="term">CRS</td>
+            <td>Cytokine release syndrome</td>
+            <td class="cn">细胞因子释放综合征</td>
+            <td>免疫系统被强烈激活导致全身炎症反应。</td>
+            <td>STING agonist 系统性释放的最大风险之一。</td>
+          </tr>
+          <tr>
+            <td class="term">NHP</td>
+            <td>Non-human primate</td>
+            <td class="cn">非人灵长类动物</td>
+            <td>常用于大分子药物临床前安全性评估的动物模型。</td>
+            <td>评估 ADC 和 STING payload cytokine 风险的重要阶段。</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section" id="biomarker">
+      <h2>七、Biomarker</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>英文/缩写</th>
+            <th>全称</th>
+            <th>中文</th>
+            <th>一句话解释</th>
+            <th>本项目中怎么用</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="term">Biomarker</td>
+            <td>Biomarker</td>
+            <td class="cn">生物标志物</td>
+            <td>可用于预测药物敏感性、毒性或适用人群的指标。</td>
+            <td>用于细胞系分层和组合推荐解释。</td>
+          </tr>
+          <tr>
+            <td class="term">SLFN11</td>
+            <td>Schlafen family member 11</td>
+            <td class="cn">SLFN11 蛋白</td>
+            <td>与 DNA damage 药物敏感性相关的标志物。</td>
+            <td>Topo I payload 和 DDR 抑制剂组合的重要分层指标。</td>
+          </tr>
+          <tr>
+            <td class="term">TP53</td>
+            <td>Tumor protein p53</td>
+            <td class="cn">p53 肿瘤抑制基因</td>
+            <td>细胞周期和 DNA damage 应答关键基因。</td>
+            <td>TP53 突变模型可能更依赖 G2/M checkpoint，适合 WEE1i/CHK1i 评估。</td>
+          </tr>
+          <tr>
+            <td class="term">BRCA1/2</td>
+            <td>Breast cancer gene 1/2</td>
+            <td class="cn">BRCA1/2 基因</td>
+            <td>同源重组修复关键基因。</td>
+            <td>PARPi 和 HRD 相关组合的重要 biomarker。</td>
+          </tr>
+          <tr>
+            <td class="term">ABCB1 / P-gp</td>
+            <td>ATP-binding cassette subfamily B member 1 / P-glycoprotein</td>
+            <td class="cn">P-糖蛋白外排泵</td>
+            <td>可把药物从细胞内泵出，造成耐药。</td>
+            <td>判断 payload 是否容易被外排、是否存在耐药风险。</td>
+          </tr>
+          <tr>
+            <td class="term">ISG signature</td>
+            <td>Interferon-stimulated gene signature</td>
+            <td class="cn">干扰素刺激基因特征</td>
+            <td>反映 IFN 通路是否被激活的基因表达模式。</td>
+            <td>评估 STING agonist 是否激活免疫通路。</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section" id="assay">
+      <h2>八、湿实验与读出</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>英文/缩写</th>
+            <th>全称</th>
+            <th>中文</th>
+            <th>一句话解释</th>
+            <th>本项目中怎么用</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="term">IC50</td>
+            <td>Half maximal inhibitory concentration</td>
+            <td class="cn">半数抑制浓度</td>
+            <td>使细胞活性或目标功能降低 50% 的浓度。</td>
+            <td>用于剂量窗口和组合矩阵设计。</td>
+          </tr>
+          <tr>
+            <td class="term">EC50</td>
+            <td>Half maximal effective concentration</td>
+            <td class="cn">半数有效浓度</td>
+            <td>产生 50% 最大效应的浓度。</td>
+            <td>用于免疫激活或药效 readout。</td>
+          </tr>
+          <tr>
+            <td class="term">6x6 / 8x8 matrix</td>
+            <td>Dose combination matrix</td>
+            <td class="cn">剂量组合矩阵</td>
+            <td>两个药物分别设置多个浓度，形成组合测试网格。</td>
+            <td>小规模高通量组合验证的核心实验格式。</td>
+          </tr>
+          <tr>
+            <td class="term">Bliss</td>
+            <td>Bliss independence model</td>
+            <td class="cn">Bliss 协同模型</td>
+            <td>假设两个药物独立作用，用于判断组合是否超过预期。</td>
+            <td>组合协同评分之一。</td>
+          </tr>
+          <tr>
+            <td class="term">Loewe</td>
+            <td>Loewe additivity model</td>
+            <td class="cn">Loewe 加和模型</td>
+            <td>基于剂量等效假设评估协同。</td>
+            <td>组合协同评分之一。</td>
+          </tr>
+          <tr>
+            <td class="term">ZIP</td>
+            <td>Zero interaction potency model</td>
+            <td class="cn">ZIP 协同模型</td>
+            <td>结合剂量反应曲线评估药物相互作用。</td>
+            <td>组合协同评分之一。</td>
+          </tr>
+          <tr>
+            <td class="term">HSA</td>
+            <td>Highest single agent model</td>
+            <td class="cn">最高单药模型</td>
+            <td>组合效果是否超过最强单药效果。</td>
+            <td>简单直观的协同判断方式。</td>
+          </tr>
+          <tr>
+            <td class="term">gamma-H2AX</td>
+            <td>Phosphorylated H2AX</td>
+            <td class="cn">γ-H2AX</td>
+            <td>DNA damage 的常用标志物。</td>
+            <td>验证 Topo I payload 和 DDR 抑制剂是否增强 DNA 损伤。</td>
+          </tr>
+          <tr>
+            <td class="term">PBMC</td>
+            <td>Peripheral blood mononuclear cell</td>
+            <td class="cn">外周血单个核细胞</td>
+            <td>血液中的免疫细胞群。</td>
+            <td>用于检测 cytokine release 和免疫安全风险。</td>
+          </tr>
+          <tr>
+            <td class="term">Cytokine release assay</td>
+            <td>Cytokine release assay</td>
+            <td class="cn">细胞因子释放实验</td>
+            <td>检测免疫细胞是否释放 IL-6、TNFα 等炎症因子。</td>
+            <td>评估 STING agonist 系统性释放风险。</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section" id="algorithm">
+      <h2>九、算法评分相关</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>英文/缩写</th>
+            <th>全称</th>
+            <th>中文</th>
+            <th>一句话解释</th>
+            <th>本项目中怎么用</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="term">Mechanism complementarity</td>
+            <td>Mechanism complementarity</td>
+            <td class="cn">机制互补性</td>
+            <td>两个药物机制不同但能在同一杀伤链路上相互增强。</td>
+            <td>组合推荐最核心的正向评分。</td>
+          </tr>
+          <tr>
+            <td class="term">Resistance pathway blockade</td>
+            <td>Resistance pathway blockade</td>
+            <td class="cn">耐药路径阻断</td>
+            <td>一个药物阻断另一个药物的常见耐药机制。</td>
+            <td>用于筛选克服耐药型组合。</td>
+          </tr>
+          <tr>
+            <td class="term">Toxicity overlap</td>
+            <td>Toxicity overlap</td>
+            <td class="cn">毒性重叠</td>
+            <td>两个药物主要毒性是否集中在相同器官或系统。</td>
+            <td>作为组合推荐的惩罚项。</td>
+          </tr>
+          <tr>
+            <td class="term">Dose window</td>
+            <td>Dose window</td>
+            <td class="cn">剂量窗口</td>
+            <td>有效剂量和毒性剂量之间的可用范围。</td>
+            <td>判断两个药是否能在相近且可达浓度下联用。</td>
+          </tr>
+          <tr>
+            <td class="term">Exposure margin</td>
+            <td>Exposure margin</td>
+            <td class="cn">暴露裕度</td>
+            <td>临床或实验可达到暴露与有效浓度之间的关系。</td>
+            <td>避免推荐临床无法达到有效浓度的组合。</td>
+          </tr>
+          <tr>
+            <td class="term">Go / No-Go</td>
+            <td>Go / No-Go decision</td>
+            <td class="cn">继续/停止决策</td>
+            <td>根据预设标准决定是否推进项目。</td>
+            <td>用于干实验和湿实验后的决策节点。</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+</body>
+</html>

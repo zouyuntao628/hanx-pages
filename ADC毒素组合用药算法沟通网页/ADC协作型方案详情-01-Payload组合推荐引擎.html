@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ADC Payload Combination Discovery Engine｜ADC 协作型方案详情</title>
+  <style>
+    :root {
+      --bg: #f7f8fa; --panel: #fff; --text: #18202a; --muted: #5b6675; --line: #dfe4ea;
+      --blue: #1f5fbf; --green: #157f5b; --orange: #b75f00; --red: #b42318; --purple: #6b4bb8;
+      --shadow: 0 10px 28px rgba(24, 32, 42, 0.08);
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; color: var(--text); background: var(--bg); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", Arial, sans-serif; line-height: 1.68; }
+    a { color: var(--blue); text-decoration: none; font-weight: 700; }
+    a:hover { text-decoration: underline; }
+    .page { max-width: 1160px; margin: 0 auto; padding: 28px 24px 56px; }
+    .topbar { display:flex; justify-content:space-between; align-items:center; gap:12px; margin-bottom:18px; color: var(--muted); font-size:14px; }
+    .hero, .section, .card { background: var(--panel); border:1px solid var(--line); border-radius:10px; box-shadow: var(--shadow); }
+    .hero { padding: 32px 36px; margin-bottom: 20px; }
+    .section { padding: 28px; margin-top: 20px; }
+    .card { padding: 18px; box-shadow:none; }
+    .quick { display:grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap:12px; margin: 0 0 18px; }
+    .quick a { display:block; padding: 14px 16px; border-radius: 8px; background:#fff; border:1px solid var(--line); color: var(--text); box-shadow: var(--shadow); font-weight:600; }
+    .related { display:grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap:10px; margin-top:14px; }
+    .mini-link { display:block; padding:10px 12px; border:1px solid var(--line); border-radius:8px; color: var(--text); background:#fbfcfe; font-size:13px; font-weight:600; }
+    .mini-link.active { border-color:#b8cdf2; background:#f3f7ff; color: var(--blue); }
+    h1 { margin:0 0 12px; font-size: clamp(30px, 4vw, 46px); line-height:1.15; }
+    h2 { margin:0 0 14px; font-size:24px; }
+    h3 { margin:0 0 10px; font-size:18px; }
+    h4 { margin: 18px 0 8px; font-size:16px; color: var(--blue); }
+    p { margin:0 0 12px; }
+    .lead { color: var(--muted); font-size:18px; max-width:900px; }
+    .tag-row { display:flex; flex-wrap:wrap; gap:8px; margin-top:14px; }
+    .tag { display:inline-flex; min-height:28px; align-items:center; padding:4px 10px; border-radius:999px; border:1px solid var(--line); color: var(--muted); background:#fff; font-size:13px; font-weight:650; }
+    .two-col { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:18px; }
+    .three-col { display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap:18px; }
+    ul, ol { margin: 8px 0 0; padding-left: 22px; }
+    li { margin: 6px 0; }
+    .step-grid { display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap:14px; }
+    .step { padding:16px; border:1px solid var(--line); border-radius:8px; background:#fbfcfe; }
+    .step strong { display:block; margin-bottom:8px; color: var(--blue); }
+    details { background:#fbfcfe; border:1px solid var(--line); border-radius:8px; padding:14px 16px; }
+    summary { cursor:pointer; font-weight:800; }
+    details p { margin:10px 0 0; color: var(--muted); }
+    .glossary { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:12px; }
+    .note { padding:14px 16px; border:1px solid #f0c99a; border-radius:8px; background:#fffaf3; color:#5d3a05; }
+    .quote { padding:16px 18px; border-left:4px solid var(--green); background:#f2fbf6; border-radius:0 8px 8px 0; color:#124c37; }
+    @media (max-width: 900px) { .quick, .two-col, .three-col, .step-grid, .glossary, .related { grid-template-columns: 1fr; } .hero, .section { padding:22px; } }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="topbar">
+      <div style="display:flex; gap:14px; flex-wrap:wrap;"><a href="./ADC协作型方案总览网页.html">← 返回 ADC 协作型方案总览</a><a href="../hanx-ai-translational-platform.html">AI 转化免疫学平台 →</a></div>
+      <span>详细说明 1 / 8</span>
+    </div>
+
+    <div class="quick">
+      <a href="#what">要做什么</a>
+      <a href="#why">为什么要做</a>
+      <a href="#effect">做成什么效果</a>
+      <a href="#steps">具体步骤</a>
+    </div>
+
+    <section class="hero">
+      <h1>Payload 组合推荐引擎</h1>
+      <p class="lead">从一个已知 payload 出发，把大量可能的联用方向缩小成少数值得先做的组合。</p>
+      <div class="tag-row"><span class="tag">Exatecan / DXd / MMAE</span><span class="tag">Top 3-10 推荐</span><span class="tag">机制驱动</span><span class="tag">先做第一批验证</span></div>
+      <div class="note" style="margin-top:18px;">先用大白话说，这个方案的目的不是一下子把所有问题都解决，而是先把最值得做的方向、最值得测的实验和最该保留的数据整理清楚，让公司每做一轮湿实验都更接近真正有价值的结论。</div>
+    </section>
+
+    <section class="section" id="what">
+      <h2>一、这件事到底是在做什么</h2>
+      <div class="two-col">
+        <div class="card"><p>这件事其实就是：公司先给我们一个已经在关注的 payload，例如 exatecan 或 DXd，我们不是盲目把所有药都试一遍，而是先用机制、毒性和剂量窗口把候选组合缩小到少数最值得做的方向。</p></div>
+        <div class="card"><p>最后交给实验团队的，不是一句“你们去看看这个组合行不行”，而是一份很具体的首批验证清单：先测哪几个 partner drug、在哪些细胞系里测、用什么剂量矩阵、优先看哪些 readout。</p></div>
+      </div>
+    </section>
+
+    <section class="section" id="why">
+      <h2>二、为什么要做</h2>
+      <div class="three-col">
+        <div class="card"><p>payload 可以联用的药太多，靠人工开会筛选会非常慢，而且不同人给出的候选清单差异会很大。</p></div><div class="card"><p>湿实验本身成本高，如果第一轮就把很多明显不合适的组合也放进去，会浪费时间和样本。</p></div><div class="card"><p>很多组合看起来“理论上可能协同”，但真正的问题在于毒性是不是重叠、剂量窗口是不是匹配、有没有真实转化意义。</p></div><div class="card"><p>如果不用 AI 辅助，团队需要反复查文献、做 Excel 对照、手动整理机制和毒性，速度会很慢，也难以形成统一标准。</p></div>
+      </div>
+    </section>
+
+    <section class="section" id="effect">
+      <h2>三、最后希望做成什么效果</h2>
+      <div class="quote">最终要交付的，不是一份空泛的建议，而是一套公司可以继续执行、继续复用、继续积累数据资产的具体成果。</div>
+      <ul><li>一份可解释的 Top 3-10 组合推荐清单，而不是黑箱打分。</li><li>一套首批实验矩阵建议，帮助公司更快进入验证。</li><li>一批围绕某个 payload 的独家组合数据，为后续专利、BD 或立项提供素材。</li><li>一个可以随着实验回流不断变准的发现引擎，而不是一次性报告。</li></ul>
+    </section>
+
+    <section class="section" id="steps">
+      <h2>四、具体怎么做</h2>
+      <div class="step-grid"><div class="step"><strong>第 1 步：先把问题定义清楚</strong><p>先明确这次是要增强杀伤、克服耐药，还是想找到更可转化的组合。目标不同，排序规则会不同。</p></div><div class="step"><strong>第 2 步：整理候选药和机制标签</strong><p>把候选 partner drug 按靶点、通路、毒性、临床阶段和已知耐药机制结构化，先做出可以计算的标签库。</p></div><div class="step"><strong>第 3 步：按规则筛出第一批候选</strong><p>重点看机制互补、耐药路径阻断、毒性是否重叠、剂量窗口是否接近，先把明显不合适的组合排掉。</p></div><div class="step"><strong>第 4 步：给出实验设计建议</strong><p>不是只交一个药名，而是一起给出建议细胞系、6x6 或 8x8 剂量矩阵、对照组和推荐 readout。</p></div><div class="step"><strong>第 5 步：公司执行湿实验并回传原始数据</strong><p>实验团队按模板执行后，把原始活性矩阵、synergy score、机制读出和失败结果一起回传。</p></div><div class="step"><strong>第 6 步：根据结果继续迭代</strong><p>我们再用这些数据调权、修正规则、收敛到更少但更强的候选组合，并形成下一轮方案。</p></div></div>
+    </section>
+
+    <section class="section">
+      <h2>五、我们和公司分别负责什么</h2>
+      <div class="two-col">
+        <div class="card"><h3>我们负责</h3><ul><li>定义推荐规则和评分逻辑</li><li>整理候选药知识库和机制标签库</li><li>输出首批组合清单、实验矩阵和解释理由</li><li>分析回流数据，给出下一轮建议</li></ul></div>
+        <div class="card"><h3>公司 / 实验团队负责</h3><ul><li>确定这轮想验证的 payload 和业务目标</li><li>执行组合矩阵实验和必要的机制读出</li><li>提供原始数据、异常说明、失败结果和批次信息</li><li>根据结果决定是否进入下一轮验证</li></ul></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>六、公司需要回传什么数据</h2>
+      <p>这一部分很关键。只有回传结构化、完整、包含失败结果的数据，这个方案才会越来越准。</p>
+      <ul><li>dose matrix 原始数据，而不是只有一句“有效/无效”</li><li>Bliss / Loewe / ZIP / HSA 等 synergy 结果</li><li>细胞系背景、biomarker 信息和实验批次</li><li>毒性 proxy 或正常细胞对照结果</li><li>失败组合和边缘结果，不能只回传命中样本</li></ul>
+    </section>
+
+    <section class="section">
+      <h2>七、关键术语解释</h2>
+      <div class="glossary"><details><summary>Payload</summary><p>ADC 真正负责杀伤肿瘤细胞的小分子毒素部分，例如 exatecan、DXd、MMAE。</p></details><details><summary>Synergy</summary><p>两个药联用后的效果超过单药简单相加时，称为协同。</p></details><details><summary>6x6 / 8x8 剂量矩阵</summary><p>把两个药分别设 6 个或 8 个剂量交叉组合，用来系统评估联用效果。</p></details><details><summary>Mechanism complementarity</summary><p>机制互补，指一个药制造压力，另一个药阻断修复、耐受或逃逸。</p></details><details><summary>Dose window</summary><p>有效浓度区间。如果两个药起效区间差太远，实验和临床转化都容易出问题。</p></details></div>
+    </section>
+
+    <section class="section">
+      <h2>八、什么时候最适合启动</h2>
+      <div class="note">非常适合作为第一阶段启动项目。因为输入清晰、输出清晰、实验闭环也最容易建立。</div>
+      <h4>相关方案导航</h4>
+      <div class="related"><a class="mini-link active" href="./ADC协作型方案详情-01-Payload组合推荐引擎.html">1. Payload 组合推荐引擎</a><a class="mini-link" href="./ADC协作型方案详情-02-Payload-Biomarker响应分层引擎.html">2. Payload × Biomarker 响应分层引擎</a><a class="mini-link" href="./ADC协作型方案详情-03-剂量窗口与给药顺序优化引擎.html">3. 剂量窗口与给药顺序优化引擎</a><a class="mini-link" href="./ADC协作型方案详情-04-耐药机制逆转推荐系统.html">4. 耐药机制逆转推荐系统</a><a class="mini-link" href="./ADC协作型方案详情-05-安全性分离与毒性惩罚模型.html">5. 安全性分离与毒性惩罚模型</a><a class="mini-link" href="./ADC协作型方案详情-06-Payload到适应症匹配引擎.html">6. Payload 到适应症匹配引擎</a><a class="mini-link" href="./ADC协作型方案详情-07-组合实验设计Copilot.html">7. 组合实验设计 Copilot</a><a class="mini-link" href="./ADC协作型方案详情-08-Payload知识图谱与决策库.html">8. Payload 知识图谱与决策库</a></div>
+    </section>
+  </main>
+</body>
+</html>

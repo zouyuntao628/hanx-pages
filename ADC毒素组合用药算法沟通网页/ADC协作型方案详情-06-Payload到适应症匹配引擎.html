@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Payload-to-Indication 匹配引擎｜ADC 协作型方案详情</title>
+  <style>
+    :root {
+      --bg: #f7f8fa; --panel: #fff; --text: #18202a; --muted: #5b6675; --line: #dfe4ea;
+      --blue: #1f5fbf; --green: #157f5b; --orange: #b75f00; --red: #b42318; --purple: #6b4bb8;
+      --shadow: 0 10px 28px rgba(24, 32, 42, 0.08);
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; color: var(--text); background: var(--bg); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", Arial, sans-serif; line-height: 1.68; }
+    a { color: var(--blue); text-decoration: none; font-weight: 700; }
+    a:hover { text-decoration: underline; }
+    .page { max-width: 1160px; margin: 0 auto; padding: 28px 24px 56px; }
+    .topbar { display:flex; justify-content:space-between; align-items:center; gap:12px; margin-bottom:18px; color: var(--muted); font-size:14px; }
+    .hero, .section, .card { background: var(--panel); border:1px solid var(--line); border-radius:10px; box-shadow: var(--shadow); }
+    .hero { padding: 32px 36px; margin-bottom: 20px; }
+    .section { padding: 28px; margin-top: 20px; }
+    .card { padding: 18px; box-shadow:none; }
+    .quick { display:grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap:12px; margin: 0 0 18px; }
+    .quick a { display:block; padding: 14px 16px; border-radius: 8px; background:#fff; border:1px solid var(--line); color: var(--text); box-shadow: var(--shadow); font-weight:600; }
+    .related { display:grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap:10px; margin-top:14px; }
+    .mini-link { display:block; padding:10px 12px; border:1px solid var(--line); border-radius:8px; color: var(--text); background:#fbfcfe; font-size:13px; font-weight:600; }
+    .mini-link.active { border-color:#b8cdf2; background:#f3f7ff; color: var(--blue); }
+    h1 { margin:0 0 12px; font-size: clamp(30px, 4vw, 46px); line-height:1.15; }
+    h2 { margin:0 0 14px; font-size:24px; }
+    h3 { margin:0 0 10px; font-size:18px; }
+    h4 { margin: 18px 0 8px; font-size:16px; color: var(--blue); }
+    p { margin:0 0 12px; }
+    .lead { color: var(--muted); font-size:18px; max-width:900px; }
+    .tag-row { display:flex; flex-wrap:wrap; gap:8px; margin-top:14px; }
+    .tag { display:inline-flex; min-height:28px; align-items:center; padding:4px 10px; border-radius:999px; border:1px solid var(--line); color: var(--muted); background:#fff; font-size:13px; font-weight:650; }
+    .two-col { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:18px; }
+    .three-col { display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap:18px; }
+    ul, ol { margin: 8px 0 0; padding-left: 22px; }
+    li { margin: 6px 0; }
+    .step-grid { display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap:14px; }
+    .step { padding:16px; border:1px solid var(--line); border-radius:8px; background:#fbfcfe; }
+    .step strong { display:block; margin-bottom:8px; color: var(--blue); }
+    details { background:#fbfcfe; border:1px solid var(--line); border-radius:8px; padding:14px 16px; }
+    summary { cursor:pointer; font-weight:800; }
+    details p { margin:10px 0 0; color: var(--muted); }
+    .glossary { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:12px; }
+    .note { padding:14px 16px; border:1px solid #f0c99a; border-radius:8px; background:#fffaf3; color:#5d3a05; }
+    .quote { padding:16px 18px; border-left:4px solid var(--green); background:#f2fbf6; border-radius:0 8px 8px 0; color:#124c37; }
+    @media (max-width: 900px) { .quick, .two-col, .three-col, .step-grid, .glossary, .related { grid-template-columns: 1fr; } .hero, .section { padding:22px; } }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="topbar">
+      <div style="display:flex; gap:14px; flex-wrap:wrap;"><a href="./ADC协作型方案总览网页.html">← 返回 ADC 协作型方案总览</a><a href="../hanx-ai-translational-platform.html">AI 转化免疫学平台 →</a></div>
+      <span>详细说明 6 / 8</span>
+    </div>
+
+    <div class="quick">
+      <a href="#what">要做什么</a>
+      <a href="#why">为什么要做</a>
+      <a href="#effect">做成什么效果</a>
+      <a href="#steps">具体步骤</a>
+    </div>
+
+    <section class="hero">
+      <h1>Payload 到适应症匹配引擎</h1>
+      <p class="lead">回答“这个 payload 或这个组合最值得先在哪类癌种里推进”。</p>
+      <div class="tag-row"><span class="tag">癌种优先级</span><span class="tag">适应症选择</span><span class="tag">资源聚焦</span><span class="tag">更适合立项和BD</span></div>
+      <div class="note" style="margin-top:18px;">先用大白话说，这个方案的目的不是一下子把所有问题都解决，而是先把最值得做的方向、最值得测的实验和最该保留的数据整理清楚，让公司每做一轮湿实验都更接近真正有价值的结论。</div>
+    </section>
+
+    <section class="section" id="what">
+      <h2>一、这件事到底是在做什么</h2>
+      <div class="two-col">
+        <div class="card"><p>这件事其实就是：同一个 payload 不会在所有癌种里都一样有价值。有的癌种 DNA repair 背景更合适，有的癌种更容易出现某类 biomarker，有的则更容易受限于毒性或竞争格局。</p></div>
+        <div class="card"><p>这个引擎要做的，是把 payload 或组合结果和具体癌种、亚型、背景特征对应起来，告诉公司更应该先在哪些方向下注。</p></div>
+      </div>
+    </section>
+
+    <section class="section" id="why">
+      <h2>二、为什么要做</h2>
+      <div class="three-col">
+        <div class="card"><p>公司资源有限，不可能把每个 payload 在所有癌种里都试一遍。</p></div><div class="card"><p>适应症选错了，再好的组合也可能显得平平无奇。</p></div><div class="card"><p>如果能更早判断“哪个癌种更值得做”，后续实验设计、专利布局和 BD 逻辑都会更清楚。</p></div><div class="card"><p>如果不用 AI 辅助，团队需要手工整合公开组学、细胞背景、历史实验和文献证据，效率很低。</p></div>
+      </div>
+    </section>
+
+    <section class="section" id="effect">
+      <h2>三、最后希望做成什么效果</h2>
+      <div class="quote">最终要交付的，不是一份空泛的建议，而是一套公司可以继续执行、继续复用、继续积累数据资产的具体成果。</div>
+      <ul><li>形成 payload 对不同癌种/亚型的优先级地图。</li><li>让组合结果更容易落到真实项目和适应症上。</li><li>帮助公司在立项、BD 和内部资源分配时更有依据。</li><li>减少盲目“广撒网”导致的资源浪费。</li></ul>
+    </section>
+
+    <section class="section" id="steps">
+      <h2>四、具体怎么做</h2>
+      <div class="step-grid"><div class="step"><strong>第 1 步：先明确要比较哪些适应症</strong><p>可按癌种、分子亚型或已有项目方向先圈定范围。</p></div><div class="step"><strong>第 2 步：把公开数据和内部结果放到一起看</strong><p>例如表达、突变、repair 背景、历史敏感性和组合结果。</p></div><div class="step"><strong>第 3 步：匹配 payload 机制与疾病生物学</strong><p>看某个癌种是否更符合该 payload 的作用逻辑。</p></div><div class="step"><strong>第 4 步：做优先级评分</strong><p>不仅看机制，还看实验可行性、竞争程度和后续验证价值。</p></div><div class="step"><strong>第 5 步：让公司做聚焦验证</strong><p>挑 2-3 个最值得的方向做更深入实验。</p></div><div class="step"><strong>第 6 步：形成适应症地图</strong><p>沉淀成可复用的匹配规则。</p></div></div>
+    </section>
+
+    <section class="section">
+      <h2>五、我们和公司分别负责什么</h2>
+      <div class="two-col">
+        <div class="card"><h3>我们负责</h3><ul><li>整合公开与内部证据</li><li>建立适应症匹配评分逻辑</li><li>输出优先级和验证建议</li><li>解释为什么某些癌种更值得先做</li></ul></div>
+        <div class="card"><h3>公司 / 实验团队负责</h3><ul><li>给出更关心的癌种范围和项目背景</li><li>提供已有模型和内部实验结果</li><li>执行聚焦验证实验</li><li>结合业务策略确认优先方向</li></ul></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>六、公司需要回传什么数据</h2>
+      <p>这一部分很关键。只有回传结构化、完整、包含失败结果的数据，这个方案才会越来越准。</p>
+      <ul><li>不同癌种或亚型模型的实验结果</li><li>背景分子信息和历史项目经验</li><li>验证成功/失败的适应症方向</li><li>甲方更关心的竞争和开发限制信息</li></ul>
+    </section>
+
+    <section class="section">
+      <h2>七、关键术语解释</h2>
+      <div class="glossary"><details><summary>Indication</summary><p>适应症，也就是药物准备重点开发的疾病或癌种方向。</p></details><details><summary>Subtype</summary><p>亚型，指同一种癌中更细分的分子或生物学类型。</p></details><details><summary>Priority map</summary><p>优先级地图，用来直观看哪些方向更值得先推进。</p></details><details><summary>Biology fit</summary><p>生物学匹配度，指 payload 机制和疾病背景是否契合。</p></details><details><summary>Translatability</summary><p>转化可能性，指结果是否容易继续走向更真实的开发步骤。</p></details></div>
+    </section>
+
+    <section class="section">
+      <h2>八、什么时候最适合启动</h2>
+      <div class="note">适合在前两轮实验已经积累一些结果后启动，这样不只是“哪个组合强”，而是能开始回答“先做哪个病种更划算”。</div>
+      <h4>相关方案导航</h4>
+      <div class="related"><a class="mini-link" href="./ADC协作型方案详情-01-Payload组合推荐引擎.html">1. Payload 组合推荐引擎</a><a class="mini-link" href="./ADC协作型方案详情-02-Payload-Biomarker响应分层引擎.html">2. Payload × Biomarker 响应分层引擎</a><a class="mini-link" href="./ADC协作型方案详情-03-剂量窗口与给药顺序优化引擎.html">3. 剂量窗口与给药顺序优化引擎</a><a class="mini-link" href="./ADC协作型方案详情-04-耐药机制逆转推荐系统.html">4. 耐药机制逆转推荐系统</a><a class="mini-link" href="./ADC协作型方案详情-05-安全性分离与毒性惩罚模型.html">5. 安全性分离与毒性惩罚模型</a><a class="mini-link active" href="./ADC协作型方案详情-06-Payload到适应症匹配引擎.html">6. Payload 到适应症匹配引擎</a><a class="mini-link" href="./ADC协作型方案详情-07-组合实验设计Copilot.html">7. 组合实验设计 Copilot</a><a class="mini-link" href="./ADC协作型方案详情-08-Payload知识图谱与决策库.html">8. Payload 知识图谱与决策库</a></div>
+    </section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ADC 组合实验设计 Copilot｜ADC 协作型方案详情</title>
+  <style>
+    :root {
+      --bg: #f7f8fa; --panel: #fff; --text: #18202a; --muted: #5b6675; --line: #dfe4ea;
+      --blue: #1f5fbf; --green: #157f5b; --orange: #b75f00; --red: #b42318; --purple: #6b4bb8;
+      --shadow: 0 10px 28px rgba(24, 32, 42, 0.08);
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; color: var(--text); background: var(--bg); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", Arial, sans-serif; line-height: 1.68; }
+    a { color: var(--blue); text-decoration: none; font-weight: 700; }
+    a:hover { text-decoration: underline; }
+    .page { max-width: 1160px; margin: 0 auto; padding: 28px 24px 56px; }
+    .topbar { display:flex; justify-content:space-between; align-items:center; gap:12px; margin-bottom:18px; color: var(--muted); font-size:14px; }
+    .hero, .section, .card { background: var(--panel); border:1px solid var(--line); border-radius:10px; box-shadow: var(--shadow); }
+    .hero { padding: 32px 36px; margin-bottom: 20px; }
+    .section { padding: 28px; margin-top: 20px; }
+    .card { padding: 18px; box-shadow:none; }
+    .quick { display:grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap:12px; margin: 0 0 18px; }
+    .quick a { display:block; padding: 14px 16px; border-radius: 8px; background:#fff; border:1px solid var(--line); color: var(--text); box-shadow: var(--shadow); font-weight:600; }
+    .related { display:grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap:10px; margin-top:14px; }
+    .mini-link { display:block; padding:10px 12px; border:1px solid var(--line); border-radius:8px; color: var(--text); background:#fbfcfe; font-size:13px; font-weight:600; }
+    .mini-link.active { border-color:#b8cdf2; background:#f3f7ff; color: var(--blue); }
+    h1 { margin:0 0 12px; font-size: clamp(30px, 4vw, 46px); line-height:1.15; }
+    h2 { margin:0 0 14px; font-size:24px; }
+    h3 { margin:0 0 10px; font-size:18px; }
+    h4 { margin: 18px 0 8px; font-size:16px; color: var(--blue); }
+    p { margin:0 0 12px; }
+    .lead { color: var(--muted); font-size:18px; max-width:900px; }
+    .tag-row { display:flex; flex-wrap:wrap; gap:8px; margin-top:14px; }
+    .tag { display:inline-flex; min-height:28px; align-items:center; padding:4px 10px; border-radius:999px; border:1px solid var(--line); color: var(--muted); background:#fff; font-size:13px; font-weight:650; }
+    .two-col { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:18px; }
+    .three-col { display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap:18px; }
+    ul, ol { margin: 8px 0 0; padding-left: 22px; }
+    li { margin: 6px 0; }
+    .step-grid { display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap:14px; }
+    .step { padding:16px; border:1px solid var(--line); border-radius:8px; background:#fbfcfe; }
+    .step strong { display:block; margin-bottom:8px; color: var(--blue); }
+    details { background:#fbfcfe; border:1px solid var(--line); border-radius:8px; padding:14px 16px; }
+    summary { cursor:pointer; font-weight:800; }
+    details p { margin:10px 0 0; color: var(--muted); }
+    .glossary { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:12px; }
+    .note { padding:14px 16px; border:1px solid #f0c99a; border-radius:8px; background:#fffaf3; color:#5d3a05; }
+    .quote { padding:16px 18px; border-left:4px solid var(--green); background:#f2fbf6; border-radius:0 8px 8px 0; color:#124c37; }
+    @media (max-width: 900px) { .quick, .two-col, .three-col, .step-grid, .glossary, .related { grid-template-columns: 1fr; } .hero, .section { padding:22px; } }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="topbar">
+      <div style="display:flex; gap:14px; flex-wrap:wrap;"><a href="./ADC协作型方案总览网页.html">← 返回 ADC 协作型方案总览</a><a href="../hanx-ai-translational-platform.html">AI 转化免疫学平台 →</a></div>
+      <span>详细说明 7 / 8</span>
+    </div>
+
+    <div class="quick">
+      <a href="#what">要做什么</a>
+      <a href="#why">为什么要做</a>
+      <a href="#effect">做成什么效果</a>
+      <a href="#steps">具体步骤</a>
+    </div>
+
+    <section class="hero">
+      <h1>组合实验设计 Copilot</h1>
+      <p class="lead">帮实验团队决定先做什么、怎么做、怎么少走弯路。</p>
+      <div class="tag-row"><span class="tag">实验提效</span><span class="tag">减少试错</span><span class="tag">模板化</span><span class="tag">最适合日常使用</span></div>
+      <div class="note" style="margin-top:18px;">先用大白话说，这个方案的目的不是一下子把所有问题都解决，而是先把最值得做的方向、最值得测的实验和最该保留的数据整理清楚，让公司每做一轮湿实验都更接近真正有价值的结论。</div>
+    </section>
+
+    <section class="section" id="what">
+      <h2>一、这件事到底是在做什么</h2>
+      <div class="two-col">
+        <div class="card"><p>这件事其实就是：很多时候实验团队不是不知道要做组合，而是不知道第一轮应该先测哪几个、选哪些细胞系、用多大的剂量矩阵、看哪些 readout 最值钱。这个 Copilot 就是帮他们更快把实验方案定下来。</p></div>
+        <div class="card"><p>它不一定直接替代发现引擎，但它会让发现引擎给出的建议更容易真正落地，特别适合甲方实验能力强、但筛题和设计效率不高的情况。</p></div>
+      </div>
+    </section>
+
+    <section class="section" id="why">
+      <h2>二、为什么要做</h2>
+      <div class="three-col">
+        <div class="card"><p>实验资源总是有限，第一轮设计错了，后面很难弥补。</p></div><div class="card"><p>很多项目不是想法不够好，而是实验设计不够省钱、不够聚焦。</p></div><div class="card"><p>如果能把对照、矩阵、readout 和分层信息从一开始就设计好，数据质量会高很多。</p></div><div class="card"><p>如果不用 AI 辅助，实验设计很容易依赖个人经验，标准不一致。</p></div>
+      </div>
+    </section>
+
+    <section class="section" id="effect">
+      <h2>三、最后希望做成什么效果</h2>
+      <div class="quote">最终要交付的，不是一份空泛的建议，而是一套公司可以继续执行、继续复用、继续积累数据资产的具体成果。</div>
+      <ul><li>形成标准化实验模板。</li><li>减少无效实验和不必要的组合尝试。</li><li>提高第一轮实验命中率和可解释性。</li><li>让甲方实验团队的执行更稳定、更可复用。</li></ul>
+    </section>
+
+    <section class="section" id="steps">
+      <h2>四、具体怎么做</h2>
+      <div class="step-grid"><div class="step"><strong>第 1 步：先确认这一轮目的</strong><p>是快速筛信号、做机制验证，还是做更接近开发的比较。</p></div><div class="step"><strong>第 2 步：选模型和对照</strong><p>根据 biomarker 背景和历史结果决定先放哪些细胞系、哪些阳性/阴性对照。</p></div><div class="step"><strong>第 3 步：设计剂量矩阵</strong><p>根据窗口和目的决定用 6x6 还是 8x8，以及剂量分布怎么拉开。</p></div><div class="step"><strong>第 4 步：确定关键 readout</strong><p>除了活性，还要不要看 apoptosis、DNA damage、cell cycle 或其他指标。</p></div><div class="step"><strong>第 5 步：输出标准化模板</strong><p>让实验团队直接按模板执行，减少反复沟通。</p></div><div class="step"><strong>第 6 步：根据回流结果修正模板</strong><p>把哪些设计最有用、哪些设计浪费资源的经验沉淀下来。</p></div></div>
+    </section>
+
+    <section class="section">
+      <h2>五、我们和公司分别负责什么</h2>
+      <div class="two-col">
+        <div class="card"><h3>我们负责</h3><ul><li>设计实验决策逻辑和模板</li><li>推荐模型、矩阵和 readout</li><li>根据结果优化模板</li><li>逐步形成适合公司内部的默认流程</li></ul></div>
+        <div class="card"><h3>公司 / 实验团队负责</h3><ul><li>提供实验预算、平台能力和模型资源</li><li>执行标准化实验模板</li><li>回传执行难点和异常情况</li><li>确认哪些模板最适合内部长期使用</li></ul></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>六、公司需要回传什么数据</h2>
+      <p>这一部分很关键。只有回传结构化、完整、包含失败结果的数据，这个方案才会越来越准。</p>
+      <ul><li>模板执行后的原始结果</li><li>实验失败原因和平台限制信息</li><li>不同 readout 的可用性反馈</li><li>模型和对照的实际表现</li></ul>
+    </section>
+
+    <section class="section">
+      <h2>七、关键术语解释</h2>
+      <div class="glossary"><details><summary>Readout</summary><p>实验最后读出来的指标，例如细胞活性、凋亡、DNA damage。</p></details><details><summary>Control</summary><p>对照组，用来判断实验体系是否正常和结果是否可信。</p></details><details><summary>QC</summary><p>质量控制，用来判断数据是否稳定、是否值得进入分析。</p></details><details><summary>Template</summary><p>标准模板，让不同人做出来的实验更一致。</p></details><details><summary>Copilot</summary><p>这里不是自动替你做实验，而是辅助你更快更稳地设计实验。</p></details></div>
+    </section>
+
+    <section class="section">
+      <h2>八、什么时候最适合启动</h2>
+      <div class="note">非常适合作为甲方实验团队的日常提效工具，甚至可以和第 1 个方案同时启动。</div>
+      <h4>相关方案导航</h4>
+      <div class="related"><a class="mini-link" href="./ADC协作型方案详情-01-Payload组合推荐引擎.html">1. Payload 组合推荐引擎</a><a class="mini-link" href="./ADC协作型方案详情-02-Payload-Biomarker响应分层引擎.html">2. Payload × Biomarker 响应分层引擎</a><a class="mini-link" href="./ADC协作型方案详情-03-剂量窗口与给药顺序优化引擎.html">3. 剂量窗口与给药顺序优化引擎</a><a class="mini-link" href="./ADC协作型方案详情-04-耐药机制逆转推荐系统.html">4. 耐药机制逆转推荐系统</a><a class="mini-link" href="./ADC协作型方案详情-05-安全性分离与毒性惩罚模型.html">5. 安全性分离与毒性惩罚模型</a><a class="mini-link" href="./ADC协作型方案详情-06-Payload到适应症匹配引擎.html">6. Payload 到适应症匹配引擎</a><a class="mini-link active" href="./ADC协作型方案详情-07-组合实验设计Copilot.html">7. 组合实验设计 Copilot</a><a class="mini-link" href="./ADC协作型方案详情-08-Payload知识图谱与决策库.html">8. Payload 知识图谱与决策库</a></div>
+    </section>
+  </main>
+</body>
+</html>

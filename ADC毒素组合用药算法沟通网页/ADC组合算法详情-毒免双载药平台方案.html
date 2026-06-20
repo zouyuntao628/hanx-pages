@@ -1,0 +1,877 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>毒+免双载药 ADC + 外源口服调控药物方案</title>
+  <style>
+    :root {
+      --bg: #f7f8fa;
+      --panel: #fff;
+      --text: #18202a;
+      --muted: #5b6675;
+      --line: #dfe4ea;
+      --blue: #1f5fbf;
+      --green: #157f5b;
+      --orange: #b75f00;
+      --red: #b42318;
+      --purple: #6b4bb8;
+      --shadow: 0 10px 28px rgba(24, 32, 42, 0.08);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--text);
+      background: var(--bg);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
+      line-height: 1.65;
+    }
+    .page { max-width: 1180px; margin: 0 auto; padding: 32px 24px 56px; }
+    .topbar { display: flex; justify-content: space-between; gap: 12px; align-items: center; margin-bottom: 18px; color: var(--muted); font-size: 14px; }
+    a { color: var(--blue); text-decoration: none; font-weight: 700; }
+    .hero, .section, .card, table { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; box-shadow: var(--shadow); }
+    .hero { padding: 34px 36px; margin-bottom: 22px; }
+    .section { padding: 28px; margin-top: 20px; }
+    .card { padding: 18px; box-shadow: none; }
+    h1 { margin: 0 0 12px; font-size: clamp(30px, 4vw, 44px); line-height: 1.16; letter-spacing: 0; }
+    h2 { margin: 0 0 16px; font-size: 24px; line-height: 1.3; letter-spacing: 0; }
+    h3 { margin: 0 0 10px; font-size: 18px; letter-spacing: 0; }
+    p { margin: 0 0 12px; }
+    .lead { color: var(--muted); font-size: 18px; max-width: 930px; }
+    .two-col { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+    .three-col { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+    .four-col { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+    table { width: 100%; border-collapse: collapse; overflow: hidden; }
+    th, td { padding: 13px 14px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; font-size: 14px; }
+    th { background: #f3f5f8; color: #2c3644; font-weight: 800; }
+    tr:last-child td { border-bottom: 0; }
+    ul, ol { margin: 8px 0 0; padding-left: 22px; }
+    li { margin: 6px 0; }
+    .tag { display: inline-block; margin: 4px 8px 0 0; padding: 4px 10px; border-radius: 999px; border: 1px solid var(--line); font-size: 13px; color: var(--muted); background: #fff; }
+    .high { color: #0f684b; background: #e5f7ef; border-color: #b7dfcf; }
+    .mid { color: #865100; background: #fff1dc; border-color: #f0c99a; }
+    .risk { color: #9f1f17; background: #fff5f4; border-color: #efb8b2; }
+    .explore { color: #5b3aa5; background: #f0ebff; border-color: #d0c4f0; }
+    .note { padding: 14px 16px; border: 1px solid #f0c99a; border-radius: 8px; background: #fffaf3; color: #5d3a05; }
+    .green-note { padding: 14px 16px; border: 1px solid #b7dfcf; border-radius: 8px; background: #f1fbf7; color: #225441; }
+    pre {
+      overflow-x: auto;
+      padding: 16px 18px;
+      border: 1px solid #cddaf0;
+      border-radius: 8px;
+      background: #f5f8fd;
+      color: #20324c;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+      font-size: 13px;
+      line-height: 1.65;
+      white-space: pre-wrap;
+    }
+    .timeline {
+      display: grid;
+      gap: 12px;
+    }
+    .step {
+      display: grid;
+      grid-template-columns: 120px minmax(0, 1fr);
+      gap: 14px;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fbfcfe;
+    }
+    .week {
+      color: var(--blue);
+      font-weight: 900;
+    }
+    @media (max-width: 960px) {
+      .two-col, .three-col, .four-col { grid-template-columns: 1fr; }
+      .hero, .section { padding: 22px; }
+      .step { grid-template-columns: 1fr; }
+      table { display: block; overflow-x: auto; white-space: nowrap; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="topbar">
+      <a href="./ADC毒素组合用药算法需求沟通页.html">← 返回总览页</a>
+      <span>详细说明 5 / 5：毒+免双载药 ADC + 外源口服调控药物方案</span>
+    </div>
+
+    <section class="hero">
+      <h1>双载药 [毒+免] ADC + 外源口服 [控] 方案开发平台</h1>
+      <p class="lead">
+        本页把“细胞毒 payload + 免疫激动 payload 的双载药 ADC，再联用外源口服调控小分子”的思路整理成可执行方案。定位不是马上承诺一个固定三联临床方案，而是建立一个可以由学生先做干实验、再交接给湿实验部门做小规模高通量组合矩阵验证的平台。
+      </p>
+      <div>
+        <span class="tag high">主线：毒+免双载药 ADC</span>
+        <span class="tag mid">增强模块：外源口服调控药物</span>
+        <span class="tag risk">核心风险：CRS / DAR / 骨髓毒性</span>
+        <span class="tag explore">首个样例：Exatecan + STING + ATRi/WEE1i/PARPi</span>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>一、方案结论</h2>
+      <div class="green-note">
+        该方向具备科学合理性和产业可行性，但应平台化、分阶段推进。第一阶段聚焦 [Topo I payload + STING agonist] 双载药 ADC 本身；第二阶段再把 ATRi、WEE1i、PARPi、PD-1/PD-L1、myeloid modulator 等外源调控药物作为候选增强模块筛选。ATRi 不宜一开始绑定成固定三联方案。
+      </div>
+      <table style="margin-top:18px;">
+        <thead>
+          <tr>
+            <th>模块</th>
+            <th>可行性</th>
+            <th>风险</th>
+            <th>建议定位</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>[毒+免] 双载药 ADC</td>
+            <td>高</td>
+            <td>中高</td>
+            <td>作为主线平台，优先验证 payload ratio、linker 稳定性和肿瘤局部免疫激活。</td>
+          </tr>
+          <tr>
+            <td>Exatecan / Topo I + STING</td>
+            <td>高</td>
+            <td>中高</td>
+            <td>机制自洽：DNA damage + antigen release + innate immune activation。</td>
+          </tr>
+          <tr>
+            <td>外源口服 ATRi</td>
+            <td>中</td>
+            <td>高</td>
+            <td>作为增强模块筛选，不作为初始固定组合。重点评估骨髓毒性和给药时序。</td>
+          </tr>
+          <tr>
+            <td>小规模高通量组合矩阵</td>
+            <td>高</td>
+            <td>中</td>
+            <td>适合由干实验先筛候选，再交给湿实验部门做 6x6/8x8 验证。</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section">
+      <h2>二、公开进展与证据等级</h2>
+      <p>
+        产业进展会持续变化，正式对外报告建议把证据分成“公开可核验”“公开临床前资料”“推断/待核验”三类，避免把尚未公开验证的结论写死。
+      </p>
+      <table>
+        <thead>
+          <tr>
+            <th>项目/方向</th>
+            <th>公开信息</th>
+            <th>证据等级</th>
+            <th>对本方案的意义</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Astellas / Sutro ASP2998</td>
+            <td>TROP2 靶向 dual-payload iADC，公开资料显示为 Topoisomerase I inhibitor + STING agonist，并已进入首次人体研究。</td>
+            <td>公开可核验</td>
+            <td>说明 [Topo I + STING] 双载药 iADC 已经从概念走向早期临床验证。</td>
+          </tr>
+          <tr>
+            <td>Sutro HER2 iADC</td>
+            <td>公开报告中披露 exatecan + STING agonist 双载药 HER2 iADC 的临床前疗效和探索性 NHP 安全性设计。</td>
+            <td>公开临床前资料</td>
+            <td>支持 HER2 场景下 [毒+免] 双载药 ADC 的可行性和工程设计思路。</td>
+          </tr>
+          <tr>
+            <td>Daiichi Sankyo DS3610</td>
+            <td>STING agonist ADC 进入 I 期临床；不是明确的 [Topo I + STING] 双载药 ADC。</td>
+            <td>公开可核验</td>
+            <td>说明 STING agonist 作为 ADC 免疫 payload 正在被临床验证。</td>
+          </tr>
+          <tr>
+            <td>ATRi 与 Topo I/化疗联用</td>
+            <td>机制上合理，但已有研究提示 ATRi 与 DNA replication-targeting 化疗联用可能存在显著骨髓毒性。</td>
+            <td>公开临床经验</td>
+            <td>ATRi 应作为高风险增强模块，必须做剂量和时序优化。</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="note" style="margin-top:18px;">
+        建议在甲方材料中使用“该方向已进入早期产业验证阶段”这样的表述，而不是笼统写“多款已完成 NHP 并提交 IND”。后者除非有明确项目和来源，否则容易被追问。
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>三、机制链路</h2>
+      <div class="three-col">
+        <div class="card">
+          <h3>1. 毒素 payload</h3>
+          <p>Exatecan / DXd 类 Topo I payload 诱导 DNA damage、replication stress 和 tumor cell death，同时释放抗原和 damage-associated signals。</p>
+        </div>
+        <div class="card">
+          <h3>2. 免疫 payload</h3>
+          <p>STING agonist 激活 innate immunity、type I IFN signaling、抗原呈递和 T cell recruitment，目标是把冷肿瘤局部转热。</p>
+        </div>
+        <div class="card">
+          <h3>3. 外源控制药物</h3>
+          <p>ATRi/WEE1i/PARPi/PD-1 等不是固定答案，而是候选增强模块，用于阻断修复、增强免疫或克服耐药。</p>
+        </div>
+      </div>
+      <pre>理想作用链路：
+Topo I payload
+=> DNA damage + replication stress
+=> tumor antigen release + immunogenic cell death signal
+
+STING agonist payload
+=> local innate immune activation
+=> type I IFN / CXCL10 / antigen presentation
+=> T cell recruitment and immune memory
+
+External oral modulator
+=> blocks DNA damage tolerance or resistance pathway
+=> expands efficacy window if toxicity remains manageable</pre>
+    </section>
+
+    <section class="section">
+      <h2>四、关键术语解释</h2>
+      <p>
+        这一节给学生先看。下面列出本方案最核心的一组术语，完整版本请查看独立页面：
+        <a href="./ADC组合算法术语字典.html">ADC 组合算法术语字典</a>。
+      </p>
+      <table>
+        <thead>
+          <tr>
+            <th>术语</th>
+            <th>中文解释</th>
+            <th>在本方案中的作用</th>
+            <th>学生理解要点</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>TROP2</td>
+            <td>肿瘤相关细胞表面抗原，全称 trophoblast cell-surface antigen 2。</td>
+            <td>作为 ADC 的“导航地址”。如果肿瘤细胞表面 TROP2 高表达，抗体可以更容易把 payload 送进去。</td>
+            <td>把它理解成肿瘤细胞表面的门牌号。门牌号越清楚，ADC 越容易找到目标。</td>
+          </tr>
+          <tr>
+            <td>HER2</td>
+            <td>人表皮生长因子受体 2，是乳腺癌、胃癌等肿瘤中的重要靶点。</td>
+            <td>也是 ADC 常用靶点。Enhertu 就是 HER2 ADC 的代表。</td>
+            <td>HER2 是成熟靶点，有很多已有经验，适合作为方案验证靶点。</td>
+          </tr>
+          <tr>
+            <td>Topo I</td>
+            <td>Topoisomerase I，拓扑异构酶 I，是 DNA 复制和转录时负责缓解 DNA 扭曲的酶。</td>
+            <td>Topo I payload 抑制这个酶，导致 DNA 损伤和复制压力，最终杀死肿瘤细胞。</td>
+            <td>把 Topo I 理解成 DNA 复制时的“解结工具”。抑制它后，DNA 容易断裂，细胞更容易死亡。</td>
+          </tr>
+          <tr>
+            <td>Topo I payload</td>
+            <td>以 Topo I 为作用机制的 ADC 毒素载荷，例如 exatecan、DXd、SN-38 类。</td>
+            <td>作为 [毒+免] 双载药 ADC 中的“毒”模块，负责直接杀伤肿瘤细胞。</td>
+            <td>这是 ADC 上挂的细胞毒药物，不是普通游离小分子给药。</td>
+          </tr>
+          <tr>
+            <td>STING</td>
+            <td>Stimulator of Interferon Genes，先天免疫通路中的关键蛋白。</td>
+            <td>STING 被激活后可诱导 type I interferon、CXCL10 等信号，促进抗原呈递和免疫细胞进入肿瘤。</td>
+            <td>把 STING 理解成免疫系统的报警器。报警器在肿瘤局部响是好事，在全身乱响就可能引发炎症风险。</td>
+          </tr>
+          <tr>
+            <td>STING agonist</td>
+            <td>STING 激动剂，可以激活 STING 通路的小分子或 payload。</td>
+            <td>作为双载药 ADC 中的“免疫”模块，目标是把冷肿瘤局部变热。</td>
+            <td>最大风险是游离 STING agonist 在血液中释放后引发 cytokine release 或 CRS。</td>
+          </tr>
+          <tr>
+            <td>ATRi</td>
+            <td>ATR inhibitor，ATR 抑制剂。ATR 是细胞应对复制压力和 DNA 损伤的重要 checkpoint kinase。</td>
+            <td>与 Topo I payload 联用时，可能阻断肿瘤细胞修复 DNA 损伤，从而增强杀伤。</td>
+            <td>机制强，但骨髓毒性风险也高。不能默认安全，必须低剂量和时序验证。</td>
+          </tr>
+          <tr>
+            <td>WEE1i</td>
+            <td>WEE1 inhibitor，WEE1 抑制剂。WEE1 参与 G2/M 细胞周期 checkpoint。</td>
+            <td>让带有 DNA 损伤的肿瘤细胞更难停下来修复，可能促使其进入有丝分裂灾难。</td>
+            <td>特别适合考虑 TP53 突变、高复制压力、高增殖模型。</td>
+          </tr>
+          <tr>
+            <td>PARPi</td>
+            <td>PARP inhibitor，PARP 抑制剂。PARP 参与 DNA 单链损伤修复。</td>
+            <td>与 Topo I payload 组合时，可能进一步削弱 DNA 修复能力，尤其适合 HRD/BRCA 缺陷背景。</td>
+            <td>要注意 HRD、BRCA、SLFN11 等 biomarker 分层，不能所有细胞系一概而论。</td>
+          </tr>
+          <tr>
+            <td>CHK1i</td>
+            <td>CHK1 inhibitor，CHK1 抑制剂。CHK1 是 ATR 下游的 checkpoint 调控节点。</td>
+            <td>阻断 DNA damage checkpoint，减少肿瘤细胞修复窗口。</td>
+            <td>和 ATRi/WEE1i 类似，可能增强杀伤，也可能放大正常增殖组织毒性。</td>
+          </tr>
+          <tr>
+            <td>DNA-PKi</td>
+            <td>DNA-PK inhibitor，DNA-PK 抑制剂。DNA-PK 参与 DNA 双链断裂修复，尤其是 NHEJ 修复通路。</td>
+            <td>用于探索 DNA repair blockade，与 DNA 损伤类 payload 可能形成组合增益。</td>
+            <td>这是修复阻断方向，学生要关注是否会与 Topo I payload 产生毒性叠加。</td>
+          </tr>
+          <tr>
+            <td>PD-1 / PD-L1</td>
+            <td>免疫检查点通路。PD-1 在 T 细胞上，PD-L1 常在肿瘤或免疫抑制细胞上。</td>
+            <td>如果 STING payload 能把肿瘤变热，PD-1/PD-L1 阻断可能进一步释放 T 细胞抗肿瘤活性。</td>
+            <td>这类组合更偏免疫增强，不是直接增强 DNA 损伤杀伤。</td>
+          </tr>
+          <tr>
+            <td>CSF1R</td>
+            <td>Colony Stimulating Factor 1 Receptor，与肿瘤相关巨噬细胞生存和功能有关。</td>
+            <td>CSF1R 调控可用于改变肿瘤微环境中的髓系免疫抑制。</td>
+            <td>这是肿瘤微环境调节方向，适合和 STING 免疫激活逻辑一起评估。</td>
+          </tr>
+          <tr>
+            <td>TGF-beta</td>
+            <td>Transforming Growth Factor beta，转化生长因子 beta，是免疫抑制和肿瘤微环境重塑相关通路。</td>
+            <td>TGF-beta 通路抑制可能解除免疫抑制，使 STING 激活后的免疫反应更有效。</td>
+            <td>这是免疫微环境方向，重点看是否能改善冷肿瘤和免疫排斥型肿瘤。</td>
+          </tr>
+          <tr>
+            <td>CRS</td>
+            <td>Cytokine Release Syndrome，细胞因子释放综合征。</td>
+            <td>STING agonist 系统性释放后可能引发的严重安全风险。</td>
+            <td>看到 IL-6、TNFα、IFN 等指标异常升高时，要优先考虑 CRS 风险。</td>
+          </tr>
+          <tr>
+            <td>DAR</td>
+            <td>Drug-to-Antibody Ratio，平均每个抗体上挂了多少个 payload。</td>
+            <td>双载药 ADC 中要分别关心毒素 DAR、免疫 payload DAR 和总 DAR。</td>
+            <td>DAR 不是越高越好。过高可能导致聚集、PK 变差、毒性增加。</td>
+          </tr>
+          <tr>
+            <td>payload ratio</td>
+            <td>双载药 ADC 中两种 payload 的比例，例如 Topo I payload : STING agonist。</td>
+            <td>决定药效和安全性平衡，是双载药 ADC 的核心 CMC 参数。</td>
+            <td>学生要关注是否能稳定控制比例，不能只看平均 DAR。</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section">
+      <h2>五、核心风险与控制策略</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>风险</th>
+            <th>机制</th>
+            <th>控制策略</th>
+            <th>干实验任务</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>STING 系统性释放导致 CRS</td>
+            <td>游离 STING agonist 激活外周单核/巨噬细胞，引发 IL-6、TNFα、type I IFN 等升高。</td>
+            <td>稳定 linker、低 STING DAR、降低 FcγR 摄取、PBMC/whole blood cytokine assay、NHP cytokine monitoring。</td>
+            <td>整理 STING payload、linker、DAR、cytokine release 文献和竞品策略。</td>
+          </tr>
+          <tr>
+            <td>DAR 和 payload ratio 漂移</td>
+            <td>双 payload 随机偶联可能导致批次间毒素/免疫比例不稳定。</td>
+            <td>site-specific conjugation、orthogonal chemistry、branched linker、LC-MS/HIC/SEC 质控。</td>
+            <td>整理双载药 ADC 工艺路线和可质控指标。</td>
+          </tr>
+          <tr>
+            <td>外源 ATRi 放大骨髓毒性</td>
+            <td>Topo I payload 造成 DNA damage，ATRi 阻断修复和复制压力应答，正常增殖组织也可能受损。</td>
+            <td>低剂量、短程、间歇给药；优先体外筛选；加入正常细胞/骨髓 proxy；设立 No-Go 标准。</td>
+            <td>整理 ATRi、WEE1i、PARPi 与 Topo I/ADC 联用证据和毒性谱。</td>
+          </tr>
+          <tr>
+            <td>免疫激活发生在外周而非肿瘤</td>
+            <td>ADC 不稳定或 Fc 介导摄取导致免疫细胞系统性激活。</td>
+            <td>抗体靶点选择、Fc engineering、linker stability、肿瘤局部 vs 外周血 cytokine 对比。</td>
+            <td>建立靶点表达、内吞和免疫细胞表达数据库。</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section">
+      <h2>六、学生可执行的干实验工作计划</h2>
+      <p>
+        下面的计划按 8 周设计，适合安排 2-4 名学生分工完成。目标不是简单做文献综述，而是形成一个可以交给湿实验部门执行的小规模高通量组合矩阵实验包。每一周都要回答三个问题：为什么做、怎么做、做到什么程度算完成。
+      </p>
+      <div class="note" style="margin-bottom:18px;">
+        学生开始执行前，建议先阅读两个辅助页面：
+        <a href="./ADC组合算法术语字典.html">术语字典</a>
+        和
+        <a href="./ADC组合算法学生阅读书目.html">学生阅读书目与章节</a>。
+      </div>
+      <div class="timeline">
+        <div class="step">
+          <div class="week">第 1 周</div>
+          <div>
+            <h3>定义项目边界和检索词表</h3>
+            <p><strong>为什么做：</strong>学生如果一开始不统一术语，很容易把普通 ADC、免疫 ADC、双载药 ADC、ADC 联用小分子混在一起，后面整理出的数据无法比较。</p>
+            <p><strong>怎么做：</strong>先阅读上一节术语表，再把项目拆成 4 个对象：靶点、细胞毒 payload、免疫 payload、外源调控药物。每个对象建立中英文关键词，并规定哪些信息算“可核验证据”。</p>
+            <ul>
+              <li>确定主线：TROP2/HER2 作为 ADC 靶点，Topo I payload 作为细胞毒模块，STING agonist 作为免疫激活模块。</li>
+              <li>确定外源药物候选类别：DNA 损伤应答抑制剂 ATRi/WEE1i/PARPi/CHK1i/DNA-PKi，以及免疫调控方向 PD-1/PD-L1、CSF1R、TGF-beta 等。</li>
+              <li>建立检索词表：dual-payload ADC、iADC、STING agonist ADC、exatecan ADC、Topo I ADC、ATR inhibitor ADC combination。</li>
+              <li>完成标准：形成一张“项目词表 + 候选类别 + 排除范围”表格，导师可以据此判断学生后续检索是否跑偏。</li>
+            </ul>
+          </div>
+        </div>
+        <div class="step">
+          <div class="week">第 2 周</div>
+          <div>
+            <h3>竞品和产业进展调研</h3>
+            <p><strong>为什么做：</strong>这个方向属于前沿赛道，很多说法容易被放大。学生要把“已经进入临床”“只有临床前数据”“只是平台能力”区分开。</p>
+            <p><strong>怎么做：</strong>优先查公司官网、临床试验登记、会议 PDF、专利、论文和投资者材料。每条信息都要保留来源链接和发布日期。</p>
+            <ul>
+              <li>整理 ASP2998、Sutro HER2 iADC、DS3610 等公开资料。</li>
+              <li>记录靶点、payload、linker、DAR、开发阶段、公开疗效和安全性信息。</li>
+              <li>区分公开可核验信息和推断信息。</li>
+              <li>完成标准：形成竞品矩阵表，至少包含项目名称、公司、靶点、payload、开发阶段、证据等级、原始来源链接和一句话结论。</li>
+            </ul>
+          </div>
+        </div>
+        <div class="step">
+          <div class="week">第 3 周</div>
+          <div>
+            <h3>payload 和 linker 风险库</h3>
+            <p><strong>为什么做：</strong>[毒+免] 双载药 ADC 的成败不只看 payload 是否有效，更看 linker 是否稳定、payload ratio 是否可控、游离 STING 是否会触发全身炎症。</p>
+            <p><strong>怎么做：</strong>把 payload 和 linker 当成工程模块整理。每个 payload 记录作用机制、有效浓度、系统毒性、是否容易外排、是否适合 bystander effect；每个 linker 记录释放机制、血浆稳定性和可质控指标。</p>
+            <ul>
+              <li>整理 Topo I payload：exatecan、DXd、SN-38 等。</li>
+              <li>整理 STING agonist payload 的活性、释放风险、cytokine 风险。</li>
+              <li>整理 linker 类型：cleavable、non-cleavable、branched linker、site-specific conjugation。</li>
+              <li>完成标准：形成 payload/linker 风险评分表，至少包括 efficacy、CRS risk、myelotoxicity risk、DAR feasibility、linker stability、evidence level 六个字段。</li>
+            </ul>
+          </div>
+        </div>
+        <div class="step">
+          <div class="week">第 4 周</div>
+          <div>
+            <h3>外源口服调控药物库</h3>
+            <p><strong>为什么做：</strong>ATRi 机制很强，但风险也高。不能只盯 ATRi，需要把 WEE1i、PARPi、CHK1i、DNA-PKi、PD-1/PD-L1 等作为可替代模块比较。</p>
+            <p><strong>怎么做：</strong>每类药物选择 5-10 个代表分子，优先临床阶段或已上市药物。记录机制、毒性、临床暴露、是否有 ADC 或 Topo I 联用证据。</p>
+            <ul>
+              <li>每类药整理 5-10 个代表分子，优先上市/临床阶段药物。</li>
+              <li>记录靶点、机制、临床阶段、主要毒性、IC50/暴露、可购买性。</li>
+              <li>标注是否适合增强杀伤、克服耐药、降低剂量或免疫增强。</li>
+              <li>完成标准：形成外源药物候选库，并给出每个药的推荐用途：杀伤增强、耐药阻断、免疫增强、安全性探索或不推荐。</li>
+            </ul>
+          </div>
+        </div>
+        <div class="step">
+          <div class="week">第 5 周</div>
+          <div>
+            <h3>细胞系和 biomarker 筛选</h3>
+            <p><strong>为什么做：</strong>组合药效强弱高度依赖细胞背景。没有 biomarker 分层，即使实验做出协同，也很难解释为什么有效、适合哪个癌种。</p>
+            <p><strong>怎么做：</strong>围绕靶点表达和机制相关 biomarker 建立细胞系面板。至少覆盖靶点高低表达、SLFN11 高低、TP53 突变/野生型、HRD/BRCA 状态、ABCB1 高低和 STING pathway competence。</p>
+            <ul>
+              <li>按靶点表达选择 TROP2/HER2 高低表达细胞系。</li>
+              <li>整理 SLFN11、TP53、HRD/BRCA、ABCB1、STING pathway competence 等 biomarker。</li>
+              <li>区分 exatecan sensitive 和 resistant 模型。</li>
+              <li>完成标准：形成 6-8 个肿瘤细胞系 + 1-2 个安全性 proxy 模型的推荐清单，并说明每个模型在实验中的用途。</li>
+            </ul>
+          </div>
+        </div>
+        <div class="step">
+          <div class="week">第 6 周</div>
+          <div>
+            <h3>组合评分和 Top 候选输出</h3>
+            <p><strong>为什么做：</strong>湿实验资源有限，不能把所有组合都做一遍。干实验的核心价值是把候选组合从几十个收敛到 Top 3-6 个。</p>
+            <p><strong>怎么做：</strong>用统一评分表评估每个组合。评分维度包括机制互补、耐药路径阻断、毒性重叠、剂量窗口、临床/实验可行性和证据等级。</p>
+            <ul>
+              <li>按机制互补、耐药阻断、毒性重叠、剂量窗口、实验可行性打分。</li>
+              <li>输出 Top 10 外源调控药物，进一步收敛到 Top 3-6 个湿实验优先组合。</li>
+              <li>每个组合写出推荐理由、风险和实验读出。</li>
+              <li>完成标准：形成组合排序表和单组合解释卡片。每张卡片必须包含推荐理由、风险、适合细胞系、建议剂量矩阵和预期读出。</li>
+            </ul>
+          </div>
+        </div>
+        <div class="step">
+          <div class="week">第 7 周</div>
+          <div>
+            <h3>湿实验交接包设计</h3>
+            <p><strong>为什么做：</strong>湿实验部门需要的是可以直接排板和执行的实验包，而不是泛泛的“建议做实验”。这一周要把干实验结果翻译成实验参数。</p>
+            <p><strong>怎么做：</strong>为每个组合定义药物、细胞系、剂量范围、矩阵大小、重复数、读出指标、时间点和数据回填格式。</p>
+            <ul>
+              <li>确定每个组合的剂量范围建议和是否使用 6x6 或 8x8 矩阵。</li>
+              <li>定义读出指标：viability、Bliss/Loewe/ZIP/HSA、gamma-H2AX、IFN-beta、CXCL10、IL-6、TNFα、apoptosis。</li>
+              <li>加入正常细胞或 PBMC cytokine 风险评估建议。</li>
+              <li>完成标准：形成湿实验设计表、样本命名规则、排板逻辑、数据回填模板和异常结果记录规则。</li>
+            </ul>
+          </div>
+        </div>
+        <div class="step">
+          <div class="week">第 8 周</div>
+          <div>
+            <h3>形成汇报材料和决策包</h3>
+            <p><strong>为什么做：</strong>最终结果要同时服务甲方、导师和湿实验部门。甲方看项目价值，导师看逻辑闭环，湿实验部门看可执行性。</p>
+            <p><strong>怎么做：</strong>把前 7 周的表格和结论整理成三套材料：甲方汇报版、内部技术版、湿实验执行版。</p>
+            <ul>
+              <li>整理面向甲方的 10-15 页汇报。</li>
+              <li>整理面向湿实验部门的 SOP 风格实验包。</li>
+              <li>整理 Go/No-Go 判断标准。</li>
+              <li>完成标准：交付 PPT、Excel 数据包、湿实验 SOP 草案、Top 3-6 组合推荐卡和 Go/No-Go 判断表。</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>七、学生分工建议</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>角色</th>
+            <th>主要任务</th>
+            <th>每周产出</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>学生 A：竞品和产业进展</td>
+            <td>跟踪 ASP2998、DS3610、Sutro iADC、WuXi XDC dual payload 技术资料等。</td>
+            <td>竞品表、证据链接、开发阶段更新。</td>
+          </tr>
+          <tr>
+            <td>学生 B：payload/linker/CMC</td>
+            <td>整理 exatecan、DXd、STING agonist、linker、DAR、payload ratio、分析方法。</td>
+            <td>payload 风险库、DAR 控制策略、CMC 风险表。</td>
+          </tr>
+          <tr>
+            <td>学生 C：外源口服调控药物</td>
+            <td>整理 ATRi、WEE1i、PARPi、CHK1i、DNA-PKi、PD-1 等候选药物。</td>
+            <td>候选药物库、毒性谱、机制互补评分。</td>
+          </tr>
+          <tr>
+            <td>学生 D：细胞系和实验设计</td>
+            <td>整理靶点表达、biomarker、细胞系、读出指标和组合矩阵方案。</td>
+            <td>细胞系推荐表、实验矩阵表、数据回填模板。</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section">
+      <h2>八、哪些任务可以用人工智能辅助完成</h2>
+      <p>
+        人工智能适合做信息检索、结构化整理、初步归纳、表格生成和报告草拟，但不应替代学生做证据核验和科学判断。所有 AI 输出都要回到原始文献、公司公告、临床登记或数据库进行确认。
+      </p>
+      <table>
+        <thead>
+          <tr>
+            <th>任务</th>
+            <th>AI 可以做什么</th>
+            <th>学生必须人工核验什么</th>
+            <th>建议输出</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>检索词扩展</td>
+            <td>根据“dual-payload ADC / STING agonist ADC / exatecan ADC”扩展中英文检索词、同义词、公司名、药物名和靶点名。</td>
+            <td>确认关键词是否真的属于本项目范围，删除无关方向，例如普通免疫联合或非 ADC 药物。</td>
+            <td>检索词表、排除词表、数据库检索策略。</td>
+          </tr>
+          <tr>
+            <td>文献和网页初筛</td>
+            <td>快速浏览标题、摘要、公司新闻稿和会议材料，提取项目名称、靶点、payload、阶段和一句话结论。</td>
+            <td>打开原文确认是否准确，尤其是开发阶段、payload 类型、是否真的是双载药 ADC。</td>
+            <td>文献初筛表、证据等级标记。</td>
+          </tr>
+          <tr>
+            <td>竞品矩阵生成</td>
+            <td>把公开资料整理成统一表格，包括公司、项目、靶点、payload、linker、DAR、阶段、优势和风险。</td>
+            <td>核对来源链接和日期；把“推断信息”和“公开披露信息”分开。</td>
+            <td>竞品矩阵 Excel、证据来源索引。</td>
+          </tr>
+          <tr>
+            <td>payload/linker 风险归纳</td>
+            <td>根据文献总结 Topo I payload、STING agonist、cleavable/non-cleavable linker、site-specific conjugation 的优缺点。</td>
+            <td>确认数据是否来自相同物种、相同 payload、相同 linker；避免把不同体系的结论直接套用。</td>
+            <td>payload/linker 风险评分表。</td>
+          </tr>
+          <tr>
+            <td>外源药物候选库</td>
+            <td>批量整理 ATRi、WEE1i、PARPi、CHK1i、DNA-PKi 等候选药物的靶点、机制、临床阶段和主要毒性。</td>
+            <td>核对具体分子是否可购买、是否临床可用、是否有严重毒性警告、是否适合体外实验。</td>
+            <td>外源药物候选库和初步排名。</td>
+          </tr>
+          <tr>
+            <td>机制链路绘制</td>
+            <td>把“Topo I damage + STING activation + ATRi blockade”转成机制链路、流程图说明和组合假设。</td>
+            <td>确认机制不是过度推断；每条关键机制至少对应一条证据来源。</td>
+            <td>机制图、组合假设卡片。</td>
+          </tr>
+          <tr>
+            <td>组合评分初稿</td>
+            <td>根据预设评分维度给候选组合做初步打分，并生成推荐理由和风险提示。</td>
+            <td>人工检查评分是否被单篇文献带偏；关键组合需要导师复核。</td>
+            <td>Top 10 排序表、Top 3-6 推荐卡。</td>
+          </tr>
+          <tr>
+            <td>细胞系筛选辅助</td>
+            <td>根据 CCLE/DepMap/文献中的靶点表达和 biomarker 信息，初步推荐细胞系组合。</td>
+            <td>确认实验室是否能获得细胞系，是否有培养条件，biomarker 数据是否可靠。</td>
+            <td>细胞系面板和分层理由。</td>
+          </tr>
+          <tr>
+            <td>实验矩阵草案</td>
+            <td>根据候选组合、细胞系和剂量范围生成 6x6/8x8 矩阵草案、样本命名规则和数据回填模板。</td>
+            <td>剂量范围必须由单药 IC50 或预实验确认，AI 不能直接决定最终剂量。</td>
+            <td>湿实验排板草案、数据模板。</td>
+          </tr>
+          <tr>
+            <td>汇报材料草拟</td>
+            <td>把表格和结论整理成甲方汇报、内部讨论稿和湿实验交接说明。</td>
+            <td>检查每个结论是否有来源、是否过度承诺、是否混淆“临床前”和“临床”。</td>
+            <td>PPT 初稿、执行摘要、风险清单。</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="note" style="margin-top:18px;">
+        建议给学生规定一条硬规则：AI 生成的每一个关键事实都必须附原始来源链接；没有来源的内容只能作为假设或待核验信息，不能进入最终结论。
+      </div>
+      <h3 style="margin-top:22px;">可直接给学生使用的 AI 提示词模板</h3>
+      <pre>提示词 1：竞品矩阵
+请围绕“dual-payload ADC + STING agonist + topoisomerase I payload”检索和整理公开资料。
+请输出表格字段：
+公司、项目名称、靶点、payload 1、payload 2、linker/DAR 信息、开发阶段、公开证据、风险点、来源链接、发布日期。
+要求：
+1. 区分公开披露事实和推断。
+2. 每条信息必须给出来源链接。
+3. 不确定的信息标记为“待核验”。
+
+提示词 2：外源口服调控药物库
+请整理适合与 Topo I payload ADC 或 [Topo I + STING] 双载药 ADC 联用的外源调控药物类别。
+至少包括 ATRi、WEE1i、PARPi、CHK1i、DNA-PKi、PD-1/PD-L1、CSF1R/TGF-beta。
+请输出：
+药物类别、代表分子、靶点、机制、临床阶段、主要毒性、与 Topo I/ADC 联用证据、推荐用途、风险等级、来源链接。
+
+提示词 3：组合推荐卡片
+请基于以下组合生成一张实验推荐卡：
+组合：[Topo I + STING 双载药 ADC] + [候选外源药物]
+需要输出：
+机制假设、适合的细胞系/biomarker、预期协同读出、主要安全风险、建议剂量矩阵、Go/No-Go 标准、需要核验的证据。
+
+提示词 4：湿实验交接表
+请把以下候选组合转成湿实验部门可执行的实验设计表：
+候选组合：[填入 Top 3-6]
+细胞系：[填入细胞系]
+读出指标：[viability, Bliss, Loewe, ZIP, gamma-H2AX, IFN-beta, CXCL10, IL-6, TNF-alpha]
+请输出：
+实验组、对照组、剂量矩阵、重复数、时间点、读出指标、数据回填字段、异常情况记录。</pre>
+    </section>
+
+    <section class="section">
+      <h2>九、交给湿实验部门的小规模高通量组合矩阵方案</h2>
+      <div class="note">
+        这个实验包的目标不是一次性证明临床可行，而是快速回答三个问题：是否有协同杀伤、是否有免疫激活增益、是否存在明显安全性风险信号。
+      </div>
+      <h3 style="margin-top:18px;">推荐第一批实验规模</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>模块</th>
+            <th>建议规模</th>
+            <th>说明</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>ADC 模型</td>
+            <td>Topo I ADC、STING ADC、Topo I+STING 双载药 ADC、抗体对照</td>
+            <td>用于判断双载药是否优于单 payload 或简单叠加。</td>
+          </tr>
+          <tr>
+            <td>外源药物</td>
+            <td>Top 3-6 个</td>
+            <td>优先 ATRi、WEE1i、PARPi，再根据甲方资源加入 PD-1/myeloid modulator。</td>
+          </tr>
+          <tr>
+            <td>细胞系</td>
+            <td>6-8 个肿瘤细胞系 + 1-2 个正常细胞或 PBMC 风险模型</td>
+            <td>覆盖 TROP2/HER2 高低表达、SLFN11、TP53、HRD、ABCB1 差异。</td>
+          </tr>
+          <tr>
+            <td>剂量矩阵</td>
+            <td>6x6 筛选，重点组合 8x8 复测</td>
+            <td>先宽筛，再对高协同组合做更细矩阵。</td>
+          </tr>
+          <tr>
+            <td>重复数</td>
+            <td>n=2 初筛，n=3 复测</td>
+            <td>初筛节省成本，复测保证稳定性。</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 style="margin-top:22px;">读出指标</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>读出</th>
+            <th>指标</th>
+            <th>用途</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>药效</td>
+            <td>cell viability、IC50 shift、growth inhibition</td>
+            <td>判断组合是否增强杀伤。</td>
+          </tr>
+          <tr>
+            <td>协同</td>
+            <td>Bliss、Loewe、ZIP、HSA</td>
+            <td>从不同数学假设计算协同分数。</td>
+          </tr>
+          <tr>
+            <td>DNA damage</td>
+            <td>gamma-H2AX、p-RPA、p-CHK1</td>
+            <td>验证 Topo I payload 和 DDRi 的机制链路。</td>
+          </tr>
+          <tr>
+            <td>免疫激活</td>
+            <td>IFN-beta、CXCL10、ISG signature、STING pathway markers</td>
+            <td>验证 STING payload 是否产生局部免疫激活。</td>
+          </tr>
+          <tr>
+            <td>炎症风险</td>
+            <td>IL-6、TNFα、IL-1β、IFN-related cytokines</td>
+            <td>评估游离 STING 或外周免疫激活风险。</td>
+          </tr>
+          <tr>
+            <td>安全性 proxy</td>
+            <td>PBMC cytokine release、normal cell viability、骨髓相关细胞活性</td>
+            <td>初步判断是否存在治疗窗口。</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section">
+      <h2>十、湿实验交接模板</h2>
+      <pre>{
+  "project": "dual_payload_toxin_immune_ADC_plus_external_modulator",
+  "adc_models": [
+    "TopoI_ADC",
+    "STING_ADC",
+    "TopoI_STING_dual_payload_ADC",
+    "unconjugated_antibody_control"
+  ],
+  "external_modulators": [
+    "ATR_inhibitor",
+    "WEE1_inhibitor",
+    "PARP_inhibitor",
+    "CHK1_inhibitor",
+    "PD1_or_PDL1_axis_candidate"
+  ],
+  "cell_line_panel": {
+    "target_expression": "TROP2_or_HER2_high_low",
+    "biomarkers": ["SLFN11", "TP53", "HRD_BRCA", "ABCB1", "STING_pathway_competence"],
+    "normal_or_risk_models": ["PBMC", "normal_epithelial_or_bone_marrow_proxy"]
+  },
+  "dose_matrix": {
+    "screening": "6x6",
+    "confirmation": "8x8",
+    "replicates": "n=2_screening_n=3_confirmation"
+  },
+  "readouts": {
+    "efficacy": ["cell_viability", "IC50_shift"],
+    "synergy": ["Bliss", "Loewe", "ZIP", "HSA"],
+    "DNA_damage": ["gamma_H2AX", "p_RPA", "p_CHK1"],
+    "immune_activation": ["IFN_beta", "CXCL10", "ISG_signature"],
+    "cytokine_risk": ["IL6", "TNFa", "IL1b"],
+    "safety_proxy": ["PBMC_cytokine_release", "normal_cell_viability"]
+  },
+  "decision_rule": {
+    "go": "tumor_synergy_positive_and_cytokine_risk_acceptable",
+    "no_go": "high_cytokine_release_or_no_advantage_over_single_payload_ADC"
+  }
+}</pre>
+    </section>
+
+    <section class="section">
+      <h2>十一、Go / No-Go 标准</h2>
+      <div class="two-col">
+        <div class="card">
+          <h3>Go 标准</h3>
+          <ul>
+            <li>双载药 ADC 比单 payload ADC 有明确疗效或免疫激活优势。</li>
+            <li>STING payload 释放风险可控，PBMC cytokine release 不出现危险信号。</li>
+            <li>DAR 和 payload ratio 可被稳定描述和质控。</li>
+            <li>外源口服调控药物在低剂量或短程给药下扩大药效窗口。</li>
+            <li>肿瘤模型敏感性明显高于正常细胞或 PBMC 风险模型。</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>No-Go 标准</h3>
+          <ul>
+            <li>轻微 STING 释放即引发强 cytokine release。</li>
+            <li>双载药 ADC 不优于单 payload ADC 或混合给药。</li>
+            <li>payload ratio 无法稳定控制，批次异质性过大。</li>
+            <li>ATRi/WEE1i 只放大毒性，不增加治疗窗口。</li>
+            <li>正常细胞、PBMC 或骨髓 proxy 比肿瘤细胞更敏感。</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>十二、最终交付物清单</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>交付物</th>
+            <th>负责人</th>
+            <th>格式</th>
+            <th>用途</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>竞品与证据矩阵</td>
+            <td>学生 A</td>
+            <td>Excel / PDF</td>
+            <td>支持甲方判断产业可行性。</td>
+          </tr>
+          <tr>
+            <td>payload/linker 风险库</td>
+            <td>学生 B</td>
+            <td>Excel</td>
+            <td>支持 CMC 和安全性风险评估。</td>
+          </tr>
+          <tr>
+            <td>外源口服药物候选库</td>
+            <td>学生 C</td>
+            <td>Excel</td>
+            <td>筛选 ATRi/WEE1i/PARPi 等增强模块。</td>
+          </tr>
+          <tr>
+            <td>细胞系和 biomarker 面板</td>
+            <td>学生 D</td>
+            <td>Excel</td>
+            <td>指导湿实验模型选择。</td>
+          </tr>
+          <tr>
+            <td>Top 3-6 组合推荐卡</td>
+            <td>全组</td>
+            <td>PDF / PPT</td>
+            <td>交给甲方和湿实验部门决策。</td>
+          </tr>
+          <tr>
+            <td>高通量组合矩阵实验包</td>
+            <td>学生 D + 湿实验负责人</td>
+            <td>Excel / SOP</td>
+            <td>直接用于湿实验排板、读数和数据回填。</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+</body>
+</html>

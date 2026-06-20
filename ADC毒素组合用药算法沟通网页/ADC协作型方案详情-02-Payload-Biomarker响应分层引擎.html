@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Payload × Biomarker 响应分层引擎｜ADC 协作型方案详情</title>
+  <style>
+    :root {
+      --bg: #f7f8fa; --panel: #fff; --text: #18202a; --muted: #5b6675; --line: #dfe4ea;
+      --blue: #1f5fbf; --green: #157f5b; --orange: #b75f00; --red: #b42318; --purple: #6b4bb8;
+      --shadow: 0 10px 28px rgba(24, 32, 42, 0.08);
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; color: var(--text); background: var(--bg); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", Arial, sans-serif; line-height: 1.68; }
+    a { color: var(--blue); text-decoration: none; font-weight: 700; }
+    a:hover { text-decoration: underline; }
+    .page { max-width: 1160px; margin: 0 auto; padding: 28px 24px 56px; }
+    .topbar { display:flex; justify-content:space-between; align-items:center; gap:12px; margin-bottom:18px; color: var(--muted); font-size:14px; }
+    .hero, .section, .card { background: var(--panel); border:1px solid var(--line); border-radius:10px; box-shadow: var(--shadow); }
+    .hero { padding: 32px 36px; margin-bottom: 20px; }
+    .section { padding: 28px; margin-top: 20px; }
+    .card { padding: 18px; box-shadow:none; }
+    .quick { display:grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap:12px; margin: 0 0 18px; }
+    .quick a { display:block; padding: 14px 16px; border-radius: 8px; background:#fff; border:1px solid var(--line); color: var(--text); box-shadow: var(--shadow); font-weight:600; }
+    .related { display:grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap:10px; margin-top:14px; }
+    .mini-link { display:block; padding:10px 12px; border:1px solid var(--line); border-radius:8px; color: var(--text); background:#fbfcfe; font-size:13px; font-weight:600; }
+    .mini-link.active { border-color:#b8cdf2; background:#f3f7ff; color: var(--blue); }
+    h1 { margin:0 0 12px; font-size: clamp(30px, 4vw, 46px); line-height:1.15; }
+    h2 { margin:0 0 14px; font-size:24px; }
+    h3 { margin:0 0 10px; font-size:18px; }
+    h4 { margin: 18px 0 8px; font-size:16px; color: var(--blue); }
+    p { margin:0 0 12px; }
+    .lead { color: var(--muted); font-size:18px; max-width:900px; }
+    .tag-row { display:flex; flex-wrap:wrap; gap:8px; margin-top:14px; }
+    .tag { display:inline-flex; min-height:28px; align-items:center; padding:4px 10px; border-radius:999px; border:1px solid var(--line); color: var(--muted); background:#fff; font-size:13px; font-weight:650; }
+    .two-col { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:18px; }
+    .three-col { display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap:18px; }
+    ul, ol { margin: 8px 0 0; padding-left: 22px; }
+    li { margin: 6px 0; }
+    .step-grid { display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap:14px; }
+    .step { padding:16px; border:1px solid var(--line); border-radius:8px; background:#fbfcfe; }
+    .step strong { display:block; margin-bottom:8px; color: var(--blue); }
+    details { background:#fbfcfe; border:1px solid var(--line); border-radius:8px; padding:14px 16px; }
+    summary { cursor:pointer; font-weight:800; }
+    details p { margin:10px 0 0; color: var(--muted); }
+    .glossary { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:12px; }
+    .note { padding:14px 16px; border:1px solid #f0c99a; border-radius:8px; background:#fffaf3; color:#5d3a05; }
+    .quote { padding:16px 18px; border-left:4px solid var(--green); background:#f2fbf6; border-radius:0 8px 8px 0; color:#124c37; }
+    @media (max-width: 900px) { .quick, .two-col, .three-col, .step-grid, .glossary, .related { grid-template-columns: 1fr; } .hero, .section { padding:22px; } }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="topbar">
+      <div style="display:flex; gap:14px; flex-wrap:wrap;"><a href="./ADC协作型方案总览网页.html">← 返回 ADC 协作型方案总览</a><a href="../hanx-ai-translational-platform.html">AI 转化免疫学平台 →</a></div>
+      <span>详细说明 2 / 8</span>
+    </div>
+
+    <div class="quick">
+      <a href="#what">要做什么</a>
+      <a href="#why">为什么要做</a>
+      <a href="#effect">做成什么效果</a>
+      <a href="#steps">具体步骤</a>
+    </div>
+
+    <section class="hero">
+      <h1>Payload × Biomarker 响应分层引擎</h1>
+      <p class="lead">不是只问哪个组合有效，而是问在什么背景下更有效。</p>
+      <div class="tag-row"><span class="tag">Responder / Non-responder</span><span class="tag">适应症筛选</span><span class="tag">细胞系分层</span><span class="tag">更接近临床</span></div>
+      <div class="note" style="margin-top:18px;">先用大白话说，这个方案的目的不是一下子把所有问题都解决，而是先把最值得做的方向、最值得测的实验和最该保留的数据整理清楚，让公司每做一轮湿实验都更接近真正有价值的结论。</div>
+    </section>
+
+    <section class="section" id="what">
+      <h2>一、这件事到底是在做什么</h2>
+      <div class="two-col">
+        <div class="card"><p>这件事其实就是：同一个 payload 或同一个联用组合，并不会对所有肿瘤都一样有效。我们要做的是找出“什么样的肿瘤背景更容易响应”，比如哪些突变、哪些表达特征、哪些 DNA repair 状态更适合。</p></div>
+        <div class="card"><p>这样做出来的结果，不只是“这个组合可能不错”，而是“这个组合更适合哪类模型、未来可能更适合哪类患者”。这会让项目从简单筛药升级成更像临床转化工具。</p></div>
+      </div>
+    </section>
+
+    <section class="section" id="why">
+      <h2>二、为什么要做</h2>
+      <div class="three-col">
+        <div class="card"><p>如果不做分层，很多组合会出现“平均看不突出，但在特定背景下很强”的情况，容易被错过。</p></div><div class="card"><p>biomarker 分层可以帮助公司更聪明地选细胞系、选癌种、选后续验证方向。</p></div><div class="card"><p>将来如果项目要走向临床，最有价值的不是“对所有人都一般有效”，而是“对某一类人特别有效”。</p></div><div class="card"><p>如果不用 AI 辅助，团队要手工比对大量细胞背景、突变信息、敏感性结果和文献证据，非常耗时。</p></div>
+      </div>
+    </section>
+
+    <section class="section" id="effect">
+      <h2>三、最后希望做成什么效果</h2>
+      <div class="quote">最终要交付的，不是一份空泛的建议，而是一套公司可以继续执行、继续复用、继续积累数据资产的具体成果。</div>
+      <ul><li>形成 responder / non-responder 的初步分层规则。</li><li>给出建议优先检测的 biomarker panel。</li><li>帮助公司把组合结果和具体癌种、亚型、模型背景连接起来。</li><li>为后续适应症选择和临床转化提供更强的解释。</li></ul>
+    </section>
+
+    <section class="section" id="steps">
+      <h2>四、具体怎么做</h2>
+      <div class="step-grid"><div class="step"><strong>第 1 步：定义要跟踪的关键 biomarker</strong><p>先明确这轮最值得看的背景因素，例如 SLFN11、TP53、HRD、TOP1、ABCB1 等。</p></div><div class="step"><strong>第 2 步：整理模型背景信息</strong><p>把细胞系或样本的突变、表达、通路特征统一整理成结构化表格。</p></div><div class="step"><strong>第 3 步：把实验结果和 biomarker 对齐</strong><p>不是只看平均 synergy，而是按高表达/低表达、突变/野生型分开看。</p></div><div class="step"><strong>第 4 步：提出第一版分层假设</strong><p>例如“SLFN11 高表达模型更容易对 exatecan + ATR 抑制剂响应”。</p></div><div class="step"><strong>第 5 步：让公司做验证实验</strong><p>选择匹配和不匹配的模型，验证这条分层规则是不是真的成立。</p></div><div class="step"><strong>第 6 步：把规则固化成工具</strong><p>逐步从零散发现变成 biomarker 评分表或分层面板。</p></div></div>
+    </section>
+
+    <section class="section">
+      <h2>五、我们和公司分别负责什么</h2>
+      <div class="two-col">
+        <div class="card"><h3>我们负责</h3><ul><li>设计 biomarker 假设和分析框架</li><li>整理模型背景数据与实验结果的关联</li><li>输出 responder 规则和优先验证方向</li><li>迭代 biomarker panel 和分层模型</li></ul></div>
+        <div class="card"><h3>公司 / 实验团队负责</h3><ul><li>提供细胞系或样本背景信息</li><li>执行有分层设计的组合实验</li><li>补做必要的 biomarker 检测</li><li>确认哪些分层规则最有业务价值</li></ul></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>六、公司需要回传什么数据</h2>
+      <p>这一部分很关键。只有回传结构化、完整、包含失败结果的数据，这个方案才会越来越准。</p>
+      <ul><li>每个模型的突变、表达、敏感性和来源信息</li><li>分层后的组合实验结果，而不只是总体平均值</li><li>额外补测的 biomarker 数据</li><li>验证成功和验证失败的分层假设</li></ul>
+    </section>
+
+    <section class="section">
+      <h2>七、关键术语解释</h2>
+      <div class="glossary"><details><summary>Biomarker</summary><p>用来判断哪类模型、哪类患者更可能响应药物的生物学指标。</p></details><details><summary>Responder / Non-responder</summary><p>响应者和非响应者，用来区分谁更可能从治疗中获益。</p></details><details><summary>SLFN11</summary><p>一个常被用来判断 DNA damage 类药物敏感性的分子标记。</p></details><details><summary>HRD</summary><p>同源重组修复缺陷，常提示肿瘤对某些 DNA damage 策略更敏感。</p></details><details><summary>ABCB1 / P-gp</summary><p>常见药物外排泵，高表达时可能导致某些 payload 效果下降。</p></details></div>
+    </section>
+
+    <section class="section">
+      <h2>八、什么时候最适合启动</h2>
+      <div class="note">建议在第一轮组合实验有了一些信号之后立刻接上做，这样最容易形成真正有解释力的数据资产。</div>
+      <h4>相关方案导航</h4>
+      <div class="related"><a class="mini-link" href="./ADC协作型方案详情-01-Payload组合推荐引擎.html">1. Payload 组合推荐引擎</a><a class="mini-link active" href="./ADC协作型方案详情-02-Payload-Biomarker响应分层引擎.html">2. Payload × Biomarker 响应分层引擎</a><a class="mini-link" href="./ADC协作型方案详情-03-剂量窗口与给药顺序优化引擎.html">3. 剂量窗口与给药顺序优化引擎</a><a class="mini-link" href="./ADC协作型方案详情-04-耐药机制逆转推荐系统.html">4. 耐药机制逆转推荐系统</a><a class="mini-link" href="./ADC协作型方案详情-05-安全性分离与毒性惩罚模型.html">5. 安全性分离与毒性惩罚模型</a><a class="mini-link" href="./ADC协作型方案详情-06-Payload到适应症匹配引擎.html">6. Payload 到适应症匹配引擎</a><a class="mini-link" href="./ADC协作型方案详情-07-组合实验设计Copilot.html">7. 组合实验设计 Copilot</a><a class="mini-link" href="./ADC协作型方案详情-08-Payload知识图谱与决策库.html">8. Payload 知识图谱与决策库</a></div>
+    </section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>算法评分细节 | ADC 组合用药推荐</title>
+  <style>
+    :root {
+      --bg: #f7f8fa;
+      --panel: #fff;
+      --text: #18202a;
+      --muted: #5b6675;
+      --line: #dfe4ea;
+      --blue: #1f5fbf;
+      --green: #157f5b;
+      --orange: #b75f00;
+      --red: #b42318;
+      --shadow: 0 10px 28px rgba(24, 32, 42, 0.08);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--text);
+      background: var(--bg);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
+      line-height: 1.65;
+    }
+    .page { max-width: 1120px; margin: 0 auto; padding: 32px 24px 56px; }
+    .topbar { display: flex; justify-content: space-between; gap: 12px; align-items: center; margin-bottom: 18px; color: var(--muted); font-size: 14px; }
+    a { color: var(--blue); text-decoration: none; font-weight: 700; }
+    .hero, .section, .card { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; box-shadow: var(--shadow); }
+    .hero { padding: 32px 36px; margin-bottom: 22px; }
+    .section { padding: 28px; margin-top: 20px; }
+    .card { padding: 18px; box-shadow: none; }
+    h1 { margin: 0 0 12px; font-size: clamp(30px, 4vw, 44px); line-height: 1.16; letter-spacing: 0; }
+    h2 { margin: 0 0 16px; font-size: 24px; line-height: 1.3; letter-spacing: 0; }
+    h3 { margin: 0 0 10px; font-size: 18px; letter-spacing: 0; }
+    p { margin: 0 0 12px; }
+    .lead { color: var(--muted); font-size: 18px; max-width: 880px; }
+    .two-col { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+    .three-col { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+    table { width: 100%; border-collapse: collapse; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; background: #fff; }
+    th, td { padding: 13px 14px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; font-size: 14px; }
+    th { background: #f3f5f8; font-weight: 800; }
+    tr:last-child td { border-bottom: 0; }
+    .formula, pre {
+      overflow-x: auto;
+      padding: 16px 18px;
+      border: 1px solid #cddaf0;
+      border-radius: 8px;
+      background: #f5f8fd;
+      color: #20324c;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+      font-size: 14px;
+      line-height: 1.65;
+      white-space: pre-wrap;
+    }
+    .note { padding: 14px 16px; border: 1px solid #f0c99a; border-radius: 8px; background: #fffaf3; color: #5d3a05; }
+    ul, ol { margin: 8px 0 0; padding-left: 22px; }
+    li { margin: 6px 0; }
+    @media (max-width: 900px) { .two-col, .three-col { grid-template-columns: 1fr; } .hero, .section { padding: 22px; } }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="topbar">
+      <a href="./ADC毒素组合用药算法需求沟通页.html">← 返回总览页</a>
+      <span>详细说明 1 / 4：算法评分细节</span>
+    </div>
+
+    <section class="hero">
+      <h1>组合推荐算法评分模型</h1>
+      <p class="lead">
+        本页解释算法如何把“机制不同且互补”“毒性要分开”“有效区间要接近”这三类业务语言转化为可计算、可解释、可迭代的评分系统。
+      </p>
+    </section>
+
+    <section class="section">
+      <h2>1. 总体思路</h2>
+      <p>
+        早期数据有限，不建议一开始就做完全黑箱的深度学习模型。更稳妥的 MVP 是“规则模型 + 知识图谱 + 证据权重”，让每一个组合推荐都能解释为什么推荐、为什么不推荐、哪些风险需要实验验证。
+      </p>
+      <div class="formula">Combination Score =
+  0.30 * Mechanism Complementarity
++ 0.20 * Resistance Pathway Blockade
++ 0.15 * Biomarker Selectivity
++ 0.15 * Dose Window Compatibility
++ 0.10 * Clinical / Experimental Feasibility
++ 0.10 * Novelty
+- 0.25 * Toxicity Overlap Penalty
+- 0.15 * Mechanism Redundancy Penalty
+- 0.10 * PK Incompatibility Penalty</div>
+      <div class="note">
+        权重不是固定不变的。若甲方目标是“发现强协同”，机制互补权重可提高；若目标是“临床转化”，毒性惩罚和临床可行性权重应提高。
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>2. 机制互补分</h2>
+      <div class="two-col">
+        <div class="card">
+          <h3>高分关系</h3>
+          <ul>
+            <li>一个药造成 DNA 损伤，另一个药阻断 DNA repair。</li>
+            <li>一个药造成复制压力，另一个药阻断 ATR/CHK1/WEE1 checkpoint。</li>
+            <li>一个药诱导有丝分裂压力，另一个药增强凋亡执行。</li>
+            <li>一个药攻击主路径，另一个药阻断已知耐药替代路径。</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>低分或惩罚关系</h3>
+          <ul>
+            <li>两个药打同一个靶点，机制高度重复。</li>
+            <li>两个药都主要依赖同一耐药敏感因素，例如同为强 P-gp 底物。</li>
+            <li>药效可能增强，但正常组织毒性也同方向增强。</li>
+            <li>缺少可解释的细胞过程连接，只是文献中偶然共现。</li>
+          </ul>
+        </div>
+      </div>
+      <table style="margin-top:18px;">
+        <thead>
+          <tr>
+            <th>机制关系</th>
+            <th>示例</th>
+            <th>评分倾向</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>损伤 + 修复阻断</td>
+            <td>Topo I inhibitor + PARP / ATR / DNA-PK inhibitor</td>
+            <td>4-5 分</td>
+          </tr>
+          <tr>
+            <td>复制压力 + checkpoint 解除</td>
+            <td>Exatecan + WEE1 / CHK1 inhibitor</td>
+            <td>4-5 分</td>
+          </tr>
+          <tr>
+            <td>有丝分裂压力 + 凋亡启动</td>
+            <td>MMAE + BCL2/MCL1 axis inhibitor</td>
+            <td>3-4 分</td>
+          </tr>
+          <tr>
+            <td>同类毒素叠加</td>
+            <td>Topo I inhibitor + Topo I inhibitor</td>
+            <td>0-1 分，并触发重复惩罚</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section">
+      <h2>3. 毒性重叠惩罚</h2>
+      <p>
+        客户强调“安全性角度，药物毒性要分开”。这可以转化为毒性向量重叠计算。理想组合不是完全没有毒性，而是药效互补的同时，主要剂量限制毒性不要高度集中在同一器官系统。
+      </p>
+      <pre>toxicity_overlap_penalty =
+  sum(min(toxicity_A[organ], toxicity_B[organ]) * organ_weight[organ])
+
+organ_weight 可根据项目目标调整：
+bone_marrow = 高权重
+cardio = 高权重
+neuro = 高权重
+liver/kidney = 中高权重
+GI/skin = 中等权重，视药物类别而定</pre>
+      <table>
+        <thead>
+          <tr>
+            <th>毒性组合</th>
+            <th>判断</th>
+            <th>算法处理</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>骨髓抑制 + 骨髓抑制</td>
+            <td>高风险，尤其是 DNA damage 药物组合</td>
+            <td>提高惩罚，建议低剂量矩阵和正常细胞对照</td>
+          </tr>
+          <tr>
+            <td>神经毒性 + 神经毒性</td>
+            <td>高风险，微管毒素组合尤其需要谨慎</td>
+            <td>除非机制优势明显，否则降低优先级</td>
+          </tr>
+          <tr>
+            <td>不同 DLT，且有效区间接近</td>
+            <td>安全性适配较好</td>
+            <td>保留高优先级，进入实验验证</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section">
+      <h2>4. 剂量窗口匹配</h2>
+      <p>
+        “不能一个 1000 起效果，一个 1 起效果”对应的是有效浓度窗口不匹配。算法要比较体外 potency，也要比较临床可达暴露。
+      </p>
+      <pre>potency_ratio = max(IC50_A, IC50_B) / min(IC50_A, IC50_B)
+exposure_margin = free_Cmax_or_AUC / IC50_or_EC50
+
+if potency_ratio < 10:
+    dose_score = 5
+elif potency_ratio < 100:
+    dose_score = 4
+elif potency_ratio < 1000:
+    dose_score = 2
+else:
+    dose_score = 0 or 1</pre>
+      <div class="note">
+        ADC payload 场景要特别谨慎：payload 的体外 IC50、ADC 递送后的细胞内浓度、血浆游离 payload 暴露和 bystander effect 暴露不是同一个概念，需要分字段记录。
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>5. 推荐输出解释模板</h2>
+      <pre>推荐组合：Exatecan + ATR inhibitor
+综合结论：高优先级
+推荐理由：
+  - Exatecan 造成复制压力和 DNA 损伤。
+  - ATR 抑制削弱复制压力应答。
+  - 两者属于“损伤诱导 + 损伤耐受阻断”的互补关系。
+风险：
+  - 骨髓抑制和正常增殖组织毒性可能叠加。
+适用背景：
+  - SLFN11 high、TP53 mutation、高复制压力、DNA repair deficient。
+实验建议：
+  - 8x8 dose matrix。
+  - Bliss / Loewe / ZIP / HSA 四种 synergy score。
+  - 检测 gamma-H2AX、apoptosis、cell cycle。</pre>
+    </section>
+  </main>
+</body>
+</html>

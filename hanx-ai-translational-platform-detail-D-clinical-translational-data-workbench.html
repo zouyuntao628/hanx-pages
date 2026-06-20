@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Clinical-Translational Data Workbench｜AI 驱动转化免疫学验证平台详情</title>
+  <style>
+    :root {
+      --bg:#07111f; --panel:rgba(255,255,255,.075); --line:rgba(255,255,255,.16); --text:#eef6ff; --muted:#a8b7c9;
+      --blue:#68d5ff; --cyan:#6fffe9; --green:#8ef6a3; --yellow:#ffe08a; --purple:#caa7ff; --shadow:0 22px 70px rgba(0,0,0,.35);
+    }
+    * { box-sizing:border-box; }
+    body { margin:0; color:var(--text); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif; line-height:1.68;
+      background: radial-gradient(circle at 10% -10%, rgba(104,213,255,.25), transparent 33%), radial-gradient(circle at 95% 10%, rgba(142,246,163,.16), transparent 28%), radial-gradient(circle at 50% 105%, rgba(202,167,255,.18), transparent 30%), var(--bg); }
+    a { color:var(--cyan); text-decoration:none; } a:hover { text-decoration:underline; }
+    .page { width:min(1180px, calc(100% - 40px)); margin:0 auto; padding:28px 0 58px; }
+    .topbar { display:flex; justify-content:space-between; align-items:center; gap:12px; color:var(--muted); font-size:14px; margin-bottom:18px; }
+    .hero, .section, .card { background:var(--panel); border:1px solid var(--line); border-radius:24px; box-shadow:var(--shadow); }
+    .hero { padding:30px; margin-bottom:20px; }
+    .section { padding:26px; margin-top:20px; }
+    .card { padding:18px; box-shadow:none; }
+    .quick { display:grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap:12px; margin:0 0 18px; }
+    .quick a { display:block; padding:14px 16px; border-radius:16px; background:rgba(255,255,255,.06); border:1px solid var(--line); color:#e3f3ff; }
+    h1 { margin:0 0 12px; font-size: clamp(34px, 5vw, 58px); line-height:1.08; letter-spacing:-.03em; }
+    h2 { margin:0 0 14px; font-size:32px; line-height:1.15; }
+    h3 { margin:0 0 10px; font-size:22px; }
+    h4 { margin:18px 0 8px; font-size:16px; color:var(--cyan); }
+    p { margin:0 0 12px; }
+    .lead { color:#d7e7f7; font-size:20px; max-width:920px; }
+    .tag-row { display:flex; gap:10px; flex-wrap:wrap; margin-top:16px; }
+    .tag { display:inline-flex; padding:6px 11px; border-radius:999px; border:1px solid var(--line); background:rgba(255,255,255,.05); font-size:13px; }
+    .grid-2 { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:18px; }
+    .grid-3 { display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap:18px; }
+    .steps { display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap:14px; }
+    .step { padding:16px; border-radius:18px; background:rgba(255,255,255,.06); border:1px solid var(--line); }
+    .step strong { display:block; margin-bottom:8px; color:var(--blue); }
+    ul { margin:10px 0; padding-left:20px; }
+    li { margin:6px 0; }
+    details { background:rgba(255,255,255,.07); border:1px solid var(--line); border-radius:18px; padding:14px 16px; }
+    summary { cursor:pointer; font-weight:800; }
+    details p { color:var(--muted); margin:10px 0 0; }
+    .glossary { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:14px; }
+    .quote { border-left:4px solid var(--green); padding:18px 20px; background:rgba(142,246,163,.08); border-radius:0 18px 18px 0; font-size:20px; }
+    .note { padding:15px 16px; border-radius:18px; background:rgba(255,255,255,.06); border:1px dashed var(--line); color:#d7e7f7; }
+    .related { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:10px; margin-top:14px; }
+    .mini-link { display:block; padding:12px 14px; border-radius:16px; border:1px solid var(--line); color:#e8f6ff; background:rgba(255,255,255,.05); font-size:13px; font-weight:600; }
+    .mini-link.active { border-color: rgba(111,255,233,.4); background: rgba(111,255,233,.08); color: var(--cyan); }
+    @media (max-width: 900px) { .quick, .grid-2, .grid-3, .steps, .glossary, .related { grid-template-columns:1fr; } .hero, .section { padding:22px; } }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="topbar">
+      <div style="display:flex; gap:14px; flex-wrap:wrap;"><a href="./hanx-ai-translational-platform.html">← 返回平台总览</a><a href="./ADC毒素组合用药算法沟通网页/ADC协作型方案总览网页.html">ADC 协作型方案库 →</a></div>
+      <span>详细说明 4 / 4</span>
+    </div>
+
+    <div class="quick">
+      <a href="#what">要做什么</a>
+      <a href="#why">为什么要做</a>
+      <a href="#effect">做成什么效果</a>
+      <a href="#steps">具体步骤</a>
+    </div>
+
+    <section class="hero">
+      <h1>Clinical-Translational Data Workbench</h1>
+      <p class="lead">把分散的临床和转化数据整理成真正能支持决策的工作台。</p>
+      <div class="tag-row"><span class="tag">数据工作台</span><span class="tag">病例解释</span><span class="tag">持续更新</span><span class="tag">长期平台</span></div>
+      <div class="note" style="margin-top:18px;">先用最通俗的话说，这个方案的目的，是帮公司把一种“看起来有潜力的药”更快变成“有证据、有方向、有下一步动作的项目”。</div>
+    </section>
+
+    <section class="section" id="what">
+      <h2>一、这件事其实是在帮公司做什么</h2>
+      <div class="grid-2">
+        <div class="card"><p>这件事其实就是：很多临床和转化数据不是没有，而是散在很多 Excel、检测报告、病理图片和项目笔记里，团队很难快速回答“为什么这个患者有效”“为什么那个队列效果一般”。</p></div>
+        <div class="card"><p>这个工作台的目标，是把这些数据统一起来，做成一个可以持续更新、可视化和解释的分析系统，让团队每次看新数据时都不必从头整理。</p></div>
+      </div>
+    </section>
+
+    <section class="section" id="why">
+      <h2>二、为什么这件事重要</h2>
+      <div class="grid-2">
+        <div class="card"><p>一旦项目进入临床，最宝贵的不是再多做几张表，而是能不能把已有数据读懂。</p></div><div class="card"><p>病例级解释能力，会直接影响后续 biomarker、队列扩展和管理层判断。</p></div><div class="card"><p>如果没有统一工作台，临床、医学、转化和管理团队容易各看各的数据。</p></div><div class="card"><p>如果不用 AI 辅助，数据标准化、图像整理、相关性分析和病例报告生成都非常费时。</p></div>
+      </div>
+    </section>
+
+    <section class="section" id="effect">
+      <h2>三、最后希望做成什么效果</h2>
+      <div class="quote">真正的目标不是多讲几个术语，而是把项目做成团队能反复使用、也能拿给外部解释的真实证据和工作系统。</div>
+      <ul><li>形成统一的数据模型和可视化 dashboard。</li><li>支持 responder / non-responder 对比和病例级解释。</li><li>帮助团队更快发现疗效、安全性和 biomarker 的联系。</li><li>让临床和转化讨论从“找表格”升级为“看结论和证据”。</li></ul>
+      <h4>这类方案最后会看到的具体成果</h4>
+      <ul><li>统一数据模型</li><li>Responder / non-responder 分析</li><li>患者级时间线与解释报告</li><li>队列 / 安全性 / biomarker dashboard</li><li>自动化分析脚本</li></ul>
+    </section>
+
+    <section class="section" id="steps">
+      <h2>四、具体怎么推进</h2>
+      <div class="steps"><div class="step"><strong>第 1 步：先定义要纳入的数据范围</strong><p>包括疗效、安全性、dose、PK/PD、IHC、flow、RNA、ctDNA、病理图像等。</p></div><div class="step"><strong>第 2 步：把数据统一格式</strong><p>把不同来源的数据清洗成一个可以对齐和查询的结构。</p></div><div class="step"><strong>第 3 步：建立核心分析视图</strong><p>先做队列概览、病例时间线、biomarker 对照和安全性看板。</p></div><div class="step"><strong>第 4 步：生成病例级解释</strong><p>把每个关键病例的疗效、安全性和样本结果串成一页说明。</p></div><div class="step"><strong>第 5 步：让团队持续使用</strong><p>不是只做一次展示，而是随着新数据不断补充。</p></div><div class="step"><strong>第 6 步：把结果反哺前面几个模块</strong><p>把新的样本和结果继续喂给 biomarker、适应症和联用分析。</p></div></div>
+    </section>
+
+    <section class="section">
+      <h2>五、我们和公司分别负责什么</h2>
+      <div class="grid-2">
+        <div class="card"><h3>我们负责</h3><ul><li>设计数据模型和分析视图</li><li>整合多来源数据并生成 dashboard</li><li>输出病例级解释和关键图表</li><li>帮助团队从数据里提炼下一步假设</li></ul></div>
+        <div class="card"><h3>公司 / 实验团队负责</h3><ul><li>提供去标识化临床与转化数据</li><li>说明字段含义、缺失情况和采样时间点</li><li>补充关键病例的背景说明</li><li>把工作台纳入日常讨论流程</li></ul></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>六、关键术语解释</h2>
+      <div class="glossary"><details><summary>PK/PD</summary><p>药代动力学和药效动力学，前者看药物浓度怎么变化，后者看药物效果怎么变化。</p></details><details><summary>ctDNA</summary><p>血液里的循环肿瘤 DNA，可用于观察肿瘤变化。</p></details><details><summary>Dashboard</summary><p>把关键信息放到一页或几页可视化界面上，方便快速看全局。</p></details><details><summary>Responder</summary><p>对治疗有明显响应的患者。</p></details><details><summary>Correlation</summary><p>相关性，指两个指标是否一起变化，但不等于因果。</p></details></div>
+    </section>
+
+    <section class="section">
+      <h2>七、什么时候适合启动</h2>
+      <div class="note">适合在已经积累一定临床和样本数据后启动，是长期最能沉淀成平台能力的模块之一。</div>
+      <h4>相关方案导航</h4>
+      <div class="related"><a class="mini-link" href="./hanx-ai-translational-platform-detail-A-HX009-mechanism-safety-validation-kit.html">A. HX009 Mechanism &amp; Safety Validation Kit</a><a class="mini-link" href="./hanx-ai-translational-platform-detail-B-HX009-patient-selection-biomarker-panel.html">B. HX009 Patient Selection Biomarker Panel</a><a class="mini-link" href="./hanx-ai-translational-platform-detail-C-HX009-indication-combination-experimental-engine.html">C. HX009 Indication &amp; Combination Experimental Engine</a><a class="mini-link active" href="./hanx-ai-translational-platform-detail-D-clinical-translational-data-workbench.html">D. Clinical-Translational Data Workbench</a></div>
+    </section>
+  </main>
+</body>
+</html>

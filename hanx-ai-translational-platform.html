@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI 驱动转化免疫学验证平台</title>
+  <style>
+    :root { --bg:#07111f; --panel:rgba(255,255,255,.075); --line:rgba(255,255,255,.16); --text:#eef6ff; --muted:#a8b7c9; --blue:#68d5ff; --cyan:#6fffe9; --green:#8ef6a3; --purple:#caa7ff; --shadow:0 22px 70px rgba(0,0,0,.35); }
+    * { box-sizing:border-box; } html { scroll-behavior:smooth; }
+    body { margin:0; color:var(--text); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif; background: radial-gradient(circle at 10% -10%, rgba(104,213,255,.25), transparent 33%), radial-gradient(circle at 95% 10%, rgba(142,246,163,.16), transparent 28%), radial-gradient(circle at 50% 105%, rgba(202,167,255,.18), transparent 30%), var(--bg); line-height:1.65; }
+    a { color:var(--cyan); text-decoration:none; } a:hover { text-decoration:underline; }
+    .wrap { width:min(1180px, calc(100% - 40px)); margin:0 auto; }
+    nav { position:sticky; top:0; z-index:20; backdrop-filter: blur(18px); background: rgba(7,17,31,.72); border-bottom:1px solid var(--line); }
+    nav .wrap { display:flex; align-items:center; justify-content:space-between; gap:20px; padding:14px 0; }
+    .brand { display:flex; align-items:center; gap:10px; font-weight:800; } .logo { width:34px; height:34px; border-radius:11px; background:linear-gradient(135deg, var(--blue), var(--green)); box-shadow:0 0 32px rgba(104,213,255,.42); }
+    .navlinks { display:flex; flex-wrap:wrap; gap:14px; font-size:14px; } .navlinks a { color:var(--muted); }
+    header { padding:84px 0 42px; }
+    .eyebrow { display:inline-flex; gap:8px; align-items:center; padding:7px 12px; border:1px solid var(--line); border-radius:999px; background:rgba(255,255,255,.06); color:var(--cyan); font-weight:700; font-size:14px; }
+    h1 { margin:20px 0 16px; max-width:980px; font-size:clamp(38px, 6vw, 72px); line-height:1.05; letter-spacing:-.04em; }
+    .lead { max-width:900px; color:#d7e7f7; font-size:clamp(18px,2vw,23px); }
+    .hero-grid { display:grid; grid-template-columns:1.35fr .65fr; gap:22px; margin-top:36px; }
+    .card, .task { background:var(--panel); border:1px solid var(--line); border-radius:24px; padding:24px; box-shadow:var(--shadow); }
+    section { padding:46px 0; } h2 { font-size:clamp(28px,4vw,42px); line-height:1.15; margin:0 0 14px; } h3 { font-size:23px; margin:0 0 12px; }
+    .sub { color:var(--muted); max-width:860px; margin:0 0 22px; } .grid-2 { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:18px; }
+    .task { position:relative; overflow:hidden; background:linear-gradient(180deg, rgba(255,255,255,.105), rgba(255,255,255,.055)); cursor:pointer; transition:transform .18s ease, border-color .18s ease; } .task:hover { transform:translateY(-3px); border-color:rgba(111,255,233,.38); } .task:before { content:""; position:absolute; inset:0 0 auto 0; height:4px; background:linear-gradient(90deg, var(--blue), var(--green), var(--purple)); }
+    .tag { display:inline-block; margin-bottom:14px; padding:5px 10px; border-radius:999px; background:rgba(111,255,233,.11); color:var(--cyan); border:1px solid rgba(111,255,233,.25); font-size:13px; font-weight:700; }
+    .pillrow { display:flex; gap:10px; flex-wrap:wrap; margin-top:18px; } .pill { border:1px solid var(--line); border-radius:999px; padding:7px 11px; color:#dcecff; background:rgba(255,255,255,.06); font-size:13px; }
+    .btn { display:inline-flex; align-items:center; min-height:40px; padding:0 14px; border-radius:10px; background:#ecfbff; color:#075770; font-weight:800; text-decoration:none; }
+    ul { padding-left:20px; margin:10px 0; } li { margin:6px 0; } .quote { border-left:4px solid var(--green); padding:18px 20px; background:rgba(142,246,163,.08); border-radius:0 18px 18px 0; font-size:20px; }
+    @media (max-width:900px) { .hero-grid, .grid-2 { grid-template-columns:1fr; } .navlinks { display:none; } header { padding-top:52px; } }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="wrap">
+      <div class="brand"><div class="logo"></div><span>AI 驱动转化免疫学验证平台</span></div>
+      <div class="navlinks"><a href="#position">定位</a><a href="#products">4 个详情页</a><a href="#how">推进建议</a><a href="./ADC毒素组合用药算法沟通网页/ADC协作型方案总览网页.html">ADC 协作型方案库</a></div>
+    </div>
+  </nav>
+  <header class="wrap">
+    <div class="eyebrow">面向 HX009 / HX044 等项目的实体成果方案</div>
+    <h1>AI 驱动转化免疫学验证平台</h1>
+    <p class="lead">这套页面把平台中的 4 个核心方案拆成独立详情页。每页都会用尽量通俗的话解释：要做什么、为什么要做、最后要做成什么效果，以及具体怎么推进。</p>
+    <div class="hero-grid">
+      <div class="card">
+        <h3>这套平台真正想解决什么</h3>
+        <ul>
+          <li>把“有潜力的免疫肿瘤资产”更快变成“有证据、有分层、有下一步动作的项目”。</li>
+          <li>减少只讲概念、不落到实验和数据的问题。</li>
+          <li>把机制验证、患者分层、适应症/联用方向和数据工作台串成一个闭环。</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>你会在这里看到什么</h3>
+        <ul>
+          <li>4 个独立产品页</li>
+          <li>每页都讲清楚用途和步骤</li>
+          <li>每页都有术语解释</li>
+          <li>适合单独发给甲方讨论</li>
+        </ul>
+      </div>
+    </div>
+  </header>
+  <main>
+    <section id="position" class="wrap">
+      <h2>平台定位</h2>
+      <div class="quote">AI 在这里不是拿来“代替科学判断”，而是拿来加快实验设计、数据处理、分层解释和项目决策，让团队把时间更多花在真正重要的问题上。</div>
+    </section>
+    <section id="products" class="wrap">
+      <h2>4 个方案详情页</h2>
+      <p class="sub">点击每个方案，可以查看它到底要做什么、为什么要做、最终会做成什么效果，以及对应的步骤和术语解释。</p>
+      <div class="grid-2">
+        <article class="task">
+          <span class="tag">产品 A</span>
+          <h3>HX009 Mechanism &amp; Safety Validation Kit</h3>
+          <p>先把 HX009 说清楚：它到底是不是同时有免疫活性，又是不是有机会比传统 CD47 方向更安全。</p>
+          <div class="pillrow"><span class="pill">机制验证</span><span class="pill">安全性初筛</span><span class="pill">BD-ready 数据</span></div>
+          <p style="margin-top:14px;"><a class="btn" href="./hanx-ai-translational-platform-detail-A-HX009-mechanism-safety-validation-kit.html">查看详情</a></p>
+        </article>
+        <article class="task">
+          <span class="tag">产品 B</span>
+          <h3>HX009 Patient Selection Biomarker Panel</h3>
+          <p>回答最关键的转化问题：谁更可能对 HX009 有反应。</p>
+          <div class="pillrow"><span class="pill">患者分层</span><span class="pill">biomarker</span><span class="pill">提高临床效率</span></div>
+          <p style="margin-top:14px;"><a class="btn" href="./hanx-ai-translational-platform-detail-B-HX009-patient-selection-biomarker-panel.html">查看详情</a></p>
+        </article>
+        <article class="task">
+          <span class="tag">产品 C</span>
+          <h3>HX009 Indication &amp; Combination Experimental Engine</h3>
+          <p>用更系统的方法决定 HX009 先打哪个适应症、和谁联用更值得。</p>
+          <div class="pillrow"><span class="pill">适应症选择</span><span class="pill">联合用药</span><span class="pill">机制驱动</span></div>
+          <p style="margin-top:14px;"><a class="btn" href="./hanx-ai-translational-platform-detail-C-HX009-indication-combination-experimental-engine.html">查看详情</a></p>
+        </article>
+        <article class="task">
+          <span class="tag">产品 D</span>
+          <h3>Clinical-Translational Data Workbench</h3>
+          <p>把分散的临床和转化数据整理成真正能支持决策的工作台。</p>
+          <div class="pillrow"><span class="pill">数据工作台</span><span class="pill">病例解释</span><span class="pill">持续更新</span></div>
+          <p style="margin-top:14px;"><a class="btn" href="./hanx-ai-translational-platform-detail-D-clinical-translational-data-workbench.html">查看详情</a></p>
+        </article></div>
+    </section>
+    <section id="how" class="wrap">
+      <h2>推荐推进顺序</h2>
+      <div class="card">
+        <ul>
+          <li>先做 Mechanism & Safety Validation Kit，把 HX009 的核心机制和安全性问题讲清楚。</li>
+          <li>再做 Patient Selection Biomarker Panel，回答谁更可能对 HX009 响应。</li>
+          <li>然后做 Indication & Combination Experimental Engine，把资源聚焦到更值得的适应症和联用方向。</li>
+          <li>最后把临床和样本结果放进 Clinical-Translational Data Workbench，形成长期数据底座。</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+  <script>
+    document.querySelectorAll('.task').forEach(card => {
+      const link = card.querySelector('a.btn');
+      if (!link) return;
+      card.addEventListener('click', event => {
+        if (event.target.closest('a')) return;
+        window.location.href = link.href;
+      });
+    });
+  </script>
+</body>
+</html>

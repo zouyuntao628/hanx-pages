@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ADC / Payload 剂量窗口与给药顺序优化引擎｜ADC 协作型方案详情</title>
+  <style>
+    :root {
+      --bg: #f7f8fa; --panel: #fff; --text: #18202a; --muted: #5b6675; --line: #dfe4ea;
+      --blue: #1f5fbf; --green: #157f5b; --orange: #b75f00; --red: #b42318; --purple: #6b4bb8;
+      --shadow: 0 10px 28px rgba(24, 32, 42, 0.08);
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; color: var(--text); background: var(--bg); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", Arial, sans-serif; line-height: 1.68; }
+    a { color: var(--blue); text-decoration: none; font-weight: 700; }
+    a:hover { text-decoration: underline; }
+    .page { max-width: 1160px; margin: 0 auto; padding: 28px 24px 56px; }
+    .topbar { display:flex; justify-content:space-between; align-items:center; gap:12px; margin-bottom:18px; color: var(--muted); font-size:14px; }
+    .hero, .section, .card { background: var(--panel); border:1px solid var(--line); border-radius:10px; box-shadow: var(--shadow); }
+    .hero { padding: 32px 36px; margin-bottom: 20px; }
+    .section { padding: 28px; margin-top: 20px; }
+    .card { padding: 18px; box-shadow:none; }
+    .quick { display:grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap:12px; margin: 0 0 18px; }
+    .quick a { display:block; padding: 14px 16px; border-radius: 8px; background:#fff; border:1px solid var(--line); color: var(--text); box-shadow: var(--shadow); font-weight:600; }
+    .related { display:grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap:10px; margin-top:14px; }
+    .mini-link { display:block; padding:10px 12px; border:1px solid var(--line); border-radius:8px; color: var(--text); background:#fbfcfe; font-size:13px; font-weight:600; }
+    .mini-link.active { border-color:#b8cdf2; background:#f3f7ff; color: var(--blue); }
+    h1 { margin:0 0 12px; font-size: clamp(30px, 4vw, 46px); line-height:1.15; }
+    h2 { margin:0 0 14px; font-size:24px; }
+    h3 { margin:0 0 10px; font-size:18px; }
+    h4 { margin: 18px 0 8px; font-size:16px; color: var(--blue); }
+    p { margin:0 0 12px; }
+    .lead { color: var(--muted); font-size:18px; max-width:900px; }
+    .tag-row { display:flex; flex-wrap:wrap; gap:8px; margin-top:14px; }
+    .tag { display:inline-flex; min-height:28px; align-items:center; padding:4px 10px; border-radius:999px; border:1px solid var(--line); color: var(--muted); background:#fff; font-size:13px; font-weight:650; }
+    .two-col { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:18px; }
+    .three-col { display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap:18px; }
+    ul, ol { margin: 8px 0 0; padding-left: 22px; }
+    li { margin: 6px 0; }
+    .step-grid { display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap:14px; }
+    .step { padding:16px; border:1px solid var(--line); border-radius:8px; background:#fbfcfe; }
+    .step strong { display:block; margin-bottom:8px; color: var(--blue); }
+    details { background:#fbfcfe; border:1px solid var(--line); border-radius:8px; padding:14px 16px; }
+    summary { cursor:pointer; font-weight:800; }
+    details p { margin:10px 0 0; color: var(--muted); }
+    .glossary { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:12px; }
+    .note { padding:14px 16px; border:1px solid #f0c99a; border-radius:8px; background:#fffaf3; color:#5d3a05; }
+    .quote { padding:16px 18px; border-left:4px solid var(--green); background:#f2fbf6; border-radius:0 8px 8px 0; color:#124c37; }
+    @media (max-width: 900px) { .quick, .two-col, .three-col, .step-grid, .glossary, .related { grid-template-columns: 1fr; } .hero, .section { padding:22px; } }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="topbar">
+      <div style="display:flex; gap:14px; flex-wrap:wrap;"><a href="./ADC协作型方案总览网页.html">← 返回 ADC 协作型方案总览</a><a href="../hanx-ai-translational-platform.html">AI 转化免疫学平台 →</a></div>
+      <span>详细说明 3 / 8</span>
+    </div>
+
+    <div class="quick">
+      <a href="#what">要做什么</a>
+      <a href="#why">为什么要做</a>
+      <a href="#effect">做成什么效果</a>
+      <a href="#steps">具体步骤</a>
+    </div>
+
+    <section class="hero">
+      <h1>剂量窗口与给药顺序优化引擎</h1>
+      <p class="lead">不是只问“配不配”，还要问“怎么配更有效、毒性更可控”。</p>
+      <div class="tag-row"><span class="tag">Schedule</span><span class="tag">Dose window</span><span class="tag">更接近临床</span><span class="tag">降低假阳性</span></div>
+      <div class="note" style="margin-top:18px;">先用大白话说，这个方案的目的不是一下子把所有问题都解决，而是先把最值得做的方向、最值得测的实验和最该保留的数据整理清楚，让公司每做一轮湿实验都更接近真正有价值的结论。</div>
+    </section>
+
+    <section class="section" id="what">
+      <h2>一、这件事到底是在做什么</h2>
+      <div class="two-col">
+        <div class="card"><p>这件事其实就是：有些组合本身方向对了，但如果剂量比例不对、给药顺序不对、暴露时间不对，实验就可能看不到价值，或者看到的是不具备临床意义的假协同。</p></div>
+        <div class="card"><p>所以我们不只推荐“哪两个药可以配”，还要继续回答“先给谁、后给谁、一起给还是错开给、在什么剂量区间里更合理”。</p></div>
+      </div>
+    </section>
+
+    <section class="section" id="why">
+      <h2>二、为什么要做</h2>
+      <div class="three-col">
+        <div class="card"><p>很多组合失败不是因为机制错了，而是 schedule 设计错了。</p></div><div class="card"><p>同样的两个药，同时给和顺序给，结果可能完全不一样。</p></div><div class="card"><p>如果不提前优化剂量窗口，后续很容易走向“体外有效、但临床不可用”的死胡同。</p></div><div class="card"><p>如果不用 AI 辅助，研究团队需要手工比较大量 dose matrix、时间点和毒性结果，非常费时。</p></div>
+      </div>
+    </section>
+
+    <section class="section" id="effect">
+      <h2>三、最后希望做成什么效果</h2>
+      <div class="quote">最终要交付的，不是一份空泛的建议，而是一套公司可以继续执行、继续复用、继续积累数据资产的具体成果。</div>
+      <ul><li>形成最适合的 dose ratio 和给药顺序建议。</li><li>减少“有协同但窗口太窄”的假阳性组合。</li><li>让实验结果更接近临床给药现实。</li><li>为后续动物实验或临床前开发提供更成熟的方案。</li></ul>
+    </section>
+
+    <section class="section" id="steps">
+      <h2>四、具体怎么做</h2>
+      <div class="step-grid"><div class="step"><strong>第 1 步：先定义要比较的给药方式</strong><p>例如同时给药、先给 payload 后给 partner、先给 partner 再给 payload。</p></div><div class="step"><strong>第 2 步：计算剂量窗口匹配程度</strong><p>先看两个药的有效浓度区间是否接近，避免一开始就做明显不匹配的组合。</p></div><div class="step"><strong>第 3 步：设计多种 schedule 实验</strong><p>在相同组合下比较不同顺序、不同暴露时间、不同 washout 设置。</p></div><div class="step"><strong>第 4 步：比较疗效和风险</strong><p>不只看 synergy，还看毒性 proxy、窗口宽度和稳定性。</p></div><div class="step"><strong>第 5 步：收敛到最佳方案</strong><p>找出最适合继续推进的顺序和剂量比例。</p></div><div class="step"><strong>第 6 步：把结果固化成规则</strong><p>为后续更多 payload 和组合复用。</p></div></div>
+    </section>
+
+    <section class="section">
+      <h2>五、我们和公司分别负责什么</h2>
+      <div class="two-col">
+        <div class="card"><h3>我们负责</h3><ul><li>设计 schedule 比较框架</li><li>建立剂量窗口匹配和顺序评分模型</li><li>解释为什么某个顺序更合理</li><li>根据结果输出下一轮方案</li></ul></div>
+        <div class="card"><h3>公司 / 实验团队负责</h3><ul><li>执行不同给药顺序和暴露时长的实验</li><li>回传时间维度数据和毒性 proxy</li><li>验证建议是否在内部系统中可执行</li><li>筛选最有现实开发意义的方案</li></ul></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>六、公司需要回传什么数据</h2>
+      <p>这一部分很关键。只有回传结构化、完整、包含失败结果的数据，这个方案才会越来越准。</p>
+      <ul><li>不同 schedule 的原始活性矩阵</li><li>不同时间点的 readout 结果</li><li>暴露时间、washout 和恢复信息</li><li>正常细胞或毒性 proxy 结果</li></ul>
+    </section>
+
+    <section class="section">
+      <h2>七、关键术语解释</h2>
+      <div class="glossary"><details><summary>Schedule</summary><p>给药顺序和时机安排，比如同时给药、先后给药。</p></details><details><summary>Potency ratio</summary><p>两个药起效浓度区间之间的差距。</p></details><details><summary>Therapeutic window</summary><p>有效和不可接受毒性之间的安全区间。</p></details><details><summary>Simultaneous dosing</summary><p>两个药在同一时间给。</p></details><details><summary>Sequential dosing</summary><p>两个药按前后顺序给，用于放大某些机制优势。</p></details></div>
+    </section>
+
+    <section class="section">
+      <h2>八、什么时候最适合启动</h2>
+      <div class="note">适合在已经找到 2-3 个看起来不错的组合后继续做，用来把“可做”推进到“更可转化”。</div>
+      <h4>相关方案导航</h4>
+      <div class="related"><a class="mini-link" href="./ADC协作型方案详情-01-Payload组合推荐引擎.html">1. Payload 组合推荐引擎</a><a class="mini-link" href="./ADC协作型方案详情-02-Payload-Biomarker响应分层引擎.html">2. Payload × Biomarker 响应分层引擎</a><a class="mini-link active" href="./ADC协作型方案详情-03-剂量窗口与给药顺序优化引擎.html">3. 剂量窗口与给药顺序优化引擎</a><a class="mini-link" href="./ADC协作型方案详情-04-耐药机制逆转推荐系统.html">4. 耐药机制逆转推荐系统</a><a class="mini-link" href="./ADC协作型方案详情-05-安全性分离与毒性惩罚模型.html">5. 安全性分离与毒性惩罚模型</a><a class="mini-link" href="./ADC协作型方案详情-06-Payload到适应症匹配引擎.html">6. Payload 到适应症匹配引擎</a><a class="mini-link" href="./ADC协作型方案详情-07-组合实验设计Copilot.html">7. 组合实验设计 Copilot</a><a class="mini-link" href="./ADC协作型方案详情-08-Payload知识图谱与决策库.html">8. Payload 知识图谱与决策库</a></div>
+    </section>
+  </main>
+</body>
+</html>

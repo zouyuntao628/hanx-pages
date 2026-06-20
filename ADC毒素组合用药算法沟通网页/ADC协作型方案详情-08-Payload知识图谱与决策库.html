@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ADC Payload 知识图谱与决策库｜ADC 协作型方案详情</title>
+  <style>
+    :root {
+      --bg: #f7f8fa; --panel: #fff; --text: #18202a; --muted: #5b6675; --line: #dfe4ea;
+      --blue: #1f5fbf; --green: #157f5b; --orange: #b75f00; --red: #b42318; --purple: #6b4bb8;
+      --shadow: 0 10px 28px rgba(24, 32, 42, 0.08);
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; color: var(--text); background: var(--bg); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", Arial, sans-serif; line-height: 1.68; }
+    a { color: var(--blue); text-decoration: none; font-weight: 700; }
+    a:hover { text-decoration: underline; }
+    .page { max-width: 1160px; margin: 0 auto; padding: 28px 24px 56px; }
+    .topbar { display:flex; justify-content:space-between; align-items:center; gap:12px; margin-bottom:18px; color: var(--muted); font-size:14px; }
+    .hero, .section, .card { background: var(--panel); border:1px solid var(--line); border-radius:10px; box-shadow: var(--shadow); }
+    .hero { padding: 32px 36px; margin-bottom: 20px; }
+    .section { padding: 28px; margin-top: 20px; }
+    .card { padding: 18px; box-shadow:none; }
+    .quick { display:grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap:12px; margin: 0 0 18px; }
+    .quick a { display:block; padding: 14px 16px; border-radius: 8px; background:#fff; border:1px solid var(--line); color: var(--text); box-shadow: var(--shadow); font-weight:600; }
+    .related { display:grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap:10px; margin-top:14px; }
+    .mini-link { display:block; padding:10px 12px; border:1px solid var(--line); border-radius:8px; color: var(--text); background:#fbfcfe; font-size:13px; font-weight:600; }
+    .mini-link.active { border-color:#b8cdf2; background:#f3f7ff; color: var(--blue); }
+    h1 { margin:0 0 12px; font-size: clamp(30px, 4vw, 46px); line-height:1.15; }
+    h2 { margin:0 0 14px; font-size:24px; }
+    h3 { margin:0 0 10px; font-size:18px; }
+    h4 { margin: 18px 0 8px; font-size:16px; color: var(--blue); }
+    p { margin:0 0 12px; }
+    .lead { color: var(--muted); font-size:18px; max-width:900px; }
+    .tag-row { display:flex; flex-wrap:wrap; gap:8px; margin-top:14px; }
+    .tag { display:inline-flex; min-height:28px; align-items:center; padding:4px 10px; border-radius:999px; border:1px solid var(--line); color: var(--muted); background:#fff; font-size:13px; font-weight:650; }
+    .two-col { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:18px; }
+    .three-col { display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap:18px; }
+    ul, ol { margin: 8px 0 0; padding-left: 22px; }
+    li { margin: 6px 0; }
+    .step-grid { display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap:14px; }
+    .step { padding:16px; border:1px solid var(--line); border-radius:8px; background:#fbfcfe; }
+    .step strong { display:block; margin-bottom:8px; color: var(--blue); }
+    details { background:#fbfcfe; border:1px solid var(--line); border-radius:8px; padding:14px 16px; }
+    summary { cursor:pointer; font-weight:800; }
+    details p { margin:10px 0 0; color: var(--muted); }
+    .glossary { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:12px; }
+    .note { padding:14px 16px; border:1px solid #f0c99a; border-radius:8px; background:#fffaf3; color:#5d3a05; }
+    .quote { padding:16px 18px; border-left:4px solid var(--green); background:#f2fbf6; border-radius:0 8px 8px 0; color:#124c37; }
+    @media (max-width: 900px) { .quick, .two-col, .three-col, .step-grid, .glossary, .related { grid-template-columns: 1fr; } .hero, .section { padding:22px; } }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="topbar">
+      <div style="display:flex; gap:14px; flex-wrap:wrap;"><a href="./ADC协作型方案总览网页.html">← 返回 ADC 协作型方案总览</a><a href="../hanx-ai-translational-platform.html">AI 转化免疫学平台 →</a></div>
+      <span>详细说明 8 / 8</span>
+    </div>
+
+    <div class="quick">
+      <a href="#what">要做什么</a>
+      <a href="#why">为什么要做</a>
+      <a href="#effect">做成什么效果</a>
+      <a href="#steps">具体步骤</a>
+    </div>
+
+    <section class="hero">
+      <h1>Payload 知识图谱与决策库</h1>
+      <p class="lead">把散落在文献、历史项目和实验结果里的知识，变成能反复使用的决策底座。</p>
+      <div class="tag-row"><span class="tag">长期壁垒</span><span class="tag">数据资产</span><span class="tag">平台化</span><span class="tag">内部复用</span></div>
+      <div class="note" style="margin-top:18px;">先用大白话说，这个方案的目的不是一下子把所有问题都解决，而是先把最值得做的方向、最值得测的实验和最该保留的数据整理清楚，让公司每做一轮湿实验都更接近真正有价值的结论。</div>
+    </section>
+
+    <section class="section" id="what">
+      <h2>一、这件事到底是在做什么</h2>
+      <div class="two-col">
+        <div class="card"><p>这件事其实就是：把 payload、靶点、linker、毒性、耐药、组合、biomarker、实验结果这些原本分散在 PPT、Excel、论文和个人经验里的东西，系统地连起来，形成一个内部可以持续查询和复用的知识库。</p></div>
+        <div class="card"><p>它不是单纯的“存资料”，而是让公司在做下一次决策时，不需要重新从头整理，而是可以直接看到：类似 payload 以前配过什么、在哪些背景下有效、为什么被淘汰。</p></div>
+      </div>
+    </section>
+
+    <section class="section" id="why">
+      <h2>二、为什么要做</h2>
+      <div class="three-col">
+        <div class="card"><p>很多公司真正的损失不是数据不够，而是历史知识没有结构化，重复走老路。</p></div><div class="card"><p>如果每次项目都从头查文献、从头做表，效率很低。</p></div><div class="card"><p>一旦实验结果越来越多，没有一个统一的数据结构，后续就很难沉淀成平台能力。</p></div><div class="card"><p>如果不用 AI 辅助，人工整理历史知识会非常慢，而且很容易遗漏负结果和边缘经验。</p></div>
+      </div>
+    </section>
+
+    <section class="section" id="effect">
+      <h2>三、最后希望做成什么效果</h2>
+      <div class="quote">最终要交付的，不是一份空泛的建议，而是一套公司可以继续执行、继续复用、继续积累数据资产的具体成果。</div>
+      <ul><li>形成可搜索、可追溯的 payload 决策库。</li><li>减少重复试错和重复整理。</li><li>让组合推荐、biomarker 分层、适应症匹配都有统一底座。</li><li>为长期平台化、专利与 BD 叙事提供更稳定的数据基础。</li></ul>
+    </section>
+
+    <section class="section" id="steps">
+      <h2>四、具体怎么做</h2>
+      <div class="step-grid"><div class="step"><strong>第 1 步：先定义数据结构</strong><p>明确要记录哪些对象：payload、partner drug、biomarker、模型、toxicity、readout、结论等。</p></div><div class="step"><strong>第 2 步：导入公开和内部信息</strong><p>把现有文献结论、历史实验和内部经验统一放进同一套字段里。</p></div><div class="step"><strong>第 3 步：建立关联关系</strong><p>例如某个 payload 对应哪些组合、哪些 biomarker、哪些失败原因。</p></div><div class="step"><strong>第 4 步：支持决策查询</strong><p>让团队能直接问“某个 payload 以前在哪些背景下有效/无效”。</p></div><div class="step"><strong>第 5 步：让新实验自动回流</strong><p>把每一轮新结果都写回知识库，逐步积累壁垒。</p></div><div class="step"><strong>第 6 步：把知识库接入前面几个引擎</strong><p>让组合推荐和分层分析都越来越依赖内部数据，而不是只靠公开信息。</p></div></div>
+    </section>
+
+    <section class="section">
+      <h2>五、我们和公司分别负责什么</h2>
+      <div class="two-col">
+        <div class="card"><h3>我们负责</h3><ul><li>设计数据模型、标签体系和查询逻辑</li><li>帮助整理历史知识和实验结果</li><li>把知识库接入推荐和分析流程</li><li>输出适合决策使用的视图</li></ul></div>
+        <div class="card"><h3>公司 / 实验团队负责</h3><ul><li>提供历史项目、实验和内部知识</li><li>决定哪些字段最符合内部工作流</li><li>持续把新结果写回系统</li><li>用它作为后续项目的共用底座</li></ul></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>六、公司需要回传什么数据</h2>
+      <p>这一部分很关键。只有回传结构化、完整、包含失败结果的数据，这个方案才会越来越准。</p>
+      <ul><li>历史实验记录和项目结论</li><li>失败方向、淘汰理由和异常情况</li><li>新项目回流的结构化实验数据</li><li>内部常用术语和业务规则</li></ul>
+    </section>
+
+    <section class="section">
+      <h2>七、关键术语解释</h2>
+      <div class="glossary"><details><summary>Knowledge graph</summary><p>把不同对象及其关系连起来的知识结构，例如 payload 和 biomarker、payload 和失败原因之间的关系。</p></details><details><summary>Schema</summary><p>数据结构定义，决定每条记录怎么存、怎么查。</p></details><details><summary>Decision library</summary><p>决策库，不只是存资料，而是帮助团队下次更快做判断。</p></details><details><summary>Node / Edge</summary><p>知识图谱里的点和连接关系，可以简单理解为“对象”和“对象之间的关系”。</p></details><details><summary>Proprietary data asset</summary><p>独家数据资产，指随着项目推进越来越难被别人复制的内部知识积累。</p></details></div>
+    </section>
+
+    <section class="section">
+      <h2>八、什么时候最适合启动</h2>
+      <div class="note">适合在前几个方案已经开始产生数据后逐步搭起来。越早设计结构越好，但真正价值会随着数据回流越来越强。</div>
+      <h4>相关方案导航</h4>
+      <div class="related"><a class="mini-link" href="./ADC协作型方案详情-01-Payload组合推荐引擎.html">1. Payload 组合推荐引擎</a><a class="mini-link" href="./ADC协作型方案详情-02-Payload-Biomarker响应分层引擎.html">2. Payload × Biomarker 响应分层引擎</a><a class="mini-link" href="./ADC协作型方案详情-03-剂量窗口与给药顺序优化引擎.html">3. 剂量窗口与给药顺序优化引擎</a><a class="mini-link" href="./ADC协作型方案详情-04-耐药机制逆转推荐系统.html">4. 耐药机制逆转推荐系统</a><a class="mini-link" href="./ADC协作型方案详情-05-安全性分离与毒性惩罚模型.html">5. 安全性分离与毒性惩罚模型</a><a class="mini-link" href="./ADC协作型方案详情-06-Payload到适应症匹配引擎.html">6. Payload 到适应症匹配引擎</a><a class="mini-link" href="./ADC协作型方案详情-07-组合实验设计Copilot.html">7. 组合实验设计 Copilot</a><a class="mini-link active" href="./ADC协作型方案详情-08-Payload知识图谱与决策库.html">8. Payload 知识图谱与决策库</a></div>
+    </section>
+  </main>
+</body>
+</html>

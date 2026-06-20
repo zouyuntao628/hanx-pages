@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Payload 安全性分离与毒性惩罚模型｜ADC 协作型方案详情</title>
+  <style>
+    :root {
+      --bg: #f7f8fa; --panel: #fff; --text: #18202a; --muted: #5b6675; --line: #dfe4ea;
+      --blue: #1f5fbf; --green: #157f5b; --orange: #b75f00; --red: #b42318; --purple: #6b4bb8;
+      --shadow: 0 10px 28px rgba(24, 32, 42, 0.08);
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; color: var(--text); background: var(--bg); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", Arial, sans-serif; line-height: 1.68; }
+    a { color: var(--blue); text-decoration: none; font-weight: 700; }
+    a:hover { text-decoration: underline; }
+    .page { max-width: 1160px; margin: 0 auto; padding: 28px 24px 56px; }
+    .topbar { display:flex; justify-content:space-between; align-items:center; gap:12px; margin-bottom:18px; color: var(--muted); font-size:14px; }
+    .hero, .section, .card { background: var(--panel); border:1px solid var(--line); border-radius:10px; box-shadow: var(--shadow); }
+    .hero { padding: 32px 36px; margin-bottom: 20px; }
+    .section { padding: 28px; margin-top: 20px; }
+    .card { padding: 18px; box-shadow:none; }
+    .quick { display:grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap:12px; margin: 0 0 18px; }
+    .quick a { display:block; padding: 14px 16px; border-radius: 8px; background:#fff; border:1px solid var(--line); color: var(--text); box-shadow: var(--shadow); font-weight:600; }
+    .related { display:grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap:10px; margin-top:14px; }
+    .mini-link { display:block; padding:10px 12px; border:1px solid var(--line); border-radius:8px; color: var(--text); background:#fbfcfe; font-size:13px; font-weight:600; }
+    .mini-link.active { border-color:#b8cdf2; background:#f3f7ff; color: var(--blue); }
+    h1 { margin:0 0 12px; font-size: clamp(30px, 4vw, 46px); line-height:1.15; }
+    h2 { margin:0 0 14px; font-size:24px; }
+    h3 { margin:0 0 10px; font-size:18px; }
+    h4 { margin: 18px 0 8px; font-size:16px; color: var(--blue); }
+    p { margin:0 0 12px; }
+    .lead { color: var(--muted); font-size:18px; max-width:900px; }
+    .tag-row { display:flex; flex-wrap:wrap; gap:8px; margin-top:14px; }
+    .tag { display:inline-flex; min-height:28px; align-items:center; padding:4px 10px; border-radius:999px; border:1px solid var(--line); color: var(--muted); background:#fff; font-size:13px; font-weight:650; }
+    .two-col { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:18px; }
+    .three-col { display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap:18px; }
+    ul, ol { margin: 8px 0 0; padding-left: 22px; }
+    li { margin: 6px 0; }
+    .step-grid { display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap:14px; }
+    .step { padding:16px; border:1px solid var(--line); border-radius:8px; background:#fbfcfe; }
+    .step strong { display:block; margin-bottom:8px; color: var(--blue); }
+    details { background:#fbfcfe; border:1px solid var(--line); border-radius:8px; padding:14px 16px; }
+    summary { cursor:pointer; font-weight:800; }
+    details p { margin:10px 0 0; color: var(--muted); }
+    .glossary { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:12px; }
+    .note { padding:14px 16px; border:1px solid #f0c99a; border-radius:8px; background:#fffaf3; color:#5d3a05; }
+    .quote { padding:16px 18px; border-left:4px solid var(--green); background:#f2fbf6; border-radius:0 8px 8px 0; color:#124c37; }
+    @media (max-width: 900px) { .quick, .two-col, .three-col, .step-grid, .glossary, .related { grid-template-columns: 1fr; } .hero, .section { padding:22px; } }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="topbar">
+      <div style="display:flex; gap:14px; flex-wrap:wrap;"><a href="./ADC协作型方案总览网页.html">← 返回 ADC 协作型方案总览</a><a href="../hanx-ai-translational-platform.html">AI 转化免疫学平台 →</a></div>
+      <span>详细说明 5 / 8</span>
+    </div>
+
+    <div class="quick">
+      <a href="#what">要做什么</a>
+      <a href="#why">为什么要做</a>
+      <a href="#effect">做成什么效果</a>
+      <a href="#steps">具体步骤</a>
+    </div>
+
+    <section class="hero">
+      <h1>安全性分离与毒性惩罚模型</h1>
+      <p class="lead">不是只找“最强”，而是先排掉那些虽然强但未来很难用的组合。</p>
+      <div class="tag-row"><span class="tag">Toxicity vector</span><span class="tag">Safety margin</span><span class="tag">减少不可转化结果</span><span class="tag">开发价值高</span></div>
+      <div class="note" style="margin-top:18px;">先用大白话说，这个方案的目的不是一下子把所有问题都解决，而是先把最值得做的方向、最值得测的实验和最该保留的数据整理清楚，让公司每做一轮湿实验都更接近真正有价值的结论。</div>
+    </section>
+
+    <section class="section" id="what">
+      <h2>一、这件事到底是在做什么</h2>
+      <div class="two-col">
+        <div class="card"><p>这件事其实就是：有些组合在体外看起来协同很强，但如果两个药的主要毒性都打在同一个系统上，比如都强烈伤骨髓、胃肠道或神经，那这种组合未来很可能很难开发。</p></div>
+        <div class="card"><p>所以这个模型要做的，是把“疗效”和“毒性重叠”放在一起看。不是只找最强的组合，而是找最值得继续推进、最可能真正走到后面的组合。</p></div>
+      </div>
+    </section>
+
+    <section class="section" id="why">
+      <h2>二、为什么要做</h2>
+      <div class="three-col">
+        <div class="card"><p>很多前期项目死在“体外很好，临床很难用”。</p></div><div class="card"><p>如果一开始就把毒性因素纳入排序，可以少走很多弯路。</p></div><div class="card"><p>甲方实验团队会更愿意验证那些更可开发的组合，而不是明知道风险很高的方向。</p></div><div class="card"><p>如果不用 AI 辅助，团队要手工比较不同药物的器官毒性、剂量限制毒性和文献证据，会非常碎片化。</p></div>
+      </div>
+    </section>
+
+    <section class="section" id="effect">
+      <h2>三、最后希望做成什么效果</h2>
+      <div class="quote">最终要交付的，不是一份空泛的建议，而是一套公司可以继续执行、继续复用、继续积累数据资产的具体成果。</div>
+      <ul><li>形成带有毒性惩罚项的组合排序。</li><li>明确哪些组合应该降级甚至排除。</li><li>帮助公司更早聚焦到更有临床希望的方向。</li><li>为后续和管理层、BD 沟通“为什么不做某些强组合”提供依据。</li></ul>
+    </section>
+
+    <section class="section" id="steps">
+      <h2>四、具体怎么做</h2>
+      <div class="step-grid"><div class="step"><strong>第 1 步：先定义要管哪些毒性</strong><p>至少把骨髓、肝、肾、GI、神经、心脏等关键系统列清楚。</p></div><div class="step"><strong>第 2 步：给每个药建立毒性向量</strong><p>不是简单写“有毒性”，而是按器官系统做结构化评分。</p></div><div class="step"><strong>第 3 步：和疗效结果一起计算</strong><p>让高协同组合也要接受毒性惩罚，避免只看正向信号。</p></div><div class="step"><strong>第 4 步：让公司补做必要的毒性 proxy</strong><p>例如正常细胞或类器官对照，用来初步判断选择性。</p></div><div class="step"><strong>第 5 步：重新排序并淘汰高风险组合</strong><p>把“看起来很强但很难开发”的方向提前排掉。</p></div><div class="step"><strong>第 6 步：沉淀成通用规则</strong><p>为后续更多 payload 复用。</p></div></div>
+    </section>
+
+    <section class="section">
+      <h2>五、我们和公司分别负责什么</h2>
+      <div class="two-col">
+        <div class="card"><h3>我们负责</h3><ul><li>建立 toxicity vector 和惩罚模型</li><li>整合疗效、毒性和可转化性</li><li>解释为什么某些组合要降级</li><li>输出更适合推进的安全性优先列表</li></ul></div>
+        <div class="card"><h3>公司 / 实验团队负责</h3><ul><li>提供已有毒性知识和内部经验</li><li>补做正常细胞或安全性 proxy 实验</li><li>回传毒性相关观察结果</li><li>结合实际开发约束确认优先级</li></ul></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>六、公司需要回传什么数据</h2>
+      <p>这一部分很关键。只有回传结构化、完整、包含失败结果的数据，这个方案才会越来越准。</p>
+      <ul><li>正常细胞、类器官或毒性 proxy 结果</li><li>已知器官毒性和 DLT 信息</li><li>组合下疗效与风险的配套数据</li><li>历史上因安全性放弃的方向</li></ul>
+    </section>
+
+    <section class="section">
+      <h2>七、关键术语解释</h2>
+      <div class="glossary"><details><summary>Toxicity vector</summary><p>把一个药在不同器官系统上的毒性结构化成一个向量，便于比较重叠程度。</p></details><details><summary>DLT</summary><p>剂量限制毒性，指限制继续加量或继续开发的关键毒性。</p></details><details><summary>Safety margin</summary><p>有效和不可接受毒性之间的距离，越宽越好。</p></details><details><summary>GI toxicity</summary><p>胃肠道毒性，比如腹泻、黏膜损伤等。</p></details><details><summary>Selectivity</summary><p>是否更偏向杀肿瘤而不是同时伤正常细胞。</p></details></div>
+    </section>
+
+    <section class="section">
+      <h2>八、什么时候最适合启动</h2>
+      <div class="note">适合和第一轮组合推荐同步设计，至少在进入第二轮验证前必须加上，否则后面很容易积累一堆“强但不可用”的组合。</div>
+      <h4>相关方案导航</h4>
+      <div class="related"><a class="mini-link" href="./ADC协作型方案详情-01-Payload组合推荐引擎.html">1. Payload 组合推荐引擎</a><a class="mini-link" href="./ADC协作型方案详情-02-Payload-Biomarker响应分层引擎.html">2. Payload × Biomarker 响应分层引擎</a><a class="mini-link" href="./ADC协作型方案详情-03-剂量窗口与给药顺序优化引擎.html">3. 剂量窗口与给药顺序优化引擎</a><a class="mini-link" href="./ADC协作型方案详情-04-耐药机制逆转推荐系统.html">4. 耐药机制逆转推荐系统</a><a class="mini-link active" href="./ADC协作型方案详情-05-安全性分离与毒性惩罚模型.html">5. 安全性分离与毒性惩罚模型</a><a class="mini-link" href="./ADC协作型方案详情-06-Payload到适应症匹配引擎.html">6. Payload 到适应症匹配引擎</a><a class="mini-link" href="./ADC协作型方案详情-07-组合实验设计Copilot.html">7. 组合实验设计 Copilot</a><a class="mini-link" href="./ADC协作型方案详情-08-Payload知识图谱与决策库.html">8. Payload 知识图谱与决策库</a></div>
+    </section>
+  </main>
+</body>
+</html>

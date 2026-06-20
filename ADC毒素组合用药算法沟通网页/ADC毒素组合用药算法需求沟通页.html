@@ -1,0 +1,1254 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ADC 毒素/小分子组合用药算法需求沟通页</title>
+  <style>
+    :root {
+      --bg: #f7f8fa;
+      --panel: #ffffff;
+      --text: #18202a;
+      --muted: #5b6675;
+      --line: #dfe4ea;
+      --blue: #1f5fbf;
+      --green: #157f5b;
+      --orange: #b75f00;
+      --red: #b42318;
+      --purple: #6b4bb8;
+      --shadow: 0 10px 28px rgba(24, 32, 42, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      color: var(--text);
+      background: var(--bg);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
+      line-height: 1.65;
+    }
+
+    .page {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 36px 24px 56px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
+      gap: 28px;
+      align-items: stretch;
+      margin-bottom: 24px;
+    }
+
+    .hero-main,
+    .hero-side,
+    .section,
+    .card,
+    .question-block {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-main {
+      padding: 34px 36px;
+      border-radius: 8px;
+    }
+
+    .hero-side {
+      padding: 26px;
+      border-radius: 8px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 14px;
+      color: var(--blue);
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0;
+    }
+
+    h1 {
+      margin: 0 0 16px;
+      font-size: clamp(30px, 4vw, 48px);
+      line-height: 1.16;
+      letter-spacing: 0;
+    }
+
+    h2 {
+      margin: 0 0 18px;
+      font-size: 24px;
+      line-height: 1.3;
+      letter-spacing: 0;
+    }
+
+    h3 {
+      margin: 0 0 10px;
+      font-size: 18px;
+      line-height: 1.35;
+      letter-spacing: 0;
+    }
+
+    p {
+      margin: 0 0 12px;
+    }
+
+    .lead {
+      max-width: 850px;
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .meta {
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fbfcfe;
+    }
+
+    .meta strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .meta span {
+      display: block;
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .side-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .side-item {
+      padding: 13px 14px;
+      border-left: 4px solid var(--blue);
+      background: #f5f8fd;
+      border-radius: 6px;
+      font-size: 15px;
+    }
+
+    .section {
+      margin-top: 22px;
+      padding: 28px;
+      border-radius: 8px;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .three-col {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: none;
+    }
+
+    .card p:last-child,
+    .section p:last-child {
+      margin-bottom: 0;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      color: var(--muted);
+      background: #fff;
+      font-size: 13px;
+      font-weight: 650;
+    }
+
+    .pill-blue { color: var(--blue); border-color: #b8cdf2; background: #f3f7ff; }
+    .pill-green { color: var(--green); border-color: #b7dfcf; background: #f1fbf7; }
+    .pill-orange { color: var(--orange); border-color: #f0c99a; background: #fff8ef; }
+    .pill-red { color: var(--red); border-color: #efb8b2; background: #fff5f4; }
+    .pill-purple { color: var(--purple); border-color: #d0c4f0; background: #f7f4ff; }
+
+    .rule-table,
+    .score-table {
+      width: 100%;
+      border-collapse: collapse;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+
+    .rule-table th,
+    .rule-table td,
+    .score-table th,
+    .score-table td {
+      padding: 13px 14px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+      font-size: 14px;
+    }
+
+    .rule-table th,
+    .score-table th {
+      background: #f3f5f8;
+      color: #2c3644;
+      font-weight: 800;
+    }
+
+    .rule-table tr:last-child td,
+    .score-table tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .flow {
+      display: grid;
+      grid-template-columns: repeat(7, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .flow-step {
+      position: relative;
+      min-height: 124px;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fbfcfe;
+    }
+
+    .flow-step strong {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--blue);
+      font-size: 14px;
+    }
+
+    .flow-step span {
+      display: block;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .formula {
+      padding: 16px 18px;
+      border: 1px solid #cddaf0;
+      border-radius: 8px;
+      background: #f5f8fd;
+      color: #20324c;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+      font-size: 14px;
+      line-height: 1.65;
+      white-space: pre-wrap;
+    }
+
+    .question-block {
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: none;
+      border-left: 5px solid var(--orange);
+    }
+
+    .question-block ol,
+    .section ul,
+    .section ol {
+      margin: 8px 0 0;
+      padding-left: 22px;
+    }
+
+    li {
+      margin: 6px 0;
+    }
+
+    .priority {
+      display: inline-flex;
+      align-items: center;
+      min-width: 66px;
+      justify-content: center;
+      padding: 3px 8px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .high { color: #0f684b; background: #e5f7ef; }
+    .mid { color: #865100; background: #fff1dc; }
+    .explore { color: #5b3aa5; background: #f0ebff; }
+
+    .note {
+      margin-top: 14px;
+      padding: 14px 16px;
+      border: 1px solid #f0c99a;
+      border-radius: 8px;
+      background: #fffaf3;
+      color: #5d3a05;
+      font-size: 14px;
+    }
+
+    .mini-label {
+      display: inline-block;
+      margin-bottom: 8px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .code-block {
+      overflow-x: auto;
+      margin: 12px 0 0;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #101828;
+      color: #eef4ff;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+      font-size: 13px;
+      line-height: 1.65;
+      white-space: pre;
+    }
+
+    .matrix {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .matrix-cell {
+      min-height: 112px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fbfcfe;
+    }
+
+    .matrix-cell strong {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--blue);
+    }
+
+    .matrix-cell span {
+      display: block;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .print-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 18px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    button {
+      appearance: none;
+      border: 1px solid #b8cdf2;
+      border-radius: 8px;
+      padding: 9px 14px;
+      color: var(--blue);
+      background: #fff;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #f3f7ff;
+    }
+
+    .detail-nav {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-bottom: 22px;
+    }
+
+    .detail-nav a {
+      display: block;
+      min-height: 86px;
+      padding: 14px 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      color: var(--text);
+      text-decoration: none;
+      box-shadow: var(--shadow);
+    }
+
+    .detail-nav strong {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--blue);
+      font-size: 15px;
+    }
+
+    .detail-nav span {
+      display: block;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    @media (max-width: 980px) {
+      .hero,
+      .two-col,
+      .three-col,
+      .flow,
+      .matrix,
+      .detail-nav {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-main {
+        padding: 28px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .page {
+        padding: 20px 14px 36px;
+      }
+
+      .section,
+      .hero-main,
+      .hero-side {
+        padding: 20px;
+      }
+
+      .meta-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .rule-table,
+      .score-table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+      }
+    }
+
+    @media print {
+      body {
+        background: #fff;
+      }
+
+      .page {
+        max-width: none;
+        padding: 0;
+      }
+
+      .print-bar,
+      button,
+      .detail-nav {
+        display: none;
+      }
+
+      .hero-main,
+      .hero-side,
+      .section,
+      .card,
+      .question-block {
+        box-shadow: none;
+      }
+
+      .section {
+        break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="print-bar">
+      <span>甲方沟通版 | ADC payload / 毒素 / 小分子组合用药推荐算法</span>
+      <button onclick="window.print()">打印 / 导出 PDF</button>
+    </div>
+
+    <nav class="detail-nav" aria-label="详细说明页面">
+      <a href="./ADC组合算法详情-评分模型.html">
+        <strong>算法评分细节</strong>
+        <span>解释机制互补、毒性惩罚、剂量窗口和推荐分如何计算。</span>
+      </a>
+      <a href="./ADC组合算法详情-数据标签库.html">
+        <strong>数据与标签库</strong>
+        <span>说明 payload、小分子、通路、毒性、证据等级如何结构化。</span>
+      </a>
+      <a href="./ADC组合算法详情-Exatecan示例.html">
+        <strong>Exatecan 示例报告</strong>
+        <span>围绕 exatecan 展开候选组合、biomarker 和风险解释。</span>
+      </a>
+      <a href="./ADC组合算法详情-湿实验方案.html">
+        <strong>湿实验设计</strong>
+        <span>给出首批组合矩阵、细胞系分层、读出指标和数据回流模板。</span>
+      </a>
+      <a href="./ADC组合算法详情-毒免双载药平台方案.html">
+        <strong>毒+免双载药平台</strong>
+        <span>展开 [毒+免] ADC + 外源口服调控药物的开发方案和工作计划。</span>
+      </a>
+      <a href="./ADC组合算法术语字典.html">
+        <strong>术语字典</strong>
+        <span>集中解释 ADC、payload、DDR、免疫通路和湿实验相关英文名词。</span>
+      </a>
+      <a href="./ADC组合算法学生阅读书目.html">
+        <strong>学生阅读书目</strong>
+        <span>按模块列出教材、章节主题、阅读目标和产出要求。</span>
+      </a>
+    </nav>
+
+    <section class="hero">
+      <div class="hero-main">
+        <div class="eyebrow">需求澄清与方案讨论稿</div>
+        <h1>面向 ADC 毒素/载荷的组合用药推荐算法</h1>
+        <p class="lead">
+          本页用于和甲方确认项目边界：围绕已知 payload 或毒素，例如 exatecan，系统评估与小分子或其他毒素的组合潜力，输出少量最值得湿实验验证的组合方案。
+        </p>
+        <div class="meta-grid">
+          <div class="meta">
+            <strong>核心输入</strong>
+            <span>一个已知 payload / 毒素 / 小分子</span>
+          </div>
+          <div class="meta">
+            <strong>核心输出</strong>
+            <span>Top 3-10 个组合建议与实验优先级</span>
+          </div>
+          <div class="meta">
+            <strong>首个示范对象</strong>
+            <span>Exatecan / Topoisomerase I 抑制剂</span>
+          </div>
+          <div class="meta">
+            <strong>验证方式</strong>
+            <span>小规模高通量组合矩阵湿实验</span>
+          </div>
+        </div>
+      </div>
+
+      <aside class="hero-side">
+        <h2>方案需要先锁定的四个变量</h2>
+        <p style="color:var(--muted);font-size:14px;margin-bottom:12px;">
+          这四个变量会直接影响算法建模、候选库筛选、评分权重和实验设计，因此建议在沟通中自然展开。
+        </p>
+        <div class="side-list">
+          <div class="side-item">组合对象：毒素+毒素、毒素+小分子、ADC+小分子的建模方式不同。</div>
+          <div class="side-item">推荐目标：增强杀伤、克服耐药、降低剂量和毒性对应不同评分权重。</div>
+          <div class="side-item">候选范围：已上市药、临床药和研究级工具化合物的转化价值不同。</div>
+          <div class="side-item">实验规模：可测试药物数、细胞系数和剂量矩阵决定输出 Top 3 还是更大候选池。</div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="section">
+      <h2>一、客户需求整理</h2>
+      <div class="two-col">
+        <div class="card">
+          <h3>业务目标</h3>
+          <p>
+            建立一个以 ADC payload/毒素为中心的组合推荐算法。给定一个已知毒素或 payload，算法从候选小分子、毒素或其他药物中筛选出最有实验验证价值的组合，并解释推荐依据。
+          </p>
+          <div class="tag-row">
+            <span class="tag pill-blue">机制互补</span>
+            <span class="tag pill-green">耐药路径阻断</span>
+            <span class="tag pill-orange">毒性谱适配</span>
+            <span class="tag pill-purple">剂量窗口匹配</span>
+          </div>
+        </div>
+        <div class="card">
+          <h3>项目难点</h3>
+          <p>
+            公开的组合湿实验数据较少，尤其是 ADC payload 相关组合数据更稀缺。因此早期不宜完全依赖机器学习黑箱模型，应先用机制、靶点、通路、毒性和药效窗口建立可解释的规则模型。
+          </p>
+          <div class="tag-row">
+            <span class="tag pill-red">数据少</span>
+            <span class="tag pill-orange">实验成本高</span>
+            <span class="tag pill-blue">需要可解释</span>
+            <span class="tag pill-green">可形成独家数据</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>二、组合判断的核心规则</h2>
+      <table class="rule-table">
+        <thead>
+          <tr>
+            <th>判断维度</th>
+            <th>优先推荐</th>
+            <th>不优先推荐</th>
+            <th>算法化指标</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>机制关系</td>
+            <td>机制不同但互补，例如造成 DNA 损伤 + 阻断 DNA 修复</td>
+            <td>两个药靶点或机制高度重叠，只是增强同一类毒性</td>
+            <td>机制互补分、机制重复惩罚</td>
+          </tr>
+          <tr>
+            <td>耐药路径</td>
+            <td>一个药的耐药替代路径可被另一个药阻断</td>
+            <td>两个药受同一耐药机制影响，例如共同被外排泵影响</td>
+            <td>耐药路径覆盖分</td>
+          </tr>
+          <tr>
+            <td>安全性</td>
+            <td>药效机制可协同，但主要剂量限制毒性尽量可分离</td>
+            <td>骨髓、神经、肝肾、胃肠道等毒性高度重叠</td>
+            <td>毒性重叠惩罚、治疗窗口分</td>
+          </tr>
+          <tr>
+            <td>有效区间</td>
+            <td>两个药在相近浓度区间产生作用，且临床暴露可达到</td>
+            <td>一个 1 nM 有效，另一个 1 uM 或更高才有效，窗口差异过大</td>
+            <td>IC50/EC50 比值、临床暴露裕度</td>
+          </tr>
+          <tr>
+            <td>实验可行性</td>
+            <td>有可购买化合物、可选细胞系、可测 biomarker 和明确读出</td>
+            <td>机制有趣但缺试剂、缺模型、缺可验证指标</td>
+            <td>实验可行性分、证据等级</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section">
+      <h2>三、建议的算法框架</h2>
+      <p>
+        第一阶段建议采用“知识库 + 标签体系 + 规则评分”的可解释模型。等首批湿实验数据回流后，再逐步加入机器学习模型或图模型。
+      </p>
+      <div class="flow">
+        <div class="flow-step">
+          <strong>1. 药物知识库</strong>
+          <span>整理 payload、小分子、毒素、ADC、靶点、机制、适应症和临床阶段。</span>
+        </div>
+        <div class="flow-step">
+          <strong>2. 通路标签</strong>
+          <span>为每个药物打上细胞过程、通路、靶点、耐药机制和 biomarker 标签。</span>
+        </div>
+        <div class="flow-step">
+          <strong>3. 组合评分</strong>
+          <span>计算机制互补、耐药阻断、毒性重叠、剂量窗口和实验可行性。</span>
+        </div>
+        <div class="flow-step">
+          <strong>4. 推荐解释</strong>
+          <span>输出 Top 3-10 组合、推荐理由、风险点和建议实验设计。</span>
+        </div>
+        <div class="flow-step">
+          <strong>5. 实验回流</strong>
+          <span>用组合矩阵和 synergy score 反向校准权重，形成独家数据集。</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>四、核心评分模型</h2>
+      <div class="formula">Combination Score =
+  0.30 * 机制互补分
++ 0.20 * 耐药路径阻断分
++ 0.15 * biomarker 选择性分
++ 0.15 * 剂量窗口匹配分
++ 0.10 * 临床/实验可行性分
++ 0.10 * 创新性分
+- 0.25 * 毒性重叠惩罚
+- 0.15 * 机制重复惩罚</div>
+      <div class="note">
+        需要和甲方确认：评分权重是否以“发现强协同”为主，还是以“安全性和临床转化”为主。不同目标会导致推荐排序明显不同。
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>五、需要建立的数据标签</h2>
+      <div class="three-col">
+        <div class="card">
+          <h3>药物与机制</h3>
+          <ul>
+            <li>drug name / drug type</li>
+            <li>primary target</li>
+            <li>mechanism of action</li>
+            <li>pathway / cellular process</li>
+            <li>approved / clinical stage</li>
+            <li>known resistance mechanism</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>ADC payload 特有标签</h3>
+          <ul>
+            <li>payload class</li>
+            <li>linker compatibility</li>
+            <li>bystander effect</li>
+            <li>membrane permeability</li>
+            <li>efflux transporter liability</li>
+            <li>free payload systemic toxicity</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>药效与安全性</h3>
+          <ul>
+            <li>IC50 / EC50 / IC90</li>
+            <li>clinical Cmax / AUC</li>
+            <li>bone marrow toxicity</li>
+            <li>GI / liver / kidney toxicity</li>
+            <li>neurotoxicity / cardiotoxicity</li>
+            <li>dose limiting toxicity</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>六、机制互补与排除规则</h2>
+      <p>
+        甲方原始需求里最核心的一句话是“找不同的通路，有用的不一样”。因此算法不能只做相似药物推荐，而要识别两个药物之间的功能关系：一个药造成压力，另一个药阻断修复、耐受、逃逸或替代通路。
+      </p>
+      <div class="matrix">
+        <div class="matrix-cell">
+          <strong>直接协同杀伤</strong>
+          <span>药物 A 造成核心损伤，药物 B 阻断细胞对损伤的修复或 checkpoint，例如 Topo I 抑制 + ATR/WEE1/CHK1 抑制。</span>
+        </div>
+        <div class="matrix-cell">
+          <strong>耐药路径阻断</strong>
+          <span>药物 B 靶向药物 A 的常见耐药通路，例如外排泵、DNA repair activation、凋亡逃逸或替代信号通路。</span>
+        </div>
+        <div class="matrix-cell">
+          <strong>合成致死</strong>
+          <span>两个药物分别打击肿瘤细胞依赖的互补脆弱点，尤其适合 biomarker 分层后的特定人群。</span>
+        </div>
+        <div class="matrix-cell">
+          <strong>选择性增强</strong>
+          <span>组合在肿瘤细胞中增强杀伤，但正常组织中不明显放大毒性，是后续临床转化更关心的类型。</span>
+        </div>
+      </div>
+      <table class="rule-table" style="margin-top:18px;">
+        <thead>
+          <tr>
+            <th>组合类型</th>
+            <th>示例</th>
+            <th>算法判断</th>
+            <th>处理方式</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>损伤 + 修复阻断</td>
+            <td>Topo I inhibitor + PARP / ATR / DNA-PK inhibitor</td>
+            <td>机制互补，可能强协同</td>
+            <td>优先推荐，但必须加毒性重叠检查</td>
+          </tr>
+          <tr>
+            <td>损伤 + checkpoint 解除</td>
+            <td>Topo I inhibitor + WEE1 / CHK1 inhibitor</td>
+            <td>复制压力和细胞周期 checkpoint 互补</td>
+            <td>优先推荐，建议做 TP53/SLFN11 分层</td>
+          </tr>
+          <tr>
+            <td>有丝分裂压力 + 凋亡启动</td>
+            <td>MMAE + BCL2/MCL1 axis inhibitor</td>
+            <td>机制不同，可能提高死亡执行</td>
+            <td>探索推荐，需重点评估血液和心脏毒性</td>
+          </tr>
+          <tr>
+            <td>同机制叠加</td>
+            <td>Topo I inhibitor + 另一个 Topo I inhibitor</td>
+            <td>机制重复，信息增量低</td>
+            <td>降低优先级或排除</td>
+          </tr>
+          <tr>
+            <td>毒性主导重叠</td>
+            <td>微管毒素 + 强神经毒性药物</td>
+            <td>可能药效增强，但正常组织风险也增强</td>
+            <td>除非有明确优势，否则不优先</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section">
+      <h2>七、毒性谱和剂量窗口如何算法化</h2>
+      <div class="two-col">
+        <div class="card">
+          <span class="mini-label">Toxicity Vector</span>
+          <h3>毒性谱向量</h3>
+          <p>
+            为每个药物建立器官毒性向量，分值可从 0-5。组合时计算重叠程度，而不是只看“有没有毒性”。重点关注剂量限制毒性是否集中在同一器官系统。
+          </p>
+          <div class="code-block">toxicity_vector = {
+  bone_marrow: 0-5,
+  liver: 0-5,
+  kidney: 0-5,
+  neuro: 0-5,
+  cardio: 0-5,
+  GI: 0-5,
+  ocular: 0-5,
+  pulmonary: 0-5,
+  skin: 0-5,
+  immune: 0-5
+}</div>
+        </div>
+        <div class="card">
+          <span class="mini-label">Dose Window</span>
+          <h3>有效区间匹配</h3>
+          <p>
+            客户提到“不能一个 1000 起效果，一个 1 起效果”，可以转成 potency ratio 和 exposure margin。对于 ADC payload，还要区分自由药物暴露和细胞内释放浓度。
+          </p>
+          <div class="code-block">potency_ratio =
+  max(IC50_A, IC50_B) / min(IC50_A, IC50_B)
+
+exposure_margin =
+  free_Cmax_or_AUC / effective_concentration</div>
+        </div>
+      </div>
+      <table class="score-table" style="margin-top:18px;">
+        <thead>
+          <tr>
+            <th>剂量区间关系</th>
+            <th>判断</th>
+            <th>建议</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>potency ratio &lt; 10</td>
+            <td>两个药物有效区间接近，组合实验容易解释</td>
+            <td>优先进入剂量矩阵</td>
+          </tr>
+          <tr>
+            <td>10-100</td>
+            <td>可接受，但剂量设计需要覆盖足够范围</td>
+            <td>建议 8x8 矩阵，避免错过协同窗口</td>
+          </tr>
+          <tr>
+            <td>100-1000</td>
+            <td>匹配较差，需要临床暴露或细胞内暴露支持</td>
+            <td>谨慎推荐，先查 PK/PD 和毒性上限</td>
+          </tr>
+          <tr>
+            <td>&gt; 1000</td>
+            <td>区间差异过大，实验结果可能不具备转化意义</td>
+            <td>通常不优先，除非有特殊递送或靶向释放机制</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="note">
+        ADC 场景中不能简单使用游离 payload 的 IC50 替代 ADC 体内暴露。算法中建议单独记录 payload intrinsic potency、ADC-delivered intracellular exposure、systemic free payload exposure 和 bystander exposure。
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>八、推荐系统的数据表设计</h2>
+      <p>
+        下面是 MVP 阶段即可落地的数据结构，既能支持人工整理 Excel，也能后续迁移到数据库或知识图谱。
+      </p>
+      <table class="rule-table">
+        <thead>
+          <tr>
+            <th>数据表</th>
+            <th>关键字段</th>
+            <th>用途</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Drug 表</td>
+            <td>drug_id, drug_name, drug_type, approval_status, clinical_stage, primary_target, mechanism, payload_class</td>
+            <td>定义候选药物和 payload 的基础属性</td>
+          </tr>
+          <tr>
+            <td>Target / Pathway 标签表</td>
+            <td>drug_id, target, pathway, cellular_process, mechanism_tag, confidence_level, evidence_source</td>
+            <td>支持机制互补、机制重复和通路覆盖计算</td>
+          </tr>
+          <tr>
+            <td>Toxicity 表</td>
+            <td>bone_marrow, liver, kidney, neuro, cardio, GI, ocular, pulmonary, skin, DLT, evidence</td>
+            <td>计算毒性重叠惩罚和安全性适配</td>
+          </tr>
+          <tr>
+            <td>Potency / Exposure 表</td>
+            <td>cell_line, cancer_type, IC50, IC90, assay_type, clinical_Cmax, free_Cmax, AUC, therapeutic_window</td>
+            <td>判断有效剂量区间是否接近，是否有临床可达性</td>
+          </tr>
+          <tr>
+            <td>Combination Evidence 表</td>
+            <td>drug_a, drug_b, cell_line, cancer_type, synergy_score, synergy_model, dose_matrix, biomarker_context</td>
+            <td>记录公开证据和甲方自有湿实验结果，形成独家数据资产</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section">
+      <h2>九、算法输出应该长什么样</h2>
+      <p>
+        甲方真正需要的是可决策结果，而不是一个黑箱分数。因此每个组合建议都应包含推荐分、证据等级、机制解释、风险提示、适用 biomarker 和实验方案。
+      </p>
+      <div class="code-block">输入：Exatecan
+癌种：可选，例如乳腺癌、肺癌、胃癌、卵巢癌
+目标：增强杀伤 / 克服耐药 / 降低剂量 / 寻找创新组合
+
+输出：
+1. 推荐组合：Exatecan + ATR inhibitor
+2. 综合评分：高
+3. 机制解释：Topo I 抑制导致复制压力，ATR 抑制阻断复制压力应答
+4. 风险提示：骨髓抑制和正常增殖组织毒性可能叠加
+5. 适用模型：SLFN11 high、TP53 mutation、高复制压力模型
+6. 实验建议：8x8 dose matrix，Bliss/Loewe/ZIP 评分，检测 gamma-H2AX 和 apoptosis
+7. 决策建议：优先进入第一批湿实验</div>
+    </section>
+
+    <section class="section">
+      <h2>十、Exatecan 示例：首批组合方向</h2>
+      <p>
+        Exatecan 是 Topoisomerase I 抑制剂，可诱导 DNA 单链损伤、复制叉崩溃、复制压力和 DNA damage response。组合推荐应优先围绕 DNA damage response、复制压力耐受、细胞周期 checkpoint 和凋亡逃逸。
+      </p>
+      <table class="score-table">
+        <thead>
+          <tr>
+            <th>组合方向</th>
+            <th>机制逻辑</th>
+            <th>适用模型/biomarker</th>
+            <th>主要风险</th>
+            <th>优先级</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Exatecan + ATR inhibitor</td>
+            <td>Exatecan 造成复制压力，ATR 抑制削弱复制压力应答，促进 DNA 损伤累积。</td>
+            <td>高复制压力、TP53 突变、SLFN11 高表达、DNA repair deficient</td>
+            <td>骨髓抑制和正常增殖组织毒性可能叠加</td>
+            <td><span class="priority high">高</span></td>
+          </tr>
+          <tr>
+            <td>Exatecan + WEE1 inhibitor</td>
+            <td>Exatecan 造成 DNA 损伤，WEE1 抑制解除 G2/M checkpoint，诱导 mitotic catastrophe。</td>
+            <td>TP53 突变、高增殖、高复制压力肿瘤</td>
+            <td>细胞周期相关毒性、胃肠道和骨髓毒性</td>
+            <td><span class="priority high">高</span></td>
+          </tr>
+          <tr>
+            <td>Exatecan + PARP inhibitor</td>
+            <td>Exatecan 诱导 DNA 损伤，PARP 抑制削弱单链 DNA 修复，HRD 背景下更有潜力。</td>
+            <td>BRCA1/2 突变、HRD-high、SLFN11-high</td>
+            <td>骨髓抑制可能重叠，机制部分相关</td>
+            <td><span class="priority mid">中高</span></td>
+          </tr>
+          <tr>
+            <td>Exatecan + CHK1 inhibitor</td>
+            <td>阻断复制压力和 DNA damage checkpoint，使细胞失去修复时间窗口。</td>
+            <td>MYC-driven、TP53 deficient、高复制压力模型</td>
+            <td>正常增殖组织毒性需重点评估</td>
+            <td><span class="priority mid">中高</span></td>
+          </tr>
+          <tr>
+            <td>Exatecan + BCL2/MCL1/BCL-XL 轴抑制剂</td>
+            <td>Exatecan 产生 DNA 损伤压力，凋亡通路抑制剂增强死亡执行。</td>
+            <td>抗凋亡蛋白依赖模型，DNA 损伤后不易凋亡的肿瘤</td>
+            <td>不同靶点毒性差异大，例如血小板或心脏毒性</td>
+            <td><span class="priority explore">探索</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="two-col" style="margin-top:18px;">
+        <div class="card">
+          <h3>Exatecan 机制链路</h3>
+          <ul>
+            <li>TOP1 inhibition</li>
+            <li>DNA single-strand break accumulation</li>
+            <li>replication fork collision / collapse</li>
+            <li>replication stress and DNA damage response</li>
+            <li>cell cycle arrest or apoptosis</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>潜在耐药路径</h3>
+          <ul>
+            <li>TOP1 expression or mutation changes</li>
+            <li>DNA repair pathway activation</li>
+            <li>replication stress tolerance increase</li>
+            <li>ABCB1/P-gp 等外排转运增强</li>
+            <li>凋亡逃逸或 anti-apoptotic dependence</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>十一、湿实验验证建议</h2>
+      <div class="two-col">
+        <div class="card">
+          <h3>首批实验设计</h3>
+          <ul>
+            <li>围绕 exatecan 选择 6-10 个候选小分子。</li>
+            <li>每组做 6x6 或 8x8 剂量矩阵。</li>
+            <li>优先选择 6-10 个具有 biomarker 差异的细胞系。</li>
+            <li>计算 Bliss、Loewe、ZIP、HSA synergy score。</li>
+            <li>同步记录 IC50 shift、细胞活性、凋亡和 DNA 损伤指标。</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>建议分层指标</h3>
+          <ul>
+            <li>TOP1 expression</li>
+            <li>SLFN11 high vs low</li>
+            <li>BRCA / HRD status</li>
+            <li>TP53 mutation status</li>
+            <li>ABCB1 / P-gp expression</li>
+            <li>baseline exatecan sensitivity</li>
+          </ul>
+        </div>
+      </div>
+      <div class="note">
+        湿实验的价值不仅是验证单个组合，更重要的是形成 payload-centered combination 的独家数据集，用于迭代算法权重和建立后续壁垒。
+      </div>
+      <table class="score-table" style="margin-top:18px;">
+        <thead>
+          <tr>
+            <th>实验层级</th>
+            <th>建议内容</th>
+            <th>目的</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>药效筛选</td>
+            <td>6-10 个组合，6-10 个细胞系，6x6 或 8x8 dose matrix</td>
+            <td>快速识别是否存在可重复协同窗口</td>
+          </tr>
+          <tr>
+            <td>机制验证</td>
+            <td>gamma-H2AX、cleaved caspase-3、cell cycle、replication stress marker</td>
+            <td>验证算法给出的机制解释是否成立</td>
+          </tr>
+          <tr>
+            <td>biomarker 分层</td>
+            <td>SLFN11、TP53、HRD、TOP1、ABCB1、baseline sensitivity</td>
+            <td>找到最适合组合的细胞背景和潜在适应症</td>
+          </tr>
+          <tr>
+            <td>安全性对照</td>
+            <td>正常细胞、骨髓相关细胞、肝细胞或类器官模型</td>
+            <td>初步判断协同是否只发生在肿瘤细胞中</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="code-block">实验数据结构建议：
+{
+  "payload": "exatecan",
+  "combination_drug": "ATR inhibitor",
+  "cell_line": "example_cell_line",
+  "cancer_type": "breast cancer",
+  "biomarker": {
+    "SLFN11": "high",
+    "TP53": "mutant",
+    "BRCA_HRD": "wildtype_or_HRD",
+    "ABCB1": "low"
+  },
+  "dose_matrix": "8x8",
+  "synergy_model": ["Bliss", "Loewe", "ZIP", "HSA"],
+  "synergy_score": 12.5,
+  "toxicity_proxy": "normal_cell_viability",
+  "conclusion": "synergistic_or_not"
+}</div>
+    </section>
+
+    <section class="section">
+      <h2>十二、MVP 交付形态</h2>
+      <div class="three-col">
+        <div class="card">
+          <h3>1. 需求说明文档</h3>
+          <p>明确算法目标、输入输出、组合推荐逻辑、数据需求和实验闭环。</p>
+        </div>
+        <div class="card">
+          <h3>2. 药物机制标签库</h3>
+          <p>整理 payload、小分子、靶点、通路、毒性、剂量窗口和证据等级。</p>
+        </div>
+        <div class="card">
+          <h3>3. 推荐算法原型</h3>
+          <p>输入一个 payload，输出 Top 3-10 组合、解释、风险提示和实验建议。</p>
+        </div>
+      </div>
+      <div class="three-col" style="margin-top:18px;">
+        <div class="card">
+          <h3>4. Exatecan 示例报告</h3>
+          <p>给出 exatecan 机制图谱、组合方向、优先级和首批实验建议。</p>
+        </div>
+        <div class="card">
+          <h3>5. 实验数据模板</h3>
+          <p>支持录入剂量矩阵、细胞系、biomarker、synergy score 和实验结论。</p>
+        </div>
+        <div class="card">
+          <h3>6. 迭代方案</h3>
+          <p>实验结果回填数据库，修正评分权重，扩展到 DXd、SN-38、MMAE、DM1、PBD 等 payload。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>十三、项目阶段建议</h2>
+      <table class="score-table">
+        <thead>
+          <tr>
+            <th>阶段</th>
+            <th>周期建议</th>
+            <th>主要任务</th>
+            <th>交付物</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>阶段 1：知识库和标签体系</td>
+            <td>2-4 周</td>
+            <td>整理 50-100 个小分子、10-20 个 ADC payload/毒素，建立机制、靶点、通路、毒性和剂量标签。</td>
+            <td>药物标签库、payload 分类表、初版通路关系表</td>
+          </tr>
+          <tr>
+            <td>阶段 2：规则模型 MVP</td>
+            <td>2-3 周</td>
+            <td>实现输入 payload 后输出 Top 3-10 组合，并给出机制解释、毒性风险、剂量匹配和实验建议。</td>
+            <td>组合推荐原型、评分规则、Exatecan 示例报告</td>
+          </tr>
+          <tr>
+            <td>阶段 3：Exatecan 湿实验验证</td>
+            <td>4-8 周</td>
+            <td>围绕 exatecan 选择 6-10 个候选药物，在分层细胞系中做组合矩阵和 synergy 评分。</td>
+            <td>首批独家组合数据、模型权重校准建议</td>
+          </tr>
+          <tr>
+            <td>阶段 4：模型迭代与扩展</td>
+            <td>持续</td>
+            <td>扩展到 DXd、SN-38、MMAE、DM1、PBD 等 payload，并引入更多实验和公开数据。</td>
+            <td>payload-specific combo predictor、数据闭环系统</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section">
+      <h2>十四、需要甲方确认的问题清单</h2>
+      <table class="score-table" style="margin-bottom:18px;">
+        <thead>
+          <tr>
+            <th>方案变量</th>
+            <th>可选范围</th>
+            <th>对算法和实验的影响</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>组合对象</td>
+            <td>毒素+毒素、毒素+小分子、ADC+小分子</td>
+            <td>决定暴露模型、毒性计算、候选库组织方式和实验体系。ADC+小分子需要考虑抗原表达、内吞、linker release 和 free payload 暴露；毒素+小分子更偏向机制互补和剂量窗口。</td>
+          </tr>
+          <tr>
+            <td>推荐目标</td>
+            <td>增强杀伤、克服耐药、降低剂量和毒性</td>
+            <td>决定评分权重。增强杀伤强调机制互补和 synergy；克服耐药强调 resistance pathway blockade；降低剂量和毒性强调 therapeutic window 和 toxicity separation。</td>
+          </tr>
+          <tr>
+            <td>候选药物范围</td>
+            <td>已上市药、临床阶段药物、研究级工具化合物</td>
+            <td>决定结果的转化距离。已上市药利于快速验证和临床联用设想；临床药适合创新组合；工具化合物适合机制验证和早期探索。</td>
+          </tr>
+          <tr>
+            <td>湿实验规模</td>
+            <td>可测试药物数量、细胞系数量、6x6 或 8x8 剂量矩阵</td>
+            <td>决定推荐输出粒度。如果实验规模有限，算法输出应收敛到 Top 3；如果平台支持高通量，可输出 Top 10-30 并做分层验证。</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="two-col">
+        <div class="question-block">
+          <h3>业务边界</h3>
+          <ol>
+            <li>首期只做 payload/毒素组合推荐，还是同时覆盖完整 ADC 药物？</li>
+            <li>组合对象优先是小分子，还是毒素之间的组合？</li>
+            <li>候选药物是否限定为已上市和临床阶段药物？是否允许工具化合物？</li>
+            <li>首个应用场景是机制探索、专利布局、临床前验证，还是 BD 项目筛选？</li>
+          </ol>
+        </div>
+        <div class="question-block">
+          <h3>算法目标</h3>
+          <ol>
+            <li>排序更重视强协同，还是更重视安全性和转化可能？</li>
+            <li>是否需要按癌种输出不同组合？</li>
+            <li>是否需要结合 biomarker 分层，例如 TP53、HRD、SLFN11、ABCB1？</li>
+            <li>是否需要输出“不推荐组合”和排除原因？</li>
+          </ol>
+        </div>
+      </div>
+      <div class="two-col" style="margin-top:18px;">
+        <div class="question-block">
+          <h3>数据资源</h3>
+          <ol>
+            <li>甲方已有多少 payload、毒素、小分子或组合实验数据？</li>
+            <li>是否有内部 IC50、细胞系敏感性、毒性或 PK 数据？</li>
+            <li>是否允许接入公开数据库和文献自动抽取？</li>
+            <li>数据交付形式是 Excel、数据库、API，还是内部系统？</li>
+          </ol>
+        </div>
+        <div class="question-block">
+          <h3>湿实验条件</h3>
+          <ol>
+            <li>首批可以测试多少个组合、多少个细胞系、多少个剂量点？</li>
+            <li>是否能做 6x6 或 8x8 combination matrix？</li>
+            <li>是否能检测 gamma-H2AX、apoptosis、cell cycle 等机制读出？</li>
+            <li>是否有正常细胞或类器官模型用于初步安全性对照？</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>十五、建议对外表述</h2>
+      <p>
+        本项目拟建立一个面向 ADC payload 与小分子联用的机制驱动型组合推荐算法。算法以 payload 的作用机制、靶点通路、耐药机制、毒性谱和有效剂量窗口为核心输入，系统评估候选小分子或其他毒素与 payload 的机制互补性、耐药路径阻断能力、安全性适配度和实验可验证性，最终输出优先级最高的组合方案。
+      </p>
+      <p>
+        与传统小分子联用研究不同，本项目重点关注 ADC payload 场景下的药效协同和毒性谱适配，尤其考虑 payload 的细胞内释放、旁观者效应、游离毒素暴露、剂量限制毒性和耐药机制。项目可首先以 exatecan 为示范 payload，构建候选组合推荐模型，并通过少量高通量湿实验验证，形成独家组合药效数据集，进一步迭代算法权重和推荐能力。
+      </p>
+    </section>
+  </main>
+</body>
+</html>

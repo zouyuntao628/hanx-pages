@@ -1,0 +1,495 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>学生阅读书目与章节 | ADC 组合算法</title>
+  <style>
+    :root {
+      --bg: #f7f8fa;
+      --panel: #fff;
+      --text: #18202a;
+      --muted: #5b6675;
+      --line: #dfe4ea;
+      --blue: #1f5fbf;
+      --green: #157f5b;
+      --orange: #b75f00;
+      --red: #b42318;
+      --shadow: 0 10px 28px rgba(24, 32, 42, 0.08);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--text);
+      background: var(--bg);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
+      line-height: 1.65;
+    }
+    .page { max-width: 1180px; margin: 0 auto; padding: 32px 24px 56px; }
+    .topbar { display: flex; justify-content: space-between; gap: 12px; align-items: center; margin-bottom: 18px; color: var(--muted); font-size: 14px; }
+    a { color: var(--blue); text-decoration: none; font-weight: 700; }
+    .hero, .section, .card, table { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; box-shadow: var(--shadow); }
+    .hero { padding: 34px 36px; margin-bottom: 22px; }
+    .section { padding: 28px; margin-top: 20px; }
+    .card { padding: 18px; box-shadow: none; }
+    h1 { margin: 0 0 12px; font-size: clamp(30px, 4vw, 44px); line-height: 1.16; letter-spacing: 0; }
+    h2 { margin: 0 0 16px; font-size: 24px; line-height: 1.3; letter-spacing: 0; }
+    h3 { margin: 0 0 10px; font-size: 18px; letter-spacing: 0; }
+    p { margin: 0 0 12px; }
+    .lead { color: var(--muted); font-size: 18px; max-width: 940px; }
+    .two-col { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+    .three-col { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+    table { width: 100%; border-collapse: collapse; overflow: hidden; }
+    th, td { padding: 12px 13px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; font-size: 14px; }
+    th { background: #f3f5f8; color: #2c3644; font-weight: 800; }
+    tr:last-child td { border-bottom: 0; }
+    ul, ol { margin: 8px 0 0; padding-left: 22px; }
+    li { margin: 6px 0; }
+    .tag {
+      display: inline-block;
+      padding: 3px 9px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      color: var(--muted);
+      background: #fbfcfe;
+      font-size: 12px;
+      font-weight: 800;
+    }
+    .must { color: #0f684b; background: #e5f7ef; border-color: #b7dfcf; }
+    .optional { color: #865100; background: #fff1dc; border-color: #f0c99a; }
+    .note { padding: 14px 16px; border: 1px solid #f0c99a; border-radius: 8px; background: #fffaf3; color: #5d3a05; }
+    .quick-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 18px;
+    }
+    .quick-nav a {
+      display: inline-flex;
+      padding: 6px 10px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: #fbfcfe;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    @media (max-width: 920px) {
+      .two-col, .three-col { grid-template-columns: 1fr; }
+      .hero, .section { padding: 22px; }
+      table { display: block; overflow-x: auto; white-space: nowrap; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="topbar">
+      <a href="./ADC毒素组合用药算法需求沟通页.html">← 返回总览页</a>
+      <span>学生阅读书目与章节 | ADC 组合算法</span>
+    </div>
+
+    <section class="hero">
+      <h1>学生阅读书目与章节：中文教材优先版</h1>
+      <p class="lead">
+        本页用于给学生布置背景阅读，以中文教材和中文资料为主。章节编号会随教材版本变化，所以这里主要用“章节标题/主题”定位。学生不需要整本通读，按模块阅读对应章节，读完要形成表格、机制图或推荐卡片。
+      </p>
+      <div class="note" style="margin-top:18px;">
+        资料获取建议使用学校图书馆、馆际互借、超星/读秀、知网/万方/维普机构权限、人卫 E 教平台、出版社电子书、学堂在线/中国大学 MOOC 等合法渠道。不要把未授权下载链接写进学生任务书或项目材料。
+      </div>
+      <div class="quick-nav">
+        <a href="#route">阅读路线</a>
+        <a href="#books">核心书目</a>
+        <a href="#module">模块章节</a>
+        <a href="#week">配合 8 周计划</a>
+        <a href="#output">读完交付</a>
+      </div>
+    </section>
+
+    <section class="section" id="route">
+      <h2>一、建议阅读路线</h2>
+      <p>
+        阅读顺序建议按“先框架、再机制、再实验、最后项目化”的逻辑推进。不要从 STING 或 ATRi 这些细节直接开始，否则学生容易陷入缩写和通路细节，看不出项目整体关系。
+      </p>
+      <div class="three-col">
+        <div class="card">
+          <h3>第一层：看懂 ADC</h3>
+          <p>先理解抗体、靶点、linker、payload、DAR、PK 和毒性。目标是能解释一个 ADC 为什么有效、为什么会失败。</p>
+          <span class="tag must">必读</span>
+        </div>
+        <div class="card">
+          <h3>第二层：看懂机制</h3>
+          <p>再理解 Topo I、DNA damage、DDR、ATR/WEE1/PARP/CHK1/DNA-PK、STING 和肿瘤免疫。</p>
+          <span class="tag must">必读</span>
+        </div>
+        <div class="card">
+          <h3>第三层：看懂实验</h3>
+          <p>最后学习组合矩阵、IC50、synergy score、PBMC cytokine release、gamma-H2AX 和 biomarker 分层。</p>
+          <span class="tag must">必读</span>
+        </div>
+      </div>
+      <div class="note" style="margin-top:18px;">
+        学生阅读时不要只摘抄概念。每读完一个模块，都要能回答：这个概念和 [毒+免] ADC + 外源调控药物组合有什么关系？
+      </div>
+      <table style="margin-top:18px;">
+        <thead>
+          <tr>
+            <th>顺序</th>
+            <th>先读什么</th>
+            <th>对应资料</th>
+            <th>读到什么程度</th>
+            <th>读完产出</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>术语字典</td>
+            <td><a href="./ADC组合算法术语字典.html">ADC 组合算法术语字典</a></td>
+            <td>先把 ADC、payload、linker、DAR、Topo I、STING、ATRi、PARPi、CRS 等词看懂。</td>
+            <td>自己补充 10 个不懂的词，并写一句话解释。</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>ADC 基础</td>
+            <td>中文 ADC 综述 + 《药物化学》抗体药物/抗肿瘤药物相关章节</td>
+            <td>理解 ADC 由抗体、linker、payload 组成，以及为什么要关注 DAR、linker 稳定性和旁观者效应。</td>
+            <td>画一张 ADC 结构图，并标注抗体、linker、payload、DAR。</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>抗肿瘤药物和 Topo I payload</td>
+            <td>《药物化学》《药理学》中抗恶性肿瘤药物、拓扑异构酶抑制剂章节</td>
+            <td>理解 Topo I 抑制剂如何造成 DNA damage 和 replication stress。</td>
+            <td>写出 exatecan/DXd/SN-38 属于什么机制，为什么适合做 ADC payload。</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>DNA 损伤修复和细胞周期</td>
+            <td>《生物化学与分子生物学》《医学细胞生物学》DNA 复制、DNA 损伤修复、细胞周期章节</td>
+            <td>理解 DDR、ATR、CHK1、WEE1、PARP、DNA-PK、HRD、G2/M checkpoint 各自位置。</td>
+            <td>画一张 DNA damage response 简图，标出 ATRi/WEE1i/PARPi/CHK1i/DNA-PKi 阻断位置。</td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>先天免疫和 STING</td>
+            <td>《医学免疫学》固有免疫、细胞因子、抗原提呈章节 + STING/cGAS-STING 中文综述</td>
+            <td>理解 STING 为什么能激活 type I IFN、CXCL10、抗原呈递和免疫细胞募集。</td>
+            <td>用 5 行文字解释“为什么 STING 在肿瘤局部激活有价值，但全身释放有风险”。</td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td>肿瘤免疫微环境</td>
+            <td>《医学免疫学》《肿瘤学概论》中肿瘤免疫、免疫检查点、肿瘤微环境章节</td>
+            <td>理解 cold tumor、hot tumor、PD-1/PD-L1、CSF1R、TGF-beta 的基本含义。</td>
+            <td>写出 STING agonist 为什么可能与 PD-1/PD-L1 或髓系调节药物联用。</td>
+          </tr>
+          <tr>
+            <td>7</td>
+            <td>药代、药效和毒性</td>
+            <td>《药理学》《临床药理学》《毒理学基础》中 PK/PD、不良反应、抗肿瘤药毒性章节</td>
+            <td>理解 Cmax、AUC、IC50、治疗窗口、DLT、骨髓毒性、CRS。</td>
+            <td>解释为什么“协同杀伤强”不等于“临床可行”。</td>
+          </tr>
+          <tr>
+            <td>8</td>
+            <td>双载药 ADC 和 CMC 风险</td>
+            <td>中文 ADC 综述、企业技术资料、双载药 ADC 论文/专利摘要</td>
+            <td>理解 dual-payload ADC、payload ratio、orthogonal conjugation、branched linker、DAR distribution。</td>
+            <td>列出双载药 ADC 的 3 个核心工艺风险和 3 个质控指标。</td>
+          </tr>
+          <tr>
+            <td>9</td>
+            <td>组合实验设计</td>
+            <td>药理实验方法资料、组合用药/协同评分中文综述</td>
+            <td>理解 6x6/8x8 dose matrix、Bliss、Loewe、ZIP、HSA、gamma-H2AX、PBMC cytokine release。</td>
+            <td>设计一个 Topo I ADC + ATRi 的 6x6 组合矩阵草案。</td>
+          </tr>
+          <tr>
+            <td>10</td>
+            <td>回到项目方案</td>
+            <td><a href="./ADC组合算法详情-毒免双载药平台方案.html">毒+免双载药平台方案</a></td>
+            <td>把前面读到的概念串成一个完整开发路径：干实验筛选、组合评分、湿实验验证、Go/No-Go。</td>
+            <td>形成 Top 3-6 候选组合推荐卡和湿实验交接表。</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section" id="books">
+      <h2>二、核心书目</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>优先级</th>
+            <th>书名/资料类型</th>
+            <th>建议阅读章节主题</th>
+            <th>学生要掌握什么</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="tag must">必读</span></td>
+            <td>《药物化学》人民卫生出版社或高等教育出版社版本</td>
+            <td>抗肿瘤药物、DNA 拓扑异构酶抑制剂、微管抑制剂、靶向抗肿瘤药物、抗体药物相关内容</td>
+            <td>先理解 payload 和抗肿瘤小分子的药物化学基础。</td>
+          </tr>
+          <tr>
+            <td><span class="tag must">必读</span></td>
+            <td>《药理学》人民卫生出版社，本科临床/基础医学规划教材</td>
+            <td>抗恶性肿瘤药物、药物效应动力学、药物代谢动力学、药物不良反应、药物相互作用</td>
+            <td>理解 IC50、治疗窗口、剂量限制毒性和药物联用风险。</td>
+          </tr>
+          <tr>
+            <td><span class="tag must">必读</span></td>
+            <td>《生物化学与分子生物学》人民卫生出版社或高等教育出版社版本</td>
+            <td>DNA 复制、DNA 损伤与修复、基因表达调控、细胞信号转导、肿瘤相关分子机制</td>
+            <td>理解 Topo I、DDR、HRD、PARP、DNA-PK 等机制背景。</td>
+          </tr>
+          <tr>
+            <td><span class="tag must">必读</span></td>
+            <td>《医学免疫学》人民卫生出版社，本科规划教材</td>
+            <td>固有免疫、抗原提呈、T 细胞免疫、细胞因子、肿瘤免疫、免疫检查点、免疫病理</td>
+            <td>理解 STING、PD-1/PD-L1、CSF1R、TGF-beta 和 CRS。</td>
+          </tr>
+          <tr>
+            <td><span class="tag must">必读</span></td>
+            <td>《肿瘤学概论》人民卫生出版社或《肿瘤生物学》中文教材/译著</td>
+            <td>肿瘤发生发展、肿瘤治疗、靶向治疗、免疫治疗、肿瘤微环境、耐药机制</td>
+            <td>理解为什么 DNA damage、免疫激活和耐药阻断能形成组合逻辑。</td>
+          </tr>
+          <tr>
+            <td><span class="tag must">必读</span></td>
+            <td>中文 ADC 综述、药明合联/药明康德/科伦博泰等公开技术资料、中文数据库论文</td>
+            <td>ADC 结构、linker-payload、DAR、旁观者效应、临床 ADC 案例、双载药 ADC、免疫刺激型 ADC</td>
+            <td>中文 ADC 系统教材较少，需要用综述和企业技术资料补足 ADC 专门知识。</td>
+          </tr>
+          <tr>
+            <td><span class="tag optional">选读</span></td>
+            <td>《临床药理学》人民卫生出版社</td>
+            <td>抗肿瘤药物临床药理、药物相互作用、PK/PD、临床试验和安全性评价</td>
+            <td>用于补充外源口服调控药物的临床转化理解。</td>
+          </tr>
+          <tr>
+            <td><span class="tag optional">选读</span></td>
+            <td>《毒理学基础》或《毒理学》人民卫生出版社/高等教育出版社版本</td>
+            <td>免疫毒性、血液毒性、肝肾毒性、安全性评价、毒理学实验设计</td>
+            <td>用于理解 CRS、骨髓毒性、肝毒性和 NHP 毒理。</td>
+          </tr>
+          <tr>
+            <td><span class="tag optional">选读</span></td>
+            <td>《新药研究与开发》《药物研发基本原理》或转化医学类中文教材</td>
+            <td>临床前开发、IND、CMC、GLP 毒理、生物标志物、转化研究</td>
+            <td>理解从干实验到湿实验、再到候选方案筛选的路线。</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section" id="module">
+      <h2>三、按项目模块阅读哪些章节</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>项目模块</th>
+            <th>对应书目</th>
+            <th>重点章节/主题</th>
+            <th>不要花太多时间的内容</th>
+            <th>读完要能回答</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>ADC 基础</td>
+            <td>中文 ADC 综述、企业技术白皮书、药物化学抗体药物相关章节</td>
+            <td>ADC design、antibody selection、linker、payload、DAR、site-specific conjugation、PK/PD、toxicity</td>
+            <td>复杂有机合成细节可以先略读。</td>
+            <td>为什么 ADC 不是“抗体 + 毒素”这么简单？</td>
+          </tr>
+          <tr>
+            <td>双载药 ADC</td>
+            <td>中文 ADC 综述、双载药 ADC 论文、企业会议资料和专利摘要</td>
+            <td>dual-payload ADC、orthogonal conjugation、branched linker、payload ratio、DAR distribution</td>
+            <td>只做单 payload 的老 ADC 案例可快速浏览。</td>
+            <td>双载药 ADC 最大 CMC 难点是什么？</td>
+          </tr>
+          <tr>
+            <td>Topo I payload</td>
+            <td>《药物化学》《药理学》《生物化学与分子生物学》、ADC payload 中文综述</td>
+            <td>topoisomerase I、camptothecin derivatives、exatecan、DXd、DNA damage、replication stress</td>
+            <td>传统化疗历史可略读。</td>
+            <td>为什么 Topo I payload 适合和 DDR 抑制剂联用？</td>
+          </tr>
+          <tr>
+            <td>DNA 损伤修复</td>
+            <td>《生物化学与分子生物学》《医学细胞生物学》《肿瘤学概论》、DDR 中文综述</td>
+            <td>DNA damage response、ATR、CHK1、WEE1、PARP、DNA-PK、ATM、HRD、NHEJ、G2/M checkpoint</td>
+            <td>过深的结构生物学细节可暂时略读。</td>
+            <td>ATRi、WEE1i、PARPi、CHK1i、DNA-PKi 各自阻断哪一步？</td>
+          </tr>
+          <tr>
+            <td>STING 和先天免疫</td>
+            <td>《医学免疫学》、STING/cGAS-STING 通路中文综述</td>
+            <td>innate immunity、cytosolic DNA sensing、cGAS-STING pathway、type I IFN、antigen presentation、cytokine</td>
+            <td>所有免疫细胞谱系不用一开始全部背熟。</td>
+            <td>为什么 STING 在肿瘤局部激活有价值，但系统性释放有 CRS 风险？</td>
+          </tr>
+          <tr>
+            <td>肿瘤免疫微环境</td>
+            <td>《医学免疫学》《肿瘤学概论》、肿瘤免疫治疗中文综述</td>
+            <td>cold tumor、hot tumor、T cell exhaustion、PD-1/PD-L1、myeloid suppression、CSF1R、TGF-beta</td>
+            <td>CAR-T 等不相关治疗可略读。</td>
+            <td>STING agonist 为什么可能和 PD-1/PD-L1 或髓系调节药物联用？</td>
+          </tr>
+          <tr>
+            <td>药理和毒性</td>
+            <td>《药理学》《临床药理学》《毒理学基础》</td>
+            <td>PK、PD、Cmax、AUC、therapeutic window、DLT、myelotoxicity、cytokine release、drug-drug interaction</td>
+            <td>与肿瘤药物无关的系统药理可略读。</td>
+            <td>为什么“协同杀伤强”不一定代表“治疗窗口好”？</td>
+          </tr>
+          <tr>
+            <td>组合实验设计</td>
+            <td>《药理学实验方法学》、药效学实验中文资料、组合用药/协同评分中文综述</td>
+            <td>IC50、dose-response curve、6x6/8x8 matrix、Bliss、Loewe、ZIP、HSA、replicate、normal cell control</td>
+            <td>复杂统计推导可先略读，先掌握用途。</td>
+            <td>为什么要做剂量矩阵，而不是只测一个浓度？</td>
+          </tr>
+          <tr>
+            <td>转化开发</td>
+            <td>《新药研究与开发》、转化医学中文教材、NMPA/CDE 指导原则摘要</td>
+            <td>IND-enabling studies、GLP tox、CMC package、biomarker strategy、clinical candidate selection</td>
+            <td>法规细节不必一开始深入。</td>
+            <td>一个组合从干实验到小规模湿实验，再到候选方案筛选，需要哪些证据？</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section">
+      <h2>四、中文资料检索关键词与合法渠道</h2>
+      <div class="two-col">
+        <div class="card">
+          <h3>推荐检索关键词</h3>
+          <ul>
+            <li>抗体偶联药物 / ADC / 抗体药物偶联物</li>
+            <li>双载药 ADC / 双载荷 ADC / 免疫刺激型 ADC</li>
+            <li>连接子 / 载荷 / DAR / 旁观者效应</li>
+            <li>拓扑异构酶 I 抑制剂 / 依沙替康 / 德曲替康</li>
+            <li>DNA 损伤应答 / ATR / WEE1 / PARP / CHK1 / DNA-PK</li>
+            <li>STING 通路 / cGAS-STING / 先天免疫 / I 型干扰素</li>
+            <li>肿瘤免疫微环境 / PD-1 / PD-L1 / CSF1R / TGF-beta</li>
+            <li>药物联用 / 协同评分 / Bliss / Loewe / ZIP / HSA</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>合法获取渠道</h3>
+          <ul>
+            <li>学校图书馆纸质书和电子书。</li>
+            <li>超星、读秀、馆际互借和文献传递。</li>
+            <li>中国知网、万方、维普机构权限。</li>
+            <li>人民卫生出版社、高等教育出版社、科学出版社官方电子书平台。</li>
+            <li>NMPA/CDE 官方指导原则和技术审评资料。</li>
+            <li>企业官网、技术白皮书、会议公开 PDF 和专利数据库。</li>
+          </ul>
+        </div>
+      </div>
+      <div class="note" style="margin-top:18px;">
+        如果学生只能找到英文 ADC 专著，可以先不整本阅读，优先使用中文 ADC 综述和企业技术资料建立框架；再用英文资料补充具体名词和最新案例。
+      </div>
+    </section>
+
+    <section class="section" id="week">
+      <h2>五、配合 8 周工作计划的阅读安排</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>周次</th>
+            <th>阅读重点</th>
+            <th>建议章节主题</th>
+            <th>读完交付</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>第 1 周</td>
+            <td>术语和项目框架</td>
+            <td>ADC overview、payload、linker、target antigen、DDR overview、innate immunity overview</td>
+            <td>术语表补充版、项目词表、检索词表。</td>
+          </tr>
+          <tr>
+            <td>第 2 周</td>
+            <td>竞品和产业进展</td>
+            <td>dual-payload ADC、iADC、STING ADC、clinical development case studies</td>
+            <td>竞品矩阵表，区分公开事实和推断。</td>
+          </tr>
+          <tr>
+            <td>第 3 周</td>
+            <td>Payload/linker/CMC</td>
+            <td>linker-payload chemistry、DAR、site-specific conjugation、plasma stability、ADC analytical characterization</td>
+            <td>payload/linker 风险评分表。</td>
+          </tr>
+          <tr>
+            <td>第 4 周</td>
+            <td>外源调控药物</td>
+            <td>ATR、WEE1、PARP、CHK1、DNA-PK、PD-1/PD-L1、CSF1R、TGF-beta</td>
+            <td>外源药物候选库。</td>
+          </tr>
+          <tr>
+            <td>第 5 周</td>
+            <td>细胞系和 biomarker</td>
+            <td>target expression、SLFN11、TP53、BRCA/HRD、ABCB1/P-gp、STING pathway competence</td>
+            <td>细胞系面板和 biomarker 分层理由。</td>
+          </tr>
+          <tr>
+            <td>第 6 周</td>
+            <td>组合评分</td>
+            <td>mechanism complementarity、toxicity overlap、dose window、synergy rationale、evidence grading</td>
+            <td>Top 10 组合排序和 Top 3-6 推荐卡。</td>
+          </tr>
+          <tr>
+            <td>第 7 周</td>
+            <td>湿实验设计</td>
+            <td>IC50、dose matrix、Bliss/Loewe/ZIP/HSA、gamma-H2AX、PBMC cytokine release</td>
+            <td>湿实验交接表和数据回填模板。</td>
+          </tr>
+          <tr>
+            <td>第 8 周</td>
+            <td>汇报和决策</td>
+            <td>Go/No-Go、translational package、IND-enabling concept、risk-benefit summary</td>
+            <td>PPT、Excel 数据包、SOP 草案、决策表。</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section" id="output">
+      <h2>六、学生读完后必须交什么</h2>
+      <div class="two-col">
+        <div class="card">
+          <h3>每周固定交付</h3>
+          <ul>
+            <li>本周阅读的书目/章节主题。</li>
+            <li>新增术语和定义。</li>
+            <li>3-5 条关键结论。</li>
+            <li>原始来源链接或书籍页码。</li>
+            <li>本周对项目推荐有什么影响。</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>最终交付</h3>
+          <ul>
+            <li>术语字典补充表。</li>
+            <li>竞品矩阵表。</li>
+            <li>payload/linker 风险表。</li>
+            <li>外源药物候选库。</li>
+            <li>Top 3-6 组合推荐卡。</li>
+            <li>湿实验交接包。</li>
+          </ul>
+        </div>
+      </div>
+      <div class="note" style="margin-top:18px;">
+        对学生的要求可以写得很明确：每个结论必须能追溯到教材、论文、公司公告、临床登记或数据库；没有来源的内容只能作为假设，不能作为最终判断。
+      </div>
+    </section>
+  </main>
+</body>
+</html>

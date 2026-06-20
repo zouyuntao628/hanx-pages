@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>数据与标签库 | ADC 组合用药推荐</title>
+  <style>
+    :root {
+      --bg: #f7f8fa;
+      --panel: #fff;
+      --text: #18202a;
+      --muted: #5b6675;
+      --line: #dfe4ea;
+      --blue: #1f5fbf;
+      --green: #157f5b;
+      --orange: #b75f00;
+      --purple: #6b4bb8;
+      --shadow: 0 10px 28px rgba(24, 32, 42, 0.08);
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; color: var(--text); background: var(--bg); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", Arial, sans-serif; line-height: 1.65; }
+    .page { max-width: 1120px; margin: 0 auto; padding: 32px 24px 56px; }
+    .topbar { display: flex; justify-content: space-between; gap: 12px; align-items: center; margin-bottom: 18px; color: var(--muted); font-size: 14px; }
+    a { color: var(--blue); text-decoration: none; font-weight: 700; }
+    .hero, .section, .card, table { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; box-shadow: var(--shadow); }
+    .hero { padding: 32px 36px; margin-bottom: 22px; }
+    .section { padding: 28px; margin-top: 20px; }
+    .card { padding: 18px; box-shadow: none; }
+    h1 { margin: 0 0 12px; font-size: clamp(30px, 4vw, 44px); line-height: 1.16; letter-spacing: 0; }
+    h2 { margin: 0 0 16px; font-size: 24px; letter-spacing: 0; }
+    h3 { margin: 0 0 10px; font-size: 18px; letter-spacing: 0; }
+    p { margin: 0 0 12px; }
+    .lead { color: var(--muted); font-size: 18px; max-width: 900px; }
+    .three-col { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+    .two-col { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+    table { width: 100%; border-collapse: collapse; overflow: hidden; }
+    th, td { padding: 13px 14px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; font-size: 14px; }
+    th { background: #f3f5f8; font-weight: 800; }
+    tr:last-child td { border-bottom: 0; }
+    ul, ol { margin: 8px 0 0; padding-left: 22px; }
+    li { margin: 6px 0; }
+    .tag { display: inline-block; margin: 4px 8px 0 0; padding: 4px 10px; border-radius: 999px; border: 1px solid var(--line); font-size: 13px; color: var(--muted); }
+    .note { padding: 14px 16px; border: 1px solid #d8e9dd; border-radius: 8px; background: #f4fbf7; color: #26513d; }
+    pre {
+      overflow-x: auto;
+      padding: 16px 18px;
+      border: 1px solid #cddaf0;
+      border-radius: 8px;
+      background: #f5f8fd;
+      color: #20324c;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+      font-size: 13px;
+      line-height: 1.65;
+      white-space: pre-wrap;
+    }
+    @media (max-width: 900px) { .three-col, .two-col { grid-template-columns: 1fr; } .hero, .section { padding: 22px; } }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="topbar">
+      <a href="./ADC毒素组合用药算法需求沟通页.html">← 返回总览页</a>
+      <span>详细说明 2 / 4：数据与标签库</span>
+    </div>
+
+    <section class="hero">
+      <h1>数据与标签库</h1>
+      <p class="lead">
+        组合推荐算法能不能做起来，关键不在“算法花哨”，而在能否把药物、通路、毒性、剂量和证据结构化。这个页面说明我们需要整理什么数据，以及每一类标签如何服务推荐逻辑。
+      </p>
+    </section>
+
+    <section class="section">
+      <h2>1. 药物基础表</h2>
+      <p>每个候选药物都要有最小可用信息，至少支持“是什么、打什么、怎么打、目前证据到哪一步”。</p>
+      <table>
+        <thead>
+          <tr>
+            <th>字段</th>
+            <th>说明</th>
+            <th>用途</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>drug_name / drug_id</td>
+            <td>药物唯一标识</td>
+            <td>主键</td>
+          </tr>
+          <tr>
+            <td>drug_type</td>
+            <td>payload / small molecule / ADC / toxin</td>
+            <td>区分不同推荐逻辑</td>
+          </tr>
+          <tr>
+            <td>primary_target</td>
+            <td>如 TOP1、ATR、WEE1、PARP1/2 等</td>
+            <td>机制互补和重复判断</td>
+          </tr>
+          <tr>
+            <td>mechanism</td>
+            <td>作用方式说明</td>
+            <td>生成解释文本</td>
+          </tr>
+          <tr>
+            <td>approval_status / clinical_stage</td>
+            <td>已上市、临床、临床前、工具化合物</td>
+            <td>判断实验可得性和转化价值</td>
+          </tr>
+          <tr>
+            <td>indication</td>
+            <td>原始适应症</td>
+            <td>帮助选择癌种和人群</td>
+          </tr>
+          <tr>
+            <td>known_resistance_mechanism</td>
+            <td>已知耐药机制</td>
+            <td>做耐药路径阻断推荐</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section">
+      <h2>2. 机制与通路标签</h2>
+      <div class="two-col">
+        <div class="card">
+          <h3>标签层级</h3>
+          <ol>
+            <li>细胞过程：DNA damage、replication stress、mitosis、apoptosis、checkpoint、proteostasis。</li>
+            <li>通路：DNA repair、ATR/CHK1/WEE1、PARP、HRD、NHEJ、PI3K/AKT、MAPK、BCL2 family。</li>
+            <li>靶点：TOP1、PARP1/2、ATR、CHK1、WEE1、DNA-PK、ATM、BCL2、MCL1 等。</li>
+          </ol>
+        </div>
+        <div class="card">
+          <h3>推荐时怎么用</h3>
+          <p>同一个药可以带多个标签。算法并不是看“是否不同靶点”这么简单，而是看这两个药在细胞过程和通路层面是否互补。</p>
+          <div>
+            <span class="tag">损伤诱导</span>
+            <span class="tag">修复阻断</span>
+            <span class="tag">checkpoint 解除</span>
+            <span class="tag">凋亡启动</span>
+            <span class="tag">耐药阻断</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>3. ADC payload 特有标签</h2>
+      <p>这部分是项目和普通小分子联用研究最大的区别。ADC payload 的递送和暴露方式不同，必须单独建模。</p>
+      <table>
+        <thead>
+          <tr>
+            <th>标签</th>
+            <th>说明</th>
+            <th>为什么重要</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>payload_class</td>
+            <td>Topo I、microtubule、DNA damaging、RNA polymerase 等</td>
+            <td>决定组合方向</td>
+          </tr>
+          <tr>
+            <td>linker_compatibility</td>
+            <td>与载荷和递送体系的适配性</td>
+            <td>影响释放行为和稳定性</td>
+          </tr>
+          <tr>
+            <td>bystander_effect</td>
+            <td>是否具备旁观者效应</td>
+            <td>影响异质性肿瘤覆盖</td>
+          </tr>
+          <tr>
+            <td>membrane_permeability</td>
+            <td>穿膜能力</td>
+            <td>影响有效暴露和旁观者效应</td>
+          </tr>
+          <tr>
+            <td>efflux_liability</td>
+            <td>是否容易被 ABCB1/P-gp 外排</td>
+            <td>决定耐药和组合策略</td>
+          </tr>
+          <tr>
+            <td>free_payload_toxicity</td>
+            <td>游离 payload 的系统毒性</td>
+            <td>决定联用是否会放大安全问题</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section">
+      <h2>4. 毒性标签</h2>
+      <div class="three-col">
+        <div class="card">
+          <h3>系统毒性</h3>
+          <ul>
+            <li>bone marrow toxicity</li>
+            <li>liver toxicity</li>
+            <li>kidney toxicity</li>
+            <li>GI toxicity</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>器官特异毒性</h3>
+          <ul>
+            <li>neurotoxicity</li>
+            <li>cardiotoxicity</li>
+            <li>ocular toxicity</li>
+            <li>pulmonary toxicity</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>组合分析用途</h3>
+          <ul>
+            <li>计算毒性重叠惩罚</li>
+            <li>判断 DLT 是否重合</li>
+            <li>识别更容易转化的组合</li>
+          </ul>
+        </div>
+      </div>
+      <div class="note" style="margin-top:18px;">
+        不是所有毒性都同等重要。对于不同 payload 类别，权重可以不同。例如微管毒素更关注神经毒性，DNA damage 类 payload 更关注骨髓抑制和胃肠道毒性。
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>5. 剂量与药效标签</h2>
+      <pre>关键字段：
+- IC50 / EC50 / IC90
+- assay_type
+- cell_line
+- cancer_type
+- clinical_Cmax
+- free_Cmax
+- AUC
+- therapeutic_window
+- baseline_sensitivity
+
+推荐时不只是看“谁更强”，还要看：
+- 两个药的有效区间是否接近
+- 临床能不能达到这个区间
+- 是否有细胞内释放或递送差异</pre>
+    </section>
+
+    <section class="section">
+      <h2>6. 证据等级标签</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>等级</th>
+            <th>含义</th>
+            <th>建议用途</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Level 1</td>
+            <td>公开组合实验直接支持</td>
+            <td>高优先级候选</td>
+          </tr>
+          <tr>
+            <td>Level 2</td>
+            <td>公开文献或数据库存在机制支持，但组合实验有限</td>
+            <td>中高优先级</td>
+          </tr>
+          <tr>
+            <td>Level 3</td>
+            <td>仅有单药机制推理支持</td>
+            <td>探索型候选</td>
+          </tr>
+          <tr>
+            <td>Level 4</td>
+            <td>证据不足或机制冲突</td>
+            <td>低优先级或排除</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+</body>
+</html>

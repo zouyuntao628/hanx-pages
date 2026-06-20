@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Exatecan 示例报告 | ADC 组合用药推荐</title>
+  <style>
+    :root {
+      --bg: #f7f8fa;
+      --panel: #fff;
+      --text: #18202a;
+      --muted: #5b6675;
+      --line: #dfe4ea;
+      --blue: #1f5fbf;
+      --green: #157f5b;
+      --orange: #b75f00;
+      --red: #b42318;
+      --purple: #6b4bb8;
+      --shadow: 0 10px 28px rgba(24, 32, 42, 0.08);
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; color: var(--text); background: var(--bg); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", Arial, sans-serif; line-height: 1.65; }
+    .page { max-width: 1120px; margin: 0 auto; padding: 32px 24px 56px; }
+    .topbar { display: flex; justify-content: space-between; gap: 12px; align-items: center; margin-bottom: 18px; color: var(--muted); font-size: 14px; }
+    a { color: var(--blue); text-decoration: none; font-weight: 700; }
+    .hero, .section, .card { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; box-shadow: var(--shadow); }
+    .hero { padding: 32px 36px; margin-bottom: 22px; }
+    .section { padding: 28px; margin-top: 20px; }
+    .card { padding: 18px; box-shadow: none; }
+    h1 { margin: 0 0 12px; font-size: clamp(30px, 4vw, 44px); line-height: 1.16; letter-spacing: 0; }
+    h2 { margin: 0 0 16px; font-size: 24px; letter-spacing: 0; }
+    h3 { margin: 0 0 10px; font-size: 18px; letter-spacing: 0; }
+    p { margin: 0 0 12px; }
+    .lead { color: var(--muted); font-size: 18px; max-width: 900px; }
+    .two-col { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+    .three-col { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+    table { width: 100%; border-collapse: collapse; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; background: #fff; }
+    th, td { padding: 13px 14px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; font-size: 14px; }
+    th { background: #f3f5f8; font-weight: 800; }
+    tr:last-child td { border-bottom: 0; }
+    ul, ol { margin: 8px 0 0; padding-left: 22px; }
+    li { margin: 6px 0; }
+    .tag { display: inline-block; margin: 4px 8px 0 0; padding: 4px 10px; border-radius: 999px; border: 1px solid var(--line); font-size: 13px; color: var(--muted); }
+    .high { color: #0f684b; background: #e5f7ef; border-color: #b7dfcf; }
+    .mid { color: #865100; background: #fff1dc; border-color: #f0c99a; }
+    .explore { color: #5b3aa5; background: #f0ebff; border-color: #d0c4f0; }
+    .note { padding: 14px 16px; border: 1px solid #f0c99a; border-radius: 8px; background: #fffaf3; color: #5d3a05; }
+    pre {
+      overflow-x: auto;
+      padding: 16px 18px;
+      border: 1px solid #cddaf0;
+      border-radius: 8px;
+      background: #f5f8fd;
+      color: #20324c;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+      font-size: 13px;
+      line-height: 1.65;
+      white-space: pre-wrap;
+    }
+    @media (max-width: 900px) { .two-col, .three-col { grid-template-columns: 1fr; } .hero, .section { padding: 22px; } }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="topbar">
+      <a href="./ADC毒素组合用药算法需求沟通页.html">← 返回总览页</a>
+      <span>详细说明 3 / 4：Exatecan 示例报告</span>
+    </div>
+
+    <section class="hero">
+      <h1>Exatecan 组合推荐示例报告</h1>
+      <p class="lead">
+        本页展示如果甲方输入一个已知 payload：Exatecan，算法应该如何输出可解释的组合方向、推荐理由、风险提示和实验建议。
+      </p>
+    </section>
+
+    <section class="section">
+      <h2>1. Exatecan 基础机制</h2>
+      <div class="two-col">
+        <div class="card">
+          <h3>作用链路</h3>
+          <ol>
+            <li>抑制 Topoisomerase I / TOP1。</li>
+            <li>引起 DNA single-strand breaks。</li>
+            <li>复制叉碰撞后形成 replication fork collapse。</li>
+            <li>诱导 replication stress 和 DNA damage response。</li>
+            <li>细胞周期停滞、损伤累积，最终触发凋亡或细胞死亡。</li>
+          </ol>
+        </div>
+        <div class="card">
+          <h3>组合设计核心</h3>
+          <p>Exatecan 已经负责“制造 DNA 损伤和复制压力”，组合药物最好不要只是重复制造同类损伤，而应阻断修复、阻断耐受、解除 checkpoint 或增强死亡执行。</p>
+          <span class="tag high">DNA repair blockade</span>
+          <span class="tag high">Replication stress response blockade</span>
+          <span class="tag mid">Checkpoint override</span>
+          <span class="tag explore">Apoptosis priming</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>2. 潜在耐药路径</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>耐药路径</th>
+            <th>含义</th>
+            <th>可能组合策略</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>DNA repair activation</td>
+            <td>细胞增强 DNA 损伤修复能力，降低 exatecan 杀伤</td>
+            <td>PARP、ATR、DNA-PK、ATM、CHK1 方向</td>
+          </tr>
+          <tr>
+            <td>Replication stress tolerance</td>
+            <td>细胞更能耐受复制压力</td>
+            <td>ATR、CHK1、WEE1 方向</td>
+          </tr>
+          <tr>
+            <td>Checkpoint dependency</td>
+            <td>肿瘤依赖 G2/M checkpoint 修复损伤</td>
+            <td>WEE1、CHK1 方向，尤其 TP53 缺陷背景</td>
+          </tr>
+          <tr>
+            <td>Drug efflux</td>
+            <td>ABCB1/P-gp 等外排增强</td>
+            <td>优先选择不共享外排机制的组合，或作为 biomarker 分层</td>
+          </tr>
+          <tr>
+            <td>Apoptosis escape</td>
+            <td>损伤存在但细胞不进入死亡程序</td>
+            <td>BCL2/MCL1/BCL-XL 轴探索</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section">
+      <h2>3. 首批推荐组合</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>组合</th>
+            <th>推荐逻辑</th>
+            <th>适合背景</th>
+            <th>风险</th>
+            <th>优先级</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Exatecan + ATR inhibitor</td>
+            <td>复制压力由 exatecan 诱导，ATR 抑制阻断复制压力应答，是最典型的互补组合。</td>
+            <td>SLFN11 high、TP53 mutation、高复制压力、DNA repair deficient</td>
+            <td>骨髓抑制和正常增殖组织毒性可能叠加</td>
+            <td><span class="tag high">高</span></td>
+          </tr>
+          <tr>
+            <td>Exatecan + WEE1 inhibitor</td>
+            <td>Exatecan 造成 DNA 损伤，WEE1 抑制解除 G2/M checkpoint，让细胞带损伤进入有丝分裂。</td>
+            <td>TP53 突变、高增殖、高复制压力模型</td>
+            <td>细胞周期相关毒性，骨髓和 GI 风险</td>
+            <td><span class="tag high">高</span></td>
+          </tr>
+          <tr>
+            <td>Exatecan + PARP inhibitor</td>
+            <td>Exatecan 诱导 DNA 损伤，PARP 抑制干扰单链损伤修复，HRD 背景下更有潜力。</td>
+            <td>BRCA1/2 mutation、HRD-high、SLFN11-high</td>
+            <td>骨髓抑制重叠，机制部分相关</td>
+            <td><span class="tag mid">中高</span></td>
+          </tr>
+          <tr>
+            <td>Exatecan + CHK1 inhibitor</td>
+            <td>CHK1 是复制压力和 DNA damage checkpoint 下游关键节点，可减少细胞修复窗口。</td>
+            <td>MYC-driven、TP53 deficient、高复制压力</td>
+            <td>正常增殖组织毒性</td>
+            <td><span class="tag mid">中高</span></td>
+          </tr>
+          <tr>
+            <td>Exatecan + DNA-PK / ATM inhibitor</td>
+            <td>进一步阻断 DNA damage repair 网络，适合探索不同修复路径依赖。</td>
+            <td>DNA repair altered、特定修复缺陷模型</td>
+            <td>DNA damage 类毒性叠加</td>
+            <td><span class="tag explore">探索</span></td>
+          </tr>
+          <tr>
+            <td>Exatecan + BCL2/MCL1 axis inhibitor</td>
+            <td>如果肿瘤细胞发生 DNA 损伤但不进入凋亡，抑制抗凋亡依赖可能增强死亡执行。</td>
+            <td>BCL2/MCL1 依赖、损伤后凋亡不充分模型</td>
+            <td>MCL1 可能有心脏风险，BCL-XL 可能有血小板风险</td>
+            <td><span class="tag explore">探索</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section">
+      <h2>4. 不优先方向</h2>
+      <div class="three-col">
+        <div class="card">
+          <h3>重复 Topo I 机制</h3>
+          <p>例如 Exatecan + 另一个 Topo I inhibitor，机制信息增量低，毒性可能重叠，除非甲方有特殊递送或专利目的。</p>
+        </div>
+        <div class="card">
+          <h3>毒性过度重叠</h3>
+          <p>若候选药主要 DLT 与 exatecan 高度重合，例如骨髓抑制极强，需降低优先级。</p>
+        </div>
+        <div class="card">
+          <h3>剂量窗口不匹配</h3>
+          <p>若一个药 nM 有效，另一个药 uM 甚至更高才有效，且临床暴露达不到，则不优先。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>5. 报告输出样例</h2>
+      <pre>输入 payload：Exatecan
+目标：增强杀伤 + 发现可验证组合
+
+推荐 1：ATR inhibitor
+推荐等级：高
+机制：Exatecan 引起复制压力，ATR 抑制阻断复制压力应答。
+biomarker：SLFN11 high、TP53 mutation、高复制压力 signature。
+风险：骨髓抑制和正常增殖组织毒性可能叠加。
+实验：8x8 dose matrix，测 Bliss/Loewe/ZIP，检测 gamma-H2AX 和 apoptosis。
+
+推荐 2：WEE1 inhibitor
+推荐等级：高
+机制：解除 G2/M checkpoint，诱导损伤细胞进入有丝分裂灾难。
+biomarker：TP53 mutation、高增殖模型。
+风险：骨髓和 GI 毒性。
+实验：TP53 mutant vs WT 成对细胞系对照。
+
+推荐 3：PARP inhibitor
+推荐等级：中高
+机制：阻断 DNA 单链损伤修复，HRD 背景下增强 DNA damage。
+biomarker：BRCA/HRD、SLFN11。
+风险：骨髓毒性重叠。
+实验：HRD 分层，优先比较 HRD-high 与 HRD-low。</pre>
+    </section>
+  </main>
+</body>
+</html>

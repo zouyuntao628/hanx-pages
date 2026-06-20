@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ADC 协作型方案库</title>
+  <style>
+    :root { --bg:#07131f; --panel:rgba(255,255,255,.08); --text:#eef5ff; --muted:#a8b7c8; --line:rgba(255,255,255,.14); --blue:#6bcfff; --green:#8df2a7; --purple:#c9a7ff; --shadow:0 22px 60px rgba(0,0,0,.32); }
+    * { box-sizing:border-box; } html { scroll-behavior:smooth; }
+    body { margin:0; color:var(--text); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif; line-height:1.68; background: radial-gradient(circle at 12% -5%, rgba(107,207,255,.24), transparent 30%), radial-gradient(circle at 92% 8%, rgba(141,242,167,.14), transparent 26%), radial-gradient(circle at 55% 108%, rgba(201,167,255,.16), transparent 30%), var(--bg); }
+    a { color:var(--blue); text-decoration:none; } a:hover { text-decoration:underline; }
+    .wrap { width:min(1180px, calc(100% - 40px)); margin:0 auto; }
+    nav { position:sticky; top:0; z-index:30; backdrop-filter: blur(16px); background: rgba(7,19,31,.76); border-bottom:1px solid var(--line); }
+    nav .wrap { display:flex; justify-content:space-between; align-items:center; gap:16px; padding:14px 0; }
+    .brand { display:flex; align-items:center; gap:10px; font-weight:800; }
+    .logo { width:34px; height:34px; border-radius:11px; background:linear-gradient(135deg, var(--blue), var(--green)); box-shadow:0 0 26px rgba(107,207,255,.38); }
+    .navlinks { display:flex; gap:14px; flex-wrap:wrap; font-size:14px; } .navlinks a { color:var(--muted); }
+    header { padding:78px 0 42px; }
+    .eyebrow { display:inline-flex; align-items:center; gap:8px; padding:7px 12px; border-radius:999px; border:1px solid var(--line); background:rgba(255,255,255,.05); color:var(--blue); font-weight:700; font-size:14px; }
+    h1 { margin:18px 0 14px; font-size:clamp(38px, 6vw, 68px); line-height:1.05; letter-spacing:-.04em; max-width:980px; }
+    .lead { max-width:940px; font-size:clamp(18px, 2vw, 23px); color:#d8e7f8; }
+    .card, .scheme { background:var(--panel); border:1px solid var(--line); border-radius:24px; box-shadow:var(--shadow); }
+    .card { padding:24px; }
+    .hero-grid { display:grid; grid-template-columns:1.25fr .75fr; gap:20px; margin-top:32px; }
+    section { padding:44px 0; }
+    h2 { margin:0 0 12px; font-size:clamp(28px,4vw,42px); line-height:1.15; } h3 { margin:0 0 10px; font-size:24px; }
+    .sub { color:var(--muted); max-width:860px; margin:0 0 22px; }
+    .grid-2 { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:18px; }
+    .scheme { position:relative; overflow:hidden; padding:26px; background:linear-gradient(180deg, rgba(255,255,255,.1), rgba(255,255,255,.06)); cursor:pointer; transition:transform .18s ease, border-color .18s ease; } .scheme:hover { transform:translateY(-3px); border-color:rgba(107,207,255,.38); }
+    .scheme::before { content:""; position:absolute; left:0; right:0; top:0; height:4px; background:linear-gradient(90deg, var(--blue), var(--green), var(--purple)); }
+    .tag { display:inline-block; margin-bottom:12px; padding:5px 10px; border-radius:999px; border:1px solid rgba(107,207,255,.26); background:rgba(107,207,255,.09); color:var(--blue); font-size:13px; font-weight:800; }
+    .tag-row { display:flex; flex-wrap:wrap; gap:8px; margin-top:10px; } .pill { display:inline-flex; padding:5px 10px; border-radius:999px; border:1px solid var(--line); font-size:12px; color:#dce9f6; }
+    .btn { display:inline-flex; align-items:center; min-height:38px; padding:0 14px; border-radius:10px; background:#f2f8ff; color:#0f4ea2; font-weight:800; text-decoration:none; }
+    ul { margin:10px 0; padding-left:20px; } li { margin:6px 0; } .quote { padding:20px 22px; border-left:4px solid var(--green); border-radius:0 18px 18px 0; background:rgba(141,242,167,.08); font-size:20px; }
+    @media (max-width:980px) { .hero-grid, .grid-2 { grid-template-columns:1fr; } .navlinks { display:none; } header { padding-top:52px; } }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="wrap">
+      <div class="brand"><div class="logo"></div><span>ADC 协作型方案库</span></div>
+      <div class="navlinks"><a href="#why">为什么这样合作</a><a href="#schemes">8 个详情页</a><a href="#how">怎么配合</a><a href="../hanx-ai-translational-platform.html">AI 转化免疫学平台</a></div>
+    </div>
+  </nav>
+  <header class="wrap">
+    <div class="eyebrow">甲方做湿实验，我们做方案、算法与迭代</div>
+    <h1>ADC 协作型方案库</h1>
+    <p class="lead">这套页面不是只告诉公司“可以做 ADC 组合推荐”，而是把每一个可落地方向拆成独立详情页：先讲清楚要做什么、为什么要做、最后要做成什么效果，以及具体怎么推进。</p>
+    <div class="hero-grid">
+      <div class="card">
+        <h3>这套合作模式的核心</h3>
+        <ul>
+          <li>我们负责：问题定义、候选筛选、实验设计模板、结果解释和模型迭代。</li>
+          <li>公司负责：湿实验执行、原始数据回传、异常说明和持续反馈。</li>
+          <li>每做一轮实验，都会形成独家数据，让方案越来越准。</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>你会在这里看到什么</h3>
+        <ul>
+          <li>8 个独立方案详情页</li>
+          <li>每页都有通俗解释</li>
+          <li>每页都有步骤、分工和术语解释</li>
+          <li>适合直接发给甲方逐项讨论</li>
+        </ul>
+      </div>
+    </div>
+  </header>
+  <main>
+    <section id="why" class="wrap">
+      <h2>为什么这样合作是可行的</h2>
+      <div class="quote">你们不需要自己搭完整实验平台，也能持续产出真实研发成果。关键在于：实验必须标准化，数据必须完整回流，失败结果也必须保留。</div>
+    </section>
+    <section id="schemes" class="wrap">
+      <h2>8 个方案详情页</h2>
+      <p class="sub">点击每个方案，可以查看“要做什么、为什么要做、要做成什么效果、具体步骤和术语解释”。</p>
+      <div class="grid-2">
+        <article class="scheme">
+          <span class="tag">方案 1</span>
+          <h3>ADC Payload Combination Discovery Engine</h3>
+          <p>从一个已知 payload 出发，把大量可能的联用方向缩小成少数值得先做的组合。</p>
+          <div class="tag-row"><span class="pill">Exatecan / DXd / MMAE</span><span class="pill">Top 3-10 推荐</span><span class="pill">机制驱动</span></div>
+          <p style="margin-top:14px;"><a class="btn" href="./ADC协作型方案详情-01-Payload组合推荐引擎.html">查看详情</a></p>
+        </article>
+        <article class="scheme">
+          <span class="tag">方案 2</span>
+          <h3>Payload × Biomarker 响应分层引擎</h3>
+          <p>不是只问哪个组合有效，而是问在什么背景下更有效。</p>
+          <div class="tag-row"><span class="pill">Responder / Non-responder</span><span class="pill">适应症筛选</span><span class="pill">细胞系分层</span></div>
+          <p style="margin-top:14px;"><a class="btn" href="./ADC协作型方案详情-02-Payload-Biomarker响应分层引擎.html">查看详情</a></p>
+        </article>
+        <article class="scheme">
+          <span class="tag">方案 3</span>
+          <h3>ADC / Payload 剂量窗口与给药顺序优化引擎</h3>
+          <p>不是只问“配不配”，还要问“怎么配更有效、毒性更可控”。</p>
+          <div class="tag-row"><span class="pill">Schedule</span><span class="pill">Dose window</span><span class="pill">更接近临床</span></div>
+          <p style="margin-top:14px;"><a class="btn" href="./ADC协作型方案详情-03-剂量窗口与给药顺序优化引擎.html">查看详情</a></p>
+        </article>
+        <article class="scheme">
+          <span class="tag">方案 4</span>
+          <h3>Payload 耐药机制逆转推荐系统</h3>
+          <p>重点不是在敏感模型里找更强组合，而是在失效模型里找恢复药效的方法。</p>
+          <div class="tag-row"><span class="pill">Rescue combination</span><span class="pill">耐药模型</span><span class="pill">更贴近真实开发</span></div>
+          <p style="margin-top:14px;"><a class="btn" href="./ADC协作型方案详情-04-耐药机制逆转推荐系统.html">查看详情</a></p>
+        </article>
+        <article class="scheme">
+          <span class="tag">方案 5</span>
+          <h3>Payload 安全性分离与毒性惩罚模型</h3>
+          <p>不是只找“最强”，而是先排掉那些虽然强但未来很难用的组合。</p>
+          <div class="tag-row"><span class="pill">Toxicity vector</span><span class="pill">Safety margin</span><span class="pill">减少不可转化结果</span></div>
+          <p style="margin-top:14px;"><a class="btn" href="./ADC协作型方案详情-05-安全性分离与毒性惩罚模型.html">查看详情</a></p>
+        </article>
+        <article class="scheme">
+          <span class="tag">方案 6</span>
+          <h3>Payload-to-Indication 匹配引擎</h3>
+          <p>回答“这个 payload 或这个组合最值得先在哪类癌种里推进”。</p>
+          <div class="tag-row"><span class="pill">癌种优先级</span><span class="pill">适应症选择</span><span class="pill">资源聚焦</span></div>
+          <p style="margin-top:14px;"><a class="btn" href="./ADC协作型方案详情-06-Payload到适应症匹配引擎.html">查看详情</a></p>
+        </article>
+        <article class="scheme">
+          <span class="tag">方案 7</span>
+          <h3>ADC 组合实验设计 Copilot</h3>
+          <p>帮实验团队决定先做什么、怎么做、怎么少走弯路。</p>
+          <div class="tag-row"><span class="pill">实验提效</span><span class="pill">减少试错</span><span class="pill">模板化</span></div>
+          <p style="margin-top:14px;"><a class="btn" href="./ADC协作型方案详情-07-组合实验设计Copilot.html">查看详情</a></p>
+        </article>
+        <article class="scheme">
+          <span class="tag">方案 8</span>
+          <h3>ADC Payload 知识图谱与决策库</h3>
+          <p>把散落在文献、历史项目和实验结果里的知识，变成能反复使用的决策底座。</p>
+          <div class="tag-row"><span class="pill">长期壁垒</span><span class="pill">数据资产</span><span class="pill">平台化</span></div>
+          <p style="margin-top:14px;"><a class="btn" href="./ADC协作型方案详情-08-Payload知识图谱与决策库.html">查看详情</a></p>
+        </article></div>
+    </section>
+    <section id="how" class="wrap">
+      <h2>推荐的协作方式</h2>
+      <div class="card">
+        <ul>
+          <li>第一轮：先做 Payload 组合推荐，引导公司做少量但高价值的首批实验。</li>
+          <li>第二轮：把实验结果和 biomarker 背景结合起来，找出更有解释力的响应规则。</li>
+          <li>第三轮：继续做剂量窗口、给药顺序、安全性分离和耐药逆转，让结果更接近真实开发。</li>
+          <li>长期：把所有历史结果沉淀进知识图谱与决策库，形成内部平台。</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+  <script>
+    document.querySelectorAll('.scheme').forEach(card => {
+      const link = card.querySelector('a.btn');
+      if (!link) return;
+      card.addEventListener('click', event => {
+        if (event.target.closest('a')) return;
+        window.location.href = link.href;
+      });
+    });
+  </script>
+</body>
+</html>

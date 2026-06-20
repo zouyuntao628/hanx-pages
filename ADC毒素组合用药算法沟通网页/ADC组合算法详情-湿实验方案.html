@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>湿实验设计 | ADC 组合用药推荐</title>
+  <style>
+    :root {
+      --bg: #f7f8fa;
+      --panel: #fff;
+      --text: #18202a;
+      --muted: #5b6675;
+      --line: #dfe4ea;
+      --blue: #1f5fbf;
+      --green: #157f5b;
+      --orange: #b75f00;
+      --red: #b42318;
+      --shadow: 0 10px 28px rgba(24, 32, 42, 0.08);
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; color: var(--text); background: var(--bg); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", Arial, sans-serif; line-height: 1.65; }
+    .page { max-width: 1120px; margin: 0 auto; padding: 32px 24px 56px; }
+    .topbar { display: flex; justify-content: space-between; gap: 12px; align-items: center; margin-bottom: 18px; color: var(--muted); font-size: 14px; }
+    a { color: var(--blue); text-decoration: none; font-weight: 700; }
+    .hero, .section, .card { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; box-shadow: var(--shadow); }
+    .hero { padding: 32px 36px; margin-bottom: 22px; }
+    .section { padding: 28px; margin-top: 20px; }
+    .card { padding: 18px; box-shadow: none; }
+    h1 { margin: 0 0 12px; font-size: clamp(30px, 4vw, 44px); line-height: 1.16; letter-spacing: 0; }
+    h2 { margin: 0 0 16px; font-size: 24px; letter-spacing: 0; }
+    h3 { margin: 0 0 10px; font-size: 18px; letter-spacing: 0; }
+    p { margin: 0 0 12px; }
+    .lead { color: var(--muted); font-size: 18px; max-width: 900px; }
+    .two-col { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+    .three-col { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+    table { width: 100%; border-collapse: collapse; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; background: #fff; }
+    th, td { padding: 13px 14px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; font-size: 14px; }
+    th { background: #f3f5f8; font-weight: 800; }
+    tr:last-child td { border-bottom: 0; }
+    ul, ol { margin: 8px 0 0; padding-left: 22px; }
+    li { margin: 6px 0; }
+    .note { padding: 14px 16px; border: 1px solid #f0c99a; border-radius: 8px; background: #fffaf3; color: #5d3a05; }
+    pre {
+      overflow-x: auto;
+      padding: 16px 18px;
+      border: 1px solid #cddaf0;
+      border-radius: 8px;
+      background: #f5f8fd;
+      color: #20324c;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+      font-size: 13px;
+      line-height: 1.65;
+      white-space: pre-wrap;
+    }
+    @media (max-width: 900px) { .two-col, .three-col { grid-template-columns: 1fr; } .hero, .section { padding: 22px; } }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="topbar">
+      <a href="./ADC毒素组合用药算法需求沟通页.html">← 返回总览页</a>
+      <span>详细说明 4 / 4：湿实验设计</span>
+    </div>
+
+    <section class="hero">
+      <h1>湿实验验证方案</h1>
+      <p class="lead">
+        湿实验不只是验证算法推荐是否正确，更重要的是形成甲方自己的 payload-centered combination 数据集。这个数据集会成为后续算法迭代和项目壁垒。
+      </p>
+    </section>
+
+    <section class="section">
+      <h2>1. 首批实验目标</h2>
+      <div class="three-col">
+        <div class="card">
+          <h3>验证协同</h3>
+          <p>通过组合剂量矩阵判断 exatecan 与候选小分子是否存在稳定协同窗口。</p>
+        </div>
+        <div class="card">
+          <h3>验证机制</h3>
+          <p>通过 DNA damage、apoptosis、cell cycle 等读出验证算法给出的机制解释。</p>
+        </div>
+        <div class="card">
+          <h3>建立数据闭环</h3>
+          <p>将实验结果回填组合证据表，用于修正评分权重和训练后续模型。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>2. 第一批候选组合</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>类别</th>
+            <th>候选方向</th>
+            <th>验证重点</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>复制压力应答</td>
+            <td>ATR inhibitor、CHK1 inhibitor</td>
+            <td>是否增强 exatecan 诱导的 DNA damage 和 replication stress</td>
+          </tr>
+          <tr>
+            <td>细胞周期 checkpoint</td>
+            <td>WEE1 inhibitor</td>
+            <td>TP53 突变背景下是否诱导 mitotic catastrophe</td>
+          </tr>
+          <tr>
+            <td>DNA 修复阻断</td>
+            <td>PARP inhibitor、DNA-PK inhibitor、ATM inhibitor</td>
+            <td>HRD/BRCA/repair altered 背景是否更敏感</td>
+          </tr>
+          <tr>
+            <td>凋亡逃逸</td>
+            <td>BCL2 / MCL1 / BCL-XL axis inhibitor</td>
+            <td>是否把 DNA 损伤转化为更强凋亡</td>
+          </tr>
+          <tr>
+            <td>耐药相关</td>
+            <td>efflux / ABCB1 相关策略</td>
+            <td>高 ABCB1 模型中是否影响 exatecan 敏感性</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="note" style="margin-top:18px;">
+        首批不建议铺太大。更稳妥的是 6-10 个候选组合，在 6-10 个有明确 biomarker 差异的细胞系中做深。
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>3. 细胞系选择</h2>
+      <p>细胞系不能随机选，需要能解释为什么某个组合有效或无效。建议按下面维度分层。</p>
+      <table>
+        <thead>
+          <tr>
+            <th>分层维度</th>
+            <th>建议分组</th>
+            <th>作用</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>SLFN11</td>
+            <td>high vs low</td>
+            <td>预测 DNA damaging agents 和复制压力相关敏感性</td>
+          </tr>
+          <tr>
+            <td>TP53</td>
+            <td>mutant vs wildtype</td>
+            <td>决定对 checkpoint inhibitor 的依赖程度</td>
+          </tr>
+          <tr>
+            <td>BRCA / HRD</td>
+            <td>HRD-high vs HRD-low</td>
+            <td>影响 PARP/DNA repair 组合潜力</td>
+          </tr>
+          <tr>
+            <td>ABCB1 / P-gp</td>
+            <td>high vs low</td>
+            <td>判断外排相关耐药和 payload 适配性</td>
+          </tr>
+          <tr>
+            <td>baseline sensitivity</td>
+            <td>exatecan sensitive vs resistant</td>
+            <td>区分增强敏感性和克服耐药两种目标</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section">
+      <h2>4. 剂量矩阵设计</h2>
+      <div class="two-col">
+        <div class="card">
+          <h3>6x6 矩阵</h3>
+          <p>适合快速筛选，成本较低。用于首轮判断是否存在明显协同趋势。</p>
+          <ul>
+            <li>每个药 6 个浓度</li>
+            <li>覆盖 IC10 到 IC90</li>
+            <li>包含单药和组合对照</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>8x8 矩阵</h3>
+          <p>更适合剂量窗口不确定或希望准确计算 synergy score 的组合。</p>
+          <ul>
+            <li>每个药 8 个浓度</li>
+            <li>更容易捕捉窄协同窗口</li>
+            <li>推荐用于高优先级组合</li>
+          </ul>
+        </div>
+      </div>
+      <pre>浓度范围建议：
+- 先做单药 IC50/IC90 预实验。
+- 组合矩阵围绕 IC10、IC25、IC50、IC75、IC90 展开。
+- 对特别强的 payload，避免最高浓度全部杀死，导致无法计算协同。
+- 对剂量窗口差异大的药，优先使用 8x8 矩阵。</pre>
+    </section>
+
+    <section class="section">
+      <h2>5. 读出指标</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>读出类型</th>
+            <th>指标</th>
+            <th>解释</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>药效读出</td>
+            <td>cell viability、IC50 shift、growth inhibition</td>
+            <td>判断组合是否增强杀伤</td>
+          </tr>
+          <tr>
+            <td>协同评分</td>
+            <td>Bliss、Loewe、ZIP、HSA</td>
+            <td>从不同数学假设评估协同</td>
+          </tr>
+          <tr>
+            <td>DNA damage</td>
+            <td>gamma-H2AX、p-RPA、comet assay</td>
+            <td>验证 DNA 损伤或复制压力是否增强</td>
+          </tr>
+          <tr>
+            <td>细胞周期</td>
+            <td>G2/M arrest、mitotic marker、cell cycle distribution</td>
+            <td>验证 WEE1/CHK1 等 checkpoint 机制</td>
+          </tr>
+          <tr>
+            <td>凋亡</td>
+            <td>cleaved caspase-3、PARP cleavage、Annexin V</td>
+            <td>验证死亡执行是否增强</td>
+          </tr>
+          <tr>
+            <td>安全性 proxy</td>
+            <td>normal cell viability、bone marrow-related cells、organoid</td>
+            <td>初步判断是否存在选择性窗口</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section">
+      <h2>6. 实验数据回流模板</h2>
+      <pre>{
+  "experiment_id": "EXA_COMBO_001",
+  "payload": "exatecan",
+  "combination_drug": "ATR inhibitor",
+  "cell_line": "example_cell_line",
+  "cancer_type": "breast_cancer",
+  "biomarker": {
+    "SLFN11": "high",
+    "TP53": "mutant",
+    "BRCA_HRD": "HRD_high",
+    "ABCB1": "low",
+    "TOP1_expression": "high"
+  },
+  "single_agent_ic50": {
+    "exatecan": "value_nM",
+    "combination_drug": "value_nM"
+  },
+  "dose_matrix": "8x8",
+  "synergy_model": ["Bliss", "Loewe", "ZIP", "HSA"],
+  "synergy_score": {
+    "Bliss": 12.5,
+    "Loewe": 8.2,
+    "ZIP": 10.1,
+    "HSA": 7.4
+  },
+  "mechanism_readout": {
+    "gamma_H2AX": "increased",
+    "apoptosis": "increased",
+    "cell_cycle": "G2M_checkpoint_abrogation"
+  },
+  "normal_cell_toxicity": "acceptable_or_high",
+  "conclusion": "synergistic",
+  "next_step": "repeat_in_additional_models"
+}</pre>
+    </section>
+
+    <section class="section">
+      <h2>7. 实验设计参数</h2>
+      <div class="note" style="margin-bottom:18px;">
+        实验方案需要和算法目标保持一致。组合对象、推荐目标、候选范围和平台通量会共同决定第一批实验是做小规模深验证，还是做较大规模筛选。
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>参数</th>
+            <th>建议在方案中明确的内容</th>
+            <th>对实验设计的影响</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>组合对象</td>
+            <td>毒素+毒素、毒素+小分子、ADC+小分子</td>
+            <td>影响是否需要考虑 ADC 抗原表达、内吞、linker release、payload 释放和游离毒素暴露。</td>
+          </tr>
+          <tr>
+            <td>推荐目标</td>
+            <td>增强杀伤、克服耐药、降低剂量和毒性</td>
+            <td>影响读出指标选择。增强杀伤侧重 viability 和 synergy；克服耐药需要 resistant model；降低毒性需要正常细胞或类器官对照。</td>
+          </tr>
+          <tr>
+            <td>候选药物范围</td>
+            <td>已上市药、临床药、研究级工具化合物</td>
+            <td>影响试剂采购、实验可执行性和后续转化价值。</td>
+          </tr>
+          <tr>
+            <td>平台通量</td>
+            <td>可测试药物数、细胞系数、6x6 或 8x8 剂量矩阵</td>
+            <td>决定首批输出是 Top 3 深验证，还是 Top 10-30 组合筛选。</td>
+          </tr>
+        </tbody>
+      </table>
+      <h3 style="margin-top:22px;">进一步实验条件确认</h3>
+      <ol>
+        <li>甲方是否已有 exatecan 或相关 payload 的单药 IC50 数据？</li>
+        <li>首批可测试多少个候选小分子？6 个、10 个还是更多？</li>
+        <li>是否具备 6x6 或 8x8 combination matrix 的自动化实验条件？</li>
+        <li>是否有 SLFN11、TP53、HRD、ABCB1 等 biomarker 数据？</li>
+        <li>是否可以做 gamma-H2AX、cleaved caspase-3、cell cycle 等机制验证？</li>
+        <li>是否有正常细胞、骨髓相关细胞或类器官模型用于安全性 proxy？</li>
+      </ol>
+    </section>
+  </main>
+</body>
+</html>

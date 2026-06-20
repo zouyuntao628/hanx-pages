@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Payload 耐药机制逆转推荐系统｜ADC 协作型方案详情</title>
+  <style>
+    :root {
+      --bg: #f7f8fa; --panel: #fff; --text: #18202a; --muted: #5b6675; --line: #dfe4ea;
+      --blue: #1f5fbf; --green: #157f5b; --orange: #b75f00; --red: #b42318; --purple: #6b4bb8;
+      --shadow: 0 10px 28px rgba(24, 32, 42, 0.08);
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; color: var(--text); background: var(--bg); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", Arial, sans-serif; line-height: 1.68; }
+    a { color: var(--blue); text-decoration: none; font-weight: 700; }
+    a:hover { text-decoration: underline; }
+    .page { max-width: 1160px; margin: 0 auto; padding: 28px 24px 56px; }
+    .topbar { display:flex; justify-content:space-between; align-items:center; gap:12px; margin-bottom:18px; color: var(--muted); font-size:14px; }
+    .hero, .section, .card { background: var(--panel); border:1px solid var(--line); border-radius:10px; box-shadow: var(--shadow); }
+    .hero { padding: 32px 36px; margin-bottom: 20px; }
+    .section { padding: 28px; margin-top: 20px; }
+    .card { padding: 18px; box-shadow:none; }
+    .quick { display:grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap:12px; margin: 0 0 18px; }
+    .quick a { display:block; padding: 14px 16px; border-radius: 8px; background:#fff; border:1px solid var(--line); color: var(--text); box-shadow: var(--shadow); font-weight:600; }
+    .related { display:grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap:10px; margin-top:14px; }
+    .mini-link { display:block; padding:10px 12px; border:1px solid var(--line); border-radius:8px; color: var(--text); background:#fbfcfe; font-size:13px; font-weight:600; }
+    .mini-link.active { border-color:#b8cdf2; background:#f3f7ff; color: var(--blue); }
+    h1 { margin:0 0 12px; font-size: clamp(30px, 4vw, 46px); line-height:1.15; }
+    h2 { margin:0 0 14px; font-size:24px; }
+    h3 { margin:0 0 10px; font-size:18px; }
+    h4 { margin: 18px 0 8px; font-size:16px; color: var(--blue); }
+    p { margin:0 0 12px; }
+    .lead { color: var(--muted); font-size:18px; max-width:900px; }
+    .tag-row { display:flex; flex-wrap:wrap; gap:8px; margin-top:14px; }
+    .tag { display:inline-flex; min-height:28px; align-items:center; padding:4px 10px; border-radius:999px; border:1px solid var(--line); color: var(--muted); background:#fff; font-size:13px; font-weight:650; }
+    .two-col { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:18px; }
+    .three-col { display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap:18px; }
+    ul, ol { margin: 8px 0 0; padding-left: 22px; }
+    li { margin: 6px 0; }
+    .step-grid { display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap:14px; }
+    .step { padding:16px; border:1px solid var(--line); border-radius:8px; background:#fbfcfe; }
+    .step strong { display:block; margin-bottom:8px; color: var(--blue); }
+    details { background:#fbfcfe; border:1px solid var(--line); border-radius:8px; padding:14px 16px; }
+    summary { cursor:pointer; font-weight:800; }
+    details p { margin:10px 0 0; color: var(--muted); }
+    .glossary { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:12px; }
+    .note { padding:14px 16px; border:1px solid #f0c99a; border-radius:8px; background:#fffaf3; color:#5d3a05; }
+    .quote { padding:16px 18px; border-left:4px solid var(--green); background:#f2fbf6; border-radius:0 8px 8px 0; color:#124c37; }
+    @media (max-width: 900px) { .quick, .two-col, .three-col, .step-grid, .glossary, .related { grid-template-columns: 1fr; } .hero, .section { padding:22px; } }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="topbar">
+      <div style="display:flex; gap:14px; flex-wrap:wrap;"><a href="./ADC协作型方案总览网页.html">← 返回 ADC 协作型方案总览</a><a href="../hanx-ai-translational-platform.html">AI 转化免疫学平台 →</a></div>
+      <span>详细说明 4 / 8</span>
+    </div>
+
+    <div class="quick">
+      <a href="#what">要做什么</a>
+      <a href="#why">为什么要做</a>
+      <a href="#effect">做成什么效果</a>
+      <a href="#steps">具体步骤</a>
+    </div>
+
+    <section class="hero">
+      <h1>耐药机制逆转推荐系统</h1>
+      <p class="lead">重点不是在敏感模型里找更强组合，而是在失效模型里找恢复药效的方法。</p>
+      <div class="tag-row"><span class="tag">Rescue combination</span><span class="tag">耐药模型</span><span class="tag">更贴近真实开发</span><span class="tag">高价值</span></div>
+      <div class="note" style="margin-top:18px;">先用大白话说，这个方案的目的不是一下子把所有问题都解决，而是先把最值得做的方向、最值得测的实验和最该保留的数据整理清楚，让公司每做一轮湿实验都更接近真正有价值的结论。</div>
+    </section>
+
+    <section class="section" id="what">
+      <h2>一、这件事到底是在做什么</h2>
+      <div class="two-col">
+        <div class="card"><p>这件事其实就是：很多 payload 在一开始有效，但一段时间后肿瘤会通过修复、外排或逃逸路径变得不敏感。我们要做的是，围绕“为什么失效”来找 partner drug，想办法把药效救回来。</p></div>
+        <div class="card"><p>这比单纯在敏感模型里找协同更接近真实开发，因为公司真正会遇到的问题往往不是“能不能杀死最容易杀的细胞”，而是“遇到耐药后怎么办”。</p></div>
+      </div>
+    </section>
+
+    <section class="section" id="why">
+      <h2>二、为什么要做</h2>
+      <div class="three-col">
+        <div class="card"><p>耐药是 ADC 和 payload 类项目后期几乎一定会遇到的问题。</p></div><div class="card"><p>如果能更早建立耐药逆转逻辑，后续组合开发会更有方向。</p></div><div class="card"><p>耐药模型中跑出来的组合，往往更容易形成差异化价值。</p></div><div class="card"><p>如果不用 AI 辅助，耐药原因梳理会非常慢，因为要同时看机制、通路、历史数据和失败实验。</p></div>
+      </div>
+    </section>
+
+    <section class="section" id="effect">
+      <h2>三、最后希望做成什么效果</h2>
+      <div class="quote">最终要交付的，不是一份空泛的建议，而是一套公司可以继续执行、继续复用、继续积累数据资产的具体成果。</div>
+      <ul><li>形成“耐药类型 → 推荐 rescue partner”的规则库。</li><li>帮助公司优先验证最有希望逆转耐药的组合。</li><li>积累面向后期开发更有价值的差异化数据。</li><li>提高项目面对真实临床耐药问题时的应对能力。</li></ul>
+    </section>
+
+    <section class="section" id="steps">
+      <h2>四、具体怎么做</h2>
+      <div class="step-grid"><div class="step"><strong>第 1 步：定义耐药问题</strong><p>先确认是 exatecan 类 payload 耐药，还是某个组合耐药，或者是某类模型普遍不响应。</p></div><div class="step"><strong>第 2 步：建立耐药假设树</strong><p>把可能原因拆成外排泵、DNA repair 增强、复制压力耐受、抗凋亡依赖等几类。</p></div><div class="step"><strong>第 3 步：匹配逆转策略</strong><p>针对每类耐药原因配对 संभाव在 rescue partner，例如阻断 repair、阻断 efflux 关联路径、增强凋亡执行。</p></div><div class="step"><strong>第 4 步：让公司做耐药模型验证</strong><p>在耐药株或不敏感模型里验证是否真的能把药效拉回来。</p></div><div class="step"><strong>第 5 步：比较耐药前后差异</strong><p>分析为什么这个 rescue 方案成立，哪些 biomarker 能支持解释。</p></div><div class="step"><strong>第 6 步：形成下一轮更精准推荐</strong><p>把验证成功和失败的耐药逆转经验写进系统。</p></div></div>
+    </section>
+
+    <section class="section">
+      <h2>五、我们和公司分别负责什么</h2>
+      <div class="two-col">
+        <div class="card"><h3>我们负责</h3><ul><li>建立耐药机制树和 rescue 规则</li><li>提出耐药模型验证优先级</li><li>解释哪些耐药路径值得先打</li><li>根据回流数据更新逆转策略库</li></ul></div>
+        <div class="card"><h3>公司 / 实验团队负责</h3><ul><li>提供耐药株、耐药模型或真实不敏感模型</li><li>执行 rescue 组合实验和机制读出</li><li>回传耐药前后背景差异</li><li>确认哪些方向有开发价值</li></ul></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>六、公司需要回传什么数据</h2>
+      <p>这一部分很关键。只有回传结构化、完整、包含失败结果的数据，这个方案才会越来越准。</p>
+      <ul><li>耐药模型与敏感模型的成对数据</li><li>耐药前后表达、突变或功能变化信息</li><li>rescue 实验结果和失败方向</li><li>必要的机制 readout 数据</li></ul>
+    </section>
+
+    <section class="section">
+      <h2>七、关键术语解释</h2>
+      <div class="glossary"><details><summary>Resistance</summary><p>耐药，指药物原本有效，但细胞后来学会了躲开或承受它。</p></details><details><summary>Rescue combination</summary><p>逆转耐药的联用方案，目标是把失去的药效拉回来。</p></details><details><summary>Efflux pump</summary><p>把药物泵出细胞的转运系统，例如 ABCB1/P-gp。</p></details><details><summary>Apoptosis escape</summary><p>肿瘤细胞明明受损，但没有进入死亡程序。</p></details><details><summary>Replication stress tolerance</summary><p>细胞更能忍受复制压力，导致原本有效的 payload 变弱。</p></details></div>
+    </section>
+
+    <section class="section">
+      <h2>八、什么时候最适合启动</h2>
+      <div class="note">适合在第一轮基础组合验证后启动，尤其适合公司已经出现“某类模型不敏感”或“历史上做过但效果不稳”的情况。</div>
+      <h4>相关方案导航</h4>
+      <div class="related"><a class="mini-link" href="./ADC协作型方案详情-01-Payload组合推荐引擎.html">1. Payload 组合推荐引擎</a><a class="mini-link" href="./ADC协作型方案详情-02-Payload-Biomarker响应分层引擎.html">2. Payload × Biomarker 响应分层引擎</a><a class="mini-link" href="./ADC协作型方案详情-03-剂量窗口与给药顺序优化引擎.html">3. 剂量窗口与给药顺序优化引擎</a><a class="mini-link active" href="./ADC协作型方案详情-04-耐药机制逆转推荐系统.html">4. 耐药机制逆转推荐系统</a><a class="mini-link" href="./ADC协作型方案详情-05-安全性分离与毒性惩罚模型.html">5. 安全性分离与毒性惩罚模型</a><a class="mini-link" href="./ADC协作型方案详情-06-Payload到适应症匹配引擎.html">6. Payload 到适应症匹配引擎</a><a class="mini-link" href="./ADC协作型方案详情-07-组合实验设计Copilot.html">7. 组合实验设计 Copilot</a><a class="mini-link" href="./ADC协作型方案详情-08-Payload知识图谱与决策库.html">8. Payload 知识图谱与决策库</a></div>
+    </section>
+  </main>
+</body>
+</html>
