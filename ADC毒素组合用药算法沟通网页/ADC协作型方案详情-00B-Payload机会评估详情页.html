@@ -70,6 +70,34 @@
 
     </section>
 
+
+
+    <section class="section" id="workbench-status">
+      <h2>一补充、机会详情页的产品化状态字段</h2>
+      <div class="plain-box"><strong>普通人先看：</strong>0B 不只是写一段分析，而是要像一个“机会档案页”。团队打开后，应马上知道这个机会来自哪些榜单、证据是否审核过、谁负责、下一步应该进哪个工作流。</div>
+      <table class="operator-table">
+        <thead><tr><th>状态字段</th><th>示例值</th><th>操作含义</th></tr></thead>
+        <tbody>
+          <tr><td>机会状态</td><td>P1：建议推进</td><td>可以进入方案一项目定义卡，但仍需确认实验资源和排除条件。</td></tr>
+          <tr><td>证据审核状态</td><td>论文已确认；专利待复核；内部资料已确认</td><td>未审核证据不得作为强结论，只能作为提示。</td></tr>
+          <tr><td>风险状态</td><td>中等风险：安全窗口和专利拥挤度需补充</td><td>进入组合推荐前同步进入方案五或 IP 复核。</td></tr>
+          <tr><td>责任人</td><td>科学 owner：待定；数据 owner：待定；IP owner：待定</td><td>每个待办都要有人负责，否则机会卡会停留在概念层。</td></tr>
+          <tr><td>下一步动作</td><td>填写项目定义卡；补专利检索；确认可用细胞系</td><td>把机会评估转成可以启动的 PoC 任务。</td></tr>
+        </tbody>
+      </table>
+
+      <h3>机会评估任务清单</h3>
+      <table class="operator-table">
+        <thead><tr><th>任务</th><th>负责人</th><th>输入</th><th>输出</th><th>完成标准</th></tr></thead>
+        <tbody>
+          <tr><td>确认 payload 机制和别名</td><td>科学 owner</td><td>文献、药物数据库、公司资料</td><td>payload 基础信息卡</td><td>机制类别、代表 ADC、别名统一。</td></tr>
+          <tr><td>补充专利和竞品扫描</td><td>IP / BD owner</td><td>Google Patents、Lens、公司管线</td><td>IP 拥挤度和差异化空间摘要</td><td>明确哪些方向拥挤，哪些方向可继续看。</td></tr>
+          <tr><td>确认公司资源</td><td>实验 owner</td><td>细胞系、药物库存、assay 能力、预算</td><td>公司可执行性评分</td><td>能判断是否现在就能进入方案一。</td></tr>
+          <tr><td>生成初步 Go / No-Go</td><td>项目负责人</td><td>机会评分、风险、资源、证据</td><td>P1/P2/P3 结论</td><td>结论能被团队复核并转成下一步任务。</td></tr>
+        </tbody>
+      </table>
+    </section>
+
     <section class="section" id="evidence">
       <h2>二、证据摘要怎么展示</h2>
       <table class="operator-table">

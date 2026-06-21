@@ -275,6 +275,48 @@
       </div>
     </section>
 
+
+
+    <section class="section" id="product-ui-sample">
+      <h2>0A、真实产品界面样例：情报列表、状态字段和数据源监控</h2>
+      <div class="plain-box"><strong>为什么要加这一块：</strong>真正给操作人员使用时，页面不能只展示榜单，还要展示每条情报的来源、更新时间、审核状态、动作状态和下一步流向。这样团队才知道哪些结论已经确认，哪些还只是待审核线索。</div>
+
+      <h3>情报列表样例</h3>
+      <table class="operator-table">
+        <thead><tr><th>时间</th><th>来源</th><th>标题/事件</th><th>Payload / 主题</th><th>系统摘要</th><th>状态</th><th>推荐动作</th></tr></thead>
+        <tbody>
+          <tr><td>2026-06-20</td><td>ClinicalTrials</td><td>某 TOP1 ADC 新增联用试验</td><td>DXd / DDR 联用</td><td>提示 TOP1 payload 与 DNA damage response 路径联用仍是活跃方向。</td><td><span class="status-ok">已自动解析</span></td><td>加入组合潜力榜；进入 0B 详情评估</td></tr>
+          <tr><td>2026-06-19</td><td>PubMed</td><td>exatecan 相关耐药机制研究</td><td>exatecan / 耐药逆转</td><td>出现 DNA repair 与细胞周期 checkpoint 相关可解释线索。</td><td><span class="status-warn">待人工审核</span></td><td>加入耐药逆转机会榜；补全文献证据</td></tr>
+          <tr><td>2026-06-18</td><td>Patent</td><td>linker-payload 组合专利更新</td><td>TOP1 payload / IP</td><td>常规 TOP1 组合可能拥挤，但特定 biomarker 场景仍有空间。</td><td><span class="status-warn">需 IP 复核</span></td><td>标记为差异化空间待确认</td></tr>
+          <tr><td>2026-06-17</td><td>内部备注</td><td>某 partner drug 已做失败</td><td>DXd / partner 排除</td><td>该方向不应重复进入首轮推荐，除非机制或模型发生变化。</td><td><span class="status-ok">已确认</span></td><td>写入排除条件库</td></tr>
+        </tbody>
+      </table>
+
+      <h3>数据源监控面板样例</h3>
+      <table class="operator-table">
+        <thead><tr><th>数据源</th><th>更新频率</th><th>最近更新时间</th><th>本次新增</th><th>待审核</th><th>异常/说明</th></tr></thead>
+        <tbody>
+          <tr><td>PubMed / Crossref</td><td>每日</td><td>2026-06-21 08:00</td><td>12 条</td><td>4 条</td><td>关键词需继续扩展到 TOP1 payload 别名。</td></tr>
+          <tr><td>ClinicalTrials.gov</td><td>每日</td><td>2026-06-21 08:10</td><td>5 条</td><td>1 条</td><td>部分试验 payload 未明示，需要人工确认 ADC 构成。</td></tr>
+          <tr><td>专利数据库</td><td>每周</td><td>2026-06-20 18:00</td><td>8 条</td><td>6 条</td><td>专利拥挤度需要 IP 人员复核。</td></tr>
+          <tr><td>会议摘要</td><td>会议期</td><td>2026-06-18 20:30</td><td>3 条</td><td>3 条</td><td>会议 PDF 和 poster 需要人工导入。</td></tr>
+          <tr><td>内部资料</td><td>人工</td><td>2026-06-19 17:20</td><td>2 条</td><td>1 条</td><td>需要标注可否用于跨项目训练。</td></tr>
+        </tbody>
+      </table>
+
+      <h3>操作状态字段</h3>
+      <table class="operator-table">
+        <thead><tr><th>字段</th><th>可选值</th><th>用途</th></tr></thead>
+        <tbody>
+          <tr><td>审核状态</td><td>未审核 / 已确认 / 已驳回 / 需补资料 / 需 IP 复核</td><td>防止未经确认的信息直接影响推荐。</td></tr>
+          <tr><td>优先级</td><td>P1 / P2 / P3 / 观察 / 排除</td><td>决定是否进入 0B 或方案一。</td></tr>
+          <tr><td>风险标签</td><td>毒性 / 专利拥挤 / 竞品过多 / 机制不清 / 实验不可行 / 供应受限</td><td>让风险直接进入后续排序和扣分。</td></tr>
+          <tr><td>推荐流向</td><td>0B 机会评估 / 方案一组合推荐 / 方案四耐药 / 方案五安全性 / 方案六适应症 / 观察池</td><td>让每条情报都有下一步动作。</td></tr>
+          <tr><td>责任人</td><td>科学 owner / 数据 owner / 实验 owner / BD owner / IP owner</td><td>明确谁来确认和推进。</td></tr>
+        </tbody>
+      </table>
+    </section>
+
     <section class="section" id="unknown-payload">
       <h2>如果用户输入的是未知 payload，系统应该先问什么</h2>
       <p>例如用户输入内部代号 HPX-001 payload，系统不应该直接给组合推荐，而是先用最少问题补齐上下文。</p>
