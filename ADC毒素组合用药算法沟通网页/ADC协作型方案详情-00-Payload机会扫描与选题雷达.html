@@ -61,11 +61,16 @@
     .score-badge { display:inline-flex; align-items:center; justify-content:center; min-width:54px; height:30px; padding:0 10px; border-radius:999px; background:var(--green); color:#fff; font-weight:900; }
     .input-box { padding:16px; border:1px dashed var(--line); border-radius:10px; background:#fffaf3; }
     .fake-input { padding:11px 12px; border:1px solid var(--line); border-radius:8px; background:#fff; color:var(--muted); margin:8px 0; }
+    .leaderboard-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; margin-top:14px; }
+    .leaderboard { padding:16px; border:1px solid var(--line); border-radius:10px; background:#fbfcfe; }
+    .leaderboard h3 { color:var(--blue); }
+    .leaderboard ol { margin:8px 0 0; padding-left:22px; }
+    .route { display:inline-flex; padding:5px 8px; border-radius:8px; background:#eef5ff; border:1px solid #c9dcff; color:var(--blue); font-size:12px; font-weight:800; }
     .action { display:inline-flex; padding:6px 10px; border-radius:999px; background:#eef5ff; border:1px solid #c9dcff; color:var(--blue); font-size:12px; font-weight:800; }
     .status-ok { color:var(--green); font-weight:800; }
     .status-warn { color:var(--orange); font-weight:800; }
     .source-level { display:inline-flex; padding:4px 8px; border-radius:999px; background:#f3f7ff; color:var(--blue); border:1px solid #d8e5ff; font-size:12px; font-weight:800; }
-    @media (max-width: 900px) { .quick, .two-col, .three-col, .step-grid, .related, .metric-grid { grid-template-columns: 1fr; } .hero, .section { padding:22px; } .operator-table { display:block; overflow-x:auto; } }
+    @media (max-width: 900px) { .quick, .two-col, .three-col, .step-grid, .related, .metric-grid, .leaderboard-grid { grid-template-columns: 1fr; } .hero, .section { padding:22px; } .operator-table { display:block; overflow-x:auto; } }
   </style>
 </head>
 <body>
@@ -79,7 +84,7 @@
       <a href="#radar">情报首页</a>
       <a href="#sources">数据来源</a>
       <a href="#actions">行动按钮</a>
-      <a href="#score">评分模型</a>
+      <a href="#leaderboards">多榜单</a>
       <a href="#next">下一步</a>
     </div>
 
@@ -142,6 +147,75 @@
       </table>
       <div class="plain-box"><strong>排序原则：</strong>不是谁最火谁第一，而是谁最值得现在进入组合推荐谁第一。</div>
 
+
+
+      <h3 id="leaderboards">多榜单 Payload 机会雷达</h3>
+      <div class="plain-box"><strong>为什么需要多榜单：</strong>系统不应该只有一个综合 Top 5。不同 payload 的价值来源不同：有的外部很热，有的组合空间大，有的专利还没那么拥挤，有的安全性更可控，有的特别适合公司当前资源。因此首页应包含“综合机会 Top 5 + 各单项维度 Top 5”。</div>
+      <div class="leaderboard-grid">
+        <div class="leaderboard"><h3>综合机会 Top 5</h3><p>回答：现在整体最值得推进机会分析或组合推荐的 payload 是哪些？</p><ol><li>DXd</li><li>exatecan</li><li>MMAE</li><li>SN-38</li><li>amanitin 类</li></ol><span class="route">进入 0B / 方案一</span></div>
+        <div class="leaderboard"><h3>外部热度 Top 5</h3><p>回答：最近外部讨论最多、最活跃的 payload 是哪些？</p><ol><li>DXd</li><li>exatecan</li><li>MMAE</li><li>SN-38</li><li>PBD</li></ol><span class="route">进入机会详情</span></div>
+        <div class="leaderboard"><h3>论文 / 科学关注度 Top 5</h3><p>回答：哪些 payload 近期在科学研究中最活跃？</p><ol><li>exatecan</li><li>DXd</li><li>SN-38</li><li>amanitin</li><li>MMAE</li></ol><span class="route">进入机制分析</span></div>
+        <div class="leaderboard"><h3>临床 / 产业动态 Top 5</h3><p>回答：哪些 payload 被公司、临床或资本事件推动？</p><ol><li>DXd</li><li>MMAE</li><li>DM1 / DM4</li><li>exatecan</li><li>PBD</li></ol><span class="route">进入适应症匹配</span></div>
+        <div class="leaderboard"><h3>组合潜力 Top 5</h3><p>回答：哪些 payload 最适合做组合推荐？</p><ol><li>exatecan</li><li>DXd</li><li>SN-38</li><li>MMAE</li><li>PBD</li></ol><span class="route">进入方案一</span></div>
+        <div class="leaderboard"><h3>风险预警 Top 5</h3><p>回答：哪些 payload 虽然热门，但风险也最高？</p><ol><li>PBD</li><li>amanitin 类</li><li>DXd</li><li>MMAE</li><li>SN-38</li></ol><span class="route">进入安全性评估</span></div>
+      </div>
+
+      <h3>13 个排行榜完整定义</h3>
+      <table class="operator-table">
+        <thead><tr><th>排行榜</th><th>回答的问题</th><th>主要数据来源</th><th>推荐流向</th></tr></thead>
+        <tbody>
+          <tr><td>综合机会 Top 5</td><td>整体最值得优先推进的 payload 是哪些？</td><td>所有单项榜汇总 + 风险校正。</td><td>0B 机会详情 / 方案一。</td></tr>
+          <tr><td>外部热度 Top 5</td><td>外部讨论最多、最活跃的是哪些？</td><td>新闻、论文、专利、临床、会议、公告、交易。</td><td>0B 机会详情。</td></tr>
+          <tr><td>论文 / 科学关注度 Top 5</td><td>科学研究中最活跃的是哪些？</td><td>PubMed、bioRxiv、medRxiv、Crossref、重点期刊。</td><td>机制分析 / 组合推荐。</td></tr>
+          <tr><td>新闻 / 产业动态 Top 5</td><td>哪些被公司、资本市场或产业事件推动？</td><td>公司新闻稿、管线更新、授权合作、融资、失败公告。</td><td>BD 叙事 / 竞品跟踪。</td></tr>
+          <tr><td>临床推进热度 Top 5</td><td>哪些 ADC 或组合正在临床中快速推进？</td><td>ClinicalTrials、中国登记中心、EU 试验库、会议临床摘要。</td><td>适应症匹配。</td></tr>
+          <tr><td>专利 / IP 活跃度 Top 5</td><td>哪些 payload 最近专利布局最活跃？</td><td>Google Patents、Lens、WIPO、USPTO、CNIPA、EPO。</td><td>IP / 差异化分析。</td></tr>
+          <tr><td>会议摘要热度 Top 5</td><td>哪些 payload 在 AACR、ASCO、ESMO、SITC、SABCS、World ADC 等会议出现频繁？</td><td>会议摘要、海报、公司演示。</td><td>早期机会评估。</td></tr>
+          <tr><td>组合潜力 Top 5</td><td>哪些 payload 最适合做组合推荐？</td><td>机制、partner 空间、耐药机制、biomarker、实验可验证性。</td><td>方案一。</td></tr>
+          <tr><td>耐药逆转机会 Top 5</td><td>哪些 payload 最值得围绕耐药做 rescue combination？</td><td>耐药机制、失败信号、耐药模型、partner 可用性。</td><td>方案四。</td></tr>
+          <tr><td>安全窗口优化机会 Top 5</td><td>哪些 payload 最值得通过组合、剂量或分层改善安全窗口？</td><td>DLT、毒性重叠、正常细胞、schedule、biomarker。</td><td>方案五 / 方案三。</td></tr>
+          <tr><td>差异化空间 Top 5</td><td>哪些 payload 虽然不一定最热，但最可能做出新故事？</td><td>专利拥挤度、竞品密度、新组合、新人群、新适应症。</td><td>0B / BD 包装。</td></tr>
+          <tr><td>适应症扩展机会 Top 5</td><td>哪些 payload 最值得匹配癌种或亚型？</td><td>疾病生物学、临床信号、biomarker、模型可得性。</td><td>方案六。</td></tr>
+          <tr><td>公司可执行性 Top 5</td><td>在当前公司资源下，哪些 payload 最容易马上启动？</td><td>公司 payload、ADC、partner、细胞系、耐药株、assay、历史数据。</td><td>项目启动。</td></tr>
+          <tr><td>风险预警 Top 5</td><td>哪些 payload 虽然热门，但风险也最高？</td><td>毒性、临床失败、专利拥挤、竞争过度、供应链、实验不可行。</td><td>方案五 / 暂缓。</td></tr>
+        </tbody>
+      </table>
+
+      <h3>每个排行榜 Top 5 都要生成分析卡</h3>
+      <table class="operator-table">
+        <thead><tr><th>分析卡字段</th><th>说明</th></tr></thead>
+        <tbody>
+          <tr><td>排名</td><td>当前榜单第几名。</td></tr>
+          <tr><td>Payload / 别名</td><td>名称、别名、机制类别。</td></tr>
+          <tr><td>上榜原因</td><td>为什么进入这个榜单 Top 5。</td></tr>
+          <tr><td>关键证据</td><td>新闻、论文、专利、临床、会议、内部数据。</td></tr>
+          <tr><td>近期变化</td><td>上升、下降、稳定。</td></tr>
+          <tr><td>机会点</td><td>可以做什么：组合、耐药、安全性、适应症、差异化等。</td></tr>
+          <tr><td>风险点</td><td>毒性、专利拥挤、竞争、机制不清、实验不可行等。</td></tr>
+          <tr><td>推荐动作</td><td>进入组合推荐 / 耐药分析 / 安全性评估 / 适应症匹配 / 观察。</td></tr>
+          <tr><td>置信度与人工审核</td><td>高 / 中 / 低；未审核 / 已确认 / 已驳回 / 需补资料。</td></tr>
+        </tbody>
+      </table>
+
+      <h3>综合榜如何由分榜汇总</h3>
+      <table class="operator-table">
+        <thead><tr><th>来源</th><th>建议权重</th></tr></thead>
+        <tbody>
+          <tr><td>外部热度排名</td><td>10%</td></tr>
+          <tr><td>论文科学排名</td><td>10%</td></tr>
+          <tr><td>新闻产业排名</td><td>8%</td></tr>
+          <tr><td>临床推进排名</td><td>10%</td></tr>
+          <tr><td>专利 / IP 活跃度</td><td>8%</td></tr>
+          <tr><td>组合潜力排名</td><td>18%</td></tr>
+          <tr><td>耐药逆转机会</td><td>10%</td></tr>
+          <tr><td>安全窗口优化机会</td><td>8%</td></tr>
+          <tr><td>差异化空间</td><td>10%</td></tr>
+          <tr><td>公司可执行性</td><td>8%</td></tr>
+          <tr><td>风险预警扣分</td><td>-10% 到 -30%</td></tr>
+        </tbody>
+      </table>
+      <div class="plain-box"><strong>解释方式：</strong>综合榜必须说明“它在哪些单项榜表现突出、主要风险来自哪个榜、推荐下一步进入哪个工作流”。例如 exatecan 进入综合 Top 5，不只是因为外部热度高，而是因为它在组合潜力、论文科学关注度、耐药逆转机会中都靠前。</div>
+
       <h3>机会卡片示例</h3>
       <div class="two-col">
         <div class="intel-card">
@@ -190,6 +264,7 @@
 
     <section class="section" id="mvp">
       <h2>0A、第一阶段 MVP 不需要太复杂</h2>
+      <div class="plain-box"><strong>MVP 必做榜单：</strong>第一版先做 6 个核心榜单：综合机会 Top 5、外部热度 Top 5、论文 / 科学关注度 Top 5、临床 / 产业动态 Top 5、组合潜力 Top 5、风险预警 Top 5。第二阶段再扩展专利/IP、耐药逆转、安全窗口、差异化空间、适应症扩展、公司可执行性、会议摘要热度等榜单。</div>
       <div class="step-grid">
         <div class="step"><strong>模块 1：热点分类入口</strong><p>Payload 热点、机制主题热点、临床/产业热点、专利/IP 热点、安全性/失败信号。</p></div>
         <div class="step"><strong>模块 2：情报列表</strong><p>标题、来源、日期、payload、主题、证据类型、系统摘要、推荐动作。</p></div>
