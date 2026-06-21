@@ -20,7 +20,7 @@
     .hero { padding: 32px 36px; margin-bottom: 20px; }
     .section { padding: 28px; margin-top: 20px; }
     .card { padding: 18px; box-shadow:none; }
-    .quick { display:grid; grid-template-columns: repeat(6, minmax(0,1fr)); gap:12px; margin: 0 0 18px; }
+    .quick { display:grid; grid-template-columns: repeat(7, minmax(0,1fr)); gap:12px; margin: 0 0 18px; }
     .quick a { display:block; padding: 14px 16px; border-radius: 8px; background:#fff; border:1px solid var(--line); color: var(--text); box-shadow: var(--shadow); font-weight:600; }
     .related { display:grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap:10px; margin-top:14px; }
     .mini-link { display:block; padding:10px 12px; border:1px solid var(--line); border-radius:8px; color: var(--text); background:#fbfcfe; font-size:13px; font-weight:600; }
@@ -72,6 +72,7 @@
       <a href="#why">为什么要做</a>
       <a href="#effect">做成什么效果</a>
       <a href="#steps">具体步骤</a>
+      <a href="#project-definition">项目定义卡</a>
       <a href="#entry-role">核心入口</a>
       <a href="#operator-guide">上手操作</a>
     </div>
@@ -107,6 +108,33 @@
     <section class="section" id="steps">
       <h2>四、具体怎么做</h2>
       <div class="step-grid"><div class="step"><strong>第 1 步：先把问题定义清楚</strong><p>先明确这次是要增强杀伤、克服耐药，还是想找到更可转化的组合。目标不同，排序规则会不同。</p></div><div class="step"><strong>第 2 步：整理候选药和机制标签</strong><p>把候选 partner drug 按靶点、通路、毒性、临床阶段和已知耐药机制结构化，先做出可以计算的标签库。</p></div><div class="step"><strong>第 3 步：按规则筛出第一批候选</strong><p>重点看机制互补、耐药路径阻断、毒性是否重叠、剂量窗口是否接近，先把明显不合适的组合排掉。</p></div><div class="step"><strong>第 4 步：给出实验设计建议</strong><p>不是只交一个药名，而是一起给出建议细胞系、6x6 或 8x8 剂量矩阵、对照组和推荐 readout。</p></div><div class="step"><strong>第 5 步：公司执行湿实验并回传原始数据</strong><p>实验团队按模板执行后，把原始活性矩阵、synergy score、机制读出和失败结果一起回传。</p></div><div class="step"><strong>第 6 步：根据结果继续迭代</strong><p>我们再用这些数据调权、修正规则、收敛到更少但更强的候选组合，并形成下一轮方案。</p></div></div>
+    </section>
+
+
+
+    <section class="section" id="project-definition">
+      <h2>四点一、真正启动前先填：项目定义卡</h2>
+      <div class="plain-box"><strong>最重要的一句话：</strong>第一步不是马上列组合，而是先把推荐问题定义清楚。因为“推荐什么组合”取决于公司这次到底想解决什么问题。</div>
+      <div class="two-col">
+        <div class="card"><h3>启动前先回答 4 个问题</h3><ul><li>从哪个 payload 或 ADC 分子出发？例如 DXd、exatecan、SN-38、MMAE、MMAF、PBD、DM1、DM4。</li><li>这次推荐组合的目的是什么？增强杀伤、克服耐药、扩大适应症、改善安全窗口，还是做 BD / 专利差异化故事？</li><li>有哪些方向不能碰或不想优先碰？例如毒性重叠、已失败组合、不可采购药物、公司没有模型的方向。</li><li>第一轮实验资源有多少？能测几个 partner、几个细胞系，能不能做 6×6 / 8×8 dose matrix，有没有正常细胞对照？</li></ul></div>
+        <div class="card"><h3>为什么必须先定义</h3><p>如果不先定义目标，模型很容易给出一堆“理论上可能协同”的组合，但这些组合不一定符合当前资源、业务目标和实验条件。真正有价值的推荐应该是：在当前 payload、当前资源、当前目标下，最值得第一轮验证的 Top 3-10 个组合。</p></div>
+      </div>
+      <table class="operator-table">
+        <thead><tr><th>项目定义项</th><th>需要填写什么</th><th>填写目的</th></tr></thead>
+        <tbody>
+          <tr><td>Payload / ADC</td><td>例如 exatecan、DXd、MMAE，或某个具体 ADC 分子。</td><td>决定后续机制、毒性和候选 partner 的搜索范围。</td></tr>
+          <tr><td>当前阶段</td><td>早期探索、已有体外数据、已有动物数据、临床前或临床阶段。</td><td>决定推荐应该偏发现、验证、转化还是 BD 包装。</td></tr>
+          <tr><td>主要目标</td><td>增强疗效、克服耐药、扩大适应症、优化安全窗口、BD / 专利叙事。</td><td>目标不同，推荐排序权重不同。</td></tr>
+          <tr><td>优先癌种</td><td>已有癌种方向就写明；没有也可以让模型推荐。</td><td>影响细胞系、biomarker 和实验模型选择。</td></tr>
+          <tr><td>已有数据</td><td>单药活性、细胞系数据、ADC 内化、biomarker、毒性、失败组合。</td><td>已有数据越完整，推荐越不容易泛泛而谈。</td></tr>
+          <tr><td>可用模型</td><td>细胞系、类器官、PDX、耐药株、正常细胞或毒性 proxy。</td><td>保证推荐结果可以马上转成实验。</td></tr>
+          <tr><td>可测 partner 数量</td><td>第一轮最多测 Top 3、Top 5 还是 Top 10。</td><td>决定推荐清单的规模和精度。</td></tr>
+          <tr><td>可做实验</td><td>viability、apoptosis、DNA damage、cell cycle、flow、western、RNA 等。</td><td>决定模型需要输出哪些实验设计建议。</td></tr>
+          <tr><td>排除条件</td><td>已做失败、毒性重叠、不可采购、无临床转化价值、竞品过多。</td><td>避免浪费第一轮实验资源。</td></tr>
+          <tr><td>期望输出</td><td>Top 3 / Top 5 / Top 10 组合清单 + 机制理由 + 实验建议。</td><td>让交付物一开始就清楚可验收。</td></tr>
+        </tbody>
+      </table>
+      <div class="plain-box"><strong>例子：</strong>同样是 exatecan，如果目标是增强 DNA damage 杀伤，可能优先看 ATR、WEE1、PARP、CHK1；如果目标是克服耐药，可能优先看 ABCB1/P-gp、DNA repair、抗凋亡、细胞周期逃逸；如果目标是 BD 叙事，还要同时看差异化机制、专利空间和竞品拥挤程度。</div>
     </section>
 
 
