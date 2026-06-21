@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Payload 机会扫描与选题雷达｜ADC 协作型方案详情</title>
+  <style>
+    :root {
+      --bg: #f7f8fa; --panel: #fff; --text: #18202a; --muted: #5b6675; --line: #dfe4ea;
+      --blue: #1f5fbf; --green: #157f5b; --orange: #b75f00; --red: #b42318; --purple: #6b4bb8;
+      --shadow: 0 10px 28px rgba(24, 32, 42, 0.08);
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; color: var(--text); background: var(--bg); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", Arial, sans-serif; line-height: 1.68; }
+    a { color: var(--blue); text-decoration: none; font-weight: 700; }
+    a:hover { text-decoration: underline; }
+    .page { max-width: 1160px; margin: 0 auto; padding: 28px 24px 56px; }
+    .topbar { display:flex; justify-content:space-between; align-items:center; gap:12px; margin-bottom:18px; color: var(--muted); font-size:14px; }
+    .hero, .section, .card { background: var(--panel); border:1px solid var(--line); border-radius:10px; box-shadow: var(--shadow); }
+    .hero { padding: 32px 36px; margin-bottom: 20px; }
+    .section { padding: 28px; margin-top: 20px; }
+    .card { padding: 18px; box-shadow:none; }
+    .quick { display:grid; grid-template-columns: repeat(5, minmax(0,1fr)); gap:12px; margin: 0 0 18px; }
+    .quick a { display:block; padding: 14px 16px; border-radius: 8px; background:#fff; border:1px solid var(--line); color: var(--text); box-shadow: var(--shadow); font-weight:600; }
+    .related { display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap:10px; margin-top:14px; }
+    .mini-link { display:block; padding:10px 12px; border:1px solid var(--line); border-radius:8px; color: var(--text); background:#fbfcfe; font-size:13px; font-weight:600; }
+    .mini-link.active { border-color:#b8cdf2; background:#f3f7ff; color: var(--blue); }
+    h1 { margin:0 0 12px; font-size: clamp(30px, 4vw, 46px); line-height:1.15; }
+    h2 { margin:0 0 14px; font-size:24px; }
+    h3 { margin:0 0 10px; font-size:18px; }
+    h4 { margin: 18px 0 8px; font-size:16px; color: var(--blue); }
+    p { margin:0 0 12px; }
+    .lead { color: var(--muted); font-size:18px; max-width:900px; }
+    .tag-row { display:flex; flex-wrap:wrap; gap:8px; margin-top:14px; }
+    .tag { display:inline-flex; min-height:28px; align-items:center; padding:4px 10px; border-radius:999px; border:1px solid var(--line); color: var(--muted); background:#fff; font-size:13px; font-weight:650; }
+    .two-col { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:18px; }
+    .three-col { display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap:18px; }
+    ul, ol { margin: 8px 0 0; padding-left: 22px; }
+    li { margin: 6px 0; }
+    .step-grid { display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap:14px; }
+    .step { padding:16px; border:1px solid var(--line); border-radius:8px; background:#fbfcfe; }
+    .step strong { display:block; margin-bottom:8px; color: var(--blue); }
+    .note { padding:14px 16px; border:1px solid #f0c99a; border-radius:8px; background:#fffaf3; color:#5d3a05; }
+    .quote { padding:16px 18px; border-left:4px solid var(--green); background:#f2fbf6; border-radius:0 8px 8px 0; color:#124c37; }
+    .operator-table { width:100%; border-collapse:separate; border-spacing:0; overflow:hidden; margin:14px 0 18px; border:1px solid var(--line); border-radius:10px; background:var(--panel); }
+    .operator-table th, .operator-table td { padding:12px 14px; border-bottom:1px solid var(--line); vertical-align:top; text-align:left; }
+    .operator-table th { background:rgba(31,95,191,.10); color:var(--blue); font-weight:800; }
+    .operator-table tr:last-child td { border-bottom:0; }
+    .operator-table td { font-size:14px; }
+    .plain-box { padding:16px 18px; border:1px solid var(--line); border-radius:10px; background:rgba(31,95,191,.06); margin:12px 0 18px; }
+    .plain-box strong { color:var(--blue); }
+    @media (max-width: 900px) { .quick, .two-col, .three-col, .step-grid, .related { grid-template-columns: 1fr; } .hero, .section { padding:22px; } .operator-table { display:block; overflow-x:auto; } }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="topbar">
+      <div style="display:flex; gap:14px; flex-wrap:wrap;"><a href="./ADC协作型方案总览网页.html">← 返回 ADC 协作型方案总览</a><a href="../hanx-ai-translational-platform.html">AI 转化免疫学平台 →</a></div>
+      <span>详细说明 0 / 8</span>
+    </div>
+
+    <div class="quick">
+      <a href="#what">要做什么</a>
+      <a href="#signals">看哪些信号</a>
+      <a href="#score">评分模型</a>
+      <a href="#operator-guide">上手操作</a>
+      <a href="#next">下一步</a>
+    </div>
+
+    <section class="hero">
+      <h1>Payload 机会扫描与选题雷达</h1>
+      <p class="lead">如果现在连“选哪个 payload 开始”都不确定，就不应该直接进入组合推荐，而是要先判断哪些 payload 或主题最值得优先研究。</p>
+      <div class="tag-row"><span class="tag">方案 0</span><span class="tag">选题雷达</span><span class="tag">新闻 / 论文 / 专利 / 临床</span><span class="tag">进入方案一前置步骤</span></div>
+      <div class="note" style="margin-top:18px;">先用大白话说，这个工具不是推荐“payload 和谁组合”，而是先帮团队判断：现在哪些 payload 值得优先研究，为什么现在值得，适合从哪个主题切入。</div>
+    </section>
+
+    <section class="section" id="what">
+      <h2>一、这件事到底是在做什么</h2>
+      <div class="two-col">
+        <div class="card"><p>它回答的是“我们应该先选哪个 payload / 哪个主题”，而不是“选定 payload 后和谁联用”。如果 payload 都没选清楚，后面的组合推荐就会失去边界。</p></div>
+        <div class="card"><p>它会把最新热点、新闻、论文、专利、临床进展、竞品动态、毒性问题、耐药问题、未满足需求和公司资源放在一起，输出优先级排序。</p></div>
+      </div>
+      <table class="operator-table">
+        <thead><tr><th>层级</th><th>核心问题</th><th>输入</th><th>输出</th></tr></thead>
+        <tbody>
+          <tr><td>第 0 步：Payload 选择工具</td><td>我们应该先选哪个 payload 或主题？</td><td>热点、新闻、论文、专利、临床、竞品、公司资源。</td><td>payload 排名、机会点、风险点、推荐切入主题、是否进入方案一。</td></tr>
+          <tr><td>第 1 步：Payload 组合推荐引擎</td><td>选定 payload 后，它最值得和谁组合？</td><td>已选 payload、业务目标、适应症方向、实验资源、排除条件。</td><td>Top 3-10 组合推荐、机制解释、实验设计建议、风险提示。</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section" id="signals">
+      <h2>二、Payload 选择雷达要看哪些信号</h2>
+      <div class="three-col">
+        <div class="card"><h3>科学热度</h3><p>看论文、机制、biomarker、耐药机制、毒性管理策略是否正在升温。</p></div>
+        <div class="card"><h3>临床与产业</h3><p>看 ADC 管线、临床数据、失败案例、大药企交易、授权和适应症扩展趋势。</p></div>
+        <div class="card"><h3>专利与差异化</h3><p>看组合使用、biomarker 人群、给药顺序、耐药逆转是否还有 IP 空间。</p></div>
+        <div class="card"><h3>可组合性</h3><p>看 payload 是否天然适合联用，例如 DDR、免疫、细胞周期、凋亡、外排泵路径。</p></div>
+        <div class="card"><h3>安全性与转化</h3><p>看 DLT、骨髓毒性、GI 毒性、神经毒性、bystander effect 和剂量窗口。</p></div>
+        <div class="card"><h3>公司可执行性</h3><p>看公司是否有 payload、ADC、细胞系、assay、dose matrix 能力和历史数据。</p></div>
+      </div>
+    </section>
+
+    <section class="section" id="score">
+      <h2>三、建议的 Payload 选择评分模型</h2>
+      <table class="operator-table">
+        <thead><tr><th>维度</th><th>建议权重</th><th>怎么判断</th><th>输出解释</th></tr></thead>
+        <tbody>
+          <tr><td>科学热度</td><td>15%</td><td>论文、机制、biomarker、耐药研究是否活跃。</td><td>这个 payload 为什么现在值得重新看。</td></tr>
+          <tr><td>产业热度</td><td>15%</td><td>临床、新闻、交易、管线是否活跃。</td><td>是否有产业关注度和外部窗口期。</td></tr>
+          <tr><td>组合潜力</td><td>25%</td><td>是否有明确可组合机制和足够 partner 方向。</td><td>是否值得进入组合推荐。</td></tr>
+          <tr><td>差异化空间</td><td>15%</td><td>是否能围绕 biomarker、耐药、适应症、给药顺序形成新故事。</td><td>是否只是跟风，还是能做出自己的东西。</td></tr>
+          <tr><td>安全窗口</td><td>15%</td><td>是否存在可管理的剂量窗口和可转化可能。</td><td>避免理论强但实际很难开发。</td></tr>
+          <tr><td>公司可执行性</td><td>15%</td><td>公司是否有 payload、模型、实验和数据基础。</td><td>判断现在能不能马上做。</td></tr>
+        </tbody>
+      </table>
+      <div class="quote">最终输出：P1 = 马上进入组合推荐；P2 = 值得继续观察或补资料；P3 = 暂不优先。</div>
+    </section>
+
+    <section class="section" id="operator-guide">
+      <h2>四、操作人员上手版：软件、模型、数据集和特征</h2>
+      <h3>1. 推荐使用的软件 / 平台</h3>
+      <table class="operator-table">
+        <thead><tr><th>用途</th><th>建议工具</th><th>操作人员要做什么</th></tr></thead>
+        <tbody>
+          <tr><td>新闻与产业监测</td><td>Google Alerts、BioCentury、Endpoints、FierceBiotech、公司官网、药企公告</td><td>按 payload、ADC 公司、临床结果、交易关键词建立监测列表。</td></tr>
+          <tr><td>论文与机制扫描</td><td>PubMed、Semantic Scholar、Google Scholar、Zotero</td><td>跟踪 TOP1、MMAE、PBD、amanitin、payload resistance 等主题。</td></tr>
+          <tr><td>专利与差异化</td><td>Google Patents、Lens、Derwent（如有）</td><td>扫描 payload、组合、biomarker、给药顺序和适应症专利空间。</td></tr>
+          <tr><td>临床与管线</td><td>ClinicalTrials.gov、公司 pipeline、药物数据库</td><td>整理哪些 payload 正在被哪些公司、哪些癌种使用。</td></tr>
+          <tr><td>数据整合与打分</td><td>Airtable、Notion、Excel、Python/R、Jupyter</td><td>建立 payload 机会卡和评分表。</td></tr>
+        </tbody>
+      </table>
+      <h3>2. 需要的专属 AI 模型</h3>
+      <table class="operator-table">
+        <thead><tr><th>模型</th><th>作用</th><th>训练或调参需要的数据</th></tr></thead>
+        <tbody>
+          <tr><td>Payload 热点扫描模型</td><td>从新闻、论文、公告中识别正在升温的 payload 或主题。</td><td>历史新闻、论文、payload 术语表、人工标注热点事件。</td></tr>
+          <tr><td>Payload 机会评分模型</td><td>按科学热度、产业热度、组合潜力、差异化、安全窗口、公司适配度打分。</td><td>候选 payload 机会卡、专家评分、历史项目结果。</td></tr>
+          <tr><td>主题聚类模型</td><td>把候选 payload 归入 TOP1 热点、耐药逆转、安全窗口、新型 payload 等主题。</td><td>文献摘要、专利摘要、临床描述、机制标签。</td></tr>
+          <tr><td>进入方案一判定模型</td><td>判断某个 payload 是否足够成熟，可以进入组合推荐。</td><td>P1/P2/P3 历史标注、公司资源、实验可行性、风险标签。</td></tr>
+        </tbody>
+      </table>
+      <h3>3. 数据集准备清单</h3>
+      <table class="operator-table">
+        <thead><tr><th>数据集</th><th>来源</th><th>最低要求</th></tr></thead>
+        <tbody>
+          <tr><td>候选 payload 池</td><td>TOP1、微管、DNA 交联、新型 payload、公司已有 payload。</td><td>至少包含 payload 名称、机制类别、已知毒性、代表 ADC。</td></tr>
+          <tr><td>外部热点数据</td><td>新闻、论文、专利、临床、交易、竞品动态。</td><td>每条证据要有来源、日期、摘要和可信度。</td></tr>
+          <tr><td>公司资源数据</td><td>已有 ADC、payload 供应、细胞系、assay、历史实验。</td><td>必须说明“现在能不能做”，不是只看外部热点。</td></tr>
+          <tr><td>风险与排除数据</td><td>毒性、失败案例、竞品拥挤、不可采购、专利受限。</td><td>要能解释为什么某些 payload 暂不优先。</td></tr>
+        </tbody>
+      </table>
+      <h3>4. 必须抽取的特征字段</h3>
+      <table class="operator-table">
+        <thead><tr><th>特征类型</th><th>具体字段</th><th>为什么重要</th></tr></thead>
+        <tbody>
+          <tr><td>热度特征</td><td>近 6-12 个月论文数、新闻数、临床更新数、交易数。</td><td>判断是否有外部窗口期。</td></tr>
+          <tr><td>机制特征</td><td>TOP1、微管、DNA crosslink、RNA polymerase、免疫刺激、放射性 payload。</td><td>决定可组合方向和后续实验主题。</td></tr>
+          <tr><td>组合特征</td><td>DDR、免疫、细胞周期、凋亡、外排泵、代谢等可联用路径。</td><td>判断是否值得进入方案一。</td></tr>
+          <tr><td>风险特征</td><td>DLT、骨髓毒性、GI 毒性、神经毒性、窗口窄、正常组织敏感性。</td><td>判断组合空间是否现实可开发。</td></tr>
+          <tr><td>公司适配特征</td><td>可获得 payload、可用模型、实验平台、历史数据、预算周期。</td><td>防止推荐热门但公司当前做不了的方向。</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section" id="next">
+      <h2>五、最终输出：Payload 机会卡</h2>
+      <table class="operator-table">
+        <thead><tr><th>模块</th><th>内容</th></tr></thead>
+        <tbody>
+          <tr><td>Payload</td><td>DXd / exatecan / SN-38 / MMAE / MMAF / PBD / amanitin 等。</td></tr>
+          <tr><td>当前热度</td><td>高 / 中 / 低，并说明热点来自新闻、论文、专利、临床、交易还是失败案例。</td></tr>
+          <tr><td>主要机制</td><td>例如 TOP1 抑制、微管抑制、DNA damage、免疫刺激等。</td></tr>
+          <tr><td>组合潜力</td><td>高 / 中 / 低，并列出 DDR、免疫、细胞周期、凋亡、外排泵等方向。</td></tr>
+          <tr><td>主要风险</td><td>骨髓毒性、GI 毒性、耐药、窗口窄、bystander effect 等。</td></tr>
+          <tr><td>差异化空间</td><td>biomarker、耐药逆转、适应症、给药顺序、组合专利。</td></tr>
+          <tr><td>公司适配度</td><td>现有资源是否支持马上启动。</td></tr>
+          <tr><td>推荐优先级</td><td>P1 / P2 / P3。</td></tr>
+          <tr><td>推荐下一步</td><td>是否进入方案一：Payload 组合推荐引擎。</td></tr>
+        </tbody>
+      </table>
+      <div class="plain-box"><strong>建议工作顺序：</strong>先建立候选 payload 池，再按 TOP1 payload 组合机会、payload 耐药逆转、安全窗口改善、新型 payload 差异化机会等主题扫描，最后选出 P1 payload 进入方案一。</div>
+      <h4>相关方案导航</h4>
+      <div class="related"><a class="mini-link active" href="./ADC协作型方案详情-00-Payload机会扫描与选题雷达.html">0. Payload 机会扫描与选题雷达</a><a class="mini-link" href="./ADC协作型方案详情-01-Payload组合推荐引擎.html">1. Payload 组合推荐引擎</a><a class="mini-link" href="./ADC协作型方案详情-07-组合实验设计Copilot.html">7. 组合实验设计 Copilot</a></div>
+    </section>
+  </main>
+</body>
+</html>
