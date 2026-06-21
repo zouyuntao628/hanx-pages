@@ -5,108 +5,106 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>方案完善路线图与阶段成果表</title>
   <style>
-    :root { --bg:#07111f; --panel:rgba(255,255,255,.075); --line:rgba(255,255,255,.16); --text:#eef6ff; --muted:#a8b7c9; --blue:#68d5ff; --cyan:#6fffe9; --green:#8ef6a3; --purple:#caa7ff; --yellow:#ffe08a; --shadow:0 22px 70px rgba(0,0,0,.35); }
+    :root { --bg:#07111f; --panel:rgba(255,255,255,.075); --line:rgba(255,255,255,.16); --text:#eef6ff; --muted:#a8b7c9; --blue:#68d5ff; --cyan:#6fffe9; --green:#8ef6a3; --purple:#caa7ff; --yellow:#ffe08a; --red:#ff9b9b; --shadow:0 22px 70px rgba(0,0,0,.35); }
     * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
     body { margin:0; color:var(--text); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif; background:radial-gradient(circle at 10% -10%, rgba(104,213,255,.25), transparent 33%), radial-gradient(circle at 95% 10%, rgba(142,246,163,.16), transparent 28%), radial-gradient(circle at 50% 105%, rgba(202,167,255,.18), transparent 30%), var(--bg); line-height:1.68; }
-    a { color:var(--cyan); text-decoration:none; font-weight:700; }
-    a:hover { text-decoration:underline; }
-    .wrap { width:min(1180px, calc(100% - 40px)); margin:0 auto; }
+    a { color:var(--cyan); text-decoration:none; font-weight:700; } a:hover { text-decoration:underline; }
+    .wrap { width:min(1240px, calc(100% - 40px)); margin:0 auto; }
     nav { position:sticky; top:0; z-index:20; backdrop-filter:blur(18px); background:rgba(7,17,31,.72); border-bottom:1px solid var(--line); }
     nav .wrap { display:flex; justify-content:space-between; align-items:center; gap:16px; padding:14px 0; }
-    .brand { display:flex; align-items:center; gap:10px; font-weight:850; }
-    .logo { width:34px; height:34px; border-radius:11px; background:linear-gradient(135deg,var(--blue),var(--green)); box-shadow:0 0 32px rgba(104,213,255,.42); }
-    .navlinks { display:flex; gap:14px; flex-wrap:wrap; font-size:14px; }
-    .navlinks a { color:var(--muted); }
-    header { padding:72px 0 32px; }
-    .eyebrow { display:inline-flex; padding:7px 12px; border:1px solid var(--line); border-radius:999px; background:rgba(255,255,255,.06); color:var(--cyan); font-weight:800; font-size:14px; }
-    h1 { margin:20px 0 16px; max-width:1000px; font-size:clamp(38px,6vw,68px); line-height:1.05; letter-spacing:-.04em; }
-    .lead { max-width:920px; color:#d7e7f7; font-size:clamp(18px,2vw,23px); }
-    section { padding:34px 0; }
-    .card, .status, table { background:var(--panel); border:1px solid var(--line); border-radius:24px; box-shadow:var(--shadow); }
-    .card { padding:24px; }
-    .status { padding:22px 24px; border-color:rgba(255,224,138,.38); background:rgba(255,224,138,.08); }
-    h2 { margin:0 0 14px; font-size:clamp(28px,4vw,42px); line-height:1.15; }
-    h3 { margin:0 0 10px; font-size:23px; }
-    .sub { color:var(--muted); max-width:880px; margin:0 0 20px; }
-    .grid-2 { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:18px; }
-    .grid-3 { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px; }
+    .brand { display:flex; align-items:center; gap:10px; font-weight:850; } .logo { width:34px; height:34px; border-radius:11px; background:linear-gradient(135deg,var(--blue),var(--green)); box-shadow:0 0 32px rgba(104,213,255,.42); }
+    .navlinks { display:flex; gap:14px; flex-wrap:wrap; font-size:14px; } .navlinks a { color:var(--muted); }
+    header { padding:72px 0 32px; } .eyebrow { display:inline-flex; padding:7px 12px; border:1px solid var(--line); border-radius:999px; background:rgba(255,255,255,.06); color:var(--cyan); font-weight:800; font-size:14px; }
+    h1 { margin:20px 0 16px; max-width:1060px; font-size:clamp(38px,6vw,68px); line-height:1.05; letter-spacing:-.04em; } .lead { max-width:980px; color:#d7e7f7; font-size:clamp(18px,2vw,23px); }
+    section { padding:34px 0; } .card, .status, table { background:var(--panel); border:1px solid var(--line); border-radius:24px; box-shadow:var(--shadow); } .card { padding:24px; }
+    .status { padding:22px 24px; border-color:rgba(142,246,163,.38); background:rgba(142,246,163,.08); }
+    h2 { margin:0 0 14px; font-size:clamp(28px,4vw,42px); line-height:1.15; } h3 { margin:0 0 10px; font-size:23px; }
+    .sub { color:var(--muted); max-width:920px; margin:0 0 20px; } .grid-2 { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:18px; } .grid-3 { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px; }
     .pill { display:inline-flex; margin:4px 6px 4px 0; padding:6px 10px; border-radius:999px; border:1px solid var(--line); color:#dcecff; background:rgba(255,255,255,.06); font-size:13px; }
-    table { width:100%; border-collapse:separate; border-spacing:0; overflow:hidden; margin-top:16px; font-size:14px; }
-    th, td { padding:13px 14px; border-bottom:1px solid var(--line); vertical-align:top; text-align:left; }
-    th { color:#061622; background:linear-gradient(135deg,var(--blue),var(--green)); font-weight:850; }
-    tr:last-child td { border-bottom:0; }
-    td { color:#e5f0fb; }
-    ul { margin:8px 0 0; padding-left:20px; }
-    li { margin:6px 0; }
-    .muted { color:var(--muted); }
-    .note { padding:16px 18px; border-left:4px solid var(--green); background:rgba(142,246,163,.08); border-radius:0 18px 18px 0; }
+    table { width:100%; border-collapse:separate; border-spacing:0; overflow:hidden; margin-top:16px; font-size:14px; } th, td { padding:13px 14px; border-bottom:1px solid var(--line); vertical-align:top; text-align:left; } th { color:#061622; background:linear-gradient(135deg,var(--blue),var(--green)); font-weight:850; } tr:last-child td { border-bottom:0; } td { color:#e5f0fb; }
+    ul { margin:8px 0 0; padding-left:20px; } li { margin:6px 0; } .muted { color:var(--muted); } .note { padding:16px 18px; border-left:4px solid var(--green); background:rgba(142,246,163,.08); border-radius:0 18px 18px 0; }
+    .warning { padding:16px 18px; border-left:4px solid var(--yellow); background:rgba(255,224,138,.08); border-radius:0 18px 18px 0; }
     @media (max-width:900px) { .grid-2, .grid-3 { grid-template-columns:1fr; } .navlinks { display:none; } table { display:block; overflow-x:auto; white-space:nowrap; } }
   </style>
 </head>
 <body>
-  <nav>
-    <div class="wrap">
-      <div class="brand"><div class="logo"></div><span>方案完善路线图</span></div>
-      <div class="navlinks"><a href="./index.html">首页</a><a href="./hanx-ai-translational-platform.html">AI 平台</a><a href="./ADC毒素组合用药算法沟通网页/ADC协作型方案总览网页.html">ADC 方案库</a></div>
-    </div>
-  </nav>
-
+  <nav><div class="wrap"><div class="brand"><div class="logo"></div><span>方案完善路线图</span></div><div class="navlinks"><a href="./index.html">首页</a><a href="#conditions">已有条件</a><a href="#gaps">缺口</a><a href="#phases">阶段表</a><a href="#web">网页待办</a></div></div></nav>
   <header class="wrap">
-    <div class="eyebrow">公开进度页｜阶段成果表正在持续更新</div>
+    <div class="eyebrow">正式路线图｜已有条件 × 缺口 × 阶段成果</div>
     <h1>方案完善路线图与阶段成果表</h1>
-    <p class="lead">这个页面用于持续展示两个方案库的完善进度：已有条件是什么、还缺什么、每个阶段要做哪些工作，以及每个阶段应该交付什么成果。</p>
+    <p class="lead">这个页面把 ADC 协作型方案库与 AI 驱动转化免疫学验证平台整理成可立项、可执行、可验收的阶段化方案。核心目标不是继续堆页面，而是把静态沟通材料升级为“推荐—实验—回流—解释—二轮决策”的闭环。</p>
   </header>
-
   <main>
     <section class="wrap">
-      <div class="status">
-        <h2>当前状态：分析中</h2>
-        <p>多代理 workflow 正在分析现有网页、协作条件、缺口、阶段工作和成果表。当前页面先上线“进度版”；分析完成后会更新为正式版路线图。</p>
-        <p class="muted">最近更新：2026-06-21</p>
-      </div>
+      <div class="status"><h2>当前状态：正式路线图 v1 已上线</h2><p>已完成公开网页、跨库跳转、ADC 方案 0A/0B/1-8、AI 平台 4 个详情页、操作人员上手版、软件/模型/数据集/特征说明。下一步重点是补齐数据模板、成果样例、验收标准和项目启动包。</p><p class="muted">最近更新：2026-06-21</p></div>
+    </section>
+
+    <section class="wrap" id="conditions">
+      <h2>一、已有条件表</h2>
+      <p class="sub">目前已经具备可对外展示的方案骨架，但还需要继续把它变成可签约、可执行、可验收的项目包。</p>
+      <table><thead><tr><th>类别</th><th>已有条件 / 资产</th><th>当前基线</th><th>可如何使用</th></tr></thead><tbody>
+        <tr><td>统一入口</td><td>GitHub Pages 首页与 roadmap 页</td><td>已可公开访问，首页可进入 AI 平台、ADC 方案库和路线图。</td><td>作为客户、团队和合作方查看最新材料的入口。</td></tr>
+        <tr><td>AI 平台</td><td>AI 驱动转化免疫学验证平台总览 + 4 个详情页</td><td>覆盖 HX009 机制/安全、患者 biomarker、适应症/联用、临床转化数据工作台。</td><td>面向管理层、BD、转化医学和实验团队解释 AI 如何支持免疫肿瘤资产验证。</td></tr>
+        <tr><td>ADC 方案库</td><td>ADC 总览 + 0A/0B + 1-8 详情页</td><td>已经从“组合推荐”扩展到 payload 情报雷达、机会评估、组合推荐、分层、剂量、安全性、适应症、实验设计和知识库。</td><td>作为 ADC/Payload 组合治疗协作的产品化工作流。</td></tr>
+        <tr><td>非专家解释</td><td>每页都有普通人可读解释</td><td>已加入“普通人先看”“上手操作”“软件/模型/数据集/特征”。</td><td>降低客户、管理层、BD 和非算法人员理解门槛。</td></tr>
+        <tr><td>操作人员指引</td><td>每个详情页都有软件、AI 模型、数据集、特征字段</td><td>包含 FlowJo、SynergyFinder、GraphPad、Python/R、Seurat、Neo4j、ClinicalTrials、DepMap、GDSC、PRISM 等。</td><td>帮助实验、数据和产品人员知道从哪里开始准备材料。</td></tr>
+        <tr><td>数据闭环意识</td><td>多处强调原始数据、失败结果、批次、异常说明和回流</td><td>已经具备可迭代产品思路。</td><td>后续可转成数据合同、QC 规则和模型迭代验收标准。</td></tr>
+      </tbody></table>
+    </section>
+
+    <section class="wrap" id="gaps">
+      <h2>二、缺口与需要补充的工作</h2>
+      <table><thead><tr><th>缺口类别</th><th>当前问题</th><th>需要补充的工作</th><th>优先级</th></tr></thead><tbody>
+        <tr><td>产品状态表达</td><td>页面使用“引擎、系统、Copilot、Workbench”等词，容易被理解为已有成熟软件。</td><td>给每页增加“当前交付形态”：静态方案说明、规则/模板 MVP、半自动分析服务、计划开发软件。</td><td>高</td></tr>
+        <tr><td>数据合同</td><td>还缺统一字段名、单位、必填性、允许值、示例、缺失处理和 QC 规则。</td><td>建立数据字典 v1，覆盖 Asset、Payload、Partner、Model、Biomarker、Dose、Readout、Synergy、Toxicity、Evidence、Decision。</td><td>高</td></tr>
+        <tr><td>实验 SOP</td><td>页面已有概念，但缺 plate layout、剂量梯度、重复数、时间点、失败重做规则。</td><td>补齐实验模板、QC 标准、异常记录、失败组合记录和回传表。</td><td>高</td></tr>
+        <tr><td>推荐算法规格</td><td>评分、毒性惩罚、适应症匹配、biomarker 分层仍偏概念化。</td><td>定义输入字段、特征、权重、阈值、排序逻辑、置信度、证据等级、冲突处理。</td><td>高</td></tr>
+        <tr><td>证据体系</td><td>还缺文献、数据库、内部实验、专家规则、模型外推的证据分级。</td><td>建立 evidence table 和 confidence 规则，每条推荐都要可追溯来源、日期、适用条件和反证。</td><td>高</td></tr>
+        <tr><td>验收标准</td><td>Top 5、Top 3-10、实验模板、toxicity vector、dashboard 等缺少可检查标准。</td><td>为每个交付物定义数量、字段完整性、可执行性、来源追溯、客户确认和 go/no-go 标准。</td><td>高</td></tr>
+        <tr><td>协作机制</td><td>目前只有“我们负责/公司负责”的粗分工。</td><td>补充 RACI、kickoff、周会、实验设计冻结会、数据完整性检查、分析评审、阶段 go/no-go。</td><td>中高</td></tr>
+        <tr><td>合规/IP</td><td>临床样本、组学、失败实验、组合推荐、专利启发等边界未定义。</td><td>增加数据所有权、脱敏、权限、审计、跨客户复用、模型训练使用边界、项目结束交付/销毁规则。</td><td>中高</td></tr>
+        <tr><td>样例输出</td><td>缺少候选组合卡、实验设计 sheet、数据回流表、dashboard、evidence pack 样例。</td><td>制作一套匿名或假数据闭环样例，从输入到推荐、实验设计、回流、QC、复盘。</td><td>中高</td></tr>
+      </tbody></table>
+    </section>
+
+    <section class="wrap" id="phases">
+      <h2>三、总体阶段路线表</h2>
+      <table><thead><tr><th>阶段</th><th>目标</th><th>已有条件</th><th>需要做的工作</th><th>责任方</th><th>输入材料</th><th>产出物</th><th>验收标准</th><th>风险/依赖</th></tr></thead><tbody>
+        <tr><td>阶段 0：资产定版与叙事校准</td><td>把现有网页整理成统一、可信、可维护的产品入口。</td><td>首页、AI 平台、ADC 方案库、roadmap 已上线。</td><td>统一术语、标注当前交付形态、补版本信息、检查链接、修正文案。</td><td>产品负责人、内容负责人、技术维护人</td><td>现有 HTML、目标客户、主推 use case</td><td>资产全集表、页面关系矩阵、术语表、QA 清单</td><td>客户能在 10 分钟内理解两套方案如何连接。</td><td>若继续快速加页面，可能出现版本漂移。</td></tr>
+        <tr><td>阶段 1：PoC 主线选择</td><td>选择一个最小可执行闭环，不同时承诺全平台。</td><td>ADC 0A/0B/1 已形成前端工作流。</td><td>确定一个 payload/主题，填写项目定义卡，明确目标、排除条件和实验资源。</td><td>BD owner、科学 owner、客户项目负责人</td><td>payload 候选、公司资源、已有数据、预算和时间表</td><td>PoC charter、项目定义卡、数据需求清单</td><td>双方确认目标、样本、实验条件、Top N 输出规模。</td><td>如果 payload 未选清楚，方案一会泛泛而谈。</td></tr>
+        <tr><td>阶段 2：数据与证据准备</td><td>把可推荐、可实验、可追溯的数据底座准备好。</td><td>页面已列出数据集和特征字段。</td><td>建立数据字典、证据表、候选药库、payload 机会卡、内部资料导入模板。</td><td>数据 owner、算法 owner、客户实验/转化团队</td><td>新闻、论文、专利、临床、内部实验、模型资源</td><td>数据字典 v1、evidence table、候选池、QC 报告</td><td>关键字段完整率达标；每条证据有来源和日期。</td><td>内部资料质量和权限边界可能影响进度。</td></tr>
+        <tr><td>阶段 3：首轮推荐与实验设计</td><td>输出第一批真正可执行的推荐和实验方案。</td><td>方案一、方案七已有操作人员上手模块。</td><td>运行 Top 5/Top 3-10 推荐，给出机制解释、风险标注、实验矩阵、对照和 readout。</td><td>算法 owner、科学 owner、实验 owner</td><td>项目定义卡、候选 partner、细胞系、biomarker、剂量范围</td><td>推荐清单、候选组合卡、实验设计模板、plate map/SOP 草案</td><td>实验团队能直接执行；每个推荐都有证据和反证。</td><td>推荐可能受限于 partner 可采购性和模型可得性。</td></tr>
+        <tr><td>阶段 4：湿实验执行与数据回流</td><td>跑通“推荐—实验—回流”的第一轮闭环。</td><td>页面已强调原始数据、失败结果和异常说明。</td><td>执行实验，回传 dose matrix、synergy、readout、QC、失败原因和批次信息。</td><td>客户实验团队、数据 owner、项目经理</td><td>实验 SOP、药物、细胞系、readout、QC 规则</td><td>原始数据包、QC 报告、实验异常记录、初步结论</td><td>数据可复核；失败结果也完整保留。</td><td>湿实验周期和数据质量是主要依赖。</td></tr>
+        <tr><td>阶段 5：模型迭代与二轮决策</td><td>把实验回流变成更准的规则和下一轮方案。</td><td>方案二/三/四/五/六/八提供扩展方向。</td><td>更新评分权重、biomarker 分层、安全性惩罚、剂量顺序和适应症优先级。</td><td>算法 owner、科学 owner、转化医学 owner</td><td>首轮实验数据、QC、失败原因、客户反馈</td><td>复盘报告、二轮推荐、更新后评分规则、go/no-go 建议</td><td>能解释命中/失败原因，并收敛下一轮候选。</td><td>小样本过拟合和体外到体内转化风险需明确提示。</td></tr>
+        <tr><td>阶段 6：BD-ready 证据包与平台化沉淀</td><td>把 PoC 结果整理成可对外沟通、可复用的数据资产。</td><td>已有 BD-ready、知识图谱、workbench 的概念页。</td><td>整理机制图、证据等级、推荐卡、SOP、QC、数据室目录、知识库 schema。</td><td>BD、科学、数据、法务/IP</td><td>推荐结果、实验结果、证据表、图表、IP/合规意见</td><td>BD-ready evidence pack、data room 材料、知识库 v1、平台化路线图</td><td>可支持管理层决策、合作沟通或融资/BD 讨论。</td><td>对外材料必须避免过度承诺和敏感数据泄露。</td></tr>
+      </tbody></table>
     </section>
 
     <section class="wrap">
-      <h2>已经具备的条件</h2>
-      <p class="sub">目前已经不是从零开始，已有两个可对外展示的方案库雏形。</p>
-      <table>
-        <thead><tr><th>已有条件</th><th>具体内容</th><th>可以怎么用</th></tr></thead>
-        <tbody>
-          <tr><td>页面资产</td><td>AI 驱动转化免疫学验证平台总览页 + 4 个详情页；ADC 协作型方案库总览页 + 8 个详情页。</td><td>作为客户沟通、内部讨论、项目拆解的第一版材料。</td></tr>
-          <tr><td>方案结构</td><td>每个方案已经包含“做什么、为什么做、做成什么效果、具体步骤、术语解释”。</td><td>适合继续补充分工、输入材料、验收标准和成果模板。</td></tr>
-          <tr><td>跨库跳转</td><td>两个方案库之间已经可以互相跳转，详情页也有返回入口。</td><td>可以把 ADC 与免疫转化验证包装成一个组合型产品体系。</td></tr>
-          <tr><td>公开访问</td><td>已部署到 GitHub Pages。</td><td>可以让团队通过网页随时查看最新版本。</td></tr>
-        </tbody>
-      </table>
-    </section>
-
-    <section class="wrap">
-      <h2>还需要补充的关键工作</h2>
+      <h2>四、每阶段成果物清单</h2>
       <div class="grid-2">
-        <div class="card"><h3>内容层面</h3><ul><li>把每个方案的输入材料写清楚。</li><li>补充每阶段成果物样例。</li><li>增加普通人能看懂的业务场景解释。</li><li>补充“客户需要提供什么、我们交付什么”。</li></ul></div>
-        <div class="card"><h3>执行层面</h3><ul><li>定义项目启动清单。</li><li>定义实验回传数据模板。</li><li>定义每轮分析报告格式。</li><li>定义验收标准和下一阶段进入条件。</li></ul></div>
+        <div class="card"><h3>短期：网页和项目启动包</h3><ul><li>资产全集表</li><li>统一术语表</li><li>项目定义卡</li><li>客户输入清单</li><li>当前交付形态说明</li></ul></div>
+        <div class="card"><h3>中期：PoC 执行包</h3><ul><li>数据字典 v1</li><li>evidence table</li><li>Top 5 / Top 3-10 推荐卡</li><li>实验设计模板</li><li>数据回流模板</li></ul></div>
+        <div class="card"><h3>后期：复盘和迭代包</h3><ul><li>QC 报告</li><li>实验复盘报告</li><li>更新后的评分规则</li><li>二轮推荐清单</li><li>go/no-go 决策表</li></ul></div>
+        <div class="card"><h3>长期：BD-ready 和平台资产</h3><ul><li>BD-ready evidence pack</li><li>data room 目录</li><li>知识图谱 schema</li><li>dashboard 原型</li><li>平台化路线图</li></ul></div>
       </div>
     </section>
 
-    <section class="wrap">
-      <h2>阶段路线图草案</h2>
-      <p class="sub">正式 workflow 完成后，这张表会被扩展成更细的阶段成果表。</p>
-      <table>
-        <thead><tr><th>阶段</th><th>目标</th><th>需要做的工作</th><th>阶段成果</th><th>验收标准</th></tr></thead>
-        <tbody>
-          <tr><td>阶段 0：方案包装</td><td>让普通人和客户能看懂。</td><td>统一话术、补充图表、补充输入/输出说明。</td><td>可对外展示的网页方案库。</td><td>客户能在 10 分钟内理解方案价值和合作方式。</td></tr>
-          <tr><td>阶段 1：项目启动</td><td>确定首批试点方向。</td><td>选择 1-2 个 ADC 方向或 1 个 HX009/HX044 转化方向。</td><td>试点项目 charter、问题定义、数据清单。</td><td>双方确认目标、样本、实验条件、时间表。</td></tr>
-          <tr><td>阶段 2：首轮验证</td><td>产出第一批真实实验或数据结果。</td><td>执行湿实验/数据整理/机制解释。</td><td>首轮实验设计、原始数据、分析报告。</td><td>结果可复核，能判断是否进入下一轮。</td></tr>
-          <tr><td>阶段 3：模型迭代</td><td>把回流数据变成可复用规则。</td><td>更新评分逻辑、biomarker 分层、推荐规则。</td><td>第二版推荐引擎、分层规则、下一轮实验建议。</td><td>能解释命中/失败原因，并收敛下一批候选。</td></tr>
-          <tr><td>阶段 4：BD-ready 资产</td><td>形成可用于对外沟通的证据包。</td><td>整理图表、机制图、SOP、QC、结论页。</td><td>BD-ready evidence pack、data room 材料。</td><td>可以支持管理层决策、合作沟通或融资/BD 讨论。</td></tr>
-        </tbody>
-      </table>
+    <section class="wrap" id="web">
+      <h2>五、网页继续完善清单</h2>
+      <table><thead><tr><th>页面/模块</th><th>建议新增内容</th><th>目的</th></tr></thead><tbody>
+        <tr><td>首页</td><td>统一平台架构图：资产验证层、组合发现层、实验执行层、数据回流层、模型迭代层、BD-ready 交付层。</td><td>让客户一眼看懂两套方案如何形成整体能力。</td></tr>
+        <tr><td>ADC 0A/0B</td><td>增加真实样例：Top 5 榜单、单项榜、机会卡、人工审核状态、数据来源监控。</td><td>让情报雷达更像可操作产品，而不是概念说明。</td></tr>
+        <tr><td>ADC 方案一</td><td>增加可下载/可复制的项目定义卡和 Top 3-10 推荐卡模板。</td><td>方便客户启动第一轮 PoC。</td></tr>
+        <tr><td>所有详情页</td><td>增加输入字段表、输出物表、验收标准表、限制与不承诺事项。</td><td>让每页都可立项、可执行、可验收。</td></tr>
+        <tr><td>AI 平台详情页</td><td>补充“读这页前先知道 3 个词”“30 秒看懂”“不能保证什么”。</td><td>继续降低非专家理解门槛。</td></tr>
+        <tr><td>路线图页</td><td>增加版本信息、下一次更新计划、负责人、待确认问题。</td><td>让网页成为持续项目管理入口。</td></tr>
+      </tbody></table>
     </section>
 
     <section class="wrap">
-      <div class="note">
-        <strong>下一步：</strong>workflow 完成后，本页面会更新为正式版，包括“已有条件表、缺口表、总体阶段路线表、每阶段成果表、网页新增模块建议”。
-      </div>
+      <div class="warning"><strong>重要边界：</strong>这些页面当前是方案设计、PoC 规划和协作说明，不等于已经完成的全自动软件平台。AI 模型用于排序、解释、实验设计和风险提示，不能替代湿实验、临床验证、医学判断、监管判断或法律/IP 判断。</div>
     </section>
   </main>
 </body>
