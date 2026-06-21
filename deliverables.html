@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>交付物与验收标准中心｜ADC 与 AI 转化方案</title>
+  <style>
+    :root { --bg:#07111f; --panel:rgba(255,255,255,.075); --line:rgba(255,255,255,.16); --text:#eef6ff; --muted:#a8b7c9; --blue:#68d5ff; --cyan:#6fffe9; --green:#8ef6a3; --yellow:#ffe08a; --shadow:0 22px 70px rgba(0,0,0,.35); }
+    * { box-sizing:border-box; } html { scroll-behavior:smooth; }
+    body { margin:0; color:var(--text); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif; background:radial-gradient(circle at 10% -10%, rgba(104,213,255,.25), transparent 33%), radial-gradient(circle at 95% 10%, rgba(142,246,163,.16), transparent 28%), radial-gradient(circle at 50% 105%, rgba(202,167,255,.18), transparent 30%), var(--bg); line-height:1.68; }
+    a { color:var(--cyan); text-decoration:none; font-weight:700; } a:hover { text-decoration:underline; }
+    .wrap { width:min(1240px, calc(100% - 40px)); margin:0 auto; }
+    nav { position:sticky; top:0; z-index:20; backdrop-filter:blur(18px); background:rgba(7,17,31,.72); border-bottom:1px solid var(--line); }
+    nav .wrap { display:flex; justify-content:space-between; align-items:center; gap:16px; padding:14px 0; }
+    .brand { display:flex; align-items:center; gap:10px; font-weight:850; } .logo { width:34px; height:34px; border-radius:11px; background:linear-gradient(135deg,var(--blue),var(--green)); }
+    .navlinks { display:flex; gap:14px; flex-wrap:wrap; font-size:14px; } .navlinks a { color:var(--muted); }
+    header { padding:72px 0 32px; } .eyebrow { display:inline-flex; padding:7px 12px; border:1px solid var(--line); border-radius:999px; background:rgba(255,255,255,.06); color:var(--cyan); font-weight:800; font-size:14px; }
+    h1 { margin:20px 0 16px; max-width:1060px; font-size:clamp(38px,6vw,68px); line-height:1.05; letter-spacing:-.04em; } .lead { max-width:980px; color:#d7e7f7; font-size:clamp(18px,2vw,23px); }
+    section { padding:34px 0; } .card, table { background:var(--panel); border:1px solid var(--line); border-radius:24px; box-shadow:var(--shadow); } .card { padding:24px; }
+    h2 { margin:0 0 14px; font-size:clamp(28px,4vw,42px); line-height:1.15; } h3 { margin:0 0 10px; font-size:23px; }
+    .sub { color:var(--muted); max-width:920px; margin:0 0 20px; } .grid-2 { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:18px; } .grid-3 { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px; }
+    table { width:100%; border-collapse:separate; border-spacing:0; overflow:hidden; margin-top:16px; font-size:14px; } th, td { padding:13px 14px; border-bottom:1px solid var(--line); vertical-align:top; text-align:left; } th { color:#061622; background:linear-gradient(135deg,var(--blue),var(--green)); font-weight:850; } tr:last-child td { border-bottom:0; } td { color:#e5f0fb; }
+    ul { margin:8px 0 0; padding-left:20px; } li { margin:6px 0; } .note { padding:16px 18px; border-left:4px solid var(--green); background:rgba(142,246,163,.08); border-radius:0 18px 18px 0; }
+    .warn { padding:16px 18px; border-left:4px solid var(--yellow); background:rgba(255,224,138,.08); border-radius:0 18px 18px 0; }
+    .pill { display:inline-flex; margin:4px 6px 4px 0; padding:6px 10px; border-radius:999px; border:1px solid var(--line); color:#dcecff; background:rgba(255,255,255,.06); font-size:13px; }
+    @media (max-width:900px) { .grid-2, .grid-3 { grid-template-columns:1fr; } .navlinks { display:none; } table { display:block; overflow-x:auto; white-space:nowrap; } }
+  </style>
+</head>
+<body>
+  <nav><div class="wrap"><div class="brand"><div class="logo"></div><span>交付物与验收标准</span></div><div class="navlinks"><a href="./index.html">首页</a><a href="./roadmap.html">路线图</a><a href="./templates.html">模板中心</a><a href="#adc">ADC</a><a href="#ai">AI 平台</a><a href="#risk">边界</a></div></div></nav>
+  <header class="wrap"><div class="eyebrow">可验收交付物｜避免只讲概念</div><h1>交付物与验收标准中心</h1><p class="lead">这个页面回答客户和执行团队最关心的问题：每个模块最终交付什么？怎么判断做完了？哪些内容只是辅助决策，不能被理解成临床或监管结论？</p></header>
+  <main>
+    <section class="wrap"><div class="note"><strong>使用方式：</strong>立项前用本页确认交付范围；执行中用本页检查阶段成果；交付时用本页判断是否达到验收标准。若实际项目只做 PoC，应只选择其中少数交付物，不要一次性承诺全平台。</div></section>
+
+    <section class="wrap"><h2>一、交付物分级</h2><div class="grid-3">
+      <div class="card"><h3>L1：沟通级交付</h3><p>用于客户理解和内部立项。</p><ul><li>方案说明页</li><li>普通人解释</li><li>流程图</li><li>输入/输出清单</li></ul></div>
+      <div class="card"><h3>L2：PoC 执行级交付</h3><p>用于实际启动一轮试点。</p><ul><li>项目定义卡</li><li>数据字典</li><li>候选推荐卡</li><li>实验设计模板</li><li>数据回流模板</li></ul></div>
+      <div class="card"><h3>L3：平台化沉淀级交付</h3><p>用于长期复用和迭代。</p><ul><li>知识图谱 schema</li><li>评分模型版本</li><li>dashboard 原型</li><li>BD-ready evidence pack</li><li>数据治理规则</li></ul></div>
+    </div></section>
+
+    <section class="wrap" id="adc"><h2>二、ADC 方案库交付物与验收标准</h2><table><thead><tr><th>模块</th><th>主要交付物</th><th>验收标准</th><th>不能承诺什么</th></tr></thead><tbody>
+      <tr><td>0A Payload 情报雷达首页</td><td>多榜单 Top 5、情报列表、数据来源监控、人工审核队列、手动输入入口。</td><td>至少覆盖 MVP 6 个榜单；每个榜单说明数据来源、时间窗口和推荐动作。</td><td>不能保证自动抓取覆盖所有行业信息；会议/PPT/内部资料仍需人工导入。</td></tr>
+      <tr><td>0B Payload 机会评估详情页</td><td>机会摘要、榜单来源、证据摘要、风险点、P1/P2/P3、Go/No-Go 建议。</td><td>每个结论至少关联一条证据；风险和反证必须单独列出。</td><td>不能把机会评分当成投资、临床或专利结论。</td></tr>
+      <tr><td>1 Payload 组合推荐引擎</td><td>项目定义卡、Top 3-10 组合推荐、机制解释、排除清单、首轮实验建议。</td><td>每个推荐包含 payload、partner、机制理由、适用模型、风险、实验建议和证据等级。</td><td>不能承诺推荐组合一定协同或临床有效。</td></tr>
+      <tr><td>2 Payload × Biomarker 分层</td><td>responder/non-responder 规则、候选 biomarker panel、分层评分表。</td><td>分层规则有数据来源、阈值、适用范围和需验证假设。</td><td>不能用小样本分层直接定义临床入组标准。</td></tr>
+      <tr><td>3 剂量窗口与给药顺序</td><td>dose matrix、schedule 建议、washout 设计、窗口评分。</td><td>剂量建议需标明体外/体内转化假设和安全性限制。</td><td>不能替代正式 PK/PD、GLP 毒理或临床剂量探索。</td></tr>
+      <tr><td>4 耐药机制逆转</td><td>耐药假设树、rescue partner 推荐、敏感/耐药模型实验建议。</td><td>必须区分“耐药机制假设”和“已验证机制”。</td><td>不能保证 rescue combination 能恢复临床疗效。</td></tr>
+      <tr><td>5 安全性分离与毒性惩罚</td><td>toxicity vector、安全窗口评分、毒性重叠风险、降权建议。</td><td>每个风险标注对应器官系统、证据来源和建议验证实验。</td><td>不能替代系统安全性评价、毒理试验或医学安全判断。</td></tr>
+      <tr><td>6 Payload 到适应症匹配</td><td>癌种优先级地图、biology-fit 评分、竞争格局摘要、验证模型建议。</td><td>每个适应症推荐同时包含生物学理由和可执行性理由。</td><td>不能直接等同于临床开发成功概率。</td></tr>
+      <tr><td>7 组合实验设计 Copilot</td><td>实验目标、模型选择、plate map、对照组、readout、QC 规则。</td><td>实验团队可直接执行；QC 不通过规则清楚。</td><td>不能替实验人员执行实验，也不能消除实验失败风险。</td></tr>
+      <tr><td>8 Payload 知识图谱与决策库</td><td>schema、节点/关系定义、证据表、查询视图、回流规则。</td><td>能追溯 payload、partner、biomarker、toxicity、readout、结论和失败原因。</td><td>不能在无数据回流的情况下自动变准。</td></tr>
+    </tbody></table></section>
+
+    <section class="wrap" id="ai"><h2>三、AI 转化免疫学平台交付物与验收标准</h2><table><thead><tr><th>模块</th><th>主要交付物</th><th>验收标准</th><th>不能承诺什么</th></tr></thead><tbody>
+      <tr><td>A 机制与安全性验证包</td><td>assay 矩阵、PD-1 rescue、吞噬实验、三方共培养、安全性初筛、BD-ready 图表。</td><td>每个 assay 有模型、对照、readout、QC 和解释边界。</td><td>不能单靠体外实验证明临床安全或有效。</td></tr>
+      <tr><td>B 患者选择 Biomarker Panel</td><td>候选 biomarker、样本时间点、responder 规则、评分算法草案。</td><td>每个 biomarker 标明来源、检测平台、阈值假设和验证计划。</td><td>不能直接替代临床入组标准或伴随诊断开发。</td></tr>
+      <tr><td>C 适应症与联用实验引擎</td><td>top indication、top combination、排除方向、首轮验证实验。</td><td>推荐方向同时包含机制、资源、成本和风险理由。</td><td>不能保证推荐适应症一定临床成功。</td></tr>
+      <tr><td>D 临床-转化数据工作台</td><td>患者时间线、去标识化字段、dashboard、responder 对比、数据更新脚本。</td><td>数据字段可追溯，患者时间线和样本时间点一致。</td><td>不能替代 EDC、正式临床数据库或医学诊断。</td></tr>
+    </tbody></table></section>
+
+    <section class="wrap"><h2>四、统一验收检查表</h2><table><thead><tr><th>检查项</th><th>通过标准</th><th>不通过表现</th></tr></thead><tbody>
+      <tr><td>输入清楚</td><td>知道客户提供什么数据、文件、样本、资源和限制。</td><td>只说“给我们数据”，没有字段和格式。</td></tr>
+      <tr><td>输出可检查</td><td>交付物有数量、字段、模板、示例和验收标准。</td><td>只给方向性建议，没有可复核表格。</td></tr>
+      <tr><td>证据可追溯</td><td>每个结论关联新闻/论文/专利/临床/内部数据来源。</td><td>只给结论，不说明来自哪里。</td></tr>
+      <tr><td>风险有边界</td><td>同时列出机会、反证、限制和不能保证事项。</td><td>只讲好处，不讲失败条件。</td></tr>
+      <tr><td>实验能执行</td><td>细胞系、剂量、对照、readout、QC、回传字段都明确。</td><td>实验团队仍不知道怎么排板和回传。</td></tr>
+      <tr><td>数据可回流</td><td>原始数据、失败结果、异常说明、批次和 QC 都能进入下一轮。</td><td>只回传命中结果，无法迭代模型。</td></tr>
+    </tbody></table></section>
+
+    <section class="wrap" id="risk"><h2>五、统一边界与风险提示</h2><div class="warn"><strong>统一口径：</strong>这些交付物是研发决策支持和假设生成工具，不替代湿实验、临床试验、GLP/GCP、医学判断、监管申报、安全性完整评价或法律/IP 意见。所有推荐都需要实验和专家复核。</div></section>
+  </main>
+</body>
+</html>
