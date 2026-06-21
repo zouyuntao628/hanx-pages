@@ -56,6 +56,11 @@
     .intel-card { padding:18px; border:1px solid var(--line); border-radius:10px; background:#fbfcfe; }
     .intel-card h3 { color:var(--blue); }
     .action-row { display:flex; flex-wrap:wrap; gap:8px; margin-top:10px; }
+    .top5-card { padding:18px; border:1px solid var(--line); border-radius:10px; background:#fbfcfe; position:relative; }
+    .rank { position:absolute; right:14px; top:12px; width:34px; height:34px; border-radius:50%; display:grid; place-items:center; background:var(--blue); color:#fff; font-weight:900; }
+    .score-badge { display:inline-flex; align-items:center; justify-content:center; min-width:54px; height:30px; padding:0 10px; border-radius:999px; background:var(--green); color:#fff; font-weight:900; }
+    .input-box { padding:16px; border:1px dashed var(--line); border-radius:10px; background:#fffaf3; }
+    .fake-input { padding:11px 12px; border:1px solid var(--line); border-radius:8px; background:#fff; color:var(--muted); margin:8px 0; }
     .action { display:inline-flex; padding:6px 10px; border-radius:999px; background:#eef5ff; border:1px solid #c9dcff; color:var(--blue); font-size:12px; font-weight:800; }
     .status-ok { color:var(--green); font-weight:800; }
     .status-warn { color:var(--orange); font-weight:800; }
@@ -89,7 +94,25 @@
 
     <section class="section" id="radar">
       <h2>0A、Payload 情报雷达首页应该长什么样</h2>
-      <div class="plain-box"><strong>核心逻辑：</strong>页面先告诉用户“系统最近发现哪些 payload / 主题 / 公司动作 / 论文方向值得关注”，用户再做人工确认、补充资料，并选择一个机会进入组合推荐或其他后续模块。</div>
+      <div class="plain-box"><strong>核心逻辑：</strong>系统默认自动分析并推荐 Top 5 Payload；同时允许用户从候选池手动选择已有 payload，或者直接输入一个新 payload / 内部代号。这样既有“系统发现机会”的能力，也保留专家和客户指定方向的灵活性。</div>
+
+      <h3>首页三条入口</h3>
+      <div class="three-col">
+        <div class="card"><h3>入口 1：系统自动推荐 Top 5 Payload</h3><p>系统定期抓取新闻、论文、专利、临床试验、公司管线、会议摘要、失败案例、交易/授权和内部实验记录，自动生成本周/本月最值得关注的 Top 5 Payload。</p></div>
+        <div class="card"><h3>入口 2：从候选池手动选择</h3><p>用户可以从 DXd、exatecan、SN-38、MMAE、MMAF、DM1、DM4、PBD、amanitin、免疫刺激型 payload、放射性 payload 等列表中选择。</p></div>
+        <div class="card"><h3>入口 3：输入新 payload / 内部代号</h3><p>如果用户关注系统还没收录的新 payload、内部 payload 或代号 payload，可以输入名称、别名、机制类别、相关 ADC、资料链接和内部备注。</p></div>
+      </div>
+
+      <h3>系统推荐 Top 5 Payload 示例</h3>
+      <div class="three-col">
+        <div class="top5-card"><div class="rank">1</div><h3>DXd</h3><p><span class="score-badge">86</span> 综合机会分</p><p>机制：TOP1 inhibitor；热度：高，上升。</p><p>推荐主题：耐药逆转、DDR 联用、适应症扩展。</p><div class="action-row"><span class="action">查看机会分析</span><span class="action">进入组合推荐</span></div></div>
+        <div class="top5-card"><div class="rank">2</div><h3>exatecan</h3><p><span class="score-badge">82</span> 综合机会分</p><p>机制：TOP1 inhibitor；热度：高，上升。</p><p>推荐主题：TOP1 payload 差异化组合、安全窗口优化。</p><div class="action-row"><span class="action">查看机会分析</span><span class="action">进入组合推荐</span></div></div>
+        <div class="top5-card"><div class="rank">3</div><h3>MMAE</h3><p><span class="score-badge">74</span> 综合机会分</p><p>机制：microtubule inhibitor；热度：中，平稳。</p><p>推荐主题：外排泵耐药、免疫联用。</p><div class="action-row"><span class="action">查看机会分析</span><span class="action">看耐药主题</span></div></div>
+        <div class="top5-card"><div class="rank">4</div><h3>SN-38</h3><p><span class="score-badge">71</span> 综合机会分</p><p>机制：TOP1 inhibitor；热度：中，上升。</p><p>推荐主题：DDR 联用、特定癌种扩展。</p><div class="action-row"><span class="action">查看机会分析</span><span class="action">补专利扫描</span></div></div>
+        <div class="top5-card"><div class="rank">5</div><h3>amanitin 类</h3><p><span class="score-badge">68</span> 综合机会分</p><p>机制：RNA polymerase 抑制；热度：中，上升。</p><p>推荐主题：新型 payload 差异化、早期布局。</p><div class="action-row"><span class="action">查看机会分析</span><span class="action">谨慎观察</span></div></div>
+        <div class="input-box"><h3>已有关注方向？</h3><p>从候选池选择，或输入新 payload / 内部代号。</p><div class="fake-input">选择：DXd / exatecan / SN-38 / MMAE / PBD / amanitin ...</div><div class="fake-input">输入：例如 HPX-001 payload、内部代号、别名或资料链接</div><div class="action-row"><span class="action">生成机会评估</span><span class="action">加入候选池</span></div></div>
+      </div>
+
       <div class="metric-grid">
         <div class="metric"><strong>37</strong><span>今日新增 ADC payload 相关信息</span></div>
         <div class="metric"><strong>8</strong><span>TOP1 payload 相关线索</span></div>
@@ -105,6 +128,20 @@
           <tr><td>PBD 类</td><td>中</td><td>下降</td><td>毒性、失败案例</td><td>谨慎观察，优先做安全性评估</td></tr>
         </tbody>
       </table>
+      <h3>Top 5 排名不只看“热度”</h3>
+      <table class="operator-table">
+        <thead><tr><th>维度</th><th>权重</th><th>含义</th></tr></thead>
+        <tbody>
+          <tr><td>外部热度</td><td>20%</td><td>新闻、论文、会议、临床、公司动态是否活跃。</td></tr>
+          <tr><td>科学机制清晰度</td><td>15%</td><td>作用机制、耐药机制、biomarker 是否清楚。</td></tr>
+          <tr><td>组合潜力</td><td>25%</td><td>是否有明确可联用机制和 partner 空间。</td></tr>
+          <tr><td>差异化 / IP 空间</td><td>15%</td><td>是否还有新主题、新组合、新人群空间。</td></tr>
+          <tr><td>可转化性 / 安全窗口</td><td>15%</td><td>是否有现实开发可能。</td></tr>
+          <tr><td>公司可执行性</td><td>10%</td><td>是否有模型、药物、assay、内部数据支持。</td></tr>
+        </tbody>
+      </table>
+      <div class="plain-box"><strong>排序原则：</strong>不是谁最火谁第一，而是谁最值得现在进入组合推荐谁第一。</div>
+
       <h3>机会卡片示例</h3>
       <div class="two-col">
         <div class="intel-card">
@@ -161,6 +198,21 @@
         <div class="step"><strong>模块 5：数据来源监控</strong><p>显示 PubMed、ClinicalTrials、Patents、新闻、会议摘要、内部资料是否更新。</p></div>
         <div class="step"><strong>模块 6：人工审核队列</strong><p>会议 PDF、PPT、内部备注和专家建议进入审核队列后再影响评分。</p></div>
       </div>
+    </section>
+
+    <section class="section" id="unknown-payload">
+      <h2>如果用户输入的是未知 payload，系统应该先问什么</h2>
+      <p>例如用户输入内部代号 HPX-001 payload，系统不应该直接给组合推荐，而是先用最少问题补齐上下文。</p>
+      <table class="operator-table">
+        <thead><tr><th>需要补充的问题</th><th>可选答案 / 示例</th><th>为什么要问</th></tr></thead>
+        <tbody>
+          <tr><td>属于哪类机制？</td><td>TOP1 inhibitor / microtubule inhibitor / DNA alkylator / immune-stimulating / unknown。</td><td>决定用哪些相似 payload 做参照。</td></tr>
+          <tr><td>是否有结构或类似物？</td><td>有结构、只有代号、类似 DXd / MMAE / PBD、完全未知。</td><td>决定能否做相似性检索和公开资料补全。</td></tr>
+          <tr><td>是否已有单药活性数据？</td><td>IC50、AUC、细胞系响应、ADC 内化、bystander effect。</td><td>判断是否足够进入机会评估。</td></tr>
+          <tr><td>是否已有安全性顾虑？</td><td>骨髓毒性、GI 毒性、神经毒性、窗口窄、未知。</td><td>决定是否先进入安全性评估。</td></tr>
+          <tr><td>是否有目标癌种或模型？</td><td>已有癌种、已有细胞系、已有 PDX / organoid、暂不确定。</td><td>决定后续组合推荐能否落地实验。</td></tr>
+        </tbody>
+      </table>
     </section>
 
     <section class="section" id="what">
