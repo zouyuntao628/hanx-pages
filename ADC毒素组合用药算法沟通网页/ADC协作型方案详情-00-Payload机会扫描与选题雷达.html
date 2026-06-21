@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Payload 机会扫描与选题雷达｜ADC 协作型方案详情</title>
+  <title>ADC Payload 情报雷达｜方案 0A</title>
   <style>
     :root {
       --bg: #f7f8fa; --panel: #fff; --text: #18202a; --muted: #5b6675; --line: #dfe4ea;
@@ -49,7 +49,18 @@
     .operator-table td { font-size:14px; }
     .plain-box { padding:16px 18px; border:1px solid var(--line); border-radius:10px; background:rgba(31,95,191,.06); margin:12px 0 18px; }
     .plain-box strong { color:var(--blue); }
-    @media (max-width: 900px) { .quick, .two-col, .three-col, .step-grid, .related { grid-template-columns: 1fr; } .hero, .section { padding:22px; } .operator-table { display:block; overflow-x:auto; } }
+    .metric-grid { display:grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap:12px; margin:16px 0 18px; }
+    .metric { padding:16px; border:1px solid var(--line); border-radius:10px; background:#fbfcfe; }
+    .metric strong { display:block; font-size:26px; color:var(--blue); line-height:1.1; }
+    .metric span { color:var(--muted); font-size:13px; }
+    .intel-card { padding:18px; border:1px solid var(--line); border-radius:10px; background:#fbfcfe; }
+    .intel-card h3 { color:var(--blue); }
+    .action-row { display:flex; flex-wrap:wrap; gap:8px; margin-top:10px; }
+    .action { display:inline-flex; padding:6px 10px; border-radius:999px; background:#eef5ff; border:1px solid #c9dcff; color:var(--blue); font-size:12px; font-weight:800; }
+    .status-ok { color:var(--green); font-weight:800; }
+    .status-warn { color:var(--orange); font-weight:800; }
+    .source-level { display:inline-flex; padding:4px 8px; border-radius:999px; background:#f3f7ff; color:var(--blue); border:1px solid #d8e5ff; font-size:12px; font-weight:800; }
+    @media (max-width: 900px) { .quick, .two-col, .three-col, .step-grid, .related, .metric-grid { grid-template-columns: 1fr; } .hero, .section { padding:22px; } .operator-table { display:block; overflow-x:auto; } }
   </style>
 </head>
 <body>
@@ -60,18 +71,96 @@
     </div>
 
     <div class="quick">
-      <a href="#what">要做什么</a>
-      <a href="#signals">看哪些信号</a>
+      <a href="#radar">情报首页</a>
+      <a href="#sources">数据来源</a>
+      <a href="#actions">行动按钮</a>
       <a href="#score">评分模型</a>
-      <a href="#operator-guide">上手操作</a>
       <a href="#next">下一步</a>
     </div>
 
     <section class="hero">
-      <h1>Payload 机会扫描与选题雷达</h1>
-      <p class="lead">如果现在连“选哪个 payload 开始”都不确定，就不应该直接进入组合推荐，而是要先判断哪些 payload 或主题最值得优先研究。</p>
-      <div class="tag-row"><span class="tag">方案 0</span><span class="tag">选题雷达</span><span class="tag">新闻 / 论文 / 专利 / 临床</span><span class="tag">进入方案一前置步骤</span></div>
-      <div class="note" style="margin-top:18px;">先用大白话说，这个工具不是推荐“payload 和谁组合”，而是先帮团队判断：现在哪些 payload 值得优先研究，为什么现在值得，适合从哪个主题切入。</div>
+      <h1>ADC Payload 情报雷达首页</h1>
+      <p class="lead">系统先自动/半自动聚合新闻、论文、专利、临床、会议摘要、公司动态和内部资料，把最近变热的 payload / 机制 / 组合主题展示出来，再由用户选择是否进入下一步组合推荐。</p>
+      <div class="tag-row"><span class="tag">方案 0</span><span class="tag">方案 0A</span><span class="tag">情报雷达首页</span><span class="tag">新闻 / 论文 / 专利 / 临床</span><span class="tag">进入方案一前置步骤</span></div>
+      <div class="note" style="margin-top:18px;">先用大白话说，这个页面不是让用户一上来手动输入 DXd / exatecan / MMAE，而是先把系统抓到的外部热点和内部线索摆出来，让人从“机会卡片”里选择下一步。</div>
+    </section>
+
+
+
+    <section class="section" id="radar">
+      <h2>0A、Payload 情报雷达首页应该长什么样</h2>
+      <div class="plain-box"><strong>核心逻辑：</strong>页面先告诉用户“系统最近发现哪些 payload / 主题 / 公司动作 / 论文方向值得关注”，用户再做人工确认、补充资料，并选择一个机会进入组合推荐或其他后续模块。</div>
+      <div class="metric-grid">
+        <div class="metric"><strong>37</strong><span>今日新增 ADC payload 相关信息</span></div>
+        <div class="metric"><strong>8</strong><span>TOP1 payload 相关线索</span></div>
+        <div class="metric"><strong>5</strong><span>DXd / exatecan 耐药线索</span></div>
+        <div class="metric"><strong>3</strong><span>可直接进入组合推荐的机会</span></div>
+      </div>
+      <table class="operator-table">
+        <thead><tr><th>Payload / 主题</th><th>热度</th><th>近期变化</th><th>主要来源</th><th>推荐动作</th></tr></thead>
+        <tbody>
+          <tr><td>DXd / deruxtecan 类</td><td>高</td><td>上升</td><td>临床、新闻、论文</td><td>进入组合推荐或耐药逆转分析</td></tr>
+          <tr><td>exatecan 类</td><td>高</td><td>上升</td><td>论文、专利、管线</td><td>进入机会评估详情页</td></tr>
+          <tr><td>MMAE / MMAF 类</td><td>中</td><td>平稳</td><td>管线、历史数据</td><td>重点看外排泵耐药主题</td></tr>
+          <tr><td>PBD 类</td><td>中</td><td>下降</td><td>毒性、失败案例</td><td>谨慎观察，优先做安全性评估</td></tr>
+        </tbody>
+      </table>
+      <h3>机会卡片示例</h3>
+      <div class="two-col">
+        <div class="intel-card">
+          <h3>机会卡：exatecan 类 payload</h3>
+          <p>热度：高；趋势：上升；来源：论文 12、专利 5、新闻 3、临床 2。</p>
+          <p>主要机会：DDR 联用、耐药逆转、特定癌种扩展。主要风险：骨髓毒性、TOP1 payload 拥挤。</p>
+          <div class="action-row"><span class="action">加入 Payload 候选池</span><span class="action">进入机会评估</span><span class="action">进入组合推荐</span></div>
+        </div>
+        <div class="intel-card">
+          <h3>机会卡：DXd 耐药</h3>
+          <p>热度：高；趋势：上升；来源：临床失败、论文、会议摘要。</p>
+          <p>主要机会：rescue combination、biomarker 分层。主要风险：已有竞争者多。</p>
+          <div class="action-row"><span class="action">加入主题候选池</span><span class="action">进入耐药分析</span><span class="action">标记为高优先级</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="sources">
+      <h2>0A、自动抓取和人工添加要并存</h2>
+      <table class="operator-table">
+        <thead><tr><th>来源等级</th><th>适合来源</th><th>处理方式</th><th>页面显示</th></tr></thead>
+        <tbody>
+          <tr><td><span class="source-level">A 自动抓取</span></td><td>PubMed、ClinicalTrials、公司新闻 RSS、PRNewswire、Crossref、bioRxiv、部分专利数据库。</td><td>定期抓取、去重、实体识别、趋势统计。</td><td><span class="status-ok">已更新</span>，可直接进入热点榜。</td></tr>
+          <tr><td><span class="source-level">B 半自动导入</span></td><td>会议 PDF、公司 PPT、行业研报、微信公众号、专家访谈摘要。</td><td>人上传链接或文件，系统抽取 payload、机制、公司、适应症、结论，人再审核。</td><td><span class="status-warn">待审核</span>，审核后进入情报池。</td></tr>
+          <tr><td><span class="source-level">C 人工添加</span></td><td>内部失败结果、客户特别关注、药物不可采购、模型资源、BD 不想碰的方向。</td><td>人工填写结构化表单，标注可信度和适用范围。</td><td>作为公司可执行性和排除条件的重要信号。</td></tr>
+        </tbody>
+      </table>
+      <div class="plain-box"><strong>人工添加入口必须保留：</strong>系统自动抓不到内部实验、客户 PPT、BD 私下反馈和失败结果，但这些信息往往最影响最终决策。</div>
+    </section>
+
+    <section class="section" id="actions">
+      <h2>0A、每条情报都要变成“可行动信息”</h2>
+      <p>情报雷达不是新闻列表。每条新闻、论文、专利或会议摘要后面都应该有动作按钮。</p>
+      <table class="operator-table">
+        <thead><tr><th>动作按钮</th><th>什么时候使用</th><th>下一步流向</th></tr></thead>
+        <tbody>
+          <tr><td>加入 Payload 候选池</td><td>发现某个 payload 近期热度上升，值得继续观察。</td><td>进入 Payload 机会评分。</td></tr>
+          <tr><td>加入主题候选池</td><td>发现的是“DXd 耐药”“payload × DDR”等主题，而不是单个 payload。</td><td>进入主题趋势页或机会评估详情页。</td></tr>
+          <tr><td>标记为高优先级</td><td>证据强、窗口期明显、公司资源也匹配。</td><td>进入 P1 队列。</td></tr>
+          <tr><td>标记为风险信号</td><td>出现毒性、临床失败、专利拥挤或竞品压力。</td><td>进入安全性评估或排除条件库。</td></tr>
+          <tr><td>进入组合推荐</td><td>payload 已经明确，目标和资源也基本清楚。</td><td>进入方案一：Payload 组合推荐引擎。</td></tr>
+          <tr><td>暂不关注</td><td>热度低、风险高、公司做不了或差异化不足。</td><td>进入低优先级观察池。</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section" id="mvp">
+      <h2>0A、第一阶段 MVP 不需要太复杂</h2>
+      <div class="step-grid">
+        <div class="step"><strong>模块 1：热点分类入口</strong><p>Payload 热点、机制主题热点、临床/产业热点、专利/IP 热点、安全性/失败信号。</p></div>
+        <div class="step"><strong>模块 2：情报列表</strong><p>标题、来源、日期、payload、主题、证据类型、系统摘要、推荐动作。</p></div>
+        <div class="step"><strong>模块 3：Payload 候选池</strong><p>系统自动推荐 + 人工加入，可排序、可打分、可标记 P1/P2/P3。</p></div>
+        <div class="step"><strong>模块 4：进入下一步</strong><p>选择一个 payload 或主题，补充目标和约束后，进入组合推荐或其他模块。</p></div>
+        <div class="step"><strong>模块 5：数据来源监控</strong><p>显示 PubMed、ClinicalTrials、Patents、新闻、会议摘要、内部资料是否更新。</p></div>
+        <div class="step"><strong>模块 6：人工审核队列</strong><p>会议 PDF、PPT、内部备注和专家建议进入审核队列后再影响评分。</p></div>
+      </div>
     </section>
 
     <section class="section" id="what">
@@ -181,7 +270,7 @@
       </table>
       <div class="plain-box"><strong>建议工作顺序：</strong>先建立候选 payload 池，再按 TOP1 payload 组合机会、payload 耐药逆转、安全窗口改善、新型 payload 差异化机会等主题扫描，最后选出 P1 payload 进入方案一。</div>
       <h4>相关方案导航</h4>
-      <div class="related"><a class="mini-link active" href="./ADC协作型方案详情-00-Payload机会扫描与选题雷达.html">0. Payload 机会扫描与选题雷达</a><a class="mini-link" href="./ADC协作型方案详情-01-Payload组合推荐引擎.html">1. Payload 组合推荐引擎</a><a class="mini-link" href="./ADC协作型方案详情-07-组合实验设计Copilot.html">7. 组合实验设计 Copilot</a></div>
+      <div class="related"><a class="mini-link active" href="./ADC协作型方案详情-00-Payload机会扫描与选题雷达.html">0A. Payload 情报雷达首页</a><a class="mini-link" href="./ADC协作型方案详情-00B-Payload机会评估详情页.html">0B. Payload 机会评估详情页</a><a class="mini-link" href="./ADC协作型方案详情-01-Payload组合推荐引擎.html">1. Payload 组合推荐引擎</a></div>
     </section>
   </main>
 </body>
