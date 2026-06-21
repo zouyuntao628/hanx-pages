@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>统一平台架构图｜ADC 与 AI 转化系统蓝图</title>
+  <style>
+    :root { --bg:#07111f; --panel:rgba(255,255,255,.075); --line:rgba(255,255,255,.16); --text:#eef6ff; --muted:#a8b7c9; --blue:#68d5ff; --cyan:#6fffe9; --green:#8ef6a3; --purple:#caa7ff; --yellow:#ffe08a; --shadow:0 22px 70px rgba(0,0,0,.35); }
+    * { box-sizing:border-box; } html { scroll-behavior:smooth; }
+    body { margin:0; color:var(--text); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif; background:radial-gradient(circle at 10% -10%, rgba(104,213,255,.25), transparent 33%), radial-gradient(circle at 95% 10%, rgba(142,246,163,.16), transparent 28%), radial-gradient(circle at 50% 105%, rgba(202,167,255,.18), transparent 30%), var(--bg); line-height:1.68; }
+    a { color:var(--cyan); text-decoration:none; font-weight:700; } a:hover { text-decoration:underline; }
+    .wrap { width:min(1240px, calc(100% - 40px)); margin:0 auto; }
+    nav { position:sticky; top:0; z-index:20; backdrop-filter:blur(18px); background:rgba(7,17,31,.72); border-bottom:1px solid var(--line); }
+    nav .wrap { display:flex; justify-content:space-between; align-items:center; gap:16px; padding:14px 0; }
+    .brand { display:flex; align-items:center; gap:10px; font-weight:850; } .logo { width:34px; height:34px; border-radius:11px; background:linear-gradient(135deg,var(--blue),var(--green)); }
+    .navlinks { display:flex; gap:14px; flex-wrap:wrap; font-size:14px; } .navlinks a { color:var(--muted); }
+    header { padding:72px 0 32px; } .eyebrow { display:inline-flex; padding:7px 12px; border:1px solid var(--line); border-radius:999px; background:rgba(255,255,255,.06); color:var(--cyan); font-weight:800; font-size:14px; }
+    h1 { margin:20px 0 16px; max-width:1060px; font-size:clamp(38px,6vw,68px); line-height:1.05; letter-spacing:-.04em; } .lead { max-width:980px; color:#d7e7f7; font-size:clamp(18px,2vw,23px); }
+    section { padding:34px 0; } .card, table, .layer { background:var(--panel); border:1px solid var(--line); border-radius:24px; box-shadow:var(--shadow); } .card { padding:24px; }
+    h2 { margin:0 0 14px; font-size:clamp(28px,4vw,42px); line-height:1.15; } h3 { margin:0 0 10px; font-size:23px; }
+    .sub { color:var(--muted); max-width:920px; margin:0 0 20px; } .grid-2 { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:18px; } .grid-3 { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px; }
+    .architecture { display:grid; gap:16px; margin-top:20px; } .layer { padding:22px; position:relative; } .layer::before { content:""; position:absolute; left:0; top:0; bottom:0; width:6px; background:linear-gradient(180deg,var(--blue),var(--green)); border-radius:24px 0 0 24px; }
+    .nodes { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:10px; margin-top:14px; } .node { padding:12px; border:1px solid var(--line); border-radius:14px; background:rgba(255,255,255,.06); color:#e8f6ff; font-size:14px; }
+    table { width:100%; border-collapse:separate; border-spacing:0; overflow:hidden; margin-top:16px; font-size:14px; } th, td { padding:13px 14px; border-bottom:1px solid var(--line); vertical-align:top; text-align:left; } th { color:#061622; background:linear-gradient(135deg,var(--blue),var(--green)); font-weight:850; } tr:last-child td { border-bottom:0; } td { color:#e5f0fb; }
+    ul { margin:8px 0 0; padding-left:20px; } li { margin:6px 0; } .note { padding:16px 18px; border-left:4px solid var(--green); background:rgba(142,246,163,.08); border-radius:0 18px 18px 0; }
+    .flow { font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono",monospace; white-space:pre-wrap; background:rgba(0,0,0,.22); border:1px solid var(--line); border-radius:18px; padding:18px; color:#d9f7ff; }
+    @media (max-width:900px) { .grid-2, .grid-3, .nodes { grid-template-columns:1fr; } .navlinks { display:none; } table { display:block; overflow-x:auto; white-space:nowrap; } }
+  </style>
+</head>
+<body>
+  <nav><div class="wrap"><div class="brand"><div class="logo"></div><span>统一平台架构图</span></div><div class="navlinks"><a href="./index.html">首页</a><a href="./roadmap.html">路线图</a><a href="./templates.html">模板</a><a href="./deliverables.html">交付验收</a><a href="#layers">分层</a><a href="#flow">闭环</a></div></div></nav>
+  <header class="wrap"><div class="eyebrow">系统总蓝图｜把页面连成一个产品体系</div><h1>ADC 与 AI 转化系统统一平台架构图</h1><p class="lead">这个页面解释所有方案页之间的关系：ADC Payload 情报雷达负责发现机会，组合推荐和实验设计负责形成可执行方案，湿实验和临床转化数据回流后进入知识图谱和工作台，最终沉淀成可复用的研发决策平台。</p></header>
+  <main>
+    <section class="wrap"><div class="note"><strong>一句话：</strong>这不是一堆孤立页面，而是一条从“发现机会”到“形成证据包”的闭环：情报扫描 → 机会评估 → 推荐与实验设计 → 湿实验回流 → 模型迭代 → 转化医学解释 → BD-ready 交付。</div></section>
+
+    <section class="wrap" id="layers"><h2>一、平台六层架构</h2><div class="architecture">
+      <div class="layer"><h3>第 1 层：情报与选题层</h3><p>回答“现在该看哪个 payload / 机制主题 / 适应症机会”。</p><div class="nodes"><div class="node">ADC 0A Payload 情报雷达</div><div class="node">ADC 0B 机会评估详情</div><div class="node">多榜单 Top 5</div><div class="node">人工审核与内部资料导入</div></div></div>
+      <div class="layer"><h3>第 2 层：推荐与排序层</h3><p>回答“选定目标后，优先推荐哪些组合、biomarker、适应症或实验方向”。</p><div class="nodes"><div class="node">ADC 方案一组合推荐</div><div class="node">ADC 方案二 Biomarker 分层</div><div class="node">ADC 方案六适应症匹配</div><div class="node">AI 平台 C 适应症与联用引擎</div></div></div>
+      <div class="layer"><h3>第 3 层：实验设计与风险过滤层</h3><p>回答“怎么设计实验，如何避开明显风险”。</p><div class="nodes"><div class="node">ADC 方案三剂量与顺序</div><div class="node">ADC 方案四耐药逆转</div><div class="node">ADC 方案五安全性惩罚</div><div class="node">ADC 方案七实验 Copilot</div></div></div>
+      <div class="layer"><h3>第 4 层：机制、安全与转化验证层</h3><p>回答“机制是否成立，安全性质疑如何初步澄清，患者或模型如何分层”。</p><div class="nodes"><div class="node">AI 平台 A 机制与安全验证</div><div class="node">AI 平台 B 患者选择 Biomarker</div><div class="node">flow / imaging / RNA / IHC</div><div class="node">安全性初筛与 cytokine 风险</div></div></div>
+      <div class="layer"><h3>第 5 层：数据回流与知识沉淀层</h3><p>回答“每轮成功、失败、异常、批次和结论如何进入长期数据资产”。</p><div class="nodes"><div class="node">ADC 方案八知识图谱</div><div class="node">AI 平台 D 临床转化工作台</div><div class="node">Evidence Table</div><div class="node">Data Dictionary / QC</div></div></div>
+      <div class="layer"><h3>第 6 层：BD-ready 与决策交付层</h3><p>回答“如何把科学结果转成管理层、BD、法务/IP 和外部合作方能使用的材料”。</p><div class="nodes"><div class="node">候选组合卡</div><div class="node">BD-ready evidence pack</div><div class="node">Go / No-Go 决策表</div><div class="node">Data room 目录</div></div></div>
+    </div></section>
+
+    <section class="wrap" id="flow"><h2>二、从机会到证据包的闭环</h2><div class="flow">ADC Payload 情报雷达
+        ↓
+Payload 机会评估详情页（P1 / P2 / P3）
+        ↓
+项目定义卡：payload、目标、资源、排除条件
+        ↓
+组合推荐 / biomarker 分层 / 适应症匹配
+        ↓
+剂量窗口 / 耐药逆转 / 安全性惩罚 / 实验 Copilot
+        ↓
+湿实验执行与原始数据回流
+        ↓
+机制、安全、患者分层和临床-转化解释
+        ↓
+知识图谱、数据工作台、模型规则迭代
+        ↓
+BD-ready evidence pack + 下一轮 Go / No-Go</div></section>
+
+    <section class="wrap"><h2>三、两条业务线如何协同</h2><table><thead><tr><th>连接点</th><th>ADC 方案库贡献什么</th><th>AI 转化平台贡献什么</th><th>协同价值</th></tr></thead><tbody>
+      <tr><td>机会发现</td><td>从 payload、组合、耐药、安全性、适应症角度发现机会。</td><td>从机制、安全、患者分层和临床转化角度判断是否值得做。</td><td>避免只看热点或只看机制，形成业务可执行方向。</td></tr>
+      <tr><td>实验设计</td><td>输出 partner、剂量矩阵、给药顺序、readout 和 QC。</td><td>输出机制 assay、安全性初筛、样本/biomarker 规划。</td><td>让实验从第一轮就能服务后续解释和 BD 证据。</td></tr>
+      <tr><td>数据回流</td><td>回流 dose matrix、synergy、失败组合、毒性 proxy。</td><td>回流流式、成像、RNA、IHC、患者时间线和疗效标签。</td><td>把实验结果从“单次报告”变成可迭代数据资产。</td></tr>
+      <tr><td>对外沟通</td><td>形成组合推荐、适应症优先级和安全性风险解释。</td><td>形成机制证据包、患者分层和临床-转化叙事。</td><td>支持管理层决策、BD、融资或合作沟通。</td></tr>
+    </tbody></table></section>
+
+    <section class="wrap"><h2>四、建议优先启动的最小闭环</h2><div class="grid-2"><div class="card"><h3>ADC 最小闭环</h3><ul><li>0A 情报雷达选出 P1 payload</li><li>0B 做机会评估</li><li>方案一输出 Top 3-10 组合</li><li>方案七输出第一轮实验模板</li><li>方案八记录成功/失败和证据</li></ul></div><div class="card"><h3>AI 转化最小闭环</h3><ul><li>产品 A 做机制与安全验证</li><li>产品 B 做 biomarker 分层假设</li><li>产品 C 做适应症/联用策略</li><li>产品 D 记录临床-转化数据</li><li>形成 BD-ready evidence pack</li></ul></div></div></section>
+
+    <section class="wrap"><h2>五、从网页到真实系统还差什么</h2><table><thead><tr><th>系统组件</th><th>当前网页已有</th><th>真实系统需要补充</th></tr></thead><tbody>
+      <tr><td>情报抓取</td><td>已定义来源、榜单、字段和动作。</td><td>爬虫/API、去重、实体识别、定时任务、人工审核后台。</td></tr>
+      <tr><td>推荐模型</td><td>已定义输入、特征、权重和推荐动作。</td><td>训练数据、评分服务、模型版本管理、可解释性报告。</td></tr>
+      <tr><td>实验设计</td><td>已定义模板、readout、QC 和回流字段。</td><td>可编辑 plate map、LIMS/ELN 对接、实验任务流。</td></tr>
+      <tr><td>数据工作台</td><td>已定义数据字典、证据表和回流模板。</td><td>数据库、权限、脱敏、审计、dashboard、导出包。</td></tr>
+      <tr><td>知识图谱</td><td>已定义 schema、节点、关系和证据追溯。</td><td>图数据库、实体/关系抽取、人审、自然语言查询。</td></tr>
+    </tbody></table></section>
+  </main>
+</body>
+</html>
