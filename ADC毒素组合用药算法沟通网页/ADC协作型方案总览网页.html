@@ -32,14 +32,19 @@
     .tag-row { display:flex; flex-wrap:wrap; gap:8px; margin-top:10px; } .pill { display:inline-flex; padding:5px 10px; border-radius:999px; border:1px solid var(--line); font-size:12px; color:#dce9f6; }
     .btn { display:inline-flex; align-items:center; min-height:38px; padding:0 14px; border-radius:10px; background:#f2f8ff; color:#0f4ea2; font-weight:800; text-decoration:none; }
     ul { margin:10px 0; padding-left:20px; } li { margin:6px 0; } .quote { padding:20px 22px; border-left:4px solid var(--green); border-radius:0 18px 18px 0; background:rgba(141,242,167,.08); font-size:20px; }
-    @media (max-width:980px) { .hero-grid, .grid-2 { grid-template-columns:1fr; } .navlinks { display:none; } header { padding-top:52px; } }
+    .workflow-table { width:100%; border-collapse:separate; border-spacing:0; overflow:hidden; margin-top:18px; border:1px solid var(--line); border-radius:24px; background:var(--panel); box-shadow:var(--shadow); }
+    .workflow-table th, .workflow-table td { padding:14px 16px; border-bottom:1px solid var(--line); vertical-align:top; text-align:left; }
+    .workflow-table th { background:rgba(107,207,255,.16); color:#eaf8ff; font-weight:850; }
+    .workflow-table tr:last-child td { border-bottom:0; }
+    .highlight { border:1px solid rgba(141,242,167,.38); background:rgba(141,242,167,.08); border-radius:24px; padding:24px; box-shadow:var(--shadow); }
+    @media (max-width:980px) { .hero-grid, .grid-2 { grid-template-columns:1fr; } .navlinks { display:none; } header { padding-top:52px; } .workflow-table { display:block; overflow-x:auto; } }
   </style>
 </head>
 <body>
   <nav>
     <div class="wrap">
       <div class="brand"><div class="logo"></div><span>ADC 协作型方案库</span></div>
-      <div class="navlinks"><a href="#why">为什么这样合作</a><a href="#schemes">8 个详情页</a><a href="#how">怎么配合</a><a href="../hanx-ai-translational-platform.html">AI 转化免疫学平台</a></div>
+      <div class="navlinks"><a href="#why">为什么这样合作</a><a href="#workflow">工作流关系</a><a href="#schemes">8 个详情页</a><a href="#how">怎么配合</a><a href="../hanx-ai-translational-platform.html">AI 转化免疫学平台</a></div>
     </div>
   </nav>
   <header class="wrap">
@@ -70,6 +75,27 @@
     <section id="why" class="wrap">
       <h2>为什么这样合作是可行的</h2>
       <div class="quote">你们不需要自己搭完整实验平台，也能持续产出真实研发成果。关键在于：实验必须标准化，数据必须完整回流，失败结果也必须保留。</div>
+    </section>
+    <section id="workflow" class="wrap">
+      <h2>先看懂：ADC payload 组合推荐和 8 个方案是什么关系</h2>
+      <div class="highlight">
+        <h3>一句话理解</h3>
+        <p>ADC payload 组合推荐是一个大方向，核心问题是：已知一个 ADC payload，例如 DXd、exatecan、MMAE，应该和哪些药、哪些机制、哪些实验设计组合，最值得优先验证？</p>
+        <p><strong>方案一「Payload 组合推荐引擎」就是这个大方向的核心入口。</strong>它先回答“这个 payload 应该和谁联用”。其他 7 个方案不是重复，而是继续回答“适合谁、怎么做、如何控风险、如何沉淀数据”。</p>
+      </div>
+      <table class="workflow-table">
+        <thead><tr><th>工作流位置</th><th>对应方案</th><th>它回答的问题</th><th>给操作人员的理解</th></tr></thead>
+        <tbody>
+          <tr><td>第一步：先推荐组合</td><td>方案一：Payload 组合推荐引擎</td><td>这个 payload 应该先和谁联用？Top 3-10 个最值得测的组合是什么？</td><td>先把“海量可能性”缩小成“第一批值得做的实验”。</td></tr>
+          <tr><td>第二步：判断适合谁</td><td>方案二：Payload × Biomarker 响应分层</td><td>这个组合在哪类细胞系、癌种、biomarker 背景下更容易有效？</td><td>不要只看平均效果，要找到更可能响应的人群或模型。</td></tr>
+          <tr><td>第三步：判断怎么配</td><td>方案三：剂量窗口与给药顺序优化</td><td>两个药剂量怎么设？同步给药还是先后给药？</td><td>材料对了还不够，比例、火候和顺序也要对。</td></tr>
+          <tr><td>第四步：处理失败和耐药</td><td>方案四：耐药机制逆转推荐系统</td><td>如果 payload 失效或耐药，应该用什么 rescue partner 拉回药效？</td><td>不是盲目增强，而是针对“为什么失效”补一刀。</td></tr>
+          <tr><td>第五步：过滤安全性风险</td><td>方案五：安全性分离与毒性惩罚模型</td><td>哪些组合虽然强，但毒性重叠、窗口太窄，未来不适合开发？</td><td>不要只找最强，要找未来真正可能用得上的组合。</td></tr>
+          <tr><td>第六步：落到项目策略</td><td>方案六：Payload 到适应症匹配引擎</td><td>这个 payload 或组合最值得先在哪些癌种推进？</td><td>先选战场，再集中资源验证。</td></tr>
+          <tr><td>第七步：变成实验方案</td><td>方案七：组合实验设计 Copilot</td><td>第一轮实验具体怎么做？细胞系、剂量矩阵、对照、readout 怎么设？</td><td>把推荐清单变成实验团队可以直接执行的 SOP。</td></tr>
+          <tr><td>第八步：形成长期能力</td><td>方案八：Payload 知识图谱与决策库</td><td>每轮结果怎么沉淀，下一次推荐怎么更准？</td><td>把历史知识、失败原因和实验结果变成公司记忆系统。</td></tr>
+        </tbody>
+      </table>
     </section>
     <section id="schemes" class="wrap">
       <h2>8 个方案详情页</h2>

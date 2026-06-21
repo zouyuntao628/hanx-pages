@@ -20,7 +20,7 @@
     .hero { padding: 32px 36px; margin-bottom: 20px; }
     .section { padding: 28px; margin-top: 20px; }
     .card { padding: 18px; box-shadow:none; }
-    .quick { display:grid; grid-template-columns: repeat(5, minmax(0,1fr)); gap:12px; margin: 0 0 18px; }
+    .quick { display:grid; grid-template-columns: repeat(6, minmax(0,1fr)); gap:12px; margin: 0 0 18px; }
     .quick a { display:block; padding: 14px 16px; border-radius: 8px; background:#fff; border:1px solid var(--line); color: var(--text); box-shadow: var(--shadow); font-weight:600; }
     .related { display:grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap:10px; margin-top:14px; }
     .mini-link { display:block; padding:10px 12px; border:1px solid var(--line); border-radius:8px; color: var(--text); background:#fbfcfe; font-size:13px; font-weight:600; }
@@ -72,6 +72,7 @@
       <a href="#why">为什么要做</a>
       <a href="#effect">做成什么效果</a>
       <a href="#steps">具体步骤</a>
+      <a href="#entry-role">核心入口</a>
       <a href="#operator-guide">上手操作</a>
     </div>
 
@@ -106,6 +107,29 @@
     <section class="section" id="steps">
       <h2>四、具体怎么做</h2>
       <div class="step-grid"><div class="step"><strong>第 1 步：先把问题定义清楚</strong><p>先明确这次是要增强杀伤、克服耐药，还是想找到更可转化的组合。目标不同，排序规则会不同。</p></div><div class="step"><strong>第 2 步：整理候选药和机制标签</strong><p>把候选 partner drug 按靶点、通路、毒性、临床阶段和已知耐药机制结构化，先做出可以计算的标签库。</p></div><div class="step"><strong>第 3 步：按规则筛出第一批候选</strong><p>重点看机制互补、耐药路径阻断、毒性是否重叠、剂量窗口是否接近，先把明显不合适的组合排掉。</p></div><div class="step"><strong>第 4 步：给出实验设计建议</strong><p>不是只交一个药名，而是一起给出建议细胞系、6x6 或 8x8 剂量矩阵、对照组和推荐 readout。</p></div><div class="step"><strong>第 5 步：公司执行湿实验并回传原始数据</strong><p>实验团队按模板执行后，把原始活性矩阵、synergy score、机制读出和失败结果一起回传。</p></div><div class="step"><strong>第 6 步：根据结果继续迭代</strong><p>我们再用这些数据调权、修正规则、收敛到更少但更强的候选组合，并形成下一轮方案。</p></div></div>
+    </section>
+
+
+
+    <section class="section" id="entry-role">
+      <h2>四点五、为什么它是 ADC payload 组合推荐的核心入口</h2>
+      <div class="plain-box"><strong>先讲结论：</strong>如果把“ADC payload 组合推荐”看成一个完整工作流，那么本页就是第一步，也是最直接的产品化版本。它负责先回答“这个 payload 应该和谁联用”。</div>
+      <div class="two-col">
+        <div class="card"><h3>它先解决什么</h3><ul><li>这个 payload 可以和哪些药联用？</li><li>哪些机制更互补？</li><li>哪些组合值得先做？</li><li>哪些组合应该先排除？</li><li>第一批实验该测哪些 partner drug？</li></ul></div>
+        <div class="card"><h3>它不能单独解决什么</h3><ul><li>不能单独说明适合哪类患者，需要方案二做 biomarker 分层。</li><li>不能单独确定剂量和给药顺序，需要方案三继续优化。</li><li>不能单独判断耐药后怎么救，需要方案四补充。</li><li>不能单独完成长期知识沉淀，需要方案八形成决策库。</li></ul></div>
+      </div>
+      <table class="operator-table">
+        <thead><tr><th>如果公司继续追问</th><th>对应后续方案</th><th>为什么要接上</th></tr></thead>
+        <tbody>
+          <tr><td>推荐组合在哪些模型里测？</td><td>方案二：Payload × Biomarker 响应分层</td><td>找到更可能响应的背景，避免平均效果掩盖强响应小群体。</td></tr>
+          <tr><td>剂量怎么设、先后顺序怎么安排？</td><td>方案三：剂量窗口与给药顺序优化</td><td>同样两个药，剂量比例和顺序错了也可能失败。</td></tr>
+          <tr><td>如果某些模型不响应怎么办？</td><td>方案四：耐药机制逆转推荐系统</td><td>要针对失效原因找 rescue partner，而不是盲目加药。</td></tr>
+          <tr><td>会不会太毒、未来没法开发？</td><td>方案五：安全性分离与毒性惩罚模型</td><td>强杀伤不等于好项目，毒性重叠会降低开发价值。</td></tr>
+          <tr><td>最适合先推哪个癌种？</td><td>方案六：Payload 到适应症匹配引擎</td><td>把组合推荐落到适应症策略和资源分配。</td></tr>
+          <tr><td>实验团队具体怎么做？</td><td>方案七：组合实验设计 Copilot</td><td>把推荐清单变成细胞系、剂量矩阵、对照和 readout。</td></tr>
+          <tr><td>结果怎么沉淀、下一轮怎么更准？</td><td>方案八：Payload 知识图谱与决策库</td><td>把每轮成功和失败结果都写回长期数据资产。</td></tr>
+        </tbody>
+      </table>
     </section>
 
 
