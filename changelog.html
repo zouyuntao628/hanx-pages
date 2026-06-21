@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>版本与更新日志｜HANX Pages</title>
+  <style>
+    :root { --bg:#07111f; --panel:rgba(255,255,255,.075); --line:rgba(255,255,255,.16); --text:#eef6ff; --muted:#a8b7c9; --blue:#68d5ff; --cyan:#6fffe9; --green:#8ef6a3; --yellow:#ffe08a; --shadow:0 22px 70px rgba(0,0,0,.35); }
+    * { box-sizing:border-box; } html { scroll-behavior:smooth; }
+    body { margin:0; color:var(--text); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif; background:radial-gradient(circle at 10% -10%, rgba(104,213,255,.25), transparent 33%), radial-gradient(circle at 95% 10%, rgba(142,246,163,.16), transparent 28%), var(--bg); line-height:1.68; }
+    a { color:var(--cyan); text-decoration:none; font-weight:700; } a:hover { text-decoration:underline; }
+    .wrap { width:min(1180px, calc(100% - 40px)); margin:0 auto; }
+    nav { position:sticky; top:0; z-index:20; backdrop-filter:blur(18px); background:rgba(7,17,31,.72); border-bottom:1px solid var(--line); }
+    nav .wrap { display:flex; justify-content:space-between; align-items:center; gap:16px; padding:14px 0; }
+    .brand { display:flex; align-items:center; gap:10px; font-weight:850; } .logo { width:34px; height:34px; border-radius:11px; background:linear-gradient(135deg,var(--blue),var(--green)); }
+    .navlinks { display:flex; gap:14px; flex-wrap:wrap; font-size:14px; } .navlinks a { color:var(--muted); }
+    header { padding:72px 0 32px; } .eyebrow { display:inline-flex; padding:7px 12px; border:1px solid var(--line); border-radius:999px; background:rgba(255,255,255,.06); color:var(--cyan); font-weight:800; font-size:14px; }
+    h1 { margin:20px 0 16px; max-width:1000px; font-size:clamp(38px,6vw,68px); line-height:1.05; letter-spacing:-.04em; } .lead { max-width:920px; color:#d7e7f7; font-size:clamp(18px,2vw,23px); }
+    section { padding:34px 0; } .card, table { background:var(--panel); border:1px solid var(--line); border-radius:24px; box-shadow:var(--shadow); } .card { padding:24px; }
+    h2 { margin:0 0 14px; font-size:clamp(28px,4vw,42px); line-height:1.15; } h3 { margin:0 0 10px; font-size:23px; }
+    table { width:100%; border-collapse:separate; border-spacing:0; overflow:hidden; margin-top:16px; font-size:14px; } th, td { padding:13px 14px; border-bottom:1px solid var(--line); vertical-align:top; text-align:left; } th { color:#061622; background:linear-gradient(135deg,var(--blue),var(--green)); font-weight:850; } tr:last-child td { border-bottom:0; } td { color:#e5f0fb; }
+    ul { margin:8px 0 0; padding-left:20px; } li { margin:6px 0; } .note { padding:16px 18px; border-left:4px solid var(--green); background:rgba(142,246,163,.08); border-radius:0 18px 18px 0; }
+    .tag { display:inline-flex; padding:4px 9px; border-radius:999px; background:rgba(104,213,255,.12); border:1px solid rgba(104,213,255,.28); color:var(--blue); font-size:12px; font-weight:800; }
+    @media (max-width:900px) { .navlinks { display:none; } table { display:block; overflow-x:auto; white-space:nowrap; } }
+  </style>
+</head>
+<body>
+  <nav><div class="wrap"><div class="brand"><div class="logo"></div><span>版本与更新日志</span></div><div class="navlinks"><a href="./index.html">首页</a><a href="./architecture.html">架构图</a><a href="./roadmap.html">路线图</a><a href="./templates.html">模板</a><a href="./deliverables.html">交付验收</a></div></div></nav>
+  <header class="wrap"><div class="eyebrow">版本记录｜通过网页查看进度</div><h1>版本与更新日志</h1><p class="lead">这个页面用于记录网页方案库的主要更新，让访问者知道当前版本已经包含哪些能力、哪些内容刚刚上线、下一步还计划补什么。</p></header>
+  <main>
+    <section class="wrap"><div class="note"><strong>当前最新版本：</strong>v0.8 系统蓝图版。已经从静态方案页升级为包含架构图、路线图、模板中心、交付验收中心、ADC 0A/0B/1-8 与 AI A-D 的完整网页方案库。</div></section>
+
+    <section class="wrap"><h2>更新日志</h2><table><thead><tr><th>版本</th><th>状态</th><th>主要更新</th><th>访问入口</th></tr></thead><tbody>
+      <tr><td>v0.8 系统蓝图版</td><td><span class="tag">已发布</span></td><td>新增统一平台架构图，解释情报雷达、推荐、实验设计、数据回流、知识图谱、AI 转化平台和 BD-ready 交付如何形成闭环。</td><td><a href="./architecture.html">统一平台架构图</a></td></tr>
+      <tr><td>v0.7 交付验收版</td><td><span class="tag">已发布</span></td><td>新增交付物与验收标准中心，明确每个 ADC / AI 模块交付什么、怎么验收、不能承诺什么。</td><td><a href="./deliverables.html">交付物与验收标准</a></td></tr>
+      <tr><td>v0.6 模板中心版</td><td><span class="tag">已发布</span></td><td>新增项目模板中心，包含项目定义卡、Payload 机会卡、证据表、数据字典、实验设计模板、数据回流模板和 Go/No-Go 表。</td><td><a href="./templates.html">项目模板中心</a></td></tr>
+      <tr><td>v0.5 路线图版</td><td><span class="tag">已发布</span></td><td>把路线图页升级为正式版，包含已有条件、缺口、阶段路线、每阶段成果物、网页继续完善清单。</td><td><a href="./roadmap.html">方案完善路线图</a></td></tr>
+      <tr><td>v0.4 多榜单雷达版</td><td><span class="tag">已发布</span></td><td>ADC 0A 升级为多榜单 Payload 机会雷达，包含综合榜和单项榜 Top 5、分析卡字段和综合汇总逻辑。</td><td><a href="./ADC毒素组合用药算法沟通网页/ADC协作型方案详情-00-Payload机会扫描与选题雷达.html">ADC 0A</a></td></tr>
+      <tr><td>v0.3 0A/0B 工作流版</td><td><span class="tag">已发布</span></td><td>将方案 0 拆为 0A 情报雷达首页和 0B Payload 机会评估详情页。</td><td><a href="./ADC毒素组合用药算法沟通网页/ADC协作型方案详情-00B-Payload机会评估详情页.html">ADC 0B</a></td></tr>
+      <tr><td>v0.2 操作人员上手版</td><td><span class="tag">已发布</span></td><td>为 12 个详情页增加软件、专属 AI 模型、数据集、特征字段和分阶段操作成果表。</td><td><a href="./ADC毒素组合用药算法沟通网页/ADC协作型方案总览网页.html">ADC 方案库</a></td></tr>
+      <tr><td>v0.1 初始公开版</td><td><span class="tag">已发布</span></td><td>发布首页、AI 平台总览、ADC 方案库总览和详情页，并打通跨页面跳转。</td><td><a href="./index.html">首页</a></td></tr>
+    </tbody></table></section>
+
+    <section class="wrap"><h2>下一步待办</h2><table><thead><tr><th>优先级</th><th>待办事项</th><th>目的</th></tr></thead><tbody>
+      <tr><td>高</td><td>给 ADC 0A/0B 增加更像真实产品界面的样例数据和状态字段。</td><td>让情报雷达更像可操作系统。</td></tr>
+      <tr><td>高</td><td>给方案一增加可复制的 Top 3-10 推荐卡样例。</td><td>让 PoC 启动更具体。</td></tr>
+      <tr><td>中高</td><td>给所有详情页增加“当前交付形态”说明。</td><td>避免客户误解为已有成熟软件。</td></tr>
+      <tr><td>中高</td><td>补充 RACI、协作节奏、数据权限和 IP 边界。</td><td>支持商务和项目管理落地。</td></tr>
+      <tr><td>中</td><td>补充一套匿名假数据闭环示例。</td><td>展示从输入到推荐、实验、回流、复盘的完整过程。</td></tr>
+    </tbody></table></section>
+  </main>
+</body>
+</html>
