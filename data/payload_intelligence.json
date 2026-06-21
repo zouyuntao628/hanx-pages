@@ -1,0 +1,1443 @@
+{
+  "generated_at": "2026-06-21T15:06:02.339620+00:00",
+  "started_at": "2026-06-21T15:05:02.823775+00:00",
+  "records_count": 130,
+  "payloads_count": 9,
+  "sources": [
+    "PubMed",
+    "Crossref",
+    "ClinicalTrials.gov"
+  ],
+  "notes": "Public data collection MVP. Results are automatically parsed and require human scientific/IP review before project decisions.",
+  "scores": [
+    {
+      "payload": "exatecan",
+      "mechanism": "TOP1 inhibitor",
+      "records": 15,
+      "pubmed_records": 5,
+      "crossref_records": 5,
+      "clinical_records": 5,
+      "external_heat": 100,
+      "combination_potential": 82,
+      "risk_penalty": 6,
+      "opportunity_score": 71,
+      "priority": "P2",
+      "recommended_action": "继续补资料或观察"
+    },
+    {
+      "payload": "DXd",
+      "mechanism": "TOP1 inhibitor",
+      "records": 15,
+      "pubmed_records": 5,
+      "crossref_records": 5,
+      "clinical_records": 5,
+      "external_heat": 100,
+      "combination_potential": 82,
+      "risk_penalty": 10,
+      "opportunity_score": 70,
+      "priority": "P2",
+      "recommended_action": "继续补资料或观察"
+    },
+    {
+      "payload": "SN-38",
+      "mechanism": "TOP1 inhibitor",
+      "records": 15,
+      "pubmed_records": 5,
+      "crossref_records": 5,
+      "clinical_records": 5,
+      "external_heat": 100,
+      "combination_potential": 82,
+      "risk_penalty": 10,
+      "opportunity_score": 70,
+      "priority": "P2",
+      "recommended_action": "继续补资料或观察"
+    },
+    {
+      "payload": "MMAE",
+      "mechanism": "microtubule inhibitor",
+      "records": 15,
+      "pubmed_records": 5,
+      "crossref_records": 5,
+      "clinical_records": 5,
+      "external_heat": 100,
+      "combination_potential": 74,
+      "risk_penalty": 6,
+      "opportunity_score": 68,
+      "priority": "P2",
+      "recommended_action": "继续补资料或观察"
+    },
+    {
+      "payload": "MMAF",
+      "mechanism": "microtubule inhibitor",
+      "records": 15,
+      "pubmed_records": 5,
+      "crossref_records": 5,
+      "clinical_records": 5,
+      "external_heat": 100,
+      "combination_potential": 74,
+      "risk_penalty": 6,
+      "opportunity_score": 68,
+      "priority": "P2",
+      "recommended_action": "继续补资料或观察"
+    },
+    {
+      "payload": "DM1",
+      "mechanism": "microtubule inhibitor",
+      "records": 15,
+      "pubmed_records": 5,
+      "crossref_records": 5,
+      "clinical_records": 5,
+      "external_heat": 100,
+      "combination_potential": 62,
+      "risk_penalty": 6,
+      "opportunity_score": 65,
+      "priority": "P2",
+      "recommended_action": "继续补资料或观察"
+    },
+    {
+      "payload": "DM4",
+      "mechanism": "microtubule inhibitor",
+      "records": 15,
+      "pubmed_records": 5,
+      "crossref_records": 5,
+      "clinical_records": 5,
+      "external_heat": 100,
+      "combination_potential": 62,
+      "risk_penalty": 6,
+      "opportunity_score": 65,
+      "priority": "P2",
+      "recommended_action": "继续补资料或观察"
+    },
+    {
+      "payload": "PBD",
+      "mechanism": "DNA crosslinking",
+      "records": 15,
+      "pubmed_records": 5,
+      "crossref_records": 5,
+      "clinical_records": 5,
+      "external_heat": 100,
+      "combination_potential": 62,
+      "risk_penalty": 18,
+      "opportunity_score": 63,
+      "priority": "P2",
+      "recommended_action": "继续补资料或观察"
+    },
+    {
+      "payload": "amanitin",
+      "mechanism": "RNA polymerase II inhibitor",
+      "records": 10,
+      "pubmed_records": 5,
+      "crossref_records": 5,
+      "clinical_records": 0,
+      "external_heat": 80,
+      "combination_potential": 62,
+      "risk_penalty": 18,
+      "opportunity_score": 59,
+      "priority": "P2",
+      "recommended_action": "继续补资料或观察"
+    }
+  ],
+  "records": [
+    {
+      "source": "PubMed",
+      "payload": "DXd",
+      "mechanism": "TOP1 inhibitor",
+      "title": "Antibodies to watch in 2026.",
+      "date": "2026 Dec",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41560619/",
+      "evidence_type": "paper",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "PubMed",
+      "payload": "DXd",
+      "mechanism": "TOP1 inhibitor",
+      "title": "EGFR S442 ectodomain mutation confers cetuximab resistance that can be overcome by ERBB2 blockade with trastuzumab-deruxtecan.",
+      "date": "2026 Aug 28",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42176792/",
+      "evidence_type": "paper",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "PubMed",
+      "payload": "DXd",
+      "mechanism": "TOP1 inhibitor",
+      "title": "ATR inhibition potentiates the antitumor efficacy of HER3-DXd in HER3-positive/HR-positive breast cancer by increasing DNA damage.",
+      "date": "2026 Jul",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41986659/",
+      "evidence_type": "paper",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "PubMed",
+      "payload": "DXd",
+      "mechanism": "TOP1 inhibitor",
+      "title": "Dynamic monitoring of antibody drug conjugates targeting TROP2 or HER2 in breast cancer using circulating tumor cells.",
+      "date": "2026 Jun 23",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42308036/",
+      "evidence_type": "paper",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "PubMed",
+      "payload": "DXd",
+      "mechanism": "TOP1 inhibitor",
+      "title": "Clinical responses to trastuzumab deruxtecan in molecularly defined ependymoma.",
+      "date": "2026 Jun 20",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42321415/",
+      "evidence_type": "paper",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "Crossref",
+      "payload": "DXd",
+      "mechanism": "TOP1 inhibitor",
+      "title": "Optimizing Registered Nurse Roles in the Delivery of Cancer Survivorship Care within Primary Care Settings",
+      "date": "2106-12-6",
+      "url": "https://doi.org/10.12927/cjnl.2016.24984",
+      "evidence_type": "paper_metadata",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "Crossref",
+      "payload": "DXd",
+      "mechanism": "TOP1 inhibitor",
+      "title": "Comparative  Study of Serum Lipid Profile Parameters  for Oral Cancer  and Non Oral Cancer Patients",
+      "date": "2106-6-20",
+      "url": "https://doi.org/10.21276/ijchmr.2016.2.2.08",
+      "evidence_type": "paper_metadata",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "Crossref",
+      "payload": "DXd",
+      "mechanism": "TOP1 inhibitor",
+      "title": "From Policy to Practice: Assessing the Impact of Staging Policies for Recording Cancer Stage across Canada",
+      "date": "2088-1-15",
+      "url": "https://doi.org/10.12927/hcq.2013.19505",
+      "evidence_type": "paper_metadata",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "Crossref",
+      "payload": "DXd",
+      "mechanism": "TOP1 inhibitor",
+      "title": "USING OF LAB ANIMALS AS A MODEL TO STUDY THE DRUG TOXICITY IN COVID-19",
+      "date": "2031-8-1",
+      "url": "https://doi.org/10.23975/bjvetr.2031.175853",
+      "evidence_type": "paper_metadata",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "Crossref",
+      "payload": "DXd",
+      "mechanism": "TOP1 inhibitor",
+      "title": "Postures communicationnelles des spécialistes en médecine générale dans le dépistage familial du cancer colorectal",
+      "date": "2030-1-1",
+      "url": "https://doi.org/10.3917/spub.pr2.0060",
+      "evidence_type": "paper_metadata",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "ClinicalTrials.gov",
+      "payload": "DXd",
+      "mechanism": "TOP1 inhibitor",
+      "title": "Anlotinib With Trastuzumab Deruxtecan for Previously Treated HER2-Low Advanced Breast Cancer",
+      "date": "2024-08-28",
+      "url": "https://clinicaltrials.gov/study/NCT06331169",
+      "evidence_type": "clinical_trial",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "ClinicalTrials.gov",
+      "payload": "DXd",
+      "mechanism": "TOP1 inhibitor",
+      "title": "Phase III, Open-label, First-line Study of Dato-DXd in Combination With Durvalumab and Carboplatin for Advanced NSCLC Without Actionable Genomic Alterations",
+      "date": "2026-04-21",
+      "url": "https://clinicaltrials.gov/study/NCT05687266",
+      "evidence_type": "clinical_trial",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "ClinicalTrials.gov",
+      "payload": "DXd",
+      "mechanism": "TOP1 inhibitor",
+      "title": "EIS-12656 as Single Agent and in Combination in Patients With Specified Solid Tumors",
+      "date": "2024-09-14",
+      "url": "https://clinicaltrials.gov/study/NCT06525298",
+      "evidence_type": "clinical_trial",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "ClinicalTrials.gov",
+      "payload": "DXd",
+      "mechanism": "TOP1 inhibitor",
+      "title": "A Window-of-opportunity Study of U3-1402, a HER3-targeting Antibody-drug Conjugate in Operable Breast Cancer According to ERBB3 Expression",
+      "date": "2023-06-21",
+      "url": "https://clinicaltrials.gov/study/NCT04610528",
+      "evidence_type": "clinical_trial",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "ClinicalTrials.gov",
+      "payload": "DXd",
+      "mechanism": "TOP1 inhibitor",
+      "title": "Trastuzumab Deruxtecan Plus ivonescImab for Hormone Receptor-positive HER2 Negative Advanced Breast Cancer Study",
+      "date": "2026-06-09",
+      "url": "https://clinicaltrials.gov/study/NCT07647016",
+      "evidence_type": "clinical_trial",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "PubMed",
+      "payload": "exatecan",
+      "mechanism": "TOP1 inhibitor",
+      "title": "NH(2)-trimethyl lock (NH(2)-TML): a stable and effective adapter for exatecan-based antibody-drug conjugates.",
+      "date": "2026 Sep 5",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42218895/",
+      "evidence_type": "paper",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "PubMed",
+      "payload": "exatecan",
+      "mechanism": "TOP1 inhibitor",
+      "title": "Vascular disruption-triggered physiological cascade enables a therapeutic window for fibrin-hypoxia dual-targeting nanomedicines in solid tumors.",
+      "date": "2026 Jul 10",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42119788/",
+      "evidence_type": "paper",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "PubMed",
+      "payload": "exatecan",
+      "mechanism": "TOP1 inhibitor",
+      "title": "An intrinsically hydrophilic linker enables a stable, high-DAR exatecan-based HER2 ADC with potent antitumor activity.",
+      "date": "2026 Jun 10",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42296596/",
+      "evidence_type": "paper",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "PubMed",
+      "payload": "exatecan",
+      "mechanism": "TOP1 inhibitor",
+      "title": "Sequential Use of Trastuzumab Deruxtecan and Sacituzumab Govitecan in Patients with Breast Cancer: A Pharmacological Approach to Support the Clinical Rationale.",
+      "date": "2026 Jun",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41931218/",
+      "evidence_type": "paper",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "PubMed",
+      "payload": "exatecan",
+      "mechanism": "TOP1 inhibitor",
+      "title": "Exatecan Payload-Based Antibody-Drug Conjugates with a Short Hydrophilic Cleavable Linker.",
+      "date": "2026 May 14",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42157849/",
+      "evidence_type": "paper",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "Crossref",
+      "payload": "exatecan",
+      "mechanism": "TOP1 inhibitor",
+      "title": "Optimizing Registered Nurse Roles in the Delivery of Cancer Survivorship Care within Primary Care Settings",
+      "date": "2106-12-6",
+      "url": "https://doi.org/10.12927/cjnl.2016.24984",
+      "evidence_type": "paper_metadata",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "Crossref",
+      "payload": "exatecan",
+      "mechanism": "TOP1 inhibitor",
+      "title": "Comparative  Study of Serum Lipid Profile Parameters  for Oral Cancer  and Non Oral Cancer Patients",
+      "date": "2106-6-20",
+      "url": "https://doi.org/10.21276/ijchmr.2016.2.2.08",
+      "evidence_type": "paper_metadata",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "Crossref",
+      "payload": "exatecan",
+      "mechanism": "TOP1 inhibitor",
+      "title": "From Policy to Practice: Assessing the Impact of Staging Policies for Recording Cancer Stage across Canada",
+      "date": "2088-1-15",
+      "url": "https://doi.org/10.12927/hcq.2013.19505",
+      "evidence_type": "paper_metadata",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "Crossref",
+      "payload": "exatecan",
+      "mechanism": "TOP1 inhibitor",
+      "title": "USING OF LAB ANIMALS AS A MODEL TO STUDY THE DRUG TOXICITY IN COVID-19",
+      "date": "2031-8-1",
+      "url": "https://doi.org/10.23975/bjvetr.2031.175853",
+      "evidence_type": "paper_metadata",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "Crossref",
+      "payload": "exatecan",
+      "mechanism": "TOP1 inhibitor",
+      "title": "Postures communicationnelles des spécialistes en médecine générale dans le dépistage familial du cancer colorectal",
+      "date": "2030-1-1",
+      "url": "https://doi.org/10.3917/spub.pr2.0060",
+      "evidence_type": "paper_metadata",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "ClinicalTrials.gov",
+      "payload": "exatecan",
+      "mechanism": "TOP1 inhibitor",
+      "title": "Anti-Ly6E Exatecan ADC M7437 in Advanced Solid Tumors",
+      "date": "2026-06-10",
+      "url": "https://clinicaltrials.gov/study/NCT07360314",
+      "evidence_type": "clinical_trial",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "ClinicalTrials.gov",
+      "payload": "exatecan",
+      "mechanism": "TOP1 inhibitor",
+      "title": "A Study to Evaluate ELU001 in Patients With Solid Tumors That Overexpress Folate Receptor Alpha (FRα)",
+      "date": "2024-08-05",
+      "url": "https://clinicaltrials.gov/study/NCT05001282",
+      "evidence_type": "clinical_trial",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "ClinicalTrials.gov",
+      "payload": "exatecan",
+      "mechanism": "TOP1 inhibitor",
+      "title": "DX-8951f in Treating Patients With Biliary Cancer",
+      "date": "2012-05-15",
+      "url": "https://clinicaltrials.gov/study/NCT00005938",
+      "evidence_type": "clinical_trial",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "ClinicalTrials.gov",
+      "payload": "exatecan",
+      "mechanism": "TOP1 inhibitor",
+      "title": "A Study of CBX 12 in Subjects With Platinum Resistant or Refractory Ovarian Cancer",
+      "date": "2025-10-02",
+      "url": "https://clinicaltrials.gov/study/NCT06315491",
+      "evidence_type": "clinical_trial",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "ClinicalTrials.gov",
+      "payload": "exatecan",
+      "mechanism": "TOP1 inhibitor",
+      "title": "HER3-DXd in Breast Cancer and NSCLC Brain Metastases and Solid Tumor Leptomeningeal Disease",
+      "date": "2026-04-28",
+      "url": "https://clinicaltrials.gov/study/NCT05865990",
+      "evidence_type": "clinical_trial",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "PubMed",
+      "payload": "SN-38",
+      "mechanism": "TOP1 inhibitor",
+      "title": "A preliminary exploratory clinical study of Xiao-Chai-Hu-Tang co-administered with irinotecan-based chemotherapy in advanced colorectal cancer.",
+      "date": "2026 Aug 10",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42002120/",
+      "evidence_type": "paper",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "PubMed",
+      "payload": "SN-38",
+      "mechanism": "TOP1 inhibitor",
+      "title": "Harnessing human colonoid-derived monolayers as an in vitro platform for investigating accumulation, toxicity, and pharmacodynamics of small molecules.",
+      "date": "2026 Aug",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41796873/",
+      "evidence_type": "paper",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "PubMed",
+      "payload": "SN-38",
+      "mechanism": "TOP1 inhibitor",
+      "title": "Dual benefits of Xiao Chai Hu Tang and its active compounds in CPT-11 therapy: intestinal protection via barrier restoration and anti-inflammation combined with enhanced tumor apoptosis.",
+      "date": "2026 Jul 15",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41932664/",
+      "evidence_type": "paper",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "PubMed",
+      "payload": "SN-38",
+      "mechanism": "TOP1 inhibitor",
+      "title": "Toward targeting the untargetable: A non-canonical EGFR-peptide-drug conjugate achieves potent antitumor activity in KRAS-mutant CRC.",
+      "date": "2026 Jul 10",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42103029/",
+      "evidence_type": "paper",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "PubMed",
+      "payload": "SN-38",
+      "mechanism": "TOP1 inhibitor",
+      "title": "Transformable nanoassembly of CXCL16 peptide-SN38 conjugate improves intratumor permeation and retention in peritoneal metastases.",
+      "date": "2026 Jul 10",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42069001/",
+      "evidence_type": "paper",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "Crossref",
+      "payload": "SN-38",
+      "mechanism": "TOP1 inhibitor",
+      "title": "The effects of autologous platelet concentrate on the healing of intra-bony defects: a randomized clinical trial",
+      "date": "2109-1-31",
+      "url": "https://doi.org/10.26650/eor.20192207101715",
+      "evidence_type": "paper_metadata",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "Crossref",
+      "payload": "SN-38",
+      "mechanism": "TOP1 inhibitor",
+      "title": "Optimizing Registered Nurse Roles in the Delivery of Cancer Survivorship Care within Primary Care Settings",
+      "date": "2106-12-6",
+      "url": "https://doi.org/10.12927/cjnl.2016.24984",
+      "evidence_type": "paper_metadata",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "Crossref",
+      "payload": "SN-38",
+      "mechanism": "TOP1 inhibitor",
+      "title": "Need of Hearing Assistance Technology (HAT) for Adults with Hearing Impairment",
+      "date": "2106-6-20",
+      "url": "https://doi.org/10.21276/ijchmr.2016.2.2.06",
+      "evidence_type": "paper_metadata",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "Crossref",
+      "payload": "SN-38",
+      "mechanism": "TOP1 inhibitor",
+      "title": "Comparative  Study of Serum Lipid Profile Parameters  for Oral Cancer  and Non Oral Cancer Patients",
+      "date": "2106-6-20",
+      "url": "https://doi.org/10.21276/ijchmr.2016.2.2.08",
+      "evidence_type": "paper_metadata",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "Crossref",
+      "payload": "SN-38",
+      "mechanism": "TOP1 inhibitor",
+      "title": "Организационно-педагогические условия и критерии эффективности формирования развивающей среды общеобразовательного учреждения Organizational - pedagogical conditions and criteria of efficiency of formation of the developing environment of general education establishment",
+      "date": "2088-6-30",
+      "url": "https://doi.org/10.21702/rpj.2008.2.3",
+      "evidence_type": "paper_metadata",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "ClinicalTrials.gov",
+      "payload": "SN-38",
+      "mechanism": "TOP1 inhibitor",
+      "title": "The BEACON Study (Breast Cancer Outcomes With NKTR-102)",
+      "date": "2021-05-06",
+      "url": "https://clinicaltrials.gov/study/NCT01492101",
+      "evidence_type": "clinical_trial",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "ClinicalTrials.gov",
+      "payload": "SN-38",
+      "mechanism": "TOP1 inhibitor",
+      "title": "Phase 2 Etirinotecan Pegol in Refractory Brain Metastases & Advanced Lung Cancer / Metastatic Breast Cancer",
+      "date": "2023-11-20",
+      "url": "https://clinicaltrials.gov/study/NCT02312622",
+      "evidence_type": "clinical_trial",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "ClinicalTrials.gov",
+      "payload": "SN-38",
+      "mechanism": "TOP1 inhibitor",
+      "title": "MEK Inhibitor MSC1936369B Plus FOLFIRI in Second Line K-Ras Mutated Metastatic Colorectal Cancer (mCRC)",
+      "date": "2016-08-24",
+      "url": "https://clinicaltrials.gov/study/NCT01085331",
+      "evidence_type": "clinical_trial",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "ClinicalTrials.gov",
+      "payload": "SN-38",
+      "mechanism": "TOP1 inhibitor",
+      "title": "A Study of TBio-4101 (TIL) and Pembrolizumab in Patients With Advanced Solid Tumors",
+      "date": "2025-03-07",
+      "url": "https://clinicaltrials.gov/study/NCT05576077",
+      "evidence_type": "clinical_trial",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "ClinicalTrials.gov",
+      "payload": "SN-38",
+      "mechanism": "TOP1 inhibitor",
+      "title": "Evaluation of the Preliminary Efficacy and Safety of DR30206 in Combination With Standard Therapy in Patients With Gastrointestinal Cancer",
+      "date": "2026-01-09",
+      "url": "https://clinicaltrials.gov/study/NCT07056777",
+      "evidence_type": "clinical_trial",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "PubMed",
+      "payload": "MMAE",
+      "mechanism": "microtubule inhibitor",
+      "title": "Targeting IL-7Rα with PNU-159682 antibody-drug conjugates in acute lymphoblastic leukemia: translational implications.",
+      "date": "2026 Dec 31",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42046337/",
+      "evidence_type": "paper",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "PubMed",
+      "payload": "MMAE",
+      "mechanism": "microtubule inhibitor",
+      "title": "Mislocalisation of FLT3-ITD receptor contributes to MV4-11 leukaemia cell resistance to antibody-drug conjugate.",
+      "date": "2026 Dec",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41784256/",
+      "evidence_type": "paper",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "PubMed",
+      "payload": "MMAE",
+      "mechanism": "microtubule inhibitor",
+      "title": "Construction of anti-HER2 conjugated injectable hydrogel via protein crosslinking and gadolinium-tetraaza coordination for multimodal tumor theranostics.",
+      "date": "2026 Aug",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41934787/",
+      "evidence_type": "paper",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "PubMed",
+      "payload": "MMAE",
+      "mechanism": "microtubule inhibitor",
+      "title": "Development and validation of an efficient and sensitive LC-MS/MS assay for simultaneous determination of the high frequency used antibody drug conjugate payload MMAE and anti-vascular tyrosine kinase inhibitor lenvatinib in human plasma.",
+      "date": "2026 Jul 15",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41762484/",
+      "evidence_type": "paper",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "PubMed",
+      "payload": "MMAE",
+      "mechanism": "microtubule inhibitor",
+      "title": "Glypican-1-targeted antibody-drug conjugate shows therapeutic efficacy in lung squamous cell carcinoma.",
+      "date": "2026 Jul",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42096801/",
+      "evidence_type": "paper",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "Crossref",
+      "payload": "MMAE",
+      "mechanism": "microtubule inhibitor",
+      "title": "Optimizing Registered Nurse Roles in the Delivery of Cancer Survivorship Care within Primary Care Settings",
+      "date": "2106-12-6",
+      "url": "https://doi.org/10.12927/cjnl.2016.24984",
+      "evidence_type": "paper_metadata",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "Crossref",
+      "payload": "MMAE",
+      "mechanism": "microtubule inhibitor",
+      "title": "Comparative  Study of Serum Lipid Profile Parameters  for Oral Cancer  and Non Oral Cancer Patients",
+      "date": "2106-6-20",
+      "url": "https://doi.org/10.21276/ijchmr.2016.2.2.08",
+      "evidence_type": "paper_metadata",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "Crossref",
+      "payload": "MMAE",
+      "mechanism": "microtubule inhibitor",
+      "title": "From Policy to Practice: Assessing the Impact of Staging Policies for Recording Cancer Stage across Canada",
+      "date": "2088-1-15",
+      "url": "https://doi.org/10.12927/hcq.2013.19505",
+      "evidence_type": "paper_metadata",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "Crossref",
+      "payload": "MMAE",
+      "mechanism": "microtubule inhibitor",
+      "title": "USING OF LAB ANIMALS AS A MODEL TO STUDY THE DRUG TOXICITY IN COVID-19",
+      "date": "2031-8-1",
+      "url": "https://doi.org/10.23975/bjvetr.2031.175853",
+      "evidence_type": "paper_metadata",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "Crossref",
+      "payload": "MMAE",
+      "mechanism": "microtubule inhibitor",
+      "title": "Postures communicationnelles des spécialistes en médecine générale dans le dépistage familial du cancer colorectal",
+      "date": "2030-1-1",
+      "url": "https://doi.org/10.3917/spub.pr2.0060",
+      "evidence_type": "paper_metadata",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "ClinicalTrials.gov",
+      "payload": "MMAE",
+      "mechanism": "microtubule inhibitor",
+      "title": "Brentuximab Vedotin Plus AD in Non-bulky Limited Stage Hodgkin Lymphoma",
+      "date": "2020-08-10",
+      "url": "https://clinicaltrials.gov/study/NCT02505269",
+      "evidence_type": "clinical_trial",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "ClinicalTrials.gov",
+      "payload": "MMAE",
+      "mechanism": "microtubule inhibitor",
+      "title": "Study of EV for Recurrent Endometrial Carcinoma",
+      "date": "2026-01-16",
+      "url": "https://clinicaltrials.gov/study/NCT07139977",
+      "evidence_type": "clinical_trial",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "ClinicalTrials.gov",
+      "payload": "MMAE",
+      "mechanism": "microtubule inhibitor",
+      "title": "A Study of HDM2005 in Combination With Standard of Care in Patients With Diffuse Large B-Cell Lymphoma",
+      "date": "2025-08-11",
+      "url": "https://clinicaltrials.gov/study/NCT07124936",
+      "evidence_type": "clinical_trial",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "ClinicalTrials.gov",
+      "payload": "MMAE",
+      "mechanism": "microtubule inhibitor",
+      "title": "A Study of Brentuximab Vedotin Combined With Nivolumab for Relapsed or Refractory Hodgkin Lymphoma",
+      "date": "2022-10-17",
+      "url": "https://clinicaltrials.gov/study/NCT02572167",
+      "evidence_type": "clinical_trial",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "ClinicalTrials.gov",
+      "payload": "MMAE",
+      "mechanism": "microtubule inhibitor",
+      "title": "A Study of RC118 in Patients With Locally Advanced Unresectable/Metastatic Solid Tumours",
+      "date": "2023-06-19",
+      "url": "https://clinicaltrials.gov/study/NCT04914117",
+      "evidence_type": "clinical_trial",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "PubMed",
+      "payload": "MMAF",
+      "mechanism": "microtubule inhibitor",
+      "title": "Peptide-drug conjugates bearing an antimitotic Ahx-DA1 payload achieve potent antitumor activity in Her2-amplified and EGFR-positive KRAS-mutant cancers in vivo.",
+      "date": "2026 Jul",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42033924/",
+      "evidence_type": "paper",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "PubMed",
+      "payload": "MMAF",
+      "mechanism": "microtubule inhibitor",
+      "title": "uPAR-Targeting Cytotoxic Antibody-Drug Conjugates Selectively Deplete Proinflammatory Myeloid Cells for Autoimmune Indications.",
+      "date": "2026 Apr 29",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42121904/",
+      "evidence_type": "paper",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "PubMed",
+      "payload": "MMAF",
+      "mechanism": "microtubule inhibitor",
+      "title": "Mechanism of uptake and toxicity of a BCMA antibody drug conjugate with a MMAF payload by nonantigen expressing cells.",
+      "date": "2026 Apr 8",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41951857/",
+      "evidence_type": "paper",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "PubMed",
+      "payload": "MMAF",
+      "mechanism": "microtubule inhibitor",
+      "title": "Rational payload selection enables high antitumoral efficacy of an anti-EGFR antibody-drug conjugate against ovarian tumors.",
+      "date": "2026 Apr",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41825107/",
+      "evidence_type": "paper",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "PubMed",
+      "payload": "MMAF",
+      "mechanism": "microtubule inhibitor",
+      "title": "Characterization of drug-drug interaction for antibody-drug conjugates and risk assessment using various approaches including physiologically based pharmacokinetic modeling.",
+      "date": "2026 Apr",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41671915/",
+      "evidence_type": "paper",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "Crossref",
+      "payload": "MMAF",
+      "mechanism": "microtubule inhibitor",
+      "title": "Optimizing Registered Nurse Roles in the Delivery of Cancer Survivorship Care within Primary Care Settings",
+      "date": "2106-12-6",
+      "url": "https://doi.org/10.12927/cjnl.2016.24984",
+      "evidence_type": "paper_metadata",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "Crossref",
+      "payload": "MMAF",
+      "mechanism": "microtubule inhibitor",
+      "title": "Comparative  Study of Serum Lipid Profile Parameters  for Oral Cancer  and Non Oral Cancer Patients",
+      "date": "2106-6-20",
+      "url": "https://doi.org/10.21276/ijchmr.2016.2.2.08",
+      "evidence_type": "paper_metadata",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "Crossref",
+      "payload": "MMAF",
+      "mechanism": "microtubule inhibitor",
+      "title": "From Policy to Practice: Assessing the Impact of Staging Policies for Recording Cancer Stage across Canada",
+      "date": "2088-1-15",
+      "url": "https://doi.org/10.12927/hcq.2013.19505",
+      "evidence_type": "paper_metadata",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "Crossref",
+      "payload": "MMAF",
+      "mechanism": "microtubule inhibitor",
+      "title": "USING OF LAB ANIMALS AS A MODEL TO STUDY THE DRUG TOXICITY IN COVID-19",
+      "date": "2031-8-1",
+      "url": "https://doi.org/10.23975/bjvetr.2031.175853",
+      "evidence_type": "paper_metadata",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "Crossref",
+      "payload": "MMAF",
+      "mechanism": "microtubule inhibitor",
+      "title": "Postures communicationnelles des spécialistes en médecine générale dans le dépistage familial du cancer colorectal",
+      "date": "2030-1-1",
+      "url": "https://doi.org/10.3917/spub.pr2.0060",
+      "evidence_type": "paper_metadata",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "ClinicalTrials.gov",
+      "payload": "MMAF",
+      "mechanism": "microtubule inhibitor",
+      "title": "To Evaluate Safety, Tolerability, and Clinical Activity of the Antibody-drug Conjugate, GSK2857916 Administered in Combination With Lenalidomide Plus Dexamethasone (Arm A), or in Combination With Bortezomib Plus Dexamethasone (Arm B) in Participants With Relapsed/Refractory Multiple Myeloma (RRMM)",
+      "date": "2025-02-27",
+      "url": "https://clinicaltrials.gov/study/NCT03544281",
+      "evidence_type": "clinical_trial",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "ClinicalTrials.gov",
+      "payload": "MMAF",
+      "mechanism": "microtubule inhibitor",
+      "title": "Evaluation of Efficacy and Safety of Belantamab Mafodotin, Bortezomib and Dexamethasone Versus Daratumumab, Bortezomib and Dexamethasone in Participants With Relapsed/Refractory Multiple Myeloma",
+      "date": "2026-04-03",
+      "url": "https://clinicaltrials.gov/study/NCT04246047",
+      "evidence_type": "clinical_trial",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "ClinicalTrials.gov",
+      "payload": "MMAF",
+      "mechanism": "microtubule inhibitor",
+      "title": "Clinical Study of Antibody-Drug Conjugate MYTX-011 in Subjects With Non-Small Cell Lung Cancer",
+      "date": "2025-12-15",
+      "url": "https://clinicaltrials.gov/study/NCT05652868",
+      "evidence_type": "clinical_trial",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "ClinicalTrials.gov",
+      "payload": "MMAF",
+      "mechanism": "microtubule inhibitor",
+      "title": "A Study of Belantamab Mafodotin to Investigate Safety, Tolerability, Pharmacokinetics, Immunogenicity and Clinical Activity in Participants With Relapsed/Refractory Multiple Myeloma (RRMM)",
+      "date": "2025-02-28",
+      "url": "https://clinicaltrials.gov/study/NCT04177823",
+      "evidence_type": "clinical_trial",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "ClinicalTrials.gov",
+      "payload": "MMAF",
+      "mechanism": "microtubule inhibitor",
+      "title": "Phase 1 Study of FS-1502 in Patients With HER2 Expressed Advanced Solid Tumors and Breast Cancer.",
+      "date": "2025-09-09",
+      "url": "https://clinicaltrials.gov/study/NCT03944499",
+      "evidence_type": "clinical_trial",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "PubMed",
+      "payload": "DM1",
+      "mechanism": "microtubule inhibitor",
+      "title": "Optical mapping reveals a higher level of large-scale structural variants in a family with paternally transmitted myotonic dystrophy and independent Parkinson's disease.",
+      "date": "2026 Jun 9",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42261605/",
+      "evidence_type": "paper",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "PubMed",
+      "payload": "DM1",
+      "mechanism": "microtubule inhibitor",
+      "title": "Prognostic Role of Inflammatory Indices and Real-World Outcomes in HER2-Positive Metastatic Breast Cancer Treated with Trastuzumab Emtansine.",
+      "date": "2026 Jun 5",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42279613/",
+      "evidence_type": "paper",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "PubMed",
+      "payload": "DM1",
+      "mechanism": "microtubule inhibitor",
+      "title": "Safety of concurrent T-DM1 and radiation therapy in HER2-positive breast cancer with residual disease after neoadjuvant chemotherapy.",
+      "date": "2026 Jun 4",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42240561/",
+      "evidence_type": "paper",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "PubMed",
+      "payload": "DM1",
+      "mechanism": "microtubule inhibitor",
+      "title": "Next-generation antibody-drug conjugates in drug-resistant solid tumors: promise, toxicity, and the emerging challenge of acquired resistance.",
+      "date": "2026 Jun",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42254250/",
+      "evidence_type": "paper",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "PubMed",
+      "payload": "DM1",
+      "mechanism": "microtubule inhibitor",
+      "title": "A chemotherapy-free, pathological response-adapted strategy using trastuzumab-pertuzumab and T-DM1 in HER2-positive early breast cancer: the PHERGain-2 study.",
+      "date": "2026 Jun",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42097893/",
+      "evidence_type": "paper",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "Crossref",
+      "payload": "DM1",
+      "mechanism": "microtubule inhibitor",
+      "title": "Optimizing Registered Nurse Roles in the Delivery of Cancer Survivorship Care within Primary Care Settings",
+      "date": "2106-12-6",
+      "url": "https://doi.org/10.12927/cjnl.2016.24984",
+      "evidence_type": "paper_metadata",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "Crossref",
+      "payload": "DM1",
+      "mechanism": "microtubule inhibitor",
+      "title": "Comparative  Study of Serum Lipid Profile Parameters  for Oral Cancer  and Non Oral Cancer Patients",
+      "date": "2106-6-20",
+      "url": "https://doi.org/10.21276/ijchmr.2016.2.2.08",
+      "evidence_type": "paper_metadata",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "Crossref",
+      "payload": "DM1",
+      "mechanism": "microtubule inhibitor",
+      "title": "From Policy to Practice: Assessing the Impact of Staging Policies for Recording Cancer Stage across Canada",
+      "date": "2088-1-15",
+      "url": "https://doi.org/10.12927/hcq.2013.19505",
+      "evidence_type": "paper_metadata",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "Crossref",
+      "payload": "DM1",
+      "mechanism": "microtubule inhibitor",
+      "title": "USING OF LAB ANIMALS AS A MODEL TO STUDY THE DRUG TOXICITY IN COVID-19",
+      "date": "2031-8-1",
+      "url": "https://doi.org/10.23975/bjvetr.2031.175853",
+      "evidence_type": "paper_metadata",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "Crossref",
+      "payload": "DM1",
+      "mechanism": "microtubule inhibitor",
+      "title": "Postures communicationnelles des spécialistes en médecine générale dans le dépistage familial du cancer colorectal",
+      "date": "2030-1-1",
+      "url": "https://doi.org/10.3917/spub.pr2.0060",
+      "evidence_type": "paper_metadata",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "ClinicalTrials.gov",
+      "payload": "DM1",
+      "mechanism": "microtubule inhibitor",
+      "title": "Evaluation of Adult Patients With Immunodeficiency Within the Scope of the ICF",
+      "date": "2024-02-26",
+      "url": "https://clinicaltrials.gov/study/NCT06014463",
+      "evidence_type": "clinical_trial",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "ClinicalTrials.gov",
+      "payload": "DM1",
+      "mechanism": "microtubule inhibitor",
+      "title": "Efficacy and Tolerance of Early Launching of Nocturnal Non Invasive",
+      "date": "2017-11-17",
+      "url": "https://clinicaltrials.gov/study/NCT01225614",
+      "evidence_type": "clinical_trial",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "ClinicalTrials.gov",
+      "payload": "DM1",
+      "mechanism": "microtubule inhibitor",
+      "title": "A Study Of Pembrolizumab In Combination With Trastuzumab-DM1",
+      "date": "2025-01-14",
+      "url": "https://clinicaltrials.gov/study/NCT03032107",
+      "evidence_type": "clinical_trial",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "ClinicalTrials.gov",
+      "payload": "DM1",
+      "mechanism": "microtubule inhibitor",
+      "title": "Pyrotinib in Women With High-risk in Early Stage Breast Cancer",
+      "date": "2023-04-26",
+      "url": "https://clinicaltrials.gov/study/NCT05834764",
+      "evidence_type": "clinical_trial",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "ClinicalTrials.gov",
+      "payload": "DM1",
+      "mechanism": "microtubule inhibitor",
+      "title": "A Study of Targeted Agents for Patients With Recurrent or Persistent Endometrial Cancer",
+      "date": "2026-03-31",
+      "url": "https://clinicaltrials.gov/study/NCT04486352",
+      "evidence_type": "clinical_trial",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "PubMed",
+      "payload": "DM4",
+      "mechanism": "microtubule inhibitor",
+      "title": "The SDC1-ENO1 Axis in Cancer-Associated Fibroblasts Generates a Lactate-Rich Microenvironment That Drives Tumor Radioresistance.",
+      "date": "2026 Jun 15",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41812066/",
+      "evidence_type": "paper",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "PubMed",
+      "payload": "DM4",
+      "mechanism": "microtubule inhibitor",
+      "title": "Mirvetuximab soravtansine in platinum-resistant ovarian cancer: from biological rationale to clinical impact and future directions.",
+      "date": "2026 Jun 13",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42287581/",
+      "evidence_type": "paper",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "PubMed",
+      "payload": "DM4",
+      "mechanism": "microtubule inhibitor",
+      "title": "Human germline-like monoclonal antibody against 5T4 enables potent ADC and CAR-T therapies for solid tumors.",
+      "date": "2026 May",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41593208/",
+      "evidence_type": "paper",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "PubMed",
+      "payload": "DM4",
+      "mechanism": "microtubule inhibitor",
+      "title": "Defining the Functional Role and Potential as an Immunotherapeutic Target of ALCAM in Neuroblastoma.",
+      "date": "2026 Apr 2",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41202161/",
+      "evidence_type": "paper",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "PubMed",
+      "payload": "DM4",
+      "mechanism": "microtubule inhibitor",
+      "title": "Characterization of drug-drug interaction for antibody-drug conjugates and risk assessment using various approaches including physiologically based pharmacokinetic modeling.",
+      "date": "2026 Apr",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41671915/",
+      "evidence_type": "paper",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "Crossref",
+      "payload": "DM4",
+      "mechanism": "microtubule inhibitor",
+      "title": "Optimizing Registered Nurse Roles in the Delivery of Cancer Survivorship Care within Primary Care Settings",
+      "date": "2106-12-6",
+      "url": "https://doi.org/10.12927/cjnl.2016.24984",
+      "evidence_type": "paper_metadata",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "Crossref",
+      "payload": "DM4",
+      "mechanism": "microtubule inhibitor",
+      "title": "Comparative  Study of Serum Lipid Profile Parameters  for Oral Cancer  and Non Oral Cancer Patients",
+      "date": "2106-6-20",
+      "url": "https://doi.org/10.21276/ijchmr.2016.2.2.08",
+      "evidence_type": "paper_metadata",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "Crossref",
+      "payload": "DM4",
+      "mechanism": "microtubule inhibitor",
+      "title": "From Policy to Practice: Assessing the Impact of Staging Policies for Recording Cancer Stage across Canada",
+      "date": "2088-1-15",
+      "url": "https://doi.org/10.12927/hcq.2013.19505",
+      "evidence_type": "paper_metadata",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "Crossref",
+      "payload": "DM4",
+      "mechanism": "microtubule inhibitor",
+      "title": "USING OF LAB ANIMALS AS A MODEL TO STUDY THE DRUG TOXICITY IN COVID-19",
+      "date": "2031-8-1",
+      "url": "https://doi.org/10.23975/bjvetr.2031.175853",
+      "evidence_type": "paper_metadata",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "Crossref",
+      "payload": "DM4",
+      "mechanism": "microtubule inhibitor",
+      "title": "Postures communicationnelles des spécialistes en médecine générale dans le dépistage familial du cancer colorectal",
+      "date": "2030-1-1",
+      "url": "https://doi.org/10.3917/spub.pr2.0060",
+      "evidence_type": "paper_metadata",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "ClinicalTrials.gov",
+      "payload": "DM4",
+      "mechanism": "microtubule inhibitor",
+      "title": "Phase Ib Study of Anetumab Ravtansine in Combination With Pegylated Liposomal Doxorubicin in Patients With Recurrent Mesothelin-expressing Platinum-resistant Cancer",
+      "date": "2019-11-21",
+      "url": "https://clinicaltrials.gov/study/NCT02751918",
+      "evidence_type": "clinical_trial",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "ClinicalTrials.gov",
+      "payload": "DM4",
+      "mechanism": "microtubule inhibitor",
+      "title": "Mirvetuximab Soravtansine (IMG853) in Folate Receptor Alpha-expressing TNBC",
+      "date": "2018-07-02",
+      "url": "https://clinicaltrials.gov/study/NCT03045393",
+      "evidence_type": "clinical_trial",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "ClinicalTrials.gov",
+      "payload": "DM4",
+      "mechanism": "microtubule inhibitor",
+      "title": "A Phase I Study of BIIB015 in Relapsed/Refractory Solid Tumors",
+      "date": "2013-09-12",
+      "url": "https://clinicaltrials.gov/study/NCT00674947",
+      "evidence_type": "clinical_trial",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "ClinicalTrials.gov",
+      "payload": "DM4",
+      "mechanism": "microtubule inhibitor",
+      "title": "A Three-Part Phase 3 Study of Sofetabart Mipitecan in Participants With Platinum-Resistant (Part A) and Platinum-Sensitive (Parts B and C) Ovarian Cancer",
+      "date": "2026-06-11",
+      "url": "https://clinicaltrials.gov/study/NCT07213804",
+      "evidence_type": "clinical_trial",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "ClinicalTrials.gov",
+      "payload": "DM4",
+      "mechanism": "microtubule inhibitor",
+      "title": "Maytansinoid DM4-Conjugated Humanized Monoclonal Antibody huC242 in Treating Patients With Solid Tumors",
+      "date": "2010-03-16",
+      "url": "https://clinicaltrials.gov/study/NCT00352131",
+      "evidence_type": "clinical_trial",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "PubMed",
+      "payload": "PBD",
+      "mechanism": "DNA crosslinking",
+      "title": "Structure and antitumor activity of cupric complexes incorporating 2-(2-pyridyl)benzimidazole derivatives.",
+      "date": "2026 Sep",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42096780/",
+      "evidence_type": "paper",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "PubMed",
+      "payload": "PBD",
+      "mechanism": "DNA crosslinking",
+      "title": "Plant-Based Diets, Ultra-Processed Foods, and Risks of Mortality and Major Chronic Diseases: A Prospective Cohort Study.",
+      "date": "2026 Aug",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42294356/",
+      "evidence_type": "paper",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "PubMed",
+      "payload": "PBD",
+      "mechanism": "DNA crosslinking",
+      "title": "Preoperative Biliary Drainage with Metal Stent Versus Early Surgery in Patients with Pancreatic Cancer: A Randomized Clinical Trial.",
+      "date": "2026 Jul",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41951900/",
+      "evidence_type": "paper",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "PubMed",
+      "payload": "PBD",
+      "mechanism": "DNA crosslinking",
+      "title": "Quantitative Diffusion and T2 Mapping Using RF-Modulated Phase-Based Gradient Echo Imaging.",
+      "date": "2026 Jul",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41814128/",
+      "evidence_type": "paper",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "PubMed",
+      "payload": "PBD",
+      "mechanism": "DNA crosslinking",
+      "title": "Development of Glypican-3-Targeting Antibody-Drug Conjugates for Hepatocellular Carcinoma Therapy.",
+      "date": "2026 Jun 16",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42302184/",
+      "evidence_type": "paper",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "Crossref",
+      "payload": "PBD",
+      "mechanism": "DNA crosslinking",
+      "title": "Optimizing Registered Nurse Roles in the Delivery of Cancer Survivorship Care within Primary Care Settings",
+      "date": "2106-12-6",
+      "url": "https://doi.org/10.12927/cjnl.2016.24984",
+      "evidence_type": "paper_metadata",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "Crossref",
+      "payload": "PBD",
+      "mechanism": "DNA crosslinking",
+      "title": "Comparative  Study of Serum Lipid Profile Parameters  for Oral Cancer  and Non Oral Cancer Patients",
+      "date": "2106-6-20",
+      "url": "https://doi.org/10.21276/ijchmr.2016.2.2.08",
+      "evidence_type": "paper_metadata",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "Crossref",
+      "payload": "PBD",
+      "mechanism": "DNA crosslinking",
+      "title": "From Policy to Practice: Assessing the Impact of Staging Policies for Recording Cancer Stage across Canada",
+      "date": "2088-1-15",
+      "url": "https://doi.org/10.12927/hcq.2013.19505",
+      "evidence_type": "paper_metadata",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "Crossref",
+      "payload": "PBD",
+      "mechanism": "DNA crosslinking",
+      "title": "USING OF LAB ANIMALS AS A MODEL TO STUDY THE DRUG TOXICITY IN COVID-19",
+      "date": "2031-8-1",
+      "url": "https://doi.org/10.23975/bjvetr.2031.175853",
+      "evidence_type": "paper_metadata",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "Crossref",
+      "payload": "PBD",
+      "mechanism": "DNA crosslinking",
+      "title": "Postures communicationnelles des spécialistes en médecine générale dans le dépistage familial du cancer colorectal",
+      "date": "2030-1-1",
+      "url": "https://doi.org/10.3917/spub.pr2.0060",
+      "evidence_type": "paper_metadata",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "ClinicalTrials.gov",
+      "payload": "PBD",
+      "mechanism": "DNA crosslinking",
+      "title": "Longitudinal Natural History Study of Patients With Peroxisome Biogenesis Disorders (PBD)",
+      "date": "2025-12-03",
+      "url": "https://clinicaltrials.gov/study/NCT01668186",
+      "evidence_type": "clinical_trial",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "ClinicalTrials.gov",
+      "payload": "PBD",
+      "mechanism": "DNA crosslinking",
+      "title": "Study of ADCT-402 in Patients With Relapsed or Refractory B-cell Lineage Acute Lymphoblastic Leukemia (B-ALL)",
+      "date": "2021-04-27",
+      "url": "https://clinicaltrials.gov/study/NCT02669264",
+      "evidence_type": "clinical_trial",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "ClinicalTrials.gov",
+      "payload": "PBD",
+      "mechanism": "DNA crosslinking",
+      "title": "Pathogenesis of Atypical Femur Fractures on Long Term Bisphosphonate Therapy",
+      "date": "2019-03-28",
+      "url": "https://clinicaltrials.gov/study/NCT02155595",
+      "evidence_type": "clinical_trial",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "ClinicalTrials.gov",
+      "payload": "PBD",
+      "mechanism": "DNA crosslinking",
+      "title": "A First-in-Human Phase I Trial With Antibody Drug Conjugate ADCT-701 in Neuroendocrine Tumors, Carcinomas and Malignant Peripheral Nerve Sheath Tumors",
+      "date": "2026-06-12",
+      "url": "https://clinicaltrials.gov/study/NCT06041516",
+      "evidence_type": "clinical_trial",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "ClinicalTrials.gov",
+      "payload": "PBD",
+      "mechanism": "DNA crosslinking",
+      "title": "Specific Bile Microorganisms Caused Intra-abdominal Abscess on Pancreaticoduodenectomy Patients: Customized Antibiotics And Antifungal Medication May Be Necessary",
+      "date": "2021-08-15",
+      "url": "https://clinicaltrials.gov/study/NCT05011630",
+      "evidence_type": "clinical_trial",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "PubMed",
+      "payload": "amanitin",
+      "mechanism": "RNA polymerase II inhibitor",
+      "title": "Fungal ribosomally synthesized and post-translationally modified peptides (F-RiPPs): Biosynthesis, genome mining, structural diversity, and translational potential as targeted anticancer ADC payloads.",
+      "date": "2026 May 12",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42119713/",
+      "evidence_type": "paper",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "PubMed",
+      "payload": "amanitin",
+      "mechanism": "RNA polymerase II inhibitor",
+      "title": "Amanitin-Based Fc-Small Molecule Drug Conjugates with Non-Cleavable Linker: A Novel Therapeutic Strategy for Prostate Cancer Targeted Therapy.",
+      "date": "2026 Mar 17",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41841414/",
+      "evidence_type": "paper",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "PubMed",
+      "payload": "amanitin",
+      "mechanism": "RNA polymerase II inhibitor",
+      "title": "Advances in Immunotherapy for HER2 Low-Expressing Triple-Negative Breast Cancer.",
+      "date": "2025",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41356427/",
+      "evidence_type": "paper",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "PubMed",
+      "payload": "amanitin",
+      "mechanism": "RNA polymerase II inhibitor",
+      "title": "Site-Specific Modification of Native IgGs with Flexible Drug-Load.",
+      "date": "2025 Apr 14",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39305147/",
+      "evidence_type": "paper",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "PubMed",
+      "payload": "amanitin",
+      "mechanism": "RNA polymerase II inhibitor",
+      "title": "Novel Amanitin-Based Antibody-Drug Conjugates Targeting TROP2 for the Treatment of Pancreatic Cancer.",
+      "date": "2025 Apr 2",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39564769/",
+      "evidence_type": "paper",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "Crossref",
+      "payload": "amanitin",
+      "mechanism": "RNA polymerase II inhibitor",
+      "title": "Optimizing Registered Nurse Roles in the Delivery of Cancer Survivorship Care within Primary Care Settings",
+      "date": "2106-12-6",
+      "url": "https://doi.org/10.12927/cjnl.2016.24984",
+      "evidence_type": "paper_metadata",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "Crossref",
+      "payload": "amanitin",
+      "mechanism": "RNA polymerase II inhibitor",
+      "title": "Comparative  Study of Serum Lipid Profile Parameters  for Oral Cancer  and Non Oral Cancer Patients",
+      "date": "2106-6-20",
+      "url": "https://doi.org/10.21276/ijchmr.2016.2.2.08",
+      "evidence_type": "paper_metadata",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "Crossref",
+      "payload": "amanitin",
+      "mechanism": "RNA polymerase II inhibitor",
+      "title": "From Policy to Practice: Assessing the Impact of Staging Policies for Recording Cancer Stage across Canada",
+      "date": "2088-1-15",
+      "url": "https://doi.org/10.12927/hcq.2013.19505",
+      "evidence_type": "paper_metadata",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "Crossref",
+      "payload": "amanitin",
+      "mechanism": "RNA polymerase II inhibitor",
+      "title": "USING OF LAB ANIMALS AS A MODEL TO STUDY THE DRUG TOXICITY IN COVID-19",
+      "date": "2031-8-1",
+      "url": "https://doi.org/10.23975/bjvetr.2031.175853",
+      "evidence_type": "paper_metadata",
+      "status": "auto_parsed_pending_review"
+    },
+    {
+      "source": "Crossref",
+      "payload": "amanitin",
+      "mechanism": "RNA polymerase II inhibitor",
+      "title": "Postures communicationnelles des spécialistes en médecine générale dans le dépistage familial du cancer colorectal",
+      "date": "2030-1-1",
+      "url": "https://doi.org/10.3917/spub.pr2.0060",
+      "evidence_type": "paper_metadata",
+      "status": "auto_parsed_pending_review"
+    }
+  ],
+  "errors": []
+}
