@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>项目模板中心｜ADC 与 AI 转化方案</title>
+  <style>
+    :root { --bg:#07111f; --panel:rgba(255,255,255,.075); --line:rgba(255,255,255,.16); --text:#eef6ff; --muted:#a8b7c9; --blue:#68d5ff; --cyan:#6fffe9; --green:#8ef6a3; --yellow:#ffe08a; --shadow:0 22px 70px rgba(0,0,0,.35); }
+    * { box-sizing:border-box; } html { scroll-behavior:smooth; }
+    body { margin:0; color:var(--text); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif; background:radial-gradient(circle at 10% -10%, rgba(104,213,255,.25), transparent 33%), radial-gradient(circle at 95% 10%, rgba(142,246,163,.16), transparent 28%), var(--bg); line-height:1.68; }
+    a { color:var(--cyan); text-decoration:none; font-weight:700; } a:hover { text-decoration:underline; }
+    .wrap { width:min(1240px, calc(100% - 40px)); margin:0 auto; }
+    nav { position:sticky; top:0; z-index:20; backdrop-filter:blur(18px); background:rgba(7,17,31,.72); border-bottom:1px solid var(--line); }
+    nav .wrap { display:flex; justify-content:space-between; align-items:center; gap:16px; padding:14px 0; }
+    .brand { display:flex; align-items:center; gap:10px; font-weight:850; } .logo { width:34px; height:34px; border-radius:11px; background:linear-gradient(135deg,var(--blue),var(--green)); }
+    .navlinks { display:flex; gap:14px; flex-wrap:wrap; font-size:14px; } .navlinks a { color:var(--muted); }
+    header { padding:72px 0 32px; } .eyebrow { display:inline-flex; padding:7px 12px; border:1px solid var(--line); border-radius:999px; background:rgba(255,255,255,.06); color:var(--cyan); font-weight:800; font-size:14px; }
+    h1 { margin:20px 0 16px; max-width:1060px; font-size:clamp(38px,6vw,68px); line-height:1.05; letter-spacing:-.04em; } .lead { max-width:980px; color:#d7e7f7; font-size:clamp(18px,2vw,23px); }
+    section { padding:34px 0; } .card, table { background:var(--panel); border:1px solid var(--line); border-radius:24px; box-shadow:var(--shadow); } .card { padding:24px; }
+    h2 { margin:0 0 14px; font-size:clamp(28px,4vw,42px); line-height:1.15; } h3 { margin:0 0 10px; font-size:23px; }
+    .sub { color:var(--muted); max-width:920px; margin:0 0 20px; } .grid-2 { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:18px; } .grid-3 { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px; }
+    table { width:100%; border-collapse:separate; border-spacing:0; overflow:hidden; margin-top:16px; font-size:14px; } th, td { padding:13px 14px; border-bottom:1px solid var(--line); vertical-align:top; text-align:left; } th { color:#061622; background:linear-gradient(135deg,var(--blue),var(--green)); font-weight:850; } tr:last-child td { border-bottom:0; } td { color:#e5f0fb; }
+    ul { margin:8px 0 0; padding-left:20px; } li { margin:6px 0; } .note { padding:16px 18px; border-left:4px solid var(--green); background:rgba(142,246,163,.08); border-radius:0 18px 18px 0; }
+    .pill { display:inline-flex; margin:4px 6px 4px 0; padding:6px 10px; border-radius:999px; border:1px solid var(--line); color:#dcecff; background:rgba(255,255,255,.06); font-size:13px; }
+    @media (max-width:900px) { .grid-2, .grid-3 { grid-template-columns:1fr; } .navlinks { display:none; } table { display:block; overflow-x:auto; white-space:nowrap; } }
+  </style>
+</head>
+<body>
+  <nav><div class="wrap"><div class="brand"><div class="logo"></div><span>项目模板中心</span></div><div class="navlinks"><a href="./index.html">首页</a><a href="./roadmap.html">路线图</a><a href="#startup">启动</a><a href="#data">数据</a><a href="#experiment">实验</a><a href="#decision">决策</a></div></div></nav>
+  <header class="wrap"><div class="eyebrow">可复制模板｜从方案到执行</div><h1>项目模板中心</h1><p class="lead">这个页面把路线图里的关键成果物变成可直接复制的表格模板。操作人员可以从这里开始准备项目定义、Payload 机会卡、证据表、数据字典、实验设计、数据回流和 Go/No-Go 决策。</p></header>
+  <main>
+    <section class="wrap"><div class="note"><strong>使用方式：</strong>先复制“项目定义卡”，明确目标和边界；再用“证据表”和“数据字典”准备数据；随后输出推荐卡、实验设计模板和数据回流模板；最后用 Go/No-Go 表做阶段决策。</div></section>
+
+    <section class="wrap" id="startup"><h2>一、项目定义卡</h2><p class="sub">适用于 ADC 方案一或任何 PoC 启动前。第一步不是列组合，而是定义清楚 payload、目标、资源和排除条件。</p><table><thead><tr><th>项目定义项</th><th>填写内容</th><th>示例</th><th>负责人</th></tr></thead><tbody>
+      <tr><td>Payload / ADC</td><td>名称、别名、机制类别、是否为具体 ADC 分子。</td><td>exatecan / DXd / HPX-001 payload</td><td>科学 owner</td></tr>
+      <tr><td>当前阶段</td><td>早期探索、已有体外数据、动物数据、临床前、临床。</td><td>已有体外单药活性和部分细胞系数据</td><td>项目负责人</td></tr>
+      <tr><td>主要目标</td><td>增强疗效、克服耐药、扩大适应症、优化安全窗口、BD/IP 叙事。</td><td>克服 TOP1 payload 耐药</td><td>BD + 科学 owner</td></tr>
+      <tr><td>优先癌种 / 模型</td><td>目标癌种、细胞系、类器官、PDX、耐药株。</td><td>胃癌、乳腺癌；3 个敏感株 + 2 个耐药株</td><td>实验 owner</td></tr>
+      <tr><td>可测规模</td><td>partner 数量、细胞系数量、剂量矩阵规格、readout。</td><td>5 partner × 5 cell lines，6×6 dose matrix</td><td>实验 owner</td></tr>
+      <tr><td>排除条件</td><td>已失败、毒性重叠、不可采购、竞品拥挤、无转化价值。</td><td>排除强骨髓毒性重叠 partner</td><td>项目负责人</td></tr>
+      <tr><td>期望输出</td><td>Top 3/5/10 推荐、实验模板、风险提示、下一轮建议。</td><td>Top 5 组合 + 首轮实验方案</td><td>双方确认</td></tr>
+    </tbody></table></section>
+
+    <section class="wrap"><h2>二、Payload 机会卡模板</h2><table><thead><tr><th>模块</th><th>内容字段</th><th>填写说明</th></tr></thead><tbody>
+      <tr><td>基础信息</td><td>Payload、别名、机制类别、代表 ADC</td><td>例如 DXd / exatecan / TOP1 inhibitor</td></tr>
+      <tr><td>榜单表现</td><td>综合榜、外部热度榜、组合潜力榜、风险预警榜排名</td><td>说明为什么进入机会评估</td></tr>
+      <tr><td>证据摘要</td><td>新闻、论文、专利、临床、会议、内部资料</td><td>每条证据必须有来源和日期</td></tr>
+      <tr><td>机会主题</td><td>DDR 联用、耐药逆转、安全窗口、适应症扩展、biomarker 分层</td><td>至少列出 2-3 个可验证方向</td></tr>
+      <tr><td>主要风险</td><td>毒性、专利拥挤、竞品、机制不清、实验不可行</td><td>同时写明如何澄清风险</td></tr>
+      <tr><td>推荐动作</td><td>P1/P2/P3；进入哪个后续工作流</td><td>组合推荐 / 耐药分析 / 安全性评估 / 观察</td></tr>
+    </tbody></table></section>
+
+    <section class="wrap" id="data"><h2>三、证据表与数据字典模板</h2><div class="grid-2"><div class="card"><h3>证据表 Evidence Table</h3><table><thead><tr><th>字段</th><th>说明</th></tr></thead><tbody><tr><td>Evidence ID</td><td>唯一编号</td></tr><tr><td>来源类型</td><td>论文 / 新闻 / 专利 / 临床 / 会议 / 内部资料</td></tr><tr><td>来源链接/文件</td><td>URL、DOI、专利号、文件名</td></tr><tr><td>payload / 主题</td><td>关联对象</td></tr><tr><td>结论摘要</td><td>一句话总结</td></tr><tr><td>支持/反对</td><td>支持机会 / 提示风险 / 中性</td></tr><tr><td>证据强度</td><td>高 / 中 / 低</td></tr><tr><td>人工审核状态</td><td>未审核 / 已确认 / 已驳回 / 需补资料</td></tr></tbody></table></div><div class="card"><h3>数据字典 Data Dictionary</h3><table><thead><tr><th>字段</th><th>说明</th></tr></thead><tbody><tr><td>字段名</td><td>英文/中文统一名称</td></tr><tr><td>字段类型</td><td>文本 / 数值 / 分类 / 日期 / 文件</td></tr><tr><td>单位</td><td>nM、µM、%、fold change 等</td></tr><tr><td>是否必填</td><td>必填 / 可选</td></tr><tr><td>允许值</td><td>例如 P1/P2/P3、High/Medium/Low</td></tr><tr><td>缺失处理</td><td>未知、不可用、待补、排除</td></tr><tr><td>QC 规则</td><td>范围、重复数、对照要求</td></tr></tbody></table></div></div></section>
+
+    <section class="wrap" id="experiment"><h2>四、实验设计模板</h2><table><thead><tr><th>模块</th><th>需要填写</th><th>验收标准</th></tr></thead><tbody>
+      <tr><td>实验目的</td><td>筛信号 / 验证机制 / 优化剂量 / 耐药逆转 / 安全性窗口</td><td>目的必须对应推荐理由</td></tr>
+      <tr><td>模型选择</td><td>细胞系、耐药株、类器官、PDX、正常细胞</td><td>每个模型有 biomarker 或机制理由</td></tr>
+      <tr><td>药物组合</td><td>payload / ADC、partner、剂量范围、溶剂、批次</td><td>药物可获得，浓度范围合理</td></tr>
+      <tr><td>矩阵设计</td><td>6×6 / 8×8、重复孔、时间点、给药顺序</td><td>包含单药、组合、阳性/阴性对照</td></tr>
+      <tr><td>Readout</td><td>viability、apoptosis、DNA damage、cell cycle、flow、RNA 等</td><td>readout 能回答实验目的</td></tr>
+      <tr><td>QC</td><td>细胞活率、Z factor、对照表现、边缘效应、异常孔</td><td>QC 不通过的数据不得直接进入结论</td></tr>
+    </tbody></table></section>
+
+    <section class="wrap"><h2>五、数据回流模板</h2><table><thead><tr><th>数据类别</th><th>必须回传</th><th>为什么重要</th></tr></thead><tbody>
+      <tr><td>原始读数</td><td>每孔原始值、背景校正值、归一化值</td><td>支持复算和 QC</td></tr>
+      <tr><td>剂量矩阵</td><td>drug A dose、drug B dose、组合读数、重复孔</td><td>计算 Bliss / ZIP / Loewe / HSA</td></tr>
+      <tr><td>模型信息</td><td>细胞系、批次、培养条件、biomarker、耐药状态</td><td>解释响应差异</td></tr>
+      <tr><td>实验条件</td><td>时间点、给药顺序、washout、readout、仪器</td><td>避免条件差异造成误判</td></tr>
+      <tr><td>异常说明</td><td>失败孔、污染、药物沉淀、仪器异常、细胞状态差</td><td>失败结果同样要进入知识库</td></tr>
+      <tr><td>初步结论</td><td>命中、边缘、失败、需重做、需补 readout</td><td>支持下一轮决策</td></tr>
+    </tbody></table></section>
+
+    <section class="wrap" id="decision"><h2>六、Go / No-Go 决策表</h2><table><thead><tr><th>判断项</th><th>Go</th><th>No-Go / 暂缓</th><th>下一步</th></tr></thead><tbody>
+      <tr><td>药效信号</td><td>组合优于单药且可重复</td><td>无协同或不可重复</td><td>进入机制验证或重做</td></tr>
+      <tr><td>机制解释</td><td>有清晰机制或 biomarker 支撑</td><td>只有黑箱活性，没有解释</td><td>补机制 readout</td></tr>
+      <tr><td>安全窗口</td><td>正常细胞 / 毒性 proxy 可接受</td><td>毒性重叠明显</td><td>进入安全性评估或降级</td></tr>
+      <tr><td>实验可行性</td><td>模型、药物、readout 可持续执行</td><td>资源不可持续或不可采购</td><td>调整候选或暂停</td></tr>
+      <tr><td>BD/IP 价值</td><td>有差异化主题或证据包价值</td><td>竞品拥挤且无差异化</td><td>补专利/竞品分析</td></tr>
+    </tbody></table></section>
+  </main>
+</body>
+</html>
