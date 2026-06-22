@@ -1,0 +1,10 @@
+payload,display_name,mechanism,records_total,papers,clinical_trials,patents,news,direct_records,flagged_records,opportunity_score,priority,recommended_action
+DXd,DXd / deruxtecan,TOP1 inhibitor,38,26,10,1,1,14,10,39,P3,继续补证据、人工审核或进入观察池。
+exatecan,exatecan 类 payload,TOP1 inhibitor,38,26,10,1,1,10,10,39,P3,继续补证据、人工审核或进入观察池。
+SN-38,SN-38 / govitecan 类,TOP1 inhibitor,38,26,10,1,1,11,10,39,P3,继续补证据、人工审核或进入观察池。
+MMAE,MMAE / vedotin 类,microtubule inhibitor,38,26,10,1,1,13,10,39,P3,继续补证据、人工审核或进入观察池。
+DM4,DM4 / ravtansine 类,microtubule inhibitor,38,26,10,1,1,12,10,39,P3,继续补证据、人工审核或进入观察池。
+MMAF,MMAF / mafodotin 类,microtubule inhibitor,38,26,10,1,1,13,10,37,P3,继续补证据、人工审核或进入观察池。
+DM1,DM1 / emtansine 类,microtubule inhibitor,38,26,10,1,1,16,10,36,P3,继续补证据、人工审核或进入观察池。
+PBD,PBD / pyrrolobenzodiazepine 类,DNA crosslinking,38,26,10,1,1,11,10,36,P3,继续补证据、人工审核或进入观察池。
+amanitin,amanitin / alpha-amanitin 类,RNA polymerase II inhibitor,28,26,0,1,1,6,10,13,P3,继续补证据、人工审核或进入观察池。

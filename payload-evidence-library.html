@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Payload 证据资料库｜HANX Pages</title>
+  <style>
+    :root { --bg:#07111f; --panel:rgba(255,255,255,.075); --panel-2:rgba(255,255,255,.105); --line:rgba(255,255,255,.16); --text:#eef6ff; --muted:#a8b7c9; --blue:#68d5ff; --cyan:#6fffe9; --green:#8ef6a3; --yellow:#ffe08a; --red:#ff9b9b; --shadow:0 22px 70px rgba(0,0,0,.35); }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; color:var(--text); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif; background:radial-gradient(circle at 10% -10%, rgba(104,213,255,.25), transparent 33%), radial-gradient(circle at 95% 10%, rgba(142,246,163,.16), transparent 28%), var(--bg); line-height:1.65; }
+    a { color:var(--cyan); text-decoration:none; font-weight:800; } a:hover { text-decoration:underline; }
+    .wrap { width:min(1320px, calc(100% - 40px)); margin:0 auto; }
+    nav { position:sticky; top:0; z-index:20; backdrop-filter:blur(18px); background:rgba(7,17,31,.76); border-bottom:1px solid var(--line); }
+    nav .wrap { display:flex; justify-content:space-between; align-items:center; gap:16px; padding:14px 0; }
+    .brand { display:flex; align-items:center; gap:10px; font-weight:900; } .logo { width:34px; height:34px; border-radius:11px; background:linear-gradient(135deg,var(--blue),var(--green)); box-shadow:0 12px 30px rgba(104,213,255,.24); }
+    .navlinks { display:flex; gap:14px; flex-wrap:wrap; font-size:14px; } .navlinks a { color:var(--muted); }
+    header { padding:72px 0 30px; }
+    .eyebrow { display:inline-flex; padding:7px 12px; border:1px solid var(--line); border-radius:999px; background:rgba(255,255,255,.06); color:var(--cyan); font-weight:850; font-size:14px; }
+    h1 { margin:20px 0 16px; max-width:1050px; font-size:clamp(38px,6vw,72px); line-height:1.03; letter-spacing:-.045em; }
+    .lead { max-width:980px; color:#d7e7f7; font-size:clamp(18px,2vw,23px); }
+    section { padding:26px 0; }
+    h2 { margin:0 0 14px; font-size:clamp(27px,4vw,42px); line-height:1.15; } h3 { margin:0 0 10px; font-size:21px; }
+    .card, .control-panel, table { background:var(--panel); border:1px solid var(--line); border-radius:24px; box-shadow:var(--shadow); }
+    .card { padding:22px; }
+    .grid { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:16px; }
+    .summary-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px; }
+    strong.big { font-size:34px; color:var(--blue); display:block; line-height:1.05; }
+    .muted { color:var(--muted); }
+    .note { padding:16px 18px; border-left:4px solid var(--green); background:rgba(142,246,163,.08); border-radius:0 18px 18px 0; }
+    .warning { border-left-color:var(--yellow); background:rgba(255,224,138,.08); }
+    .control-panel { padding:18px; display:grid; grid-template-columns:minmax(240px,1.7fr) repeat(5,minmax(128px,1fr)); gap:12px; }
+    label { display:block; color:var(--muted); font-size:12px; font-weight:850; margin-bottom:5px; }
+    input, select { width:100%; min-height:42px; color:var(--text); background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.2); border-radius:13px; padding:9px 11px; outline:none; }
+    input:focus, select:focus { border-color:rgba(111,255,233,.6); box-shadow:0 0 0 4px rgba(111,255,233,.10); }
+    .pill-row { display:flex; flex-wrap:wrap; gap:8px; }
+    .pill { display:inline-flex; align-items:center; gap:6px; min-height:28px; padding:5px 10px; border-radius:999px; background:rgba(104,213,255,.12); border:1px solid rgba(104,213,255,.28); color:var(--blue); font-size:12px; font-weight:850; }
+    .pill.green { background:rgba(142,246,163,.12); border-color:rgba(142,246,163,.26); color:var(--green); }
+    .pill.yellow { background:rgba(255,224,138,.12); border-color:rgba(255,224,138,.28); color:var(--yellow); }
+    .pill.red { background:rgba(255,155,155,.12); border-color:rgba(255,155,155,.26); color:var(--red); }
+    .table-wrap { overflow:auto; border-radius:24px; box-shadow:var(--shadow); }
+    table { width:100%; border-collapse:separate; border-spacing:0; overflow:hidden; font-size:14px; min-width:980px; box-shadow:none; }
+    th, td { padding:12px 13px; border-bottom:1px solid var(--line); vertical-align:top; text-align:left; }
+    th { position:sticky; top:0; z-index:1; color:#061622; background:linear-gradient(135deg,var(--blue),var(--green)); font-weight:900; }
+    td { color:#e5f0fb; } tr:last-child td { border-bottom:0; }
+    .record-title { min-width:320px; } .snippet { color:var(--muted); max-width:520px; margin-top:5px; font-size:13px; }
+    .actions { display:flex; flex-wrap:wrap; gap:8px; margin-top:14px; }
+    .btn { display:inline-flex; min-height:36px; align-items:center; justify-content:center; padding:7px 12px; border-radius:999px; border:1px solid var(--line); background:rgba(255,255,255,.08); color:var(--text); font-weight:850; }
+    .btn.primary { color:#061622; background:linear-gradient(135deg,var(--blue),var(--green)); border-color:transparent; }
+    .status { margin-top:8px; color:var(--muted); font-size:13px; }
+    @media (max-width:1050px) { .grid, .summary-grid, .control-panel { grid-template-columns:1fr 1fr; } }
+    @media (max-width:760px) { .wrap { width:min(100% - 24px, 1320px); } nav .wrap { align-items:flex-start; flex-direction:column; } .navlinks { gap:9px; } .grid, .summary-grid, .control-panel { grid-template-columns:1fr; } h1 { font-size:38px; } }
+  </style>
+</head>
+<body>
+  <nav><div class="wrap"><div class="brand"><div class="logo"></div><span>Payload 证据资料库</span></div><div class="navlinks"><a href="./index.html">首页</a><a href="./data-status.html">采集状态</a><a href="./ADC毒素组合用药算法沟通网页/ADC协作型方案详情-00-Payload机会扫描与选题雷达.html">ADC 0A</a><a href="./changelog.html">更新日志</a></div></div></nav>
+  <header class="wrap">
+    <div class="eyebrow">Evidence Library · 论文 / 临床 / 专利 / 新闻元数据</div>
+    <h1>把自动采集的公开线索，整理成可追溯的 Payload 证据资料库。</h1>
+    <p class="lead">这个页面读取 <code>data/payload_evidence_library.json</code>，用于浏览 ADC payload 相关的公开论文、临床试验、专利检索入口和新闻/公司动态检索入口。它是情报索引，不是最终科学结论或 IP/FTO 法律意见。</p>
+    <div class="actions"><a class="btn primary" href="#records">浏览证据表</a><a class="btn" href="./data/payload_evidence_library.json">下载 JSON</a><a class="btn" href="./data/payload_evidence_records.csv">下载 CSV</a></div>
+    <p class="status" id="loadStatus">正在读取资料库 JSON…</p>
+  </header>
+
+  <main>
+    <section class="wrap"><div class="grid" id="kpiGrid"></div></section>
+
+    <section class="wrap">
+      <div class="note warning"><strong>使用边界：</strong><span id="policyText">自动采集结果必须人工审核；本站不托管受版权保护的论文全文或新闻正文。</span></div>
+    </section>
+
+    <section class="wrap" id="filters">
+      <h2>检索与筛选</h2>
+      <div class="control-panel">
+        <div><label for="q">关键词</label><input id="q" type="search" placeholder="payload、标题、摘要、来源、标签…"></div>
+        <div><label for="payloadFilter">Payload</label><select id="payloadFilter"><option value="all">全部</option></select></div>
+        <div><label for="sourceFilter">来源</label><select id="sourceFilter"><option value="all">全部</option></select></div>
+        <div><label for="typeFilter">类型</label><select id="typeFilter"><option value="all">全部</option></select></div>
+        <div><label for="relFilter">相关性</label><select id="relFilter"><option value="all">全部</option><option value="direct">direct</option><option value="adjacent">adjacent</option><option value="weak">weak</option><option value="flagged_irrelevant">flagged_irrelevant</option></select></div>
+        <div><label for="flagFilter">质量标记</label><select id="flagFilter"><option value="all">全部</option><option value="flagged">有标记</option><option value="clean">无标记</option></select></div>
+      </div>
+      <p class="status" id="resultStatus"></p>
+    </section>
+
+    <section class="wrap">
+      <h2>Payload 级别汇总</h2>
+      <div class="table-wrap"><table id="summaryTable"><thead><tr><th>Payload</th><th>机制</th><th>机会分</th><th>优先级</th><th>记录数</th><th>论文/元数据</th><th>临床</th><th>专利</th><th>新闻</th><th>直接相关</th><th>建议动作</th></tr></thead><tbody></tbody></table></div>
+    </section>
+
+    <section class="wrap">
+      <h2>来源覆盖</h2>
+      <div class="summary-grid" id="sourceCards"></div>
+    </section>
+
+    <section class="wrap" id="records">
+      <h2>证据记录</h2>
+      <div class="table-wrap"><table id="recordTable"><thead><tr><th>Payload</th><th>来源</th><th>类型</th><th>日期</th><th>相关性</th><th>分数</th><th class="record-title">标题 / 摘要片段</th><th>状态</th><th>链接</th></tr></thead><tbody></tbody></table></div>
+    </section>
+  </main>
+
+  <script>
+    let library = null;
+    const els = {
+      kpiGrid: document.getElementById('kpiGrid'), sourceCards: document.getElementById('sourceCards'), summaryBody: document.querySelector('#summaryTable tbody'), recordBody: document.querySelector('#recordTable tbody'),
+      q: document.getElementById('q'), payloadFilter: document.getElementById('payloadFilter'), sourceFilter: document.getElementById('sourceFilter'), typeFilter: document.getElementById('typeFilter'), relFilter: document.getElementById('relFilter'), flagFilter: document.getElementById('flagFilter'),
+      loadStatus: document.getElementById('loadStatus'), resultStatus: document.getElementById('resultStatus'), policyText: document.getElementById('policyText')
+    };
+
+    function esc(value) { return String(value ?? '').replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch])); }
+    function pill(value) { const v = String(value || ''); const cls = v.includes('flag') || v.includes('needs') ? 'yellow' : v === 'direct' || v === 'P1' ? 'green' : v === 'weak' || v === 'P3' ? 'red' : ''; return `<span class="pill ${cls}">${esc(v)}</span>`; }
+    function countFlagged(records) { return records.filter(r => r.quality?.flags?.length).length; }
+
+    async function loadLibrary() {
+      try {
+        const response = await fetch('./data/payload_evidence_library.json', { cache: 'no-store' });
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        library = await response.json();
+        els.loadStatus.textContent = `已加载：${library.generated_at} · ${library.records.length} 条记录`;
+        els.policyText.textContent = `${library.source_policy.copyright_boundary} ${library.source_policy.review_boundary} ${library.source_policy.patent_boundary}`;
+        initFilters();
+        renderAll();
+      } catch (error) {
+        els.loadStatus.textContent = `读取资料库失败：${error.message}。请通过本地 HTTP server 或 GitHub Pages 打开本页。`;
+      }
+    }
+
+    function initFilters() {
+      const payloads = [...new Set(library.records.map(r => r.payload))].sort();
+      const sources = [...new Set(library.records.map(r => r.source))].sort();
+      const types = [...new Set(library.records.map(r => r.source_family))].sort();
+      els.payloadFilter.innerHTML = '<option value="all">全部</option>' + payloads.map(v => `<option>${esc(v)}</option>`).join('');
+      els.sourceFilter.innerHTML = '<option value="all">全部</option>' + sources.map(v => `<option>${esc(v)}</option>`).join('');
+      els.typeFilter.innerHTML = '<option value="all">全部</option>' + types.map(v => `<option>${esc(v)}</option>`).join('');
+      const payloadParam = new URLSearchParams(location.search).get('payload');
+      if (payloadParam) {
+        const match = library.records.find(r => r.payload_id === payloadParam || r.payload === payloadParam || r.display_name === payloadParam);
+        if (match) els.payloadFilter.value = match.payload;
+      }
+      [els.q, els.payloadFilter, els.sourceFilter, els.typeFilter, els.relFilter, els.flagFilter].forEach(el => el.addEventListener('input', renderRecords));
+    }
+
+    function renderAll() { renderKpis(); renderSummary(); renderSources(); renderRecords(); }
+
+    function renderKpis() {
+      const records = library.records;
+      const kpis = [
+        ['证据记录', records.length], ['Payload', library.payloads.length], ['数据源', library.source_stats.length], ['待人工审核', records.filter(r => r.quality?.needs_scientific_review).length], ['质量标记', countFlagged(records)]
+      ];
+      els.kpiGrid.innerHTML = kpis.map(([label, value]) => `<div class="card"><strong class="big">${value}</strong><span class="muted">${label}</span></div>`).join('');
+    }
+
+    function renderSummary() {
+      els.summaryBody.innerHTML = library.payload_summaries.map(s => {
+        const types = s.records_by_type || {};
+        return `<tr><td><strong>${esc(s.display_name)}</strong></td><td>${esc(s.mechanism)}</td><td>${s.scores.opportunity_score}</td><td>${pill(s.priority)}</td><td>${s.records_total}</td><td>${(types.paper || 0) + (types.paper_metadata || 0)}</td><td>${types.clinical_trial || 0}</td><td>${types.patent || 0}</td><td>${types.news || 0}</td><td>${s.relevance.direct_records}</td><td>${esc(s.recommended_action)}</td></tr>`;
+      }).join('');
+    }
+
+    function renderSources() {
+      els.sourceCards.innerHTML = library.source_stats.map(s => `<div class="card"><h3>${esc(s.source)}</h3><p class="muted">${s.records} 条记录 · ${s.direct} 条直接相关 · ${s.flagged} 条有质量标记</p><div class="pill-row">${Object.entries(s.families || {}).map(([k,v]) => `<span class="pill">${esc(k)}: ${v}</span>`).join('')}</div></div>`).join('');
+    }
+
+    function filteredRecords() {
+      const q = els.q.value.trim().toLowerCase();
+      return library.records.filter(r => {
+        const text = `${r.payload} ${r.display_name} ${r.source} ${r.source_family} ${r.evidence_type} ${r.title} ${r.abstract_or_snippet} ${(r.classification?.topic_tags || []).join(' ')} ${(r.quality?.flags || []).join(' ')}`.toLowerCase();
+        return (!q || text.includes(q)) &&
+          (els.payloadFilter.value === 'all' || r.payload === els.payloadFilter.value) &&
+          (els.sourceFilter.value === 'all' || r.source === els.sourceFilter.value) &&
+          (els.typeFilter.value === 'all' || r.source_family === els.typeFilter.value) &&
+          (els.relFilter.value === 'all' || r.classification?.payload_relevance === els.relFilter.value) &&
+          (els.flagFilter.value === 'all' || (els.flagFilter.value === 'flagged' ? r.quality?.flags?.length : !r.quality?.flags?.length));
+      }).sort((a,b) => (b.scores?.relevance_score || 0) - (a.scores?.relevance_score || 0));
+    }
+
+    function renderRecords() {
+      const records = filteredRecords();
+      els.resultStatus.textContent = `当前筛选：${records.length} / ${library.records.length} 条记录`;
+      els.recordBody.innerHTML = records.slice(0, 220).map(r => {
+        const flags = r.quality?.flags || [];
+        return `<tr><td>${esc(r.display_name || r.payload)}</td><td>${esc(r.source)}</td><td>${esc(r.source_family)}</td><td>${esc(r.date)}</td><td>${pill(r.classification?.payload_relevance)}</td><td>${r.scores?.relevance_score ?? ''}</td><td><strong>${esc(r.title)}</strong>${r.abstract_or_snippet ? `<div class="snippet">${esc(r.abstract_or_snippet)}</div>` : ''}</td><td><div class="pill-row">${flags.length ? flags.map(pill).join('') : pill(r.quality?.status || 'pending')}</div></td><td>${r.url ? `<a href="${esc(r.url)}" target="_blank" rel="noopener">来源</a>` : '—'}</td></tr>`;
+      }).join('') || '<tr><td colspan="9">没有匹配记录。</td></tr>';
+    }
+
+    loadLibrary();
+  </script>
+</body>
+</html>

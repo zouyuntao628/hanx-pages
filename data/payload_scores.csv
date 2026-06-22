@@ -1,10 +1,10 @@
 payload,mechanism,records,pubmed_records,crossref_records,clinical_records,external_heat,combination_potential,risk_penalty,opportunity_score,priority,recommended_action
-exatecan,TOP1 inhibitor,15,5,5,5,100,82,6,71,P2,继续补资料或观察
-DXd,TOP1 inhibitor,15,5,5,5,100,82,10,70,P2,继续补资料或观察
-SN-38,TOP1 inhibitor,15,5,5,5,100,82,10,70,P2,继续补资料或观察
-MMAE,microtubule inhibitor,15,5,5,5,100,74,6,68,P2,继续补资料或观察
-MMAF,microtubule inhibitor,15,5,5,5,100,74,6,68,P2,继续补资料或观察
-DM1,microtubule inhibitor,15,5,5,5,100,62,6,65,P2,继续补资料或观察
-DM4,microtubule inhibitor,15,5,5,5,100,62,6,65,P2,继续补资料或观察
-PBD,DNA crosslinking,15,5,5,5,100,62,18,63,P2,继续补资料或观察
-amanitin,RNA polymerase II inhibitor,10,5,5,0,80,62,18,59,P2,继续补资料或观察
+DXd,TOP1 inhibitor,38,10,8,10,100,100,35,39,P3,继续补证据、人工审核或进入观察池。
+exatecan,TOP1 inhibitor,38,10,8,10,100,100,35,39,P3,继续补证据、人工审核或进入观察池。
+SN-38,TOP1 inhibitor,38,10,8,10,100,100,35,39,P3,继续补证据、人工审核或进入观察池。
+MMAE,microtubule inhibitor,38,10,8,10,100,100,35,39,P3,继续补证据、人工审核或进入观察池。
+DM4,microtubule inhibitor,38,10,8,10,100,100,35,39,P3,继续补证据、人工审核或进入观察池。
+MMAF,microtubule inhibitor,38,10,8,10,100,91,35,37,P3,继续补证据、人工审核或进入观察池。
+DM1,microtubule inhibitor,38,10,8,10,100,82,35,36,P3,继续补证据、人工审核或进入观察池。
+PBD,DNA crosslinking,38,10,8,10,100,82,35,36,P3,继续补证据、人工审核或进入观察池。
+amanitin,RNA polymerase II inhibitor,28,10,8,0,100,73,35,13,P3,继续补证据、人工审核或进入观察池。

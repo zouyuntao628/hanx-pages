@@ -318,7 +318,7 @@
     summary { padding: 14px 16px; font-weight: 950; cursor:pointer; color: var(--blue); background:#f5f9ff; }
     .details-body { padding: 0 16px 16px; color: var(--muted); }
 
-    .footer-nav { display:grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin-top: 14px; }
+    .footer-nav { display:grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; margin-top: 14px; }
     .footer-link { padding: 14px; border-radius: 16px; border:1px solid var(--line); background:#fff; color:var(--text); font-weight:900; box-shadow: var(--shadow-soft); }
     .footer-link.active { border-color:#9fbee9; background:#edf5ff; color:var(--blue); }
 
@@ -354,6 +354,7 @@
         <a class="nav-pill active" href="#dashboard">雷达首页</a>
         <a class="nav-pill" href="#workbench">机会工作台</a>
         <a class="nav-pill" href="#leaderboards">多榜单</a>
+        <a class="nav-pill" href="../payload-evidence-library.html">证据库</a>
         <a class="nav-pill" href="#unknown-payload">新 Payload</a>
         <a class="nav-pill" href="./ADC协作型方案总览网页.html">返回总览</a>
       </nav>
@@ -366,14 +367,15 @@
         <p class="lead">系统自动聚合论文、临床、专利、会议、新闻、公司管线和内部备注，先回答“现在应该优先选哪个 payload / 主题”，再把 P1/P2 机会流转到 0B 机会评估或 01 组合推荐。</p>
         <div class="hero-actions">
           <a class="primary-btn" href="#workbench">查看 Top 机会</a>
+          <a class="ghost-btn" href="../payload-evidence-library.html">打开证据资料库</a>
           <a class="ghost-btn" href="#unknown-payload">输入内部 Payload</a>
           <a class="ghost-btn" href="../data-status.html">数据采集状态</a>
         </div>
         <div class="hero-meta">
-          <div class="metric"><strong>37</strong><span>今日新增 ADC payload 信号</span></div>
-          <div class="metric"><strong>9</strong><span>待人工审核 / IP 复核</span></div>
-          <div class="metric"><strong>4</strong><span>P1 可进入 0B 的机会</span></div>
-          <div class="metric"><strong>06:20</strong><span>最近一次情报刷新</span></div>
+          <div class="metric"><strong id="metricRecords">—</strong><span>资料库证据记录</span></div>
+          <div class="metric"><strong id="metricReview">—</strong><span>待人工审核 / IP 复核</span></div>
+          <div class="metric"><strong id="metricPayloads">—</strong><span>Payload 候选</span></div>
+          <div class="metric"><strong id="metricUpdated">—</strong><span>最近一次资料库刷新</span></div>
         </div>
       </div>
 
@@ -459,8 +461,9 @@
       <div class="section-header">
         <div>
           <h2>证据情报流与数据源监控</h2>
-          <p class="section-desc">每条情报都必须有来源、状态、owner 和下一步动作，未经确认的信息不能直接影响最终项目决策。</p>
+          <p class="section-desc">每条情报都必须有来源、状态、owner 和下一步动作，未经确认的信息不能直接影响最终项目决策。完整自动采集记录请进入 <a href="../payload-evidence-library.html">Payload 证据资料库</a>。</p>
         </div>
+        <a class="tiny-btn blue" href="../payload-evidence-library.html">打开证据资料库</a>
       </div>
       <div class="table-wrap">
         <table>
@@ -547,6 +550,7 @@
       </div>
       <div class="footer-nav">
         <a class="footer-link active" href="./ADC协作型方案详情-00-Payload机会扫描与选题雷达.html">0A · Payload 机会雷达</a>
+        <a class="footer-link" href="../payload-evidence-library.html">证据资料库</a>
         <a class="footer-link" href="./ADC协作型方案详情-00B-Payload机会评估详情页.html">0B · 机会评估详情</a>
         <a class="footer-link" href="./ADC协作型方案详情-01-Payload组合推荐引擎.html">01 · 组合推荐引擎</a>
         <a class="footer-link" href="./ADC协作型方案总览网页.html">返回 ADC 协作型方案总览</a>
@@ -555,7 +559,7 @@
   </main>
 
   <script>
-    const opportunities = [
+    const fallbackOpportunities = [
       {
         name: 'DXd / deruxtecan 类', alias: 'TOP1 payload · DDR / 耐药主题', mechanism: 'TOP1', priority: 'P1', source: 'clinical paper internal', risk: 'medium', score: 86, trend: 18, fit: 82,
         summary: '临床与产业热度持续高，DXd 耐药、DDR 联用和适应症扩展是最明确的三类机会。',
@@ -603,6 +607,7 @@
       }
     ];
 
+    let opportunities = [...fallbackOpportunities];
     const listEl = document.getElementById('opportunityList');
     const detailEl = document.getElementById('detailCard');
     const filters = ['searchInput','mechanismFilter','priorityFilter','sourceFilter','riskFilter','sortFilter'].map(id => document.getElementById(id));
@@ -611,8 +616,83 @@
     function badgeClass(value) {
       if (value === 'P1') return 'green';
       if (value === 'P2') return 'blue';
-      if (value.includes('风险') || value === '观察') return 'orange';
+      if (value.includes('风险') || value === '观察' || value === 'P3') return 'orange';
       return 'blue';
+    }
+
+    function sourceText(recordsByType) {
+      const parts = [];
+      if (recordsByType.clinical_trial) parts.push('clinical');
+      if (recordsByType.paper || recordsByType.paper_metadata) parts.push('paper');
+      if (recordsByType.patent) parts.push('patent');
+      if (recordsByType.news) parts.push('news');
+      return parts.join(' ') || 'paper';
+    }
+
+    function transformEvidenceLibrary(data) {
+      const byPayload = new Map();
+      data.records.forEach(record => {
+        if (!byPayload.has(record.payload_id)) byPayload.set(record.payload_id, []);
+        byPayload.get(record.payload_id).push(record);
+      });
+      return data.payload_summaries.map(summary => {
+        const records = (byPayload.get(summary.payload_id) || []).sort((a,b) => (b.scores?.relevance_score || 0) - (a.scores?.relevance_score || 0));
+        const types = summary.records_by_type || {};
+        const score = summary.scores || {};
+        const risk = score.risk_penalty >= 20 ? 'high' : score.risk_penalty >= 10 ? 'medium' : 'low';
+        const priority = summary.priority === 'P1' ? 'P1' : summary.priority === 'P2' ? 'P2' : '观察';
+        return {
+          name: summary.display_name,
+          alias: `${summary.mechanism} · ${summary.records_total} 条公开证据 · ${summary.relevance.direct_records} 条直接相关`,
+          mechanism: summary.mechanism.includes('TOP1') ? 'TOP1' : summary.mechanism.includes('microtubule') ? 'microtubule' : 'DNA',
+          priority,
+          source: sourceText(types),
+          risk,
+          score: score.opportunity_score,
+          trend: Math.max(0, Math.round(score.external_heat / 5)),
+          fit: Math.max(40, Math.min(90, 65 + summary.relevance.direct_records)),
+          summary: `资料库收录 ${summary.records_total} 条记录：论文/元数据 ${(types.paper || 0) + (types.paper_metadata || 0)}、临床 ${types.clinical_trial || 0}、专利 ${types.patent || 0}、新闻 ${types.news || 0}。`,
+          tags: [priority, `${summary.records_total} 条证据`, `${summary.relevance.flagged_records} 条待复核`, summary.mechanism],
+          scores: {
+            '外部热度': score.external_heat,
+            '科学活跃': score.scientific_activity,
+            '临床活跃': score.clinical_activity,
+            '专利/IP': score.patent_activity,
+            '新闻动态': score.news_activity,
+            '风险扣分': score.risk_penalty
+          },
+          evidence: records.slice(0, 4).map(record => [record.source, record.title || record.evidence_type]),
+          risks: summary.relevance.flagged_records ? `有 ${summary.relevance.flagged_records} 条记录带质量/IP/新闻元数据标记，需要人工复核。` : '当前自动质量标记较少，但仍需人工科学/IP 审核。',
+          next: summary.recommended_action,
+          payloadId: summary.payload_id
+        };
+      }).sort((a,b) => b.score - a.score);
+    }
+
+    function updateMetrics(data) {
+      const flagged = data.records.filter(r => r.quality?.flags?.length).length;
+      const generated = data.generated_at ? new Date(data.generated_at) : null;
+      document.getElementById('metricRecords').textContent = data.records.length;
+      document.getElementById('metricReview').textContent = flagged;
+      document.getElementById('metricPayloads').textContent = data.payloads.length;
+      document.getElementById('metricUpdated').textContent = generated && !Number.isNaN(generated.valueOf()) ? generated.toLocaleDateString('zh-CN') : '已生成';
+    }
+
+    async function loadEvidenceLibrary() {
+      try {
+        const response = await fetch('../data/payload_evidence_library.json', { cache: 'no-store' });
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        const data = await response.json();
+        opportunities = transformEvidenceLibrary(data);
+        updateMetrics(data);
+      } catch (error) {
+        document.getElementById('metricRecords').textContent = '样例';
+        document.getElementById('metricReview').textContent = '—';
+        document.getElementById('metricPayloads').textContent = fallbackOpportunities.length;
+        document.getElementById('metricUpdated').textContent = 'fallback';
+      }
+      selectedName = opportunities[0]?.name || '';
+      renderList();
     }
 
     function filteredItems() {
@@ -685,6 +765,7 @@
         <h4>推荐流向</h4>
         <p class="section-desc">${item.next}</p>
         <div class="action-row" style="margin-top:14px;">
+          <a class="tiny-btn blue" href="../payload-evidence-library.html${item.payloadId ? `?payload=${encodeURIComponent(item.payloadId)}` : ''}">查看证据库</a>
           <a class="tiny-btn blue" href="./ADC协作型方案详情-00B-Payload机会评估详情页.html">进入 0B 机会评估</a>
           <a class="tiny-btn green" href="./ADC协作型方案详情-01-Payload组合推荐引擎.html">进入 01 组合推荐</a>
           <a class="tiny-btn orange" href="./ADC协作型方案详情-04-耐药机制逆转推荐系统.html">耐药主题</a>
@@ -693,7 +774,7 @@
     }
 
     filters.forEach(el => el.addEventListener('input', renderList));
-    renderList();
+    loadEvidenceLibrary();
 
     document.getElementById('payloadForm').addEventListener('submit', (event) => {
       event.preventDefault();
