@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.0",
+  "description": "Schema for bispecific/multispecific antibody and ADC arm taxonomy library.",
+  "top_level_fields": [
+    "schema_version",
+    "generated_at",
+    "curation_policy",
+    "taxonomy",
+    "records"
+  ],
+  "taxonomy_fields": [
+    "category_id",
+    "family",
+    "category_name",
+    "navigation_pattern",
+    "immune_pattern",
+    "payload_pattern",
+    "definition",
+    "design_rationale",
+    "typical_mechanisms",
+    "limitations"
+  ],
+  "record_fields": [
+    "record_id",
+    "name",
+    "family",
+    "category_id",
+    "category_name",
+    "status",
+    "development_stage",
+    "year",
+    "year_basis",
+    "company_or_authors",
+    "arms",
+    "mechanisms",
+    "evidence",
+    "notes",
+    "quality"
+  ],
+  "arm_fields": [
+    "target",
+    "role",
+    "count_group",
+    "verification_status"
+  ],
+  "evidence_groups": [
+    "papers",
+    "patents",
+    "clinical_trials",
+    "company_links"
+  ],
+  "status_values": [
+    "verified_metadata",
+    "metadata_only",
+    "curated_draft",
+    "needs_review"
+  ]
+}

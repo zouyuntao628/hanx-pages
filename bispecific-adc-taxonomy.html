@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>双抗 / 多抗与 ADC 多臂设计分类图谱｜HANX Pages</title>
+  <style>
+    :root { --bg:#07111f; --panel:rgba(255,255,255,.075); --panel-2:rgba(255,255,255,.105); --line:rgba(255,255,255,.16); --text:#eef6ff; --muted:#a8b7c9; --blue:#68d5ff; --cyan:#6fffe9; --green:#8ef6a3; --yellow:#ffe08a; --red:#ff9b9b; --purple:#c8b6ff; --shadow:0 22px 70px rgba(0,0,0,.35); }
+    * { box-sizing:border-box; } html { scroll-behavior:smooth; }
+    body { margin:0; color:var(--text); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif; background:radial-gradient(circle at 10% -10%, rgba(104,213,255,.25), transparent 33%), radial-gradient(circle at 95% 10%, rgba(142,246,163,.16), transparent 28%), var(--bg); line-height:1.65; }
+    a { color:var(--cyan); text-decoration:none; font-weight:800; } a:hover { text-decoration:underline; }
+    code { color:var(--green); }
+    .wrap { width:min(1360px, calc(100% - 40px)); margin:0 auto; }
+    nav { position:sticky; top:0; z-index:20; backdrop-filter:blur(18px); background:rgba(7,17,31,.76); border-bottom:1px solid var(--line); }
+    nav .wrap { display:flex; justify-content:space-between; align-items:center; gap:16px; padding:14px 0; }
+    .brand { display:flex; align-items:center; gap:10px; font-weight:900; } .logo { width:34px; height:34px; border-radius:11px; background:linear-gradient(135deg,var(--blue),var(--green)); box-shadow:0 12px 30px rgba(104,213,255,.24); }
+    .navlinks { display:flex; gap:14px; flex-wrap:wrap; font-size:14px; } .navlinks a { color:var(--muted); }
+    header { padding:72px 0 30px; }
+    .eyebrow { display:inline-flex; padding:7px 12px; border:1px solid var(--line); border-radius:999px; background:rgba(255,255,255,.06); color:var(--cyan); font-weight:850; font-size:14px; }
+    h1 { margin:20px 0 16px; max-width:1100px; font-size:clamp(38px,6vw,72px); line-height:1.03; letter-spacing:-.045em; }
+    .lead { max-width:1040px; color:#d7e7f7; font-size:clamp(18px,2vw,23px); }
+    section { padding:26px 0; } h2 { margin:0 0 14px; font-size:clamp(27px,4vw,42px); line-height:1.15; } h3 { margin:0 0 10px; font-size:21px; }
+    .card, .control-panel, table { background:var(--panel); border:1px solid var(--line); border-radius:24px; box-shadow:var(--shadow); }
+    .card { padding:22px; } .grid { display:grid; grid-template-columns:repeat(6,minmax(0,1fr)); gap:16px; }
+    .taxonomy-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:16px; }
+    .mechanism-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px; }
+    strong.big { font-size:34px; color:var(--blue); display:block; line-height:1.05; } .muted { color:var(--muted); }
+    .note { padding:16px 18px; border-left:4px solid var(--green); background:rgba(142,246,163,.08); border-radius:0 18px 18px 0; }
+    .warning { border-left-color:var(--yellow); background:rgba(255,224,138,.08); }
+    .control-panel { padding:18px; display:grid; grid-template-columns:minmax(240px,1.6fr) repeat(7,minmax(120px,1fr)); gap:12px; }
+    label { display:block; color:var(--muted); font-size:12px; font-weight:850; margin-bottom:5px; }
+    input, select { width:100%; min-height:42px; color:var(--text); background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.2); border-radius:13px; padding:9px 11px; outline:none; }
+    input:focus, select:focus { border-color:rgba(111,255,233,.6); box-shadow:0 0 0 4px rgba(111,255,233,.10); }
+    .pill-row, .arm-list, .evidence-links { display:flex; flex-wrap:wrap; gap:7px; }
+    .pill { display:inline-flex; align-items:center; gap:6px; min-height:28px; padding:5px 10px; border-radius:999px; background:rgba(104,213,255,.12); border:1px solid rgba(104,213,255,.28); color:var(--blue); font-size:12px; font-weight:850; }
+    .pill.green { background:rgba(142,246,163,.12); border-color:rgba(142,246,163,.26); color:var(--green); } .pill.yellow { background:rgba(255,224,138,.12); border-color:rgba(255,224,138,.28); color:var(--yellow); } .pill.red { background:rgba(255,155,155,.12); border-color:rgba(255,155,155,.26); color:var(--red); } .pill.purple { background:rgba(200,182,255,.12); border-color:rgba(200,182,255,.28); color:var(--purple); }
+    .category-card { min-height:260px; display:flex; flex-direction:column; gap:10px; }
+    .category-card h3 { color:var(--cyan); } .category-card p { margin:0; color:var(--muted); }
+    .mini-stat { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:8px; margin-top:auto; }
+    .mini-stat div { padding:9px; border-radius:14px; background:rgba(255,255,255,.065); border:1px solid var(--line); }
+    .table-wrap { overflow:auto; border-radius:24px; box-shadow:var(--shadow); }
+    table { width:100%; border-collapse:separate; border-spacing:0; overflow:hidden; font-size:14px; min-width:1180px; box-shadow:none; }
+    th, td { padding:12px 13px; border-bottom:1px solid var(--line); vertical-align:top; text-align:left; } th { position:sticky; top:0; z-index:1; color:#061622; background:linear-gradient(135deg,var(--blue),var(--green)); font-weight:900; } td { color:#e5f0fb; } tr:last-child td { border-bottom:0; }
+    .record-name { min-width:230px; } .mechanism { max-width:300px; color:#d7e7f7; } .note-text { max-width:360px; color:var(--muted); font-size:13px; }
+    .actions { display:flex; flex-wrap:wrap; gap:8px; margin-top:14px; } .btn { display:inline-flex; min-height:36px; align-items:center; justify-content:center; padding:7px 12px; border-radius:999px; border:1px solid var(--line); background:rgba(255,255,255,.08); color:var(--text); font-weight:850; } .btn.primary { color:#061622; background:linear-gradient(135deg,var(--blue),var(--green)); border-color:transparent; }
+    .status { margin-top:8px; color:var(--muted); font-size:13px; }
+    @media (max-width:1150px) { .grid, .taxonomy-grid, .mechanism-grid, .control-panel { grid-template-columns:1fr 1fr; } }
+    @media (max-width:760px) { .wrap { width:min(100% - 24px, 1360px); } nav .wrap { align-items:flex-start; flex-direction:column; } .navlinks { gap:9px; } .grid, .taxonomy-grid, .mechanism-grid, .control-panel, .mini-stat { grid-template-columns:1fr; } h1 { font-size:38px; } }
+  </style>
+</head>
+<body>
+  <nav><div class="wrap"><div class="brand"><div class="logo"></div><span>双抗 / ADC 分类图谱</span></div><div class="navlinks"><a href="./index.html">首页</a><a href="./payload-evidence-library.html">Payload证据库</a><a href="./data-status.html">采集状态</a><a href="./changelog.html">更新日志</a></div></div></nav>
+  <header class="wrap">
+    <div class="eyebrow">Taxonomy · 多导航 / 多免疫臂 / 多载荷</div>
+    <h1>双抗 / 多抗与 ADC 多臂设计分类图谱</h1>
+    <p class="lead">把“双抗/多抗”和“ADC”放在同一套多臂设计语言下：导航臂负责定位，免疫臂负责调动免疫效应，载荷臂负责递送药物或功能 payload。本页统计当前收录样本，不代表全球完整数量。</p>
+    <div class="actions"><a class="btn primary" href="#records">浏览代表成果</a><a class="btn" href="./data/bispecific_adc_taxonomy.json">下载 JSON</a><a class="btn" href="#taxonomy">查看8分类矩阵</a></div>
+    <p class="status" id="loadStatus">正在读取分类数据…</p>
+  </header>
+
+  <main>
+    <section class="wrap"><div class="grid" id="kpiGrid"></div></section>
+    <section class="wrap"><div class="note warning"><strong>边界说明：</strong><span id="policyText">本页为人工整理的分类知识库与代表性公开成果索引，条目需人工科学/IP复核。</span></div></section>
+
+    <section class="wrap" id="taxonomy"><h2>8 分类矩阵</h2><div class="taxonomy-grid" id="taxonomyGrid"></div></section>
+
+    <section class="wrap"><h2>分类统计</h2><div class="table-wrap"><table id="categoryTable"><thead><tr><th>分类</th><th>技术类型</th><th>导航臂</th><th>免疫臂</th><th>载荷臂</th><th>收录数</th><th>代表成果</th><th>年份范围</th><th>待复核</th></tr></thead><tbody></tbody></table></div></section>
+
+    <section class="wrap"><h2>关键机制卡片</h2><div class="mechanism-grid" id="mechanismGrid"></div></section>
+
+    <section class="wrap" id="filters"><h2>检索与筛选</h2><div class="control-panel">
+      <div><label for="q">关键词</label><input id="q" type="search" placeholder="Blinatumomab、HER2、CD3、MMAE、双载荷…"></div>
+      <div><label for="familyFilter">技术类型</label><select id="familyFilter"><option value="all">全部</option><option value="bispecific_multispecific">双抗/多抗</option><option value="adc">ADC</option></select></div>
+      <div><label for="categoryFilter">分类</label><select id="categoryFilter"><option value="all">全部分类</option></select></div>
+      <div><label for="navFilter">导航臂</label><select id="navFilter"><option value="all">全部</option><option value="single">单导航</option><option value="multi">多导航</option></select></div>
+      <div><label for="immuneFilter">免疫臂</label><select id="immuneFilter"><option value="all">全部</option><option value="none">无</option><option value="single">单免疫</option><option value="multi">多免疫</option></select></div>
+      <div><label for="payloadFilter">载荷臂</label><select id="payloadFilter"><option value="all">全部</option><option value="none">无</option><option value="single">单载荷</option><option value="multi">多载荷</option></select></div>
+      <div><label for="stageFilter">阶段</label><select id="stageFilter"><option value="all">全部</option></select></div>
+      <div><label for="statusFilter">复核状态</label><select id="statusFilter"><option value="all">全部</option></select></div>
+    </div><p class="status" id="resultStatus"></p></section>
+
+    <section class="wrap" id="records"><h2>代表性成果表</h2><div class="table-wrap"><table id="recordTable"><thead><tr><th class="record-name">成果 / 分子</th><th>技术类型</th><th>分类</th><th>导航臂</th><th>免疫臂</th><th>载荷臂</th><th>机制</th><th>年份</th><th>公司 / 作者</th><th>阶段</th><th>证据</th><th>状态</th><th>备注</th></tr></thead><tbody></tbody></table></div></section>
+
+    <section class="wrap"><h2>复核和使用说明</h2><div class="note"><strong>请注意：</strong>本页的“成果数”和“分类统计”仅来自当前 JSON 收录样本。标记为 <code>curated_draft</code> 或 <code>needs_review</code> 的条目不能直接用于对外材料、投资判断、医学结论或 IP/FTO 判断；需要逐条核对论文、专利、临床登记和公司披露。</div></section>
+  </main>
+
+  <script>
+    let library = null;
+    const els = {
+      kpiGrid: document.getElementById('kpiGrid'), taxonomyGrid: document.getElementById('taxonomyGrid'), mechanismGrid: document.getElementById('mechanismGrid'), categoryBody: document.querySelector('#categoryTable tbody'), recordBody: document.querySelector('#recordTable tbody'),
+      q: document.getElementById('q'), familyFilter: document.getElementById('familyFilter'), categoryFilter: document.getElementById('categoryFilter'), navFilter: document.getElementById('navFilter'), immuneFilter: document.getElementById('immuneFilter'), payloadFilter: document.getElementById('payloadFilter'), stageFilter: document.getElementById('stageFilter'), statusFilter: document.getElementById('statusFilter'),
+      loadStatus: document.getElementById('loadStatus'), resultStatus: document.getElementById('resultStatus'), policyText: document.getElementById('policyText')
+    };
+    const familyLabel = { bispecific_multispecific:'双抗/多抗', adc:'ADC' };
+    function esc(v) { return String(v ?? '').replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch])); }
+    function pill(v) { const s=String(v||''); const cls=s.includes('verified')||s==='approved'?'green':s.includes('draft')||s.includes('review')||s.includes('need')?'yellow':s.includes('adc')?'purple':''; return `<span class="pill ${cls}">${esc(s)}</span>`; }
+    function arms(list) { return (list && list.length) ? `<div class="arm-list">${list.map(a => `<span class="pill">${esc(a.target)} · ${esc(a.role)}</span>`).join('')}</div>` : '<span class="muted">—</span>'; }
+    function evidenceLinks(e) { const groups=[...(e.papers||[]),...(e.patents||[]),...(e.clinical_trials||[]),...(e.company_links||[])]; return groups.length ? `<div class="evidence-links">${groups.map(x => x.url ? `<a class="pill" href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.title||x.publication_number||x.nct_id||'证据')}</a>` : `<span class="pill yellow">${esc(x.title||x.publication_number||x.nct_id||'待补链接')}</span>`).join('')}</div>` : '<span class="pill yellow">待补证据</span>'; }
+    function years(records) { const ys=records.map(r=>Number(r.year)).filter(Boolean); return ys.length ? `${Math.min(...ys)}–${Math.max(...ys)}` : '—'; }
+    async function loadLibrary(){ try { const res=await fetch('./data/bispecific_adc_taxonomy.json',{cache:'no-store'}); if(!res.ok) throw new Error(`HTTP ${res.status}`); library=await res.json(); els.loadStatus.textContent=`已加载：${library.generated_at} · ${library.records.length} 条成果记录`; els.policyText.textContent=`${library.curation_policy.statistics_boundary} ${library.curation_policy.review_boundary} ${library.curation_policy.patent_boundary}`; initFilters(); renderAll(); } catch(e){ els.loadStatus.textContent=`读取分类数据失败：${e.message}。请通过 GitHub Pages 或本地 HTTP server 打开。`; } }
+    function initFilters(){ els.categoryFilter.innerHTML='<option value="all">全部分类</option>'+library.taxonomy.map(t=>`<option value="${esc(t.category_id)}">${esc(t.category_name)}</option>`).join(''); const stages=[...new Set(library.records.map(r=>r.development_stage))].sort(); const statuses=[...new Set(library.records.map(r=>r.status))].sort(); els.stageFilter.innerHTML='<option value="all">全部</option>'+stages.map(x=>`<option>${esc(x)}</option>`).join(''); els.statusFilter.innerHTML='<option value="all">全部</option>'+statuses.map(x=>`<option>${esc(x)}</option>`).join(''); [els.q,els.familyFilter,els.categoryFilter,els.navFilter,els.immuneFilter,els.payloadFilter,els.stageFilter,els.statusFilter].forEach(el=>el.addEventListener('input', renderRecords)); }
+    function renderAll(){ renderKpis(); renderTaxonomy(); renderCategories(); renderMechanisms(); renderRecords(); }
+    function renderKpis(){ const r=library.records; const review=r.filter(x=>x.quality?.needs_scientific_review || x.status!=='verified_metadata').length; const k=[['收录成果',r.length],['双抗/多抗',r.filter(x=>x.family==='bispecific_multispecific').length],['ADC',r.filter(x=>x.family==='adc').length],['覆盖分类',new Set(r.map(x=>x.category_id)).size],['需复核',review],['年份范围',years(r)]]; els.kpiGrid.innerHTML=k.map(([a,b])=>`<div class="card"><strong class="big">${esc(b)}</strong><span class="muted">${esc(a)}</span></div>`).join(''); }
+    function renderTaxonomy(){ const byCat=Object.fromEntries(library.taxonomy.map(t=>[t.category_id, library.records.filter(r=>r.category_id===t.category_id)])); els.taxonomyGrid.innerHTML=library.taxonomy.map(t=>{ const recs=byCat[t.category_id]||[]; return `<div class="card category-card"><div class="pill-row">${pill(familyLabel[t.family])}${pill(t.navigation_pattern+' nav')}${pill(t.immune_pattern+' immune')}${pill(t.payload_pattern+' payload')}</div><h3>${esc(t.category_name)}</h3><p>${esc(t.definition)}</p><p>${esc(t.design_rationale)}</p><div class="pill-row">${t.typical_mechanisms.map(pill).join('')}</div><div class="mini-stat"><div><strong>${recs.length}</strong><br><span class="muted">成果</span></div><div><strong>${years(recs)}</strong><br><span class="muted">年份</span></div><div><strong>${recs.filter(r=>r.status!=='verified_metadata').length}</strong><br><span class="muted">待复核</span></div></div></div>`; }).join(''); }
+    function renderCategories(){ els.categoryBody.innerHTML=library.taxonomy.map(t=>{ const recs=library.records.filter(r=>r.category_id===t.category_id); return `<tr><td>${esc(t.category_name)}</td><td>${esc(familyLabel[t.family])}</td><td>${pill(t.navigation_pattern)}</td><td>${pill(t.immune_pattern)}</td><td>${pill(t.payload_pattern)}</td><td>${recs.length}</td><td>${recs.slice(0,3).map(r=>esc(r.name)).join('；')}</td><td>${years(recs)}</td><td>${recs.filter(r=>r.status!=='verified_metadata').length}</td></tr>`; }).join(''); }
+    function renderMechanisms(){ const items=[['T-cell engager','CD3等免疫臂将T细胞拉近到抗原阳性细胞。'],['NK-cell engager','CD16/NKG2D等臂增强NK细胞ADCC或天然免疫杀伤。'],['Costimulation / checkpoint','CD28、4-1BB、PD-1/PD-L1等用于共刺激或解除抑制。'],['Multi-antigen targeting','两个或多个导航臂用于提高选择性或降低抗原逃逸。'],['ADC internalization','抗体导航臂介导内化，连接子释放payload。'],['Bystander killing','可扩散载荷杀伤邻近低表达或阴性细胞。'],['Dual-payload killing','多载荷通过不同机制协同或绕开耐药。']]; els.mechanismGrid.innerHTML=items.map(([a,b])=>{ const hits=library.records.filter(r=>(r.mechanisms||[]).some(m=>(m.label+' '+m.summary).toLowerCase().includes(a.toLowerCase().split(' ')[0]))); return `<div class="card"><h3>${esc(a)}</h3><p class="muted">${esc(b)}</p><div class="pill-row" style="margin-top:12px;"><span class="pill">${hits.length} 条相关</span>${hits.slice(0,3).map(r=>pill(r.name)).join('')}</div></div>`; }).join(''); }
+    function filtered(){ const q=els.q.value.trim().toLowerCase(); const tax=Object.fromEntries(library.taxonomy.map(t=>[t.category_id,t])); return library.records.filter(r=>{ const t=tax[r.category_id]; const text=`${r.name} ${r.category_name} ${r.family} ${r.development_stage} ${r.status} ${r.company_or_authors.join(' ')} ${JSON.stringify(r.arms)} ${JSON.stringify(r.mechanisms)} ${r.notes}`.toLowerCase(); return (!q||text.includes(q)) && (els.familyFilter.value==='all'||r.family===els.familyFilter.value) && (els.categoryFilter.value==='all'||r.category_id===els.categoryFilter.value) && (els.navFilter.value==='all'||t.navigation_pattern===els.navFilter.value) && (els.immuneFilter.value==='all'||t.immune_pattern===els.immuneFilter.value) && (els.payloadFilter.value==='all'||t.payload_pattern===els.payloadFilter.value) && (els.stageFilter.value==='all'||r.development_stage===els.stageFilter.value) && (els.statusFilter.value==='all'||r.status===els.statusFilter.value); }).sort((a,b)=>Number(b.year||0)-Number(a.year||0)); }
+    function renderRecords(){ const rows=filtered(); els.resultStatus.textContent=`当前筛选：${rows.length} / ${library.records.length} 条成果`; els.recordBody.innerHTML=rows.map(r=>`<tr><td><strong>${esc(r.name)}</strong></td><td>${pill(familyLabel[r.family])}</td><td>${esc(r.category_name)}</td><td>${arms(r.arms.navigation)}</td><td>${arms(r.arms.immune)}</td><td>${arms(r.arms.payload)}</td><td class="mechanism">${(r.mechanisms||[]).map(m=>esc(m.summary)).join('；')}</td><td>${esc(r.year)}<br><span class="muted">${esc(r.year_basis)}</span></td><td>${esc((r.company_or_authors||[]).join(' / '))}</td><td>${pill(r.development_stage)}</td><td>${evidenceLinks(r.evidence)}</td><td>${pill(r.status)}</td><td class="note-text">${esc(r.notes)}<div class="pill-row" style="margin-top:7px;">${(r.quality?.flags||[]).map(pill).join('')}</div></td></tr>`).join('') || '<tr><td colspan="13">没有匹配记录。</td></tr>'; }
+    loadLibrary();
+  </script>
+</body>
+</html>

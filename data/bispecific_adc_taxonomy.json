@@ -1,0 +1,2668 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-06-22",
+  "curation_policy": {
+    "scope": "Manually curated classification and public metadata index for bispecific/multispecific antibodies and ADC designs.",
+    "statistics_boundary": "Counts are based only on records included in this curated file; this is not a complete global census.",
+    "copyright_boundary": "Store metadata, source titles, identifiers and URLs only; do not store full copyrighted articles or paid news text.",
+    "review_boundary": "Draft and metadata-only entries require scientific and IP review before use in decisions.",
+    "patent_boundary": "Patent links are evidence pointers, not FTO or legal opinions."
+  },
+  "taxonomy": [
+    {
+      "category_id": "bsab_single_nav_single_immune",
+      "family": "bispecific_multispecific",
+      "category_name": "双抗-单导航-单免疫",
+      "navigation_pattern": "single",
+      "immune_pattern": "single",
+      "payload_pattern": "not_applicable",
+      "definition": "1个导航臂 + 1个免疫臂。",
+      "design_rationale": "用一个肿瘤/疾病导航靶点定位目标细胞，同时用一个免疫臂招募或调节免疫效应。",
+      "typical_mechanisms": [
+        "T-cell engager",
+        "checkpoint blockade",
+        "tumor-localized immune activation"
+      ],
+      "limitations": [
+        "靶点异质性",
+        "CRS/免疫毒性",
+        "on-target off-tumor风险"
+      ]
+    },
+    {
+      "category_id": "bsab_multi_nav_single_immune",
+      "family": "bispecific_multispecific",
+      "category_name": "双抗/多抗-多导航-单免疫",
+      "navigation_pattern": "multi",
+      "immune_pattern": "single",
+      "payload_pattern": "not_applicable",
+      "definition": "≥2个导航臂 + 1个免疫臂。",
+      "design_rationale": "通过双抗原或双表位确认提高肿瘤选择性，降低单靶点逃逸。",
+      "typical_mechanisms": [
+        "AND gate targeting",
+        "multi-antigen targeting",
+        "conditional T-cell engagement"
+      ],
+      "limitations": [
+        "结构复杂",
+        "表达阈值难界定",
+        "CMC和亲和力平衡难度高"
+      ]
+    },
+    {
+      "category_id": "bsab_single_nav_multi_immune",
+      "family": "bispecific_multispecific",
+      "category_name": "双抗/多抗-单导航-多免疫臂",
+      "navigation_pattern": "single",
+      "immune_pattern": "multi",
+      "payload_pattern": "not_applicable",
+      "definition": "1个导航臂 + ≥2个免疫臂。",
+      "design_rationale": "在单一定位线索下组合激活、共刺激、解除抑制或NK/T细胞双效应。",
+      "typical_mechanisms": [
+        "costimulation",
+        "checkpoint plus activation",
+        "NK/T dual engagement"
+      ],
+      "limitations": [
+        "系统性免疫激活风险",
+        "免疫臂协同剂量窗口窄",
+        "机制归因复杂"
+      ]
+    },
+    {
+      "category_id": "bsab_multi_nav_multi_immune",
+      "family": "bispecific_multispecific",
+      "category_name": "双抗/多抗-多导航-多免疫臂",
+      "navigation_pattern": "multi",
+      "immune_pattern": "multi",
+      "payload_pattern": "not_applicable",
+      "definition": "≥2个导航臂 + ≥2个免疫臂。",
+      "design_rationale": "同时提升定位选择性和免疫效应强度，是复杂多抗设计范式。",
+      "typical_mechanisms": [
+        "multi-antigen precision",
+        "multi-immune activation",
+        "logic-gated immune engagement"
+      ],
+      "limitations": [
+        "分子设计和生产复杂",
+        "安全性窗口需严格验证",
+        "临床转化证据有限"
+      ]
+    },
+    {
+      "category_id": "adc_single_nav_single_payload",
+      "family": "adc",
+      "category_name": "ADC-单导航-单载荷",
+      "navigation_pattern": "single",
+      "immune_pattern": "none",
+      "payload_pattern": "single",
+      "definition": "1个导航臂（靶向抗体）+ 1种载荷。",
+      "design_rationale": "用一个抗原定位肿瘤细胞并递送一种细胞毒/功能载荷。",
+      "typical_mechanisms": [
+        "antigen-mediated internalization",
+        "payload release",
+        "bystander killing"
+      ],
+      "limitations": [
+        "抗原丢失耐药",
+        "payload毒性",
+        "连接子稳定性"
+      ]
+    },
+    {
+      "category_id": "adc_multi_nav_single_payload",
+      "family": "adc",
+      "category_name": "ADC-多导航-单载荷",
+      "navigation_pattern": "multi",
+      "immune_pattern": "none",
+      "payload_pattern": "single",
+      "definition": "≥2个导航臂 + 1种载荷。",
+      "design_rationale": "双靶点或双表位提高选择性、亲和力、内化或抗原逃逸鲁棒性。",
+      "typical_mechanisms": [
+        "dual-antigen targeting",
+        "dual-epitope avidity",
+        "enhanced internalization"
+      ],
+      "limitations": [
+        "靶点共表达要求",
+        "双特异抗体工程复杂",
+        "药代和DAR控制难度增加"
+      ]
+    },
+    {
+      "category_id": "adc_single_nav_multi_payload",
+      "family": "adc",
+      "category_name": "ADC-单导航-多载荷",
+      "navigation_pattern": "single",
+      "immune_pattern": "none",
+      "payload_pattern": "multi",
+      "definition": "1个导航臂 + ≥2种载荷。",
+      "design_rationale": "同一靶向抗体递送多种作用机制载荷，用于协同杀伤或降低耐药。",
+      "typical_mechanisms": [
+        "dual-payload orthogonal killing",
+        "payload synergy",
+        "staged release"
+      ],
+      "limitations": [
+        "DAR和比例控制",
+        "毒性叠加",
+        "释放动力学复杂"
+      ]
+    },
+    {
+      "category_id": "adc_multi_nav_multi_payload",
+      "family": "adc",
+      "category_name": "ADC-多导航-多载荷",
+      "navigation_pattern": "multi",
+      "immune_pattern": "none",
+      "payload_pattern": "multi",
+      "definition": "≥2个导航臂 + ≥2种载荷。",
+      "design_rationale": "双/多靶向定位叠加多机制载荷，是高复杂度下一代ADC概念。",
+      "typical_mechanisms": [
+        "multi-target precision",
+        "multi-payload synergy",
+        "resistance bypass"
+      ],
+      "limitations": [
+        "临床证据少",
+        "CMC复杂度高",
+        "安全性和释放窗口难验证"
+      ]
+    }
+  ],
+  "records": [
+    {
+      "record_id": "bsab_001",
+      "name": "Blinatumomab",
+      "family": "bispecific_multispecific",
+      "category_id": "bsab_single_nav_single_immune",
+      "category_name": "双抗-单导航-单免疫",
+      "status": "verified_metadata",
+      "development_stage": "approved",
+      "year": 2014,
+      "year_basis": "approval",
+      "company_or_authors": [
+        "Bargou R",
+        "Amgen"
+      ],
+      "arms": {
+        "navigation": [
+          {
+            "target": "CD19",
+            "role": "tumor_navigation",
+            "count_group": "single",
+            "verification_status": "needs_review"
+          }
+        ],
+        "immune": [
+          {
+            "target": "CD3",
+            "role": "t_cell_engagement",
+            "count_group": "single",
+            "verification_status": "needs_review"
+          }
+        ],
+        "payload": []
+      },
+      "mechanisms": [
+        {
+          "label": "T-cell engager; bridges CD19+ cells and CD3+ T cells",
+          "summary": "T-cell engager; bridges CD19+ cells and CD3+ T cells",
+          "confidence": "needs_review"
+        }
+      ],
+      "evidence": {
+        "papers": [
+          {
+            "title": "Bargou et al., Science, 2008",
+            "year": 2008,
+            "url": "",
+            "evidence_status": "metadata_only"
+          }
+        ],
+        "patents": [],
+        "clinical_trials": [],
+        "company_links": []
+      },
+      "notes": "代表性公开成果/设计范式，需逐条复核来源后用于外部材料。",
+      "quality": {
+        "curation_status": "verified_metadata",
+        "needs_scientific_review": false,
+        "needs_ip_review": false,
+        "flags": [
+          "metadata_only"
+        ]
+      }
+    },
+    {
+      "record_id": "bsab_002",
+      "name": "Teclistamab",
+      "family": "bispecific_multispecific",
+      "category_id": "bsab_single_nav_single_immune",
+      "category_name": "双抗-单导航-单免疫",
+      "status": "verified_metadata",
+      "development_stage": "approved",
+      "year": 2022,
+      "year_basis": "approval",
+      "company_or_authors": [
+        "Moreau P",
+        "Janssen"
+      ],
+      "arms": {
+        "navigation": [
+          {
+            "target": "BCMA",
+            "role": "myeloma_navigation",
+            "count_group": "single",
+            "verification_status": "needs_review"
+          }
+        ],
+        "immune": [
+          {
+            "target": "CD3",
+            "role": "t_cell_engagement",
+            "count_group": "single",
+            "verification_status": "needs_review"
+          }
+        ],
+        "payload": []
+      },
+      "mechanisms": [
+        {
+          "label": "BCMA×CD3 T-cell redirection",
+          "summary": "BCMA×CD3 T-cell redirection",
+          "confidence": "needs_review"
+        }
+      ],
+      "evidence": {
+        "papers": [
+          {
+            "title": "Moreau et al., New England Journal of Medicine, 2021",
+            "year": 2021,
+            "url": "",
+            "evidence_status": "metadata_only"
+          }
+        ],
+        "patents": [],
+        "clinical_trials": [],
+        "company_links": []
+      },
+      "notes": "代表性公开成果/设计范式，需逐条复核来源后用于外部材料。",
+      "quality": {
+        "curation_status": "verified_metadata",
+        "needs_scientific_review": false,
+        "needs_ip_review": false,
+        "flags": [
+          "metadata_only"
+        ]
+      }
+    },
+    {
+      "record_id": "bsab_003",
+      "name": "Mosunetuzumab",
+      "family": "bispecific_multispecific",
+      "category_id": "bsab_single_nav_single_immune",
+      "category_name": "双抗-单导航-单免疫",
+      "status": "verified_metadata",
+      "development_stage": "approved",
+      "year": 2022,
+      "year_basis": "approval",
+      "company_or_authors": [
+        "Budde LE",
+        "Roche"
+      ],
+      "arms": {
+        "navigation": [
+          {
+            "target": "CD20",
+            "role": "lymphoma_navigation",
+            "count_group": "single",
+            "verification_status": "needs_review"
+          }
+        ],
+        "immune": [
+          {
+            "target": "CD3",
+            "role": "t_cell_engagement",
+            "count_group": "single",
+            "verification_status": "needs_review"
+          }
+        ],
+        "payload": []
+      },
+      "mechanisms": [
+        {
+          "label": "CD20×CD3 T-cell engager",
+          "summary": "CD20×CD3 T-cell engager",
+          "confidence": "needs_review"
+        }
+      ],
+      "evidence": {
+        "papers": [
+          {
+            "title": "Budde et al., Nature Medicine, 2022",
+            "year": 2022,
+            "url": "",
+            "evidence_status": "metadata_only"
+          }
+        ],
+        "patents": [],
+        "clinical_trials": [],
+        "company_links": []
+      },
+      "notes": "代表性公开成果/设计范式，需逐条复核来源后用于外部材料。",
+      "quality": {
+        "curation_status": "verified_metadata",
+        "needs_scientific_review": false,
+        "needs_ip_review": false,
+        "flags": [
+          "metadata_only"
+        ]
+      }
+    },
+    {
+      "record_id": "bsab_004",
+      "name": "Glofitamab",
+      "family": "bispecific_multispecific",
+      "category_id": "bsab_single_nav_single_immune",
+      "category_name": "双抗-单导航-单免疫",
+      "status": "verified_metadata",
+      "development_stage": "approved",
+      "year": 2022,
+      "year_basis": "approval",
+      "company_or_authors": [
+        "Dickinson M",
+        "Roche"
+      ],
+      "arms": {
+        "navigation": [
+          {
+            "target": "CD20",
+            "role": "lymphoma_navigation",
+            "count_group": "multi",
+            "verification_status": "needs_review"
+          }
+        ],
+        "immune": [
+          {
+            "target": "CD3",
+            "role": "t_cell_engagement",
+            "count_group": "single",
+            "verification_status": "needs_review"
+          }
+        ],
+        "payload": []
+      },
+      "mechanisms": [
+        {
+          "label": "2:1 CD20×CD3 T-cell engager",
+          "summary": "2:1 CD20×CD3 T-cell engager",
+          "confidence": "needs_review"
+        }
+      ],
+      "evidence": {
+        "papers": [
+          {
+            "title": "Dickinson et al., The Lancet, 2021",
+            "year": 2021,
+            "url": "",
+            "evidence_status": "metadata_only"
+          }
+        ],
+        "patents": [],
+        "clinical_trials": [],
+        "company_links": []
+      },
+      "notes": "代表性公开成果/设计范式，需逐条复核来源后用于外部材料。",
+      "quality": {
+        "curation_status": "verified_metadata",
+        "needs_scientific_review": false,
+        "needs_ip_review": false,
+        "flags": [
+          "metadata_only"
+        ]
+      }
+    },
+    {
+      "record_id": "bsab_005",
+      "name": "Epcoritamab",
+      "family": "bispecific_multispecific",
+      "category_id": "bsab_single_nav_single_immune",
+      "category_name": "双抗-单导航-单免疫",
+      "status": "verified_metadata",
+      "development_stage": "approved",
+      "year": 2023,
+      "year_basis": "approval",
+      "company_or_authors": [
+        "Hutchings M",
+        "AbbVie / Genmab"
+      ],
+      "arms": {
+        "navigation": [
+          {
+            "target": "CD20",
+            "role": "lymphoma_navigation",
+            "count_group": "single",
+            "verification_status": "needs_review"
+          }
+        ],
+        "immune": [
+          {
+            "target": "CD3",
+            "role": "t_cell_engagement",
+            "count_group": "single",
+            "verification_status": "needs_review"
+          }
+        ],
+        "payload": []
+      },
+      "mechanisms": [
+        {
+          "label": "subcutaneous CD20×CD3 T-cell engager",
+          "summary": "subcutaneous CD20×CD3 T-cell engager",
+          "confidence": "needs_review"
+        }
+      ],
+      "evidence": {
+        "papers": [
+          {
+            "title": "Hutchings et al., Journal of Clinical Oncology, 2021",
+            "year": 2021,
+            "url": "",
+            "evidence_status": "metadata_only"
+          }
+        ],
+        "patents": [],
+        "clinical_trials": [],
+        "company_links": []
+      },
+      "notes": "代表性公开成果/设计范式，需逐条复核来源后用于外部材料。",
+      "quality": {
+        "curation_status": "verified_metadata",
+        "needs_scientific_review": false,
+        "needs_ip_review": false,
+        "flags": [
+          "metadata_only"
+        ]
+      }
+    },
+    {
+      "record_id": "bsab_006",
+      "name": "Odronextamab",
+      "family": "bispecific_multispecific",
+      "category_id": "bsab_single_nav_single_immune",
+      "category_name": "双抗-单导航-单免疫",
+      "status": "curated_draft",
+      "development_stage": "clinical",
+      "year": 2024,
+      "year_basis": "paper_publication",
+      "company_or_authors": [
+        "Bannerji R",
+        "Regeneron"
+      ],
+      "arms": {
+        "navigation": [
+          {
+            "target": "CD20",
+            "role": "lymphoma_navigation",
+            "count_group": "single",
+            "verification_status": "needs_review"
+          }
+        ],
+        "immune": [
+          {
+            "target": "CD3",
+            "role": "t_cell_engagement",
+            "count_group": "single",
+            "verification_status": "needs_review"
+          }
+        ],
+        "payload": []
+      },
+      "mechanisms": [
+        {
+          "label": "CD20×CD3 T-cell engager",
+          "summary": "CD20×CD3 T-cell engager",
+          "confidence": "needs_review"
+        }
+      ],
+      "evidence": {
+        "papers": [
+          {
+            "title": "Bannerji et al., New England Journal of Medicine, 2024",
+            "year": 2024,
+            "url": "",
+            "evidence_status": "metadata_only"
+          }
+        ],
+        "patents": [],
+        "clinical_trials": [],
+        "company_links": []
+      },
+      "notes": "代表性公开成果/设计范式，需逐条复核来源后用于外部材料。",
+      "quality": {
+        "curation_status": "curated_draft",
+        "needs_scientific_review": true,
+        "needs_ip_review": false,
+        "flags": [
+          "user_supplied_unverified"
+        ]
+      }
+    },
+    {
+      "record_id": "bsab_007",
+      "name": "BiTE 技术平台",
+      "family": "bispecific_multispecific",
+      "category_id": "bsab_single_nav_single_immune",
+      "category_name": "双抗-单导航-单免疫",
+      "status": "curated_draft",
+      "development_stage": "platform",
+      "year": 2015,
+      "year_basis": "platform",
+      "company_or_authors": [
+        "Amgen"
+      ],
+      "arms": {
+        "navigation": [
+          {
+            "target": "variable tumor antigen",
+            "role": "modular_navigation",
+            "count_group": "single",
+            "verification_status": "needs_review"
+          }
+        ],
+        "immune": [
+          {
+            "target": "CD3",
+            "role": "t_cell_engagement",
+            "count_group": "single",
+            "verification_status": "needs_review"
+          }
+        ],
+        "payload": []
+      },
+      "mechanisms": [
+        {
+          "label": "modular bispecific T-cell engager platform",
+          "summary": "modular bispecific T-cell engager platform",
+          "confidence": "needs_review"
+        }
+      ],
+      "evidence": {
+        "papers": [
+          {
+            "title": "BiTE platform public literature metadata",
+            "year": 2015,
+            "url": "",
+            "evidence_status": "metadata_only"
+          }
+        ],
+        "patents": [
+          {
+            "title": "US 7,112,324 B1",
+            "year": 2006,
+            "url": "",
+            "evidence_status": "metadata_only",
+            "publication_number": "US7112324B1"
+          }
+        ],
+        "clinical_trials": [],
+        "company_links": []
+      },
+      "notes": "代表性公开成果/设计范式，需逐条复核来源后用于外部材料。",
+      "quality": {
+        "curation_status": "curated_draft",
+        "needs_scientific_review": true,
+        "needs_ip_review": true,
+        "flags": [
+          "user_supplied_unverified"
+        ]
+      }
+    },
+    {
+      "record_id": "bsab_008",
+      "name": "Co-OPT 平台（AND逻辑门控三抗）",
+      "family": "bispecific_multispecific",
+      "category_id": "bsab_multi_nav_single_immune",
+      "category_name": "双抗/多抗-多导航-单免疫",
+      "status": "curated_draft",
+      "development_stage": "preclinical",
+      "year": 2022,
+      "year_basis": "paper_publication",
+      "company_or_authors": [
+        "Dickopf S",
+        "UCSF"
+      ],
+      "arms": {
+        "navigation": [
+          {
+            "target": "EGFR",
+            "role": "navigation",
+            "count_group": "multi",
+            "verification_status": "needs_review"
+          },
+          {
+            "target": "cMet",
+            "role": "navigation",
+            "count_group": "multi",
+            "verification_status": "needs_review"
+          }
+        ],
+        "immune": [
+          {
+            "target": "CD3",
+            "role": "conditional_t_cell_engagement",
+            "count_group": "single",
+            "verification_status": "needs_review"
+          }
+        ],
+        "payload": []
+      },
+      "mechanisms": [
+        {
+          "label": "AND-gated dual-navigation T-cell engagement",
+          "summary": "AND-gated dual-navigation T-cell engagement",
+          "confidence": "needs_review"
+        }
+      ],
+      "evidence": {
+        "papers": [
+          {
+            "title": "Dickopf et al., Nature Biotechnology, 2022",
+            "year": 2022,
+            "url": "",
+            "evidence_status": "metadata_only"
+          }
+        ],
+        "patents": [],
+        "clinical_trials": [],
+        "company_links": []
+      },
+      "notes": "代表性公开成果/设计范式，需逐条复核来源后用于外部材料。",
+      "quality": {
+        "curation_status": "curated_draft",
+        "needs_scientific_review": true,
+        "needs_ip_review": false,
+        "flags": [
+          "user_supplied_unverified"
+        ]
+      }
+    },
+    {
+      "record_id": "bsab_009",
+      "name": "EGFR×cMet×CD3 三特异性抗体",
+      "family": "bispecific_multispecific",
+      "category_id": "bsab_multi_nav_single_immune",
+      "category_name": "双抗/多抗-多导航-单免疫",
+      "status": "curated_draft",
+      "development_stage": "needs_review",
+      "year": 2023,
+      "year_basis": "user_supplied",
+      "company_or_authors": [
+        "Smith J",
+        "needs_review"
+      ],
+      "arms": {
+        "navigation": [
+          {
+            "target": "EGFR",
+            "role": "navigation",
+            "count_group": "multi",
+            "verification_status": "needs_review"
+          },
+          {
+            "target": "cMet",
+            "role": "navigation",
+            "count_group": "multi",
+            "verification_status": "needs_review"
+          }
+        ],
+        "immune": [
+          {
+            "target": "CD3",
+            "role": "t_cell_engagement",
+            "count_group": "single",
+            "verification_status": "needs_review"
+          }
+        ],
+        "payload": []
+      },
+      "mechanisms": [
+        {
+          "label": "dual-navigation conditional T-cell engagement",
+          "summary": "dual-navigation conditional T-cell engagement",
+          "confidence": "needs_review"
+        }
+      ],
+      "evidence": {
+        "papers": [
+          {
+            "title": "Smith et al., Nature Communications, 2023（待复核）",
+            "year": 2023,
+            "url": "",
+            "evidence_status": "metadata_only"
+          }
+        ],
+        "patents": [],
+        "clinical_trials": [],
+        "company_links": []
+      },
+      "notes": "代表性公开成果/设计范式，需逐条复核来源后用于外部材料。",
+      "quality": {
+        "curation_status": "curated_draft",
+        "needs_scientific_review": true,
+        "needs_ip_review": false,
+        "flags": [
+          "user_supplied_unverified"
+        ]
+      }
+    },
+    {
+      "record_id": "bsab_010",
+      "name": "CD19×CD22×CD3 三特异性抗体",
+      "family": "bispecific_multispecific",
+      "category_id": "bsab_multi_nav_single_immune",
+      "category_name": "双抗/多抗-多导航-单免疫",
+      "status": "curated_draft",
+      "development_stage": "needs_review",
+      "year": 2024,
+      "year_basis": "user_supplied",
+      "company_or_authors": [
+        "Wang L",
+        "needs_review"
+      ],
+      "arms": {
+        "navigation": [
+          {
+            "target": "CD19",
+            "role": "navigation",
+            "count_group": "multi",
+            "verification_status": "needs_review"
+          },
+          {
+            "target": "CD22",
+            "role": "navigation",
+            "count_group": "multi",
+            "verification_status": "needs_review"
+          }
+        ],
+        "immune": [
+          {
+            "target": "CD3",
+            "role": "t_cell_engagement",
+            "count_group": "single",
+            "verification_status": "needs_review"
+          }
+        ],
+        "payload": []
+      },
+      "mechanisms": [
+        {
+          "label": "dual antigen targeting to reduce antigen-loss escape",
+          "summary": "dual antigen targeting to reduce antigen-loss escape",
+          "confidence": "needs_review"
+        }
+      ],
+      "evidence": {
+        "papers": [
+          {
+            "title": "Wang et al., Science Translational Medicine, 2024（待复核）",
+            "year": 2024,
+            "url": "",
+            "evidence_status": "metadata_only"
+          }
+        ],
+        "patents": [],
+        "clinical_trials": [],
+        "company_links": []
+      },
+      "notes": "代表性公开成果/设计范式，需逐条复核来源后用于外部材料。",
+      "quality": {
+        "curation_status": "curated_draft",
+        "needs_scientific_review": true,
+        "needs_ip_review": false,
+        "flags": [
+          "user_supplied_unverified"
+        ]
+      }
+    },
+    {
+      "record_id": "bsab_011",
+      "name": "pH依赖性激活双靶点双抗",
+      "family": "bispecific_multispecific",
+      "category_id": "bsab_multi_nav_single_immune",
+      "category_name": "双抗/多抗-多导航-单免疫",
+      "status": "curated_draft",
+      "development_stage": "literature_only",
+      "year": 2022,
+      "year_basis": "user_supplied",
+      "company_or_authors": [
+        "Liu H",
+        "needs_review"
+      ],
+      "arms": {
+        "navigation": [
+          {
+            "target": "tumor antigen X",
+            "role": "navigation",
+            "count_group": "multi",
+            "verification_status": "needs_review"
+          },
+          {
+            "target": "tumor antigen Y",
+            "role": "navigation",
+            "count_group": "multi",
+            "verification_status": "needs_review"
+          }
+        ],
+        "immune": [
+          {
+            "target": "CD3",
+            "role": "pH_gated_t_cell_engagement",
+            "count_group": "single",
+            "verification_status": "needs_review"
+          }
+        ],
+        "payload": []
+      },
+      "mechanisms": [
+        {
+          "label": "tumor microenvironment pH-gated activation",
+          "summary": "tumor microenvironment pH-gated activation",
+          "confidence": "needs_review"
+        }
+      ],
+      "evidence": {
+        "papers": [
+          {
+            "title": "Liu et al., Science Advances, 2022（待复核）",
+            "year": 2022,
+            "url": "",
+            "evidence_status": "metadata_only"
+          }
+        ],
+        "patents": [],
+        "clinical_trials": [],
+        "company_links": []
+      },
+      "notes": "代表性公开成果/设计范式，需逐条复核来源后用于外部材料。",
+      "quality": {
+        "curation_status": "curated_draft",
+        "needs_scientific_review": true,
+        "needs_ip_review": false,
+        "flags": [
+          "user_supplied_unverified"
+        ]
+      }
+    },
+    {
+      "record_id": "bsab_012",
+      "name": "蛋白酶激活双靶点双抗（Probody范式）",
+      "family": "bispecific_multispecific",
+      "category_id": "bsab_multi_nav_single_immune",
+      "category_name": "双抗/多抗-多导航-单免疫",
+      "status": "curated_draft",
+      "development_stage": "literature_only",
+      "year": 2023,
+      "year_basis": "user_supplied",
+      "company_or_authors": [
+        "Donaldson J",
+        "CytomX / needs_review"
+      ],
+      "arms": {
+        "navigation": [
+          {
+            "target": "tumor antigen X",
+            "role": "navigation",
+            "count_group": "multi",
+            "verification_status": "needs_review"
+          },
+          {
+            "target": "tumor antigen Y",
+            "role": "navigation",
+            "count_group": "multi",
+            "verification_status": "needs_review"
+          }
+        ],
+        "immune": [
+          {
+            "target": "CD3",
+            "role": "protease_unmasked_t_cell_engagement",
+            "count_group": "single",
+            "verification_status": "needs_review"
+          }
+        ],
+        "payload": []
+      },
+      "mechanisms": [
+        {
+          "label": "protease-activated masked T-cell engagement",
+          "summary": "protease-activated masked T-cell engagement",
+          "confidence": "needs_review"
+        }
+      ],
+      "evidence": {
+        "papers": [
+          {
+            "title": "Donaldson et al., Cancer Discovery, 2023（待复核）",
+            "year": 2023,
+            "url": "",
+            "evidence_status": "metadata_only"
+          }
+        ],
+        "patents": [],
+        "clinical_trials": [],
+        "company_links": []
+      },
+      "notes": "代表性公开成果/设计范式，需逐条复核来源后用于外部材料。",
+      "quality": {
+        "curation_status": "curated_draft",
+        "needs_scientific_review": true,
+        "needs_ip_review": false,
+        "flags": [
+          "user_supplied_unverified"
+        ]
+      }
+    },
+    {
+      "record_id": "bsab_013",
+      "name": "PD-1×CD28×CD3 三特异性抗体",
+      "family": "bispecific_multispecific",
+      "category_id": "bsab_single_nav_multi_immune",
+      "category_name": "双抗/多抗-单导航-多免疫臂",
+      "status": "curated_draft",
+      "development_stage": "needs_review",
+      "year": 2023,
+      "year_basis": "user_supplied",
+      "company_or_authors": [
+        "Xu H",
+        "Regeneron / needs_review"
+      ],
+      "arms": {
+        "navigation": [
+          {
+            "target": "PD-1",
+            "role": "immune_context_navigation",
+            "count_group": "single",
+            "verification_status": "needs_review"
+          }
+        ],
+        "immune": [
+          {
+            "target": "CD3",
+            "role": "activation",
+            "count_group": "single",
+            "verification_status": "needs_review"
+          },
+          {
+            "target": "CD28",
+            "role": "costimulation",
+            "count_group": "single",
+            "verification_status": "needs_review"
+          }
+        ],
+        "payload": []
+      },
+      "mechanisms": [
+        {
+          "label": "activation + costimulation + checkpoint context",
+          "summary": "activation + costimulation + checkpoint context",
+          "confidence": "needs_review"
+        }
+      ],
+      "evidence": {
+        "papers": [
+          {
+            "title": "Xu et al., Nature Communications, 2023（待复核）",
+            "year": 2023,
+            "url": "",
+            "evidence_status": "metadata_only"
+          }
+        ],
+        "patents": [],
+        "clinical_trials": [],
+        "company_links": []
+      },
+      "notes": "代表性公开成果/设计范式，需逐条复核来源后用于外部材料。",
+      "quality": {
+        "curation_status": "curated_draft",
+        "needs_scientific_review": true,
+        "needs_ip_review": false,
+        "flags": [
+          "user_supplied_unverified"
+        ]
+      }
+    },
+    {
+      "record_id": "bsab_014",
+      "name": "CD3×4-1BB 双共刺激双抗",
+      "family": "bispecific_multispecific",
+      "category_id": "bsab_single_nav_multi_immune",
+      "category_name": "双抗/多抗-单导航-多免疫臂",
+      "status": "curated_draft",
+      "development_stage": "needs_review",
+      "year": 2022,
+      "year_basis": "user_supplied",
+      "company_or_authors": [
+        "Zhao Y",
+        "needs_review"
+      ],
+      "arms": {
+        "navigation": [
+          {
+            "target": "tumor antigen",
+            "role": "navigation",
+            "count_group": "single",
+            "verification_status": "needs_review"
+          }
+        ],
+        "immune": [
+          {
+            "target": "CD3",
+            "role": "activation",
+            "count_group": "single",
+            "verification_status": "needs_review"
+          },
+          {
+            "target": "4-1BB",
+            "role": "costimulation",
+            "count_group": "single",
+            "verification_status": "needs_review"
+          }
+        ],
+        "payload": []
+      },
+      "mechanisms": [
+        {
+          "label": "CD3 activation plus 4-1BB costimulation",
+          "summary": "CD3 activation plus 4-1BB costimulation",
+          "confidence": "needs_review"
+        }
+      ],
+      "evidence": {
+        "papers": [
+          {
+            "title": "Zhao et al., Science Translational Medicine, 2022（待复核）",
+            "year": 2022,
+            "url": "",
+            "evidence_status": "metadata_only"
+          }
+        ],
+        "patents": [],
+        "clinical_trials": [],
+        "company_links": []
+      },
+      "notes": "代表性公开成果/设计范式，需逐条复核来源后用于外部材料。",
+      "quality": {
+        "curation_status": "curated_draft",
+        "needs_scientific_review": true,
+        "needs_ip_review": false,
+        "flags": [
+          "user_supplied_unverified"
+        ]
+      }
+    },
+    {
+      "record_id": "bsab_015",
+      "name": "PD-L1×CD28 双抗",
+      "family": "bispecific_multispecific",
+      "category_id": "bsab_single_nav_multi_immune",
+      "category_name": "双抗/多抗-单导航-多免疫臂",
+      "status": "curated_draft",
+      "development_stage": "needs_review",
+      "year": 2021,
+      "year_basis": "user_supplied",
+      "company_or_authors": [
+        "Kamphorst AO",
+        "BMS / needs_review"
+      ],
+      "arms": {
+        "navigation": [
+          {
+            "target": "PD-L1",
+            "role": "tumor_or_microenvironment_navigation",
+            "count_group": "single",
+            "verification_status": "needs_review"
+          }
+        ],
+        "immune": [
+          {
+            "target": "CD28",
+            "role": "costimulation",
+            "count_group": "single",
+            "verification_status": "needs_review"
+          }
+        ],
+        "payload": []
+      },
+      "mechanisms": [
+        {
+          "label": "tumor-localized CD28 costimulation and checkpoint axis modulation",
+          "summary": "tumor-localized CD28 costimulation and checkpoint axis modulation",
+          "confidence": "needs_review"
+        }
+      ],
+      "evidence": {
+        "papers": [
+          {
+            "title": "Kamphorst et al., Cancer Discovery, 2019（待复核）",
+            "year": 2019,
+            "url": "",
+            "evidence_status": "metadata_only"
+          }
+        ],
+        "patents": [],
+        "clinical_trials": [],
+        "company_links": []
+      },
+      "notes": "代表性公开成果/设计范式，需逐条复核来源后用于外部材料。",
+      "quality": {
+        "curation_status": "curated_draft",
+        "needs_scientific_review": true,
+        "needs_ip_review": false,
+        "flags": [
+          "user_supplied_unverified"
+        ]
+      }
+    },
+    {
+      "record_id": "bsab_016",
+      "name": "CD3×CD28 双共刺激双抗",
+      "family": "bispecific_multispecific",
+      "category_id": "bsab_single_nav_multi_immune",
+      "category_name": "双抗/多抗-单导航-多免疫臂",
+      "status": "curated_draft",
+      "development_stage": "needs_review",
+      "year": 2022,
+      "year_basis": "user_supplied",
+      "company_or_authors": [
+        "Kim J",
+        "needs_review"
+      ],
+      "arms": {
+        "navigation": [
+          {
+            "target": "tumor antigen",
+            "role": "navigation",
+            "count_group": "single",
+            "verification_status": "needs_review"
+          }
+        ],
+        "immune": [
+          {
+            "target": "CD3",
+            "role": "activation",
+            "count_group": "single",
+            "verification_status": "needs_review"
+          },
+          {
+            "target": "CD28",
+            "role": "costimulation",
+            "count_group": "single",
+            "verification_status": "needs_review"
+          }
+        ],
+        "payload": []
+      },
+      "mechanisms": [
+        {
+          "label": "two-signal T-cell activation",
+          "summary": "two-signal T-cell activation",
+          "confidence": "needs_review"
+        }
+      ],
+      "evidence": {
+        "papers": [
+          {
+            "title": "Kim et al., Nature Biotechnology, 2023（待复核）",
+            "year": 2023,
+            "url": "",
+            "evidence_status": "metadata_only"
+          }
+        ],
+        "patents": [],
+        "clinical_trials": [],
+        "company_links": []
+      },
+      "notes": "代表性公开成果/设计范式，需逐条复核来源后用于外部材料。",
+      "quality": {
+        "curation_status": "curated_draft",
+        "needs_scientific_review": true,
+        "needs_ip_review": false,
+        "flags": [
+          "user_supplied_unverified"
+        ]
+      }
+    },
+    {
+      "record_id": "bsab_017",
+      "name": "NK细胞双激活三抗（CD16×NKG2D×肿瘤抗原）",
+      "family": "bispecific_multispecific",
+      "category_id": "bsab_single_nav_multi_immune",
+      "category_name": "双抗/多抗-单导航-多免疫臂",
+      "status": "curated_draft",
+      "development_stage": "needs_review",
+      "year": 2024,
+      "year_basis": "user_supplied",
+      "company_or_authors": [
+        "Harwood L",
+        "needs_review"
+      ],
+      "arms": {
+        "navigation": [
+          {
+            "target": "tumor antigen",
+            "role": "navigation",
+            "count_group": "single",
+            "verification_status": "needs_review"
+          }
+        ],
+        "immune": [
+          {
+            "target": "CD16",
+            "role": "NK_ADCC_activation",
+            "count_group": "single",
+            "verification_status": "needs_review"
+          },
+          {
+            "target": "NKG2D",
+            "role": "NK_activation",
+            "count_group": "single",
+            "verification_status": "needs_review"
+          }
+        ],
+        "payload": []
+      },
+      "mechanisms": [
+        {
+          "label": "dual NK-cell activation",
+          "summary": "dual NK-cell activation",
+          "confidence": "needs_review"
+        }
+      ],
+      "evidence": {
+        "papers": [
+          {
+            "title": "Harwood et al., Cell Reports Medicine, 2024（待复核）",
+            "year": 2024,
+            "url": "",
+            "evidence_status": "metadata_only"
+          }
+        ],
+        "patents": [],
+        "clinical_trials": [],
+        "company_links": []
+      },
+      "notes": "代表性公开成果/设计范式，需逐条复核来源后用于外部材料。",
+      "quality": {
+        "curation_status": "curated_draft",
+        "needs_scientific_review": true,
+        "needs_ip_review": false,
+        "flags": [
+          "user_supplied_unverified"
+        ]
+      }
+    },
+    {
+      "record_id": "bsab_018",
+      "name": "EGFR×HER2×CD3×4-1BB 四特异性抗体",
+      "family": "bispecific_multispecific",
+      "category_id": "bsab_multi_nav_multi_immune",
+      "category_name": "双抗/多抗-多导航-多免疫臂",
+      "status": "curated_draft",
+      "development_stage": "needs_review",
+      "year": 2023,
+      "year_basis": "user_supplied",
+      "company_or_authors": [
+        "Chen W",
+        "needs_review"
+      ],
+      "arms": {
+        "navigation": [
+          {
+            "target": "EGFR",
+            "role": "navigation",
+            "count_group": "multi",
+            "verification_status": "needs_review"
+          },
+          {
+            "target": "HER2",
+            "role": "navigation",
+            "count_group": "multi",
+            "verification_status": "needs_review"
+          }
+        ],
+        "immune": [
+          {
+            "target": "CD3",
+            "role": "activation",
+            "count_group": "single",
+            "verification_status": "needs_review"
+          },
+          {
+            "target": "4-1BB",
+            "role": "costimulation",
+            "count_group": "single",
+            "verification_status": "needs_review"
+          }
+        ],
+        "payload": []
+      },
+      "mechanisms": [
+        {
+          "label": "dual navigation plus dual immune activation",
+          "summary": "dual navigation plus dual immune activation",
+          "confidence": "needs_review"
+        }
+      ],
+      "evidence": {
+        "papers": [
+          {
+            "title": "Chen et al., Cell, 2023（待复核）",
+            "year": 2023,
+            "url": "",
+            "evidence_status": "metadata_only"
+          }
+        ],
+        "patents": [],
+        "clinical_trials": [],
+        "company_links": []
+      },
+      "notes": "代表性公开成果/设计范式，需逐条复核来源后用于外部材料。",
+      "quality": {
+        "curation_status": "curated_draft",
+        "needs_scientific_review": true,
+        "needs_ip_review": false,
+        "flags": [
+          "user_supplied_unverified"
+        ]
+      }
+    },
+    {
+      "record_id": "bsab_019",
+      "name": "双T细胞接合器四抗",
+      "family": "bispecific_multispecific",
+      "category_id": "bsab_multi_nav_multi_immune",
+      "category_name": "双抗/多抗-多导航-多免疫臂",
+      "status": "curated_draft",
+      "development_stage": "needs_review",
+      "year": 2022,
+      "year_basis": "user_supplied",
+      "company_or_authors": [
+        "Zhang Q",
+        "needs_review"
+      ],
+      "arms": {
+        "navigation": [
+          {
+            "target": "tumor antigen A",
+            "role": "navigation",
+            "count_group": "multi",
+            "verification_status": "needs_review"
+          },
+          {
+            "target": "tumor antigen B",
+            "role": "navigation",
+            "count_group": "multi",
+            "verification_status": "needs_review"
+          }
+        ],
+        "immune": [
+          {
+            "target": "CD3 epitope 1",
+            "role": "t_cell_engagement",
+            "count_group": "single",
+            "verification_status": "needs_review"
+          },
+          {
+            "target": "CD3 epitope 2",
+            "role": "t_cell_engagement",
+            "count_group": "single",
+            "verification_status": "needs_review"
+          }
+        ],
+        "payload": []
+      },
+      "mechanisms": [
+        {
+          "label": "double T-cell engager concept",
+          "summary": "double T-cell engager concept",
+          "confidence": "needs_review"
+        }
+      ],
+      "evidence": {
+        "papers": [
+          {
+            "title": "Zhang et al., Nature Communications, 2022（待复核）",
+            "year": 2022,
+            "url": "",
+            "evidence_status": "metadata_only"
+          }
+        ],
+        "patents": [],
+        "clinical_trials": [],
+        "company_links": []
+      },
+      "notes": "代表性公开成果/设计范式，需逐条复核来源后用于外部材料。",
+      "quality": {
+        "curation_status": "curated_draft",
+        "needs_scientific_review": true,
+        "needs_ip_review": false,
+        "flags": [
+          "user_supplied_unverified"
+        ]
+      }
+    },
+    {
+      "record_id": "adc_001",
+      "name": "Trastuzumab emtansine（T-DM1 / Kadcyla）",
+      "family": "adc",
+      "category_id": "adc_single_nav_single_payload",
+      "category_name": "ADC-单导航-单载荷",
+      "status": "verified_metadata",
+      "development_stage": "approved",
+      "year": 2013,
+      "year_basis": "approval",
+      "company_or_authors": [
+        "Verma S",
+        "Roche / Genentech / ImmunoGen"
+      ],
+      "arms": {
+        "navigation": [
+          {
+            "target": "HER2",
+            "role": "tumor_navigation",
+            "count_group": "single",
+            "verification_status": "needs_review"
+          }
+        ],
+        "immune": [],
+        "payload": [
+          {
+            "target": "DM1",
+            "role": "microtubule_payload",
+            "count_group": "single",
+            "verification_status": "needs_review"
+          }
+        ]
+      },
+      "mechanisms": [
+        {
+          "label": "HER2-mediated internalization and DM1 microtubule inhibition",
+          "summary": "HER2-mediated internalization and DM1 microtubule inhibition",
+          "confidence": "needs_review"
+        }
+      ],
+      "evidence": {
+        "papers": [
+          {
+            "title": "Verma et al., New England Journal of Medicine, 2012",
+            "year": 2012,
+            "url": "",
+            "evidence_status": "metadata_only"
+          }
+        ],
+        "patents": [],
+        "clinical_trials": [],
+        "company_links": []
+      },
+      "notes": "代表性公开成果/设计范式，需逐条复核来源后用于外部材料。",
+      "quality": {
+        "curation_status": "verified_metadata",
+        "needs_scientific_review": false,
+        "needs_ip_review": false,
+        "flags": [
+          "metadata_only"
+        ]
+      }
+    },
+    {
+      "record_id": "adc_002",
+      "name": "Trastuzumab deruxtecan（T-DXd / Enhertu）",
+      "family": "adc",
+      "category_id": "adc_single_nav_single_payload",
+      "category_name": "ADC-单导航-单载荷",
+      "status": "verified_metadata",
+      "development_stage": "approved",
+      "year": 2019,
+      "year_basis": "approval",
+      "company_or_authors": [
+        "Modi S",
+        "Daiichi Sankyo / AstraZeneca"
+      ],
+      "arms": {
+        "navigation": [
+          {
+            "target": "HER2",
+            "role": "tumor_navigation",
+            "count_group": "single",
+            "verification_status": "needs_review"
+          }
+        ],
+        "immune": [],
+        "payload": [
+          {
+            "target": "DXd",
+            "role": "TOP1_payload",
+            "count_group": "single",
+            "verification_status": "needs_review"
+          }
+        ]
+      },
+      "mechanisms": [
+        {
+          "label": "HER2 targeting, DXd release, DNA damage and bystander effect",
+          "summary": "HER2 targeting, DXd release, DNA damage and bystander effect",
+          "confidence": "needs_review"
+        }
+      ],
+      "evidence": {
+        "papers": [
+          {
+            "title": "Modi et al., New England Journal of Medicine, 2020",
+            "year": 2020,
+            "url": "",
+            "evidence_status": "metadata_only"
+          }
+        ],
+        "patents": [],
+        "clinical_trials": [],
+        "company_links": []
+      },
+      "notes": "代表性公开成果/设计范式，需逐条复核来源后用于外部材料。",
+      "quality": {
+        "curation_status": "verified_metadata",
+        "needs_scientific_review": false,
+        "needs_ip_review": false,
+        "flags": [
+          "metadata_only"
+        ]
+      }
+    },
+    {
+      "record_id": "adc_003",
+      "name": "Sacituzumab govitecan（Trodelvy）",
+      "family": "adc",
+      "category_id": "adc_single_nav_single_payload",
+      "category_name": "ADC-单导航-单载荷",
+      "status": "verified_metadata",
+      "development_stage": "approved",
+      "year": 2020,
+      "year_basis": "approval",
+      "company_or_authors": [
+        "Bardia A",
+        "Immunomedics / Gilead"
+      ],
+      "arms": {
+        "navigation": [
+          {
+            "target": "TROP2",
+            "role": "tumor_navigation",
+            "count_group": "single",
+            "verification_status": "needs_review"
+          }
+        ],
+        "immune": [],
+        "payload": [
+          {
+            "target": "SN-38",
+            "role": "TOP1_payload",
+            "count_group": "single",
+            "verification_status": "needs_review"
+          }
+        ]
+      },
+      "mechanisms": [
+        {
+          "label": "TROP2-mediated delivery of SN-38",
+          "summary": "TROP2-mediated delivery of SN-38",
+          "confidence": "needs_review"
+        }
+      ],
+      "evidence": {
+        "papers": [
+          {
+            "title": "Bardia et al., New England Journal of Medicine, 2021",
+            "year": 2021,
+            "url": "",
+            "evidence_status": "metadata_only"
+          }
+        ],
+        "patents": [],
+        "clinical_trials": [],
+        "company_links": []
+      },
+      "notes": "代表性公开成果/设计范式，需逐条复核来源后用于外部材料。",
+      "quality": {
+        "curation_status": "verified_metadata",
+        "needs_scientific_review": false,
+        "needs_ip_review": false,
+        "flags": [
+          "metadata_only"
+        ]
+      }
+    },
+    {
+      "record_id": "adc_004",
+      "name": "Enfortumab vedotin（Padcev）",
+      "family": "adc",
+      "category_id": "adc_single_nav_single_payload",
+      "category_name": "ADC-单导航-单载荷",
+      "status": "verified_metadata",
+      "development_stage": "approved",
+      "year": 2019,
+      "year_basis": "approval",
+      "company_or_authors": [
+        "Seagen",
+        "Astellas"
+      ],
+      "arms": {
+        "navigation": [
+          {
+            "target": "Nectin-4",
+            "role": "tumor_navigation",
+            "count_group": "single",
+            "verification_status": "needs_review"
+          }
+        ],
+        "immune": [],
+        "payload": [
+          {
+            "target": "MMAE",
+            "role": "microtubule_payload",
+            "count_group": "single",
+            "verification_status": "needs_review"
+          }
+        ]
+      },
+      "mechanisms": [
+        {
+          "label": "Nectin-4 targeting and MMAE release",
+          "summary": "Nectin-4 targeting and MMAE release",
+          "confidence": "needs_review"
+        }
+      ],
+      "evidence": {
+        "papers": [
+          {
+            "title": "Powles et al., New England Journal of Medicine, 2021",
+            "year": 2021,
+            "url": "",
+            "evidence_status": "metadata_only"
+          }
+        ],
+        "patents": [],
+        "clinical_trials": [],
+        "company_links": []
+      },
+      "notes": "代表性公开成果/设计范式，需逐条复核来源后用于外部材料。",
+      "quality": {
+        "curation_status": "verified_metadata",
+        "needs_scientific_review": false,
+        "needs_ip_review": false,
+        "flags": [
+          "metadata_only"
+        ]
+      }
+    },
+    {
+      "record_id": "adc_005",
+      "name": "Polatuzumab vedotin（Polivy）",
+      "family": "adc",
+      "category_id": "adc_single_nav_single_payload",
+      "category_name": "ADC-单导航-单载荷",
+      "status": "verified_metadata",
+      "development_stage": "approved",
+      "year": 2019,
+      "year_basis": "approval",
+      "company_or_authors": [
+        "Roche"
+      ],
+      "arms": {
+        "navigation": [
+          {
+            "target": "CD79b",
+            "role": "lymphoma_navigation",
+            "count_group": "single",
+            "verification_status": "needs_review"
+          }
+        ],
+        "immune": [],
+        "payload": [
+          {
+            "target": "MMAE",
+            "role": "microtubule_payload",
+            "count_group": "single",
+            "verification_status": "needs_review"
+          }
+        ]
+      },
+      "mechanisms": [
+        {
+          "label": "CD79b-mediated delivery of MMAE",
+          "summary": "CD79b-mediated delivery of MMAE",
+          "confidence": "needs_review"
+        }
+      ],
+      "evidence": {
+        "papers": [],
+        "patents": [],
+        "clinical_trials": [],
+        "company_links": []
+      },
+      "notes": "代表性公开成果/设计范式，需逐条复核来源后用于外部材料。",
+      "quality": {
+        "curation_status": "verified_metadata",
+        "needs_scientific_review": false,
+        "needs_ip_review": false,
+        "flags": [
+          "metadata_only"
+        ]
+      }
+    },
+    {
+      "record_id": "adc_006",
+      "name": "Belantamab mafodotin（Blenrep）",
+      "family": "adc",
+      "category_id": "adc_single_nav_single_payload",
+      "category_name": "ADC-单导航-单载荷",
+      "status": "verified_metadata",
+      "development_stage": "approved",
+      "year": 2020,
+      "year_basis": "approval",
+      "company_or_authors": [
+        "GSK"
+      ],
+      "arms": {
+        "navigation": [
+          {
+            "target": "BCMA",
+            "role": "myeloma_navigation",
+            "count_group": "single",
+            "verification_status": "needs_review"
+          }
+        ],
+        "immune": [],
+        "payload": [
+          {
+            "target": "MMAF",
+            "role": "microtubule_payload",
+            "count_group": "single",
+            "verification_status": "needs_review"
+          }
+        ]
+      },
+      "mechanisms": [
+        {
+          "label": "BCMA-mediated delivery of MMAF",
+          "summary": "BCMA-mediated delivery of MMAF",
+          "confidence": "needs_review"
+        }
+      ],
+      "evidence": {
+        "papers": [],
+        "patents": [],
+        "clinical_trials": [],
+        "company_links": []
+      },
+      "notes": "代表性公开成果/设计范式，需逐条复核来源后用于外部材料。",
+      "quality": {
+        "curation_status": "verified_metadata",
+        "needs_scientific_review": false,
+        "needs_ip_review": false,
+        "flags": [
+          "metadata_only"
+        ]
+      }
+    },
+    {
+      "record_id": "adc_007",
+      "name": "Disitamab vedotin（RC48 / 维迪西妥单抗）",
+      "family": "adc",
+      "category_id": "adc_single_nav_single_payload",
+      "category_name": "ADC-单导航-单载荷",
+      "status": "verified_metadata",
+      "development_stage": "approved",
+      "year": 2021,
+      "year_basis": "approval",
+      "company_or_authors": [
+        "RemeGen / 荣昌生物"
+      ],
+      "arms": {
+        "navigation": [
+          {
+            "target": "HER2",
+            "role": "tumor_navigation",
+            "count_group": "single",
+            "verification_status": "needs_review"
+          }
+        ],
+        "immune": [],
+        "payload": [
+          {
+            "target": "MMAE",
+            "role": "microtubule_payload",
+            "count_group": "single",
+            "verification_status": "needs_review"
+          }
+        ]
+      },
+      "mechanisms": [
+        {
+          "label": "HER2 targeting and MMAE release",
+          "summary": "HER2 targeting and MMAE release",
+          "confidence": "needs_review"
+        }
+      ],
+      "evidence": {
+        "papers": [],
+        "patents": [],
+        "clinical_trials": [],
+        "company_links": []
+      },
+      "notes": "代表性公开成果/设计范式，需逐条复核来源后用于外部材料。",
+      "quality": {
+        "curation_status": "verified_metadata",
+        "needs_scientific_review": false,
+        "needs_ip_review": false,
+        "flags": [
+          "metadata_only"
+        ]
+      }
+    },
+    {
+      "record_id": "adc_008",
+      "name": "Cetuximab sarotalocan（Akalux）",
+      "family": "adc",
+      "category_id": "adc_single_nav_single_payload",
+      "category_name": "ADC-单导航-单载荷",
+      "status": "verified_metadata",
+      "development_stage": "approved",
+      "year": 2021,
+      "year_basis": "approval",
+      "company_or_authors": [
+        "Rakuten Medical"
+      ],
+      "arms": {
+        "navigation": [
+          {
+            "target": "EGFR",
+            "role": "tumor_navigation",
+            "count_group": "single",
+            "verification_status": "needs_review"
+          }
+        ],
+        "immune": [],
+        "payload": [
+          {
+            "target": "IRDye700DX",
+            "role": "photoimmunotherapy_payload",
+            "count_group": "single",
+            "verification_status": "needs_review"
+          }
+        ]
+      },
+      "mechanisms": [
+        {
+          "label": "EGFR targeting and light-activated membrane damage",
+          "summary": "EGFR targeting and light-activated membrane damage",
+          "confidence": "needs_review"
+        }
+      ],
+      "evidence": {
+        "papers": [],
+        "patents": [],
+        "clinical_trials": [],
+        "company_links": []
+      },
+      "notes": "代表性公开成果/设计范式，需逐条复核来源后用于外部材料。",
+      "quality": {
+        "curation_status": "verified_metadata",
+        "needs_scientific_review": false,
+        "needs_ip_review": false,
+        "flags": [
+          "metadata_only"
+        ]
+      }
+    },
+    {
+      "record_id": "adc_009",
+      "name": "ZW49（HER2双表位ADC）",
+      "family": "adc",
+      "category_id": "adc_multi_nav_single_payload",
+      "category_name": "ADC-多导航-单载荷",
+      "status": "curated_draft",
+      "development_stage": "clinical",
+      "year": 2023,
+      "year_basis": "clinical_or_paper",
+      "company_or_authors": [
+        "Hamblett K",
+        "Zymeworks"
+      ],
+      "arms": {
+        "navigation": [
+          {
+            "target": "HER2 epitope 1",
+            "role": "navigation",
+            "count_group": "multi",
+            "verification_status": "needs_review"
+          },
+          {
+            "target": "HER2 epitope 2",
+            "role": "navigation",
+            "count_group": "multi",
+            "verification_status": "needs_review"
+          }
+        ],
+        "immune": [],
+        "payload": [
+          {
+            "target": "MMAE",
+            "role": "microtubule_payload",
+            "count_group": "single",
+            "verification_status": "needs_review"
+          }
+        ]
+      },
+      "mechanisms": [
+        {
+          "label": "dual-epitope HER2 binding and MMAE delivery",
+          "summary": "dual-epitope HER2 binding and MMAE delivery",
+          "confidence": "needs_review"
+        }
+      ],
+      "evidence": {
+        "papers": [
+          {
+            "title": "Hamblett et al., Clinical Cancer Research, 2021（待复核）",
+            "year": 2021,
+            "url": "",
+            "evidence_status": "metadata_only"
+          }
+        ],
+        "patents": [],
+        "clinical_trials": [],
+        "company_links": []
+      },
+      "notes": "代表性公开成果/设计范式，需逐条复核来源后用于外部材料。",
+      "quality": {
+        "curation_status": "curated_draft",
+        "needs_scientific_review": true,
+        "needs_ip_review": false,
+        "flags": [
+          "user_supplied_unverified"
+        ]
+      }
+    },
+    {
+      "record_id": "adc_010",
+      "name": "BL-B01D1（EGFR×HER3双靶点ADC）",
+      "family": "adc",
+      "category_id": "adc_multi_nav_single_payload",
+      "category_name": "ADC-多导航-单载荷",
+      "status": "curated_draft",
+      "development_stage": "clinical",
+      "year": 2024,
+      "year_basis": "company_disclosure",
+      "company_or_authors": [
+        "Baili Tianheng / 百利天恒"
+      ],
+      "arms": {
+        "navigation": [
+          {
+            "target": "EGFR",
+            "role": "navigation",
+            "count_group": "multi",
+            "verification_status": "needs_review"
+          },
+          {
+            "target": "HER3",
+            "role": "navigation",
+            "count_group": "multi",
+            "verification_status": "needs_review"
+          }
+        ],
+        "immune": [],
+        "payload": [
+          {
+            "target": "Ed-04",
+            "role": "TOP1_payload",
+            "count_group": "single",
+            "verification_status": "needs_review"
+          }
+        ]
+      },
+      "mechanisms": [
+        {
+          "label": "EGFR/HER3 dual targeting and TOP1 payload delivery",
+          "summary": "EGFR/HER3 dual targeting and TOP1 payload delivery",
+          "confidence": "needs_review"
+        }
+      ],
+      "evidence": {
+        "papers": [
+          {
+            "title": "Wang J et al., Nature Medicine, 2025（待复核）",
+            "year": 2025,
+            "url": "",
+            "evidence_status": "metadata_only"
+          }
+        ],
+        "patents": [],
+        "clinical_trials": [],
+        "company_links": []
+      },
+      "notes": "代表性公开成果/设计范式，需逐条复核来源后用于外部材料。",
+      "quality": {
+        "curation_status": "curated_draft",
+        "needs_scientific_review": true,
+        "needs_ip_review": false,
+        "flags": [
+          "user_supplied_unverified"
+        ]
+      }
+    },
+    {
+      "record_id": "adc_011",
+      "name": "M1231（EGFR×MET双靶点ADC）",
+      "family": "adc",
+      "category_id": "adc_multi_nav_single_payload",
+      "category_name": "ADC-多导航-单载荷",
+      "status": "curated_draft",
+      "development_stage": "clinical",
+      "year": 2022,
+      "year_basis": "clinical_first_posted",
+      "company_or_authors": [
+        "Merck KGaA"
+      ],
+      "arms": {
+        "navigation": [
+          {
+            "target": "EGFR",
+            "role": "navigation",
+            "count_group": "multi",
+            "verification_status": "needs_review"
+          },
+          {
+            "target": "MET",
+            "role": "navigation",
+            "count_group": "multi",
+            "verification_status": "needs_review"
+          }
+        ],
+        "immune": [],
+        "payload": [
+          {
+            "target": "DM1",
+            "role": "microtubule_payload",
+            "count_group": "single",
+            "verification_status": "needs_review"
+          }
+        ]
+      },
+      "mechanisms": [
+        {
+          "label": "EGFR/MET dual targeting and DM1 delivery",
+          "summary": "EGFR/MET dual targeting and DM1 delivery",
+          "confidence": "needs_review"
+        }
+      ],
+      "evidence": {
+        "papers": [],
+        "patents": [],
+        "clinical_trials": [],
+        "company_links": []
+      },
+      "notes": "代表性公开成果/设计范式，需逐条复核来源后用于外部材料。",
+      "quality": {
+        "curation_status": "curated_draft",
+        "needs_scientific_review": true,
+        "needs_ip_review": false,
+        "flags": [
+          "user_supplied_unverified"
+        ]
+      }
+    },
+    {
+      "record_id": "adc_012",
+      "name": "MEDI4276（HER2双表位ADC）",
+      "family": "adc",
+      "category_id": "adc_multi_nav_single_payload",
+      "category_name": "ADC-多导航-单载荷",
+      "status": "curated_draft",
+      "development_stage": "clinical",
+      "year": 2018,
+      "year_basis": "clinical_first_posted",
+      "company_or_authors": [
+        "AstraZeneca / MedImmune"
+      ],
+      "arms": {
+        "navigation": [
+          {
+            "target": "HER2 epitope 1",
+            "role": "navigation",
+            "count_group": "multi",
+            "verification_status": "needs_review"
+          },
+          {
+            "target": "HER2 epitope 2",
+            "role": "navigation",
+            "count_group": "multi",
+            "verification_status": "needs_review"
+          }
+        ],
+        "immune": [],
+        "payload": [
+          {
+            "target": "MMAF",
+            "role": "microtubule_payload",
+            "count_group": "single",
+            "verification_status": "needs_review"
+          }
+        ]
+      },
+      "mechanisms": [
+        {
+          "label": "dual-epitope HER2 binding and MMAF delivery",
+          "summary": "dual-epitope HER2 binding and MMAF delivery",
+          "confidence": "needs_review"
+        }
+      ],
+      "evidence": {
+        "papers": [],
+        "patents": [],
+        "clinical_trials": [],
+        "company_links": []
+      },
+      "notes": "代表性公开成果/设计范式，需逐条复核来源后用于外部材料。",
+      "quality": {
+        "curation_status": "curated_draft",
+        "needs_scientific_review": true,
+        "needs_ip_review": false,
+        "flags": [
+          "user_supplied_unverified"
+        ]
+      }
+    },
+    {
+      "record_id": "adc_013",
+      "name": "双靶点ADC抗耐药机制研究",
+      "family": "adc",
+      "category_id": "adc_multi_nav_single_payload",
+      "category_name": "ADC-多导航-单载荷",
+      "status": "curated_draft",
+      "development_stage": "literature_only",
+      "year": 2023,
+      "year_basis": "user_supplied",
+      "company_or_authors": [
+        "Li X",
+        "needs_review"
+      ],
+      "arms": {
+        "navigation": [
+          {
+            "target": "tumor antigen A",
+            "role": "navigation",
+            "count_group": "multi",
+            "verification_status": "needs_review"
+          },
+          {
+            "target": "tumor antigen B",
+            "role": "navigation",
+            "count_group": "multi",
+            "verification_status": "needs_review"
+          }
+        ],
+        "immune": [],
+        "payload": [
+          {
+            "target": "chemotherapy payload",
+            "role": "cytotoxic_payload",
+            "count_group": "single",
+            "verification_status": "needs_review"
+          }
+        ]
+      },
+      "mechanisms": [
+        {
+          "label": "dual-targeting to reduce antigen-loss resistance",
+          "summary": "dual-targeting to reduce antigen-loss resistance",
+          "confidence": "needs_review"
+        }
+      ],
+      "evidence": {
+        "papers": [
+          {
+            "title": "Li et al., Nature Communications, 2023（待复核）",
+            "year": 2023,
+            "url": "",
+            "evidence_status": "metadata_only"
+          }
+        ],
+        "patents": [],
+        "clinical_trials": [],
+        "company_links": []
+      },
+      "notes": "代表性公开成果/设计范式，需逐条复核来源后用于外部材料。",
+      "quality": {
+        "curation_status": "curated_draft",
+        "needs_scientific_review": true,
+        "needs_ip_review": false,
+        "flags": [
+          "user_supplied_unverified"
+        ]
+      }
+    },
+    {
+      "record_id": "adc_014",
+      "name": "双载荷ADC协同效应研究",
+      "family": "adc",
+      "category_id": "adc_single_nav_multi_payload",
+      "category_name": "ADC-单导航-多载荷",
+      "status": "curated_draft",
+      "development_stage": "literature_only",
+      "year": 2023,
+      "year_basis": "user_supplied",
+      "company_or_authors": [
+        "Pysz M",
+        "needs_review"
+      ],
+      "arms": {
+        "navigation": [
+          {
+            "target": "HER2",
+            "role": "navigation",
+            "count_group": "single",
+            "verification_status": "needs_review"
+          }
+        ],
+        "immune": [],
+        "payload": [
+          {
+            "target": "MMAE",
+            "role": "microtubule_payload",
+            "count_group": "single",
+            "verification_status": "needs_review"
+          },
+          {
+            "target": "SN-38",
+            "role": "TOP1_payload",
+            "count_group": "single",
+            "verification_status": "needs_review"
+          }
+        ]
+      },
+      "mechanisms": [
+        {
+          "label": "dual-payload synergy through orthogonal cytotoxic mechanisms",
+          "summary": "dual-payload synergy through orthogonal cytotoxic mechanisms",
+          "confidence": "needs_review"
+        }
+      ],
+      "evidence": {
+        "papers": [
+          {
+            "title": "Pysz et al., Nature Communications, 2023（待复核）",
+            "year": 2023,
+            "url": "",
+            "evidence_status": "metadata_only"
+          }
+        ],
+        "patents": [],
+        "clinical_trials": [],
+        "company_links": []
+      },
+      "notes": "代表性公开成果/设计范式，需逐条复核来源后用于外部材料。",
+      "quality": {
+        "curation_status": "curated_draft",
+        "needs_scientific_review": true,
+        "needs_ip_review": false,
+        "flags": [
+          "user_supplied_unverified"
+        ]
+      }
+    },
+    {
+      "record_id": "adc_015",
+      "name": "SG-326（HER2双载荷ADC）",
+      "family": "adc",
+      "category_id": "adc_single_nav_multi_payload",
+      "category_name": "ADC-单导航-多载荷",
+      "status": "curated_draft",
+      "development_stage": "preclinical",
+      "year": 2024,
+      "year_basis": "user_supplied",
+      "company_or_authors": [
+        "needs_review"
+      ],
+      "arms": {
+        "navigation": [
+          {
+            "target": "HER2",
+            "role": "navigation",
+            "count_group": "single",
+            "verification_status": "needs_review"
+          }
+        ],
+        "immune": [],
+        "payload": [
+          {
+            "target": "MMAE",
+            "role": "microtubule_payload",
+            "count_group": "single",
+            "verification_status": "needs_review"
+          },
+          {
+            "target": "DXd",
+            "role": "TOP1_payload",
+            "count_group": "single",
+            "verification_status": "needs_review"
+          }
+        ]
+      },
+      "mechanisms": [
+        {
+          "label": "HER2-targeted dual-payload delivery",
+          "summary": "HER2-targeted dual-payload delivery",
+          "confidence": "needs_review"
+        }
+      ],
+      "evidence": {
+        "papers": [],
+        "patents": [],
+        "clinical_trials": [],
+        "company_links": []
+      },
+      "notes": "代表性公开成果/设计范式，需逐条复核来源后用于外部材料。",
+      "quality": {
+        "curation_status": "curated_draft",
+        "needs_scientific_review": true,
+        "needs_ip_review": false,
+        "flags": [
+          "user_supplied_unverified"
+        ]
+      }
+    },
+    {
+      "record_id": "adc_016",
+      "name": "双载荷智能释放系统",
+      "family": "adc",
+      "category_id": "adc_single_nav_multi_payload",
+      "category_name": "ADC-单导航-多载荷",
+      "status": "curated_draft",
+      "development_stage": "literature_only",
+      "year": 2022,
+      "year_basis": "user_supplied",
+      "company_or_authors": [
+        "Chen Y",
+        "needs_review"
+      ],
+      "arms": {
+        "navigation": [
+          {
+            "target": "tumor antigen",
+            "role": "navigation",
+            "count_group": "single",
+            "verification_status": "needs_review"
+          }
+        ],
+        "immune": [],
+        "payload": [
+          {
+            "target": "payload A",
+            "role": "payload",
+            "count_group": "single",
+            "verification_status": "needs_review"
+          },
+          {
+            "target": "payload B",
+            "role": "payload",
+            "count_group": "single",
+            "verification_status": "needs_review"
+          }
+        ]
+      },
+      "mechanisms": [
+        {
+          "label": "staged or environment-sensitive dual-payload release",
+          "summary": "staged or environment-sensitive dual-payload release",
+          "confidence": "needs_review"
+        }
+      ],
+      "evidence": {
+        "papers": [
+          {
+            "title": "Chen et al., Science Advances, 2022（待复核）",
+            "year": 2022,
+            "url": "",
+            "evidence_status": "metadata_only"
+          }
+        ],
+        "patents": [],
+        "clinical_trials": [],
+        "company_links": []
+      },
+      "notes": "代表性公开成果/设计范式，需逐条复核来源后用于外部材料。",
+      "quality": {
+        "curation_status": "curated_draft",
+        "needs_scientific_review": true,
+        "needs_ip_review": false,
+        "flags": [
+          "user_supplied_unverified"
+        ]
+      }
+    },
+    {
+      "record_id": "adc_017",
+      "name": "双载荷定点偶联技术平台",
+      "family": "adc",
+      "category_id": "adc_single_nav_multi_payload",
+      "category_name": "ADC-单导航-多载荷",
+      "status": "curated_draft",
+      "development_stage": "platform",
+      "year": 2023,
+      "year_basis": "patent_publication",
+      "company_or_authors": [
+        "上海交通大学",
+        "中科院上海药物所 / needs_review"
+      ],
+      "arms": {
+        "navigation": [
+          {
+            "target": "tumor antigen",
+            "role": "navigation",
+            "count_group": "single",
+            "verification_status": "needs_review"
+          }
+        ],
+        "immune": [],
+        "payload": [
+          {
+            "target": "payload A",
+            "role": "site_specific_payload",
+            "count_group": "single",
+            "verification_status": "needs_review"
+          },
+          {
+            "target": "payload B",
+            "role": "site_specific_payload",
+            "count_group": "single",
+            "verification_status": "needs_review"
+          }
+        ]
+      },
+      "mechanisms": [
+        {
+          "label": "site-specific dual-payload conjugation with controlled ratio",
+          "summary": "site-specific dual-payload conjugation with controlled ratio",
+          "confidence": "needs_review"
+        }
+      ],
+      "evidence": {
+        "papers": [],
+        "patents": [
+          {
+            "title": "CN 116143808 A",
+            "year": 2023,
+            "url": "",
+            "evidence_status": "metadata_only",
+            "publication_number": "CN116143808A"
+          }
+        ],
+        "clinical_trials": [],
+        "company_links": []
+      },
+      "notes": "代表性公开成果/设计范式，需逐条复核来源后用于外部材料。",
+      "quality": {
+        "curation_status": "curated_draft",
+        "needs_scientific_review": true,
+        "needs_ip_review": true,
+        "flags": [
+          "user_supplied_unverified"
+        ]
+      }
+    },
+    {
+      "record_id": "adc_018",
+      "name": "双靶点多载荷ADC概念验证",
+      "family": "adc",
+      "category_id": "adc_multi_nav_multi_payload",
+      "category_name": "ADC-多导航-多载荷",
+      "status": "curated_draft",
+      "development_stage": "literature_only",
+      "year": 2024,
+      "year_basis": "user_supplied",
+      "company_or_authors": [
+        "Adhikari P",
+        "needs_review"
+      ],
+      "arms": {
+        "navigation": [
+          {
+            "target": "EGFR",
+            "role": "navigation",
+            "count_group": "multi",
+            "verification_status": "needs_review"
+          },
+          {
+            "target": "HER2",
+            "role": "navigation",
+            "count_group": "multi",
+            "verification_status": "needs_review"
+          }
+        ],
+        "immune": [],
+        "payload": [
+          {
+            "target": "MMAE",
+            "role": "microtubule_payload",
+            "count_group": "single",
+            "verification_status": "needs_review"
+          },
+          {
+            "target": "SN-38",
+            "role": "TOP1_payload",
+            "count_group": "single",
+            "verification_status": "needs_review"
+          }
+        ]
+      },
+      "mechanisms": [
+        {
+          "label": "dual-targeting plus dual-payload resistance-bypass concept",
+          "summary": "dual-targeting plus dual-payload resistance-bypass concept",
+          "confidence": "needs_review"
+        }
+      ],
+      "evidence": {
+        "papers": [
+          {
+            "title": "Adhikari et al., Cell Reports Medicine, 2024（待复核）",
+            "year": 2024,
+            "url": "",
+            "evidence_status": "metadata_only"
+          }
+        ],
+        "patents": [],
+        "clinical_trials": [],
+        "company_links": []
+      },
+      "notes": "代表性公开成果/设计范式，需逐条复核来源后用于外部材料。",
+      "quality": {
+        "curation_status": "curated_draft",
+        "needs_scientific_review": true,
+        "needs_ip_review": false,
+        "flags": [
+          "user_supplied_unverified"
+        ]
+      }
+    },
+    {
+      "record_id": "adc_019",
+      "name": "四价双靶点ADC设计",
+      "family": "adc",
+      "category_id": "adc_multi_nav_multi_payload",
+      "category_name": "ADC-多导航-多载荷",
+      "status": "curated_draft",
+      "development_stage": "needs_review",
+      "year": 2024,
+      "year_basis": "user_supplied",
+      "company_or_authors": [
+        "needs_review"
+      ],
+      "arms": {
+        "navigation": [
+          {
+            "target": "tumor antigen A",
+            "role": "navigation",
+            "count_group": "multi",
+            "verification_status": "needs_review"
+          },
+          {
+            "target": "tumor antigen B",
+            "role": "navigation",
+            "count_group": "multi",
+            "verification_status": "needs_review"
+          }
+        ],
+        "immune": [],
+        "payload": [
+          {
+            "target": "payload A",
+            "role": "payload",
+            "count_group": "single",
+            "verification_status": "needs_review"
+          },
+          {
+            "target": "payload B",
+            "role": "payload",
+            "count_group": "single",
+            "verification_status": "needs_review"
+          }
+        ]
+      },
+      "mechanisms": [
+        {
+          "label": "tetravalent dual-targeting and dual-payload delivery design",
+          "summary": "tetravalent dual-targeting and dual-payload delivery design",
+          "confidence": "needs_review"
+        }
+      ],
+      "evidence": {
+        "papers": [],
+        "patents": [],
+        "clinical_trials": [],
+        "company_links": []
+      },
+      "notes": "代表性公开成果/设计范式，需逐条复核来源后用于外部材料。",
+      "quality": {
+        "curation_status": "curated_draft",
+        "needs_scientific_review": true,
+        "needs_ip_review": false,
+        "flags": [
+          "user_supplied_unverified"
+        ]
+      }
+    }
+  ]
+}
