@@ -1,0 +1,921 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Exatecan/DXd ADC 旁观者效应治疗窗口 AI 立项申请书</title>
+  <meta name="description" content="基于人工智能的 Exatecan/DXd ADC 旁观者效应治疗窗口设计规则研究立项申请书。" />
+  <style>
+    :root { --bg:#07111f; --paper:#f7fbff; --ink:#102033; --muted:#587086; --line:#d9e5ef; --panel:rgba(255,255,255,.08); --blue:#65c7ff; --cyan:#48e5d0; --green:#92df9a; --yellow:#ffe08a; --red:#ff9f9f; --nav:#07111f; --shadow:0 22px 70px rgba(0,0,0,.26); }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",Arial,sans-serif; color:#eef6ff; background:radial-gradient(circle at 8% -12%, rgba(101,199,255,.24), transparent 32%), radial-gradient(circle at 92% 0%, rgba(146,223,154,.18), transparent 28%), var(--bg); line-height:1.72; }
+    a { color:#0894b5; text-decoration:none; font-weight:700; }
+    a:hover { text-decoration:underline; }
+    .wrap { width:min(1180px, calc(100% - 40px)); margin:0 auto; }
+    nav { position:sticky; top:0; z-index:30; backdrop-filter:blur(18px); background:rgba(7,17,31,.76); border-bottom:1px solid rgba(255,255,255,.13); }
+    nav .wrap { display:flex; justify-content:space-between; align-items:center; gap:18px; padding:13px 0; }
+    .brand { display:flex; align-items:center; gap:10px; color:#eef6ff; font-weight:850; }
+    .logo { width:34px; height:34px; border-radius:8px; background:linear-gradient(135deg,var(--blue),var(--green)); box-shadow:0 0 28px rgba(101,199,255,.36); }
+    .navlinks { display:flex; gap:14px; flex-wrap:wrap; font-size:14px; }
+    .navlinks a { color:#b9cbe0; }
+    header { padding:70px 0 42px; }
+    .eyebrow { display:inline-flex; padding:7px 12px; border:1px solid rgba(255,255,255,.17); border-radius:999px; background:rgba(255,255,255,.06); color:#91f2e5; font-weight:800; font-size:14px; }
+    h1 { max-width:1060px; margin:20px 0 16px; font-size:clamp(34px,5.4vw,66px); line-height:1.08; letter-spacing:0; }
+    .subtitle { max-width:940px; color:#d7e8f7; font-size:clamp(18px,2vw,23px); margin:0; }
+    .hero-grid { display:grid; grid-template-columns:1.18fr .82fr; gap:18px; margin-top:30px; }
+    .brief, .metric, .formula-card { border:1px solid rgba(255,255,255,.15); background:var(--panel); border-radius:8px; box-shadow:var(--shadow); }
+    .brief { padding:24px; }
+    .brief h2, .formula-card h2 { margin:0 0 10px; font-size:24px; }
+    .brief p { margin:0; color:#d5e6f5; }
+    .metrics { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
+    .metric { padding:18px; min-height:110px; }
+    .metric strong { display:block; color:#fff; font-size:26px; line-height:1.1; }
+    .metric span { color:#afc0d3; font-size:13px; }
+    .formula-strip { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px; margin-top:18px; }
+    .formula-card { padding:18px; }
+    .formula-card h3 { margin:0 0 8px; font-size:18px; }
+    .formula-card p { margin:0; color:#c7d8e8; font-size:14px; }
+    .layout { display:grid; grid-template-columns:270px minmax(0,1fr); gap:28px; align-items:start; padding:28px 0 70px; }
+    aside { position:sticky; top:76px; max-height:calc(100vh - 96px); overflow:auto; padding:18px; border:1px solid rgba(255,255,255,.14); border-radius:8px; background:rgba(255,255,255,.07); }
+    aside strong { display:block; margin-bottom:10px; }
+    aside a { display:block; color:#c9d9e8; font-size:14px; line-height:1.35; padding:7px 0; border-top:1px solid rgba(255,255,255,.08); }
+    aside .toc-level-3 { padding-left:14px; color:#9eb2c7; font-size:13px; }
+    article { background:var(--paper); color:var(--ink); border-radius:8px; box-shadow:var(--shadow); padding:42px; }
+    article h1 { color:#102033; font-size:34px; margin:0 0 16px; }
+    article h2 { margin:44px 0 14px; padding-top:6px; font-size:30px; line-height:1.22; color:#0f2c46; border-top:1px solid var(--line); }
+    article h3 { margin:30px 0 10px; font-size:23px; color:#12324c; }
+    article h4 { margin:24px 0 8px; font-size:18px; color:#183c59; }
+    article p { margin:12px 0; }
+    article ul, article ol { padding-left:24px; margin:10px 0 16px; }
+    article li { margin:5px 0; }
+    blockquote { margin:18px 0; padding:16px 18px; border-left:4px solid #21a6b6; background:#eaf8fb; color:#153348; border-radius:0 8px 8px 0; font-weight:800; }
+    pre { overflow:auto; padding:16px; border-radius:8px; background:#0d1c2b; color:#e9fbff; font-size:14px; }
+    code { font-family:"SFMono-Regular",Consolas,"Liberation Mono",monospace; }
+    p code, li code, td code { background:#e9f1f8; padding:2px 5px; border-radius:5px; color:#0a5770; }
+    hr { border:0; border-top:1px solid var(--line); margin:28px 0; }
+    .table-wrap { overflow:auto; margin:16px 0 24px; border:1px solid var(--line); border-radius:8px; }
+    table { width:100%; border-collapse:collapse; font-size:14px; min-width:620px; }
+    th, td { padding:12px 14px; border-bottom:1px solid var(--line); vertical-align:top; text-align:left; }
+    th { background:#dceffc; color:#0e2b42; font-weight:850; }
+    tr:last-child td { border-bottom:0; }
+    .top-link { display:inline-flex; margin-top:24px; color:#087b99; }
+    footer { color:#9fb5c9; padding:0 0 42px; text-align:center; }
+    @media (max-width:980px) { .hero-grid, .formula-strip, .layout { grid-template-columns:1fr; } aside { position:relative; top:auto; max-height:none; } .navlinks { display:none; } article { padding:26px; } }
+    @media (max-width:620px) { .wrap { width:min(100% - 28px, 1180px); } .metrics { grid-template-columns:1fr; } header { padding-top:44px; } article { padding:20px; } article h2 { font-size:25px; } }
+  </style>
+</head>
+<body id="top">
+  <nav><div class="wrap"><a class="brand" href="./index.html"><span class="logo"></span><span>方案页面入口</span></a><div class="navlinks"><a href="./index.html">首页</a><a href="./payload-evidence-library.html">Payload 证据库</a><a href="./roadmap.html">路线图</a><a href="#全文申请书">全文</a><a href="#十五-参考文献与公开资料">参考资料</a></div></div></nav>
+  <header class="wrap">
+    <span class="eyebrow">AI 立项申请书｜Exatecan / DXd ADC｜Bystander Therapeutic Window</span>
+    <h1>基于人工智能的 Exatecan/DXd ADC 旁观者效应治疗窗口设计规则研究</h1>
+    <p class="subtitle">把 ADC 的旁观者效应从经验判断转成可计算、可解释、可复用的设计规则：什么时候需要增强扩散，什么时候必须限制扩散。</p>
+    <div class="hero-grid">
+      <div class="brief">
+        <h2>项目核心</h2>
+        <p>构建 TopoI-ADC-BTW Atlas，整合 payload、linker、DAR、靶点表达、抗原异质性、疗效和毒性数据，形成 Bystander Benefit Score、Toxicity Risk Score 与治疗窗口评分，并用可解释 AI 提取下一代 Exatecan/DXd ADC 设计规则。</p>
+      </div>
+      <div class="metrics">
+        <div class="metric"><strong>≥100</strong><span>Topo I ADC 或 linker-payload 设计实例</span></div>
+        <div class="metric"><strong>5 类</strong><span>payload / linker / ADC / efficacy / safety 数据表</span></div>
+        <div class="metric"><strong>≥10</strong><span>可解释设计规则</span></div>
+        <div class="metric"><strong>20 周</strong><span>数据库、模型、工具和论文草稿路线</span></div>
+      </div>
+    </div>
+    <div class="formula-strip">
+      <div class="formula-card"><h3>Bystander Benefit</h3><p>payload potency × permeability × intratumoral release × heterogeneity need × internalization</p></div>
+      <div class="formula-card"><h3>Toxicity Risk</h3><p>plasma release × normal expression × permeability × DAR × systemic exposure × tissue vulnerability</p></div>
+      <div class="formula-card"><h3>Therapeutic Window</h3><p>Bystander Benefit Score / Toxicity Risk Score</p></div>
+    </div>
+  </header>
+  <main class="wrap layout">
+    <aside><strong>目录</strong><a class="toc-level-2" href="#项目名称">项目名称</a>
+<a class="toc-level-2" href="#项目摘要">一、项目摘要</a>
+<a class="toc-level-2" href="#立项依据与研究背景">二、立项依据与研究背景</a>
+<a class="toc-level-3" href="#2-1-adc-从-魔法子弹-到-可控旁观者效应">2.1 ADC 从“魔法子弹”到“可控旁观者效应”</a>
+<a class="toc-level-3" href="#2-2-exatecan-dxd-类-adc-的成功与未解问题">2.2 Exatecan/DXd 类 ADC 的成功与未解问题</a>
+<a class="toc-level-3" href="#2-3-过去为什么难以研究">2.3 过去为什么难以研究</a>
+<a class="toc-level-3" href="#2-4-现在为什么可以解决">2.4 现在为什么可以解决</a>
+<a class="toc-level-2" href="#拟解决的核心科学问题">三、拟解决的核心科学问题</a>
+<a class="toc-level-2" href="#总体目标与考核指标">四、总体目标与考核指标</a>
+<a class="toc-level-3" href="#4-1-总体目标">4.1 总体目标</a>
+<a class="toc-level-3" href="#4-2-具体目标">4.2 具体目标</a>
+<a class="toc-level-3" href="#4-3-阶段性考核指标">4.3 阶段性考核指标</a>
+<a class="toc-level-2" href="#研究内容">五、研究内容</a>
+<a class="toc-level-3" href="#研究内容一-topo-i-adc-结构化数据库建设">研究内容一：Topo I ADC 结构化数据库建设</a>
+<a class="toc-level-3" href="#研究内容二-旁观者效应治疗窗口评分体系">研究内容二：旁观者效应治疗窗口评分体系</a>
+<a class="toc-level-3" href="#研究内容三-可解释-ai-模型构建">研究内容三：可解释 AI 模型构建</a>
+<a class="toc-level-3" href="#研究内容四-关键假设验证">研究内容四：关键假设验证</a>
+<a class="toc-level-2" href="#技术路线">六、技术路线</a>
+<a class="toc-level-3" href="#6-1-总体流程">6.1 总体流程</a>
+<a class="toc-level-3" href="#6-2-数据抽取流程">6.2 数据抽取流程</a>
+<a class="toc-level-3" href="#6-3-特征工程">6.3 特征工程</a>
+<a class="toc-level-3" href="#6-4-模型训练与解释">6.4 模型训练与解释</a>
+<a class="toc-level-3" href="#6-5-验证策略">6.5 验证策略</a>
+<a class="toc-level-2" href="#创新点">七、创新点</a>
+<a class="toc-level-3" href="#创新点-1-提出-旁观者效应治疗窗口-概念">创新点 1：提出“旁观者效应治疗窗口”概念</a>
+<a class="toc-level-3" href="#创新点-2-构建-exatecan-dxd-topo-i-adc-专用数据库">创新点 2：构建 Exatecan/DXd/Topo I ADC 专用数据库</a>
+<a class="toc-level-3" href="#创新点-3-从黑箱预测转向可解释设计规则">创新点 3：从黑箱预测转向可解释设计规则</a>
+<a class="toc-level-3" href="#创新点-4-把-magic-bullet-理念扩展为-controlled-bystander-effect">创新点 4：把 magic bullet 理念扩展为 controlled bystander effect</a>
+<a class="toc-level-3" href="#创新点-5-可直接指导下一代-adc-药物设计">创新点 5：可直接指导下一代 ADC 药物设计</a>
+<a class="toc-level-2" href="#可行性分析">八、可行性分析</a>
+<a class="toc-level-3" href="#8-1-数据可行性">8.1 数据可行性</a>
+<a class="toc-level-3" href="#8-2-技术可行性">8.2 技术可行性</a>
+<a class="toc-level-3" href="#8-3-研究路径可控">8.3 研究路径可控</a>
+<a class="toc-level-2" href="#实施计划">九、实施计划</a>
+<a class="toc-level-3" href="#第-1-阶段-数据库框架与文献清单-第-1-2-周">第 1 阶段：数据库框架与文献清单（第 1-2 周）</a>
+<a class="toc-level-3" href="#第-2-阶段-llm-抽取与人工复核-第-3-5-周">第 2 阶段：LLM 抽取与人工复核（第 3-5 周）</a>
+<a class="toc-level-3" href="#第-3-阶段-特征工程与评分模型-第-6-8-周">第 3 阶段：特征工程与评分模型（第 6-8 周）</a>
+<a class="toc-level-3" href="#第-4-阶段-ai-建模与解释-第-9-12-周">第 4 阶段：AI 建模与解释（第 9-12 周）</a>
+<a class="toc-level-3" href="#第-5-阶段-案例验证与工具开发-第-13-16-周">第 5 阶段：案例验证与工具开发（第 13-16 周）</a>
+<a class="toc-level-3" href="#第-6-阶段-论文与项目成果-第-17-20-周">第 6 阶段：论文与项目成果（第 17-20 周）</a>
+<a class="toc-level-2" href="#预期成果">十、预期成果</a>
+<a class="toc-level-3" href="#10-1-数据成果">10.1 数据成果</a>
+<a class="toc-level-3" href="#10-2-方法成果">10.2 方法成果</a>
+<a class="toc-level-3" href="#10-3-应用成果">10.3 应用成果</a>
+<a class="toc-level-3" href="#10-4-论文成果">10.4 论文成果</a>
+<a class="toc-level-2" href="#经费预算">十一、经费预算</a>
+<a class="toc-level-3" href="#低成本计算版">低成本计算版</a>
+<a class="toc-level-3" href="#标准研究版">标准研究版</a>
+<a class="toc-level-2" href="#风险分析与应对措施">十二、风险分析与应对措施</a>
+<a class="toc-level-3" href="#风险-1-公开数据不完整">风险 1：公开数据不完整</a>
+<a class="toc-level-3" href="#风险-2-不同研究的数据不可比">风险 2：不同研究的数据不可比</a>
+<a class="toc-level-3" href="#风险-3-llm-抽取错误">风险 3：LLM 抽取错误</a>
+<a class="toc-level-3" href="#风险-4-模型性能不够高">风险 4：模型性能不够高</a>
+<a class="toc-level-3" href="#风险-5-ild-机制数据不足">风险 5：ILD 机制数据不足</a>
+<a class="toc-level-2" href="#项目团队与分工建议">十三、项目团队与分工建议</a>
+<a class="toc-level-2" href="#项目完成后的核心结论形式">十四、项目完成后的核心结论形式</a>
+<a class="toc-level-2" href="#参考文献与公开资料">十五、参考文献与公开资料</a>
+<a class="toc-level-2" href="#申请书结论">十六、申请书结论</a></aside>
+    <article>
+      <h1 id="项目立项申请书">项目立项申请书</h1>
+<h2 id="项目名称">项目名称</h2>
+<p><strong>基于人工智能的 Exatecan/DXd ADC 旁观者效应治疗窗口设计规则研究</strong></p>
+<p>建议英文题名：</p>
+<p><strong>AI-Guided Design Rules for the Bystander Therapeutic Window of Exatecan/DXd-Based Antibody-Drug Conjugates</strong></p>
+<hr />
+<h2 id="项目摘要">一、项目摘要</h2>
+<p>抗体偶联药物（antibody-drug conjugate, ADC）已经成为肿瘤精准治疗的重要方向。以 trastuzumab deruxtecan（T-DXd, Enhertu）为代表的 Exatecan/DXd 类拓扑异构酶 I（topoisomerase I, Topo I）抑制剂 ADC，通过高效载荷、可裂解连接子、高药物抗体比（drug-to-antibody ratio, DAR）和旁观者效应，在 HER2 阳性、HER2-low 以及部分 HER2 表达实体瘤中显示出突出疗效。Enhertu 官方机制资料显示，其载荷 DXd 是 exatecan 衍生物，释放后具有膜通透性，可杀伤靶向肿瘤细胞及肿瘤微环境中的邻近细胞，即 bystander antitumor effect；其连接子在血浆中稳定，并可被肿瘤细胞中上调的酶选择性裂解；其 DAR 约为 8。</p>
+<p>然而，旁观者效应是一把双刃剑。适度的 payload 扩散可克服肿瘤抗原异质性，提高对 HER2-low、TROP2、HER3、B7-H3 等实体瘤靶点的治疗潜力；但过强或失控的旁观者效应可能增加正常组织暴露，带来间质性肺病/肺炎（ILD/pneumonitis）、骨髓抑制、胃肠毒性等安全风险。Enhertu 已有 ILD/pneumonitis 相关黑框警示，FDA 和药品安全信息均强调需要早期识别、监测和管理。当前 ADC 领域仍缺少一个能够系统回答以下问题的设计规则：<strong>什么时候需要强旁观者效应，什么时候必须限制旁观者效应？</strong></p>
+<p>本项目拟构建一个面向 Exatecan/DXd/Topo I ADC 的结构化数据库与可解释 AI 模型，整合 payload 物化性质、连接子释放动力学、DAR、靶点表达与内化、肿瘤抗原异质性、正常组织表达、疗效和毒性数据，提出并验证“旁观者效应治疗窗口”（Bystander Therapeutic Window, BTW）评分体系。项目目标是从经验性 ADC 设计转向可计算、可解释、可复用的设计规则，为下一代 Exatecan/DXd ADC 的 linker-payload-DAR-target 组合优化提供决策工具。</p>
+<hr />
+<h2 id="立项依据与研究背景">二、立项依据与研究背景</h2>
+<h3 id="2-1-adc-从-魔法子弹-到-可控旁观者效应">2.1 ADC 从“魔法子弹”到“可控旁观者效应”</h3>
+<p>ADC 的传统理论基础可追溯到 Paul Ehrlich 的 “magic bullet” 思想，即通过特异性靶向将毒性药物精准递送至病灶，降低正常组织损伤。早期 ADC 设计强调抗体靶向性、血浆稳定性和细胞内释放，核心目标是尽量减少游离毒素暴露。</p>
+<p>但实体瘤不同于血液肿瘤，常存在显著抗原异质性、空间屏障、血供不均和靶点表达梯度。如果 ADC 只杀伤靶抗原高表达细胞，抗原阴性或低表达细胞可能存活并导致复发。Exatecan/DXd 类 ADC 的重要突破之一，正是其释放后的膜通透性 payload 可以扩散到邻近细胞，产生旁观者杀伤，从而补偿靶点异质性。</p>
+<p>这使 ADC 设计从“绝对精准递送”进入“可控扩散递送”阶段。新的核心问题是：</p>
+<blockquote><strong>如何让 payload 在肿瘤内扩散得足够强，但在正常组织中扩散得足够弱？</strong></blockquote>
+<p>这正是本项目拟解决的核心科学问题。</p>
+<h3 id="2-2-exatecan-dxd-类-adc-的成功与未解问题">2.2 Exatecan/DXd 类 ADC 的成功与未解问题</h3>
+<p>T-DXd 的成功表明，DXd payload、可裂解肽连接子、高 DAR 和旁观者效应能够形成强大的实体瘤治疗平台。AstraZeneca 2023 年年报显示，Enhertu 在 FY2023 的合并销售额约为 25.66 亿美元，说明该类 ADC 已具有重要临床与商业影响力。</p>
+<p>FDA 于 2024 年 4 月 5 日加速批准 fam-trastuzumab deruxtecan-nxki 用于既往接受系统治疗且无满意替代方案的不可切除或转移性 HER2 阳性（IHC3+）实体瘤成人患者。这说明 T-DXd 的应用已经从单一癌种走向更广泛的 HER2 表达实体瘤场景。</p>
+<p>然而，T-DXd 也暴露了安全性问题。官方安全信息指出，ILD 和 pneumonitis，包括致死病例，已在 ENHERTU 治疗中报告；对于 2 级及以上 ILD/pneumonitis 应永久停药。这提示 Exatecan/DXd ADC 的设计不能只追求更强疗效，而必须定量平衡旁观者效应与毒性风险。</p>
+<h3 id="2-3-过去为什么难以研究">2.3 过去为什么难以研究</h3>
+<p>该问题过去长期难以系统攻克，主要原因包括：</p>
+<ol>
+<li><strong>数据分散</strong></li>
+<p>payload 活性、连接子稳定性、DAR、PK、旁观者实验、动物疗效、临床 ORR/PFS、ILD 风险等数据分布在论文、专利、公司报告、FDA label、会议摘要和审评资料中，缺少统一数据库。</p>
+</ol>
+<ol>
+<li><strong>旁观者效应难以量化</strong></li>
+<p>旁观者效应不是单一分子属性，而是由 payload 膜通透性、释放速率、细胞内外浓度、肿瘤组织结构、抗原异质性和正常组织暴露共同决定。</p>
+</ol>
+<ol>
+<li><strong>ADC 是多因素系统工程</strong></li>
+<p>疗效和毒性不是由 payload 或靶点单独决定，而是由 antibody-target-linker-payload-DAR-conjugation-PK-tumor biology 共同决定。</p>
+</ol>
+<ol>
+<li><strong>负样本和失败数据缺失</strong></li>
+<p>公开文献更倾向报告成功 ADC，失败的 linker、payload、DAR 和靶点组合往往只出现在专利或公司内部数据中。</p>
+</ol>
+<ol>
+<li><strong>传统统计方法难以整合异构数据</strong></li>
+<p>该问题包含结构数据、药化数据、组学数据、药代数据、临床疗效和毒性数据，过去缺少有效的跨模态整合工具。</p>
+</ol>
+<h3 id="2-4-现在为什么可以解决">2.4 现在为什么可以解决</h3>
+<p>当前 AI 与数据工具的发展使该问题具备新的可行性：</p>
+<ol>
+<li><strong>LLM 文献抽取能力成熟</strong></li>
+<p>大语言模型可辅助从论文、专利、FDA label、公司 PDF 和会议摘要中抽取结构化字段，再由人工复核，提高数据库建设效率。</p>
+</ol>
+<ol>
+<li><strong>分子性质预测工具成熟</strong></li>
+<p>RDKit、Chemprop、ADMET-AI、QSAR 模型可预测 payload 和 linker-payload 的物化性质，包括 LogP/LogD、TPSA、pKa、膜通透性、溶解性和外排风险。</p>
+</ol>
+<ol>
+<li><strong>可解释机器学习适合小样本药物开发数据</strong></li>
+<p>Random forest、XGBoost、Gaussian process、Bayesian hierarchical model 和 SHAP 分析可在中小样本下提取设计规则，不必依赖大规模黑箱深度学习。</p>
+</ol>
+<ol>
+<li><strong>公开靶点表达数据库丰富</strong></li>
+<p>TCGA、CPTAC、Human Protein Atlas、DepMap、单细胞图谱等可用于评估靶点肿瘤表达、正常组织表达和潜在安全风险。</p>
+</ol>
+<ol>
+<li><strong>Topo I ADC 管线快速扩展</strong></li>
+<p>T-DXd、Dato-DXd、HER3-DXd、I-DXd、DS-7300、DS-6000、SKB264/sac-TMT、sacituzumab govitecan 等为跨靶点、跨 payload、跨 linker 分析提供了数据基础。</p>
+</ol>
+<hr />
+<h2 id="拟解决的核心科学问题">三、拟解决的核心科学问题</h2>
+<p>本项目的核心科学问题是：</p>
+<blockquote><strong>如何建立 Exatecan/DXd ADC 的可解释设计规则，判断在何种肿瘤、靶点和 ADC 结构条件下需要强旁观者效应，在何种条件下必须限制旁观者效应以降低毒性？</strong></blockquote>
+<p>进一步分解为五个子问题：</p>
+<ol>
+<li><strong>payload 层面</strong></li>
+<p>Exatecan/DXd 及其衍生物的膜通透性、拓扑异构酶 I 抑制活性、外排风险、溶解性和带电状态如何影响旁观者杀伤？</p>
+</ol>
+<ol>
+<li><strong>linker 层面</strong></li>
+<p>GGFG、Val-Cit、PSAR、exo-linker 等连接子的血浆稳定性、溶酶体释放速率和释放 catabolite 形式如何影响治疗窗口？</p>
+</ol>
+<ol>
+<li><strong>DAR 层面</strong></li>
+<p>DAR=8、4、2 的最优性是否取决于 linker-payload 的亲水性补偿、payload hydrophobicity 和靶点表达水平？</p>
+</ol>
+<ol>
+<li><strong>target/tumor 层面</strong></li>
+<p>哪些靶点和肿瘤类型真正需要强旁观者效应？哪些靶点因为正常组织表达或内化不足，不适合强扩散 payload？</p>
+</ol>
+<ol>
+<li><strong>toxicity 层面</strong></li>
+<p>payload 扩散、系统暴露、肺组织易感性、正常组织靶点表达和免疫细胞摄取是否共同决定 ILD/pneumonitis 等毒性风险？</p>
+</ol>
+<hr />
+<h2 id="总体目标与考核指标">四、总体目标与考核指标</h2>
+<h3 id="4-1-总体目标">4.1 总体目标</h3>
+<p>构建 Exatecan/DXd/Topo I ADC 的“旁观者效应治疗窗口”数据库与可解释 AI 模型，提出一套可用于下一代 ADC 设计的计算规则：</p>
+<blockquote><strong>当肿瘤抗原异质性高、正常组织表达低、靶点内化充分、payload 释放在肿瘤内富集时，应增强旁观者效应；当正常组织表达高、血浆释放风险高、payload 过度膜通透或系统暴露高时，应限制旁观者效应。</strong></blockquote>
+<h3 id="4-2-具体目标">4.2 具体目标</h3>
+<ol>
+<li>建立 <strong>TopoI-ADC-BTW Atlas</strong> 数据库，覆盖 100 个以上 Topo I ADC 或 linker-payload 设计实例。</li>
+<li>建立 payload、linker、ADC、efficacy、safety 五类结构化数据表。</li>
+<li>构建 Bystander Benefit Score、Toxicity Risk Score 和 Bystander Therapeutic Window Score。</li>
+<li>形成可解释 AI 模型，识别影响旁观者治疗窗口的关键变量。</li>
+<li>输出 Exatecan/DXd ADC 设计规则，包括：</li>
+</ol>
+<ul>
+<li>什么时候适合高膜通透 payload；</li>
+<li>什么时候适合高 DAR；</li>
+<li>什么时候需要更稳定 linker；</li>
+<li>哪些靶点适合强旁观者效应；</li>
+<li>哪些组合可能带来肺毒性或系统毒性风险。</li>
+</ul>
+<ol>
+<li>形成至少 1 篇预印本/论文初稿、1 个开放数据库、1 个可交互网页或可视化工具。</li>
+</ol>
+<h3 id="4-3-阶段性考核指标">4.3 阶段性考核指标</h3>
+<div class="table-wrap"><table><thead><tr><th>指标</th><th>目标</th></tr></thead><tbody>
+<tr><td>收集 Topo I ADC / linker-payload 记录</td><td>≥100 条</td></tr>
+<tr><td>payload 物化性质记录</td><td>≥100 个</td></tr>
+<tr><td>linker 释放/稳定性记录</td><td>≥50 条</td></tr>
+<tr><td>ADC DAR/target/linker/payload 完整记录</td><td>≥80 条</td></tr>
+<tr><td>临床疗效/毒性记录</td><td>≥50 条</td></tr>
+<tr><td>文献抽取字段人工复核率</td><td>100%</td></tr>
+<tr><td>可解释模型交叉验证 AUC 或 rank correlation</td><td>AUC &gt; 0.75 或 Spearman ρ &gt; 0.45</td></tr>
+<tr><td>形成设计规则</td><td>≥10 条</td></tr>
+<tr><td>论文/报告/网页</td><td>≥1 套完整成果</td></tr>
+</tbody></table></div>
+<hr />
+<h2 id="研究内容">五、研究内容</h2>
+<h3 id="研究内容一-topo-i-adc-结构化数据库建设">研究内容一：Topo I ADC 结构化数据库建设</h3>
+<p>建立面向 Exatecan/DXd/Topo I ADC 的标准化数据库，包含以下五张核心表：</p>
+<h4 id="1-payloads-csv">1. payloads.csv</h4>
+<div class="table-wrap"><table><thead><tr><th>字段</th><th>说明</th></tr></thead><tbody>
+<tr><td>payload_name</td><td>DXd、Exatecan、SN-38、belotecan 等</td></tr>
+<tr><td>scaffold</td><td>exatecan-like、camptothecin-like、SN-38-like</td></tr>
+<tr><td>TOP1_IC50</td><td>拓扑异构酶 I 抑制活性</td></tr>
+<tr><td>cell_IC50</td><td>细胞杀伤活性</td></tr>
+<tr><td>LogP/LogD</td><td>脂溶性/分配系数</td></tr>
+<tr><td>TPSA</td><td>极性表面积</td></tr>
+<tr><td>pKa</td><td>电离性质</td></tr>
+<tr><td>permeability_proxy</td><td>膜通透性代理指标</td></tr>
+<tr><td>efflux_risk</td><td>外排风险</td></tr>
+<tr><td>bystander_score</td><td>旁观者效应强弱</td></tr>
+</tbody></table></div>
+<h4 id="2-linkers-csv">2. linkers.csv</h4>
+<div class="table-wrap"><table><thead><tr><th>字段</th><th>说明</th></tr></thead><tbody>
+<tr><td>linker_name</td><td>GGFG、Val-Cit、PSAR、exo-linker 等</td></tr>
+<tr><td>cleavable</td><td>是否可裂解</td></tr>
+<tr><td>cleavage_enzyme</td><td>Cathepsin B/L、legumain 等</td></tr>
+<tr><td>plasma_t_half</td><td>血浆稳定性</td></tr>
+<tr><td>lysosome_t_half</td><td>溶酶体释放半衰期</td></tr>
+<tr><td>hydrophilicity</td><td>亲水性修饰</td></tr>
+<tr><td>self_immolation</td><td>是否自毁释放</td></tr>
+<tr><td>released_catabolite</td><td>释放后的 payload 形式</td></tr>
+</tbody></table></div>
+<h4 id="3-adcs-csv">3. adcs.csv</h4>
+<div class="table-wrap"><table><thead><tr><th>字段</th><th>说明</th></tr></thead><tbody>
+<tr><td>ADC_name</td><td>T-DXd、Dato-DXd、HER3-DXd、SKB264 等</td></tr>
+<tr><td>target</td><td>HER2、TROP2、HER3、B7-H3 等</td></tr>
+<tr><td>antibody</td><td>抗体名称</td></tr>
+<tr><td>payload</td><td>payload 类型</td></tr>
+<tr><td>linker</td><td>linker 类型</td></tr>
+<tr><td>DAR</td><td>药物抗体比</td></tr>
+<tr><td>conjugation</td><td>偶联方式</td></tr>
+<tr><td>aggregation</td><td>聚集风险</td></tr>
+<tr><td>PK_half_life</td><td>药代半衰期</td></tr>
+<tr><td>clinical_stage</td><td>临床阶段</td></tr>
+</tbody></table></div>
+<h4 id="4-efficacy-csv">4. efficacy.csv</h4>
+<div class="table-wrap"><table><thead><tr><th>字段</th><th>说明</th></tr></thead><tbody>
+<tr><td>ADC_name</td><td>ADC 名称</td></tr>
+<tr><td>tumor_model</td><td>肿瘤模型</td></tr>
+<tr><td>antigen_expression</td><td>抗原表达水平</td></tr>
+<tr><td>heterogeneity</td><td>抗原异质性</td></tr>
+<tr><td>dose</td><td>剂量</td></tr>
+<tr><td>IC50/TGI/ORR/PFS</td><td>疗效指标</td></tr>
+<tr><td>indication</td><td>适应症</td></tr>
+</tbody></table></div>
+<h4 id="5-safety-csv">5. safety.csv</h4>
+<div class="table-wrap"><table><thead><tr><th>字段</th><th>说明</th></tr></thead><tbody>
+<tr><td>ADC_name</td><td>ADC 名称</td></tr>
+<tr><td>dose</td><td>剂量</td></tr>
+<tr><td>neutropenia</td><td>中性粒细胞减少</td></tr>
+<tr><td>thrombocytopenia</td><td>血小板减少</td></tr>
+<tr><td>GI_toxicity</td><td>胃肠毒性</td></tr>
+<tr><td>ILD_rate</td><td>ILD/pneumonitis 发生率</td></tr>
+<tr><td>grade_3_AE</td><td>3 级及以上不良事件</td></tr>
+<tr><td>discontinuation</td><td>停药率</td></tr>
+<tr><td>fatal_AE</td><td>致死不良事件</td></tr>
+</tbody></table></div>
+<h3 id="研究内容二-旁观者效应治疗窗口评分体系">研究内容二：旁观者效应治疗窗口评分体系</h3>
+<p>提出三个核心评分：</p>
+<h4 id="1-bystander-benefit-score">1. Bystander Benefit Score</h4>
+<p>用于评价旁观者效应带来的疗效获益。</p>
+<p>初步公式：</p>
+<pre><code>Bystander Benefit Score =
+Payload potency
+× Payload permeability
+× Intratumoral release probability
+× Tumor antigen heterogeneity need
+× Target internalization potential</code></pre>
+<p>解释：</p>
+<ul>
+<li>payload potency 越强，释放后杀伤能力越强；</li>
+<li>permeability 越高，旁观者扩散越强；</li>
+<li>intratumoral release 越高，肿瘤内有效 payload 越多；</li>
+<li>tumor heterogeneity 越高，越需要旁观者效应；</li>
+<li>target internalization 越高，payload 更容易进入肿瘤细胞释放。</li>
+</ul>
+<h4 id="2-toxicity-risk-score">2. Toxicity Risk Score</h4>
+<p>用于评价旁观者效应和系统释放带来的毒性风险。</p>
+<p>初步公式：</p>
+<pre><code>Toxicity Risk Score =
+Plasma release risk
+× Normal tissue target expression
+× Payload permeability
+× DAR
+× Systemic exposure
+× Tissue vulnerability factor</code></pre>
+<p>解释：</p>
+<ul>
+<li>血浆释放越高，系统毒性风险越高；</li>
+<li>正常组织靶点表达越高，on-target off-tumor 风险越高；</li>
+<li>payload permeability 越强，正常组织扩散风险越高；</li>
+<li>DAR 越高，单位抗体 payload 负载越高；</li>
+<li>肺、骨髓、胃肠道等组织可能存在不同 vulnerability factor。</li>
+</ul>
+<h4 id="3-bystander-therapeutic-window-score">3. Bystander Therapeutic Window Score</h4>
+<p>综合疗效获益与毒性风险：</p>
+<pre><code>Bystander Therapeutic Window Score =
+Bystander Benefit Score / Toxicity Risk Score</code></pre>
+<p>该评分越高，说明 ADC 的旁观者效应越可能带来净治疗获益；评分越低，则说明应限制旁观者效应、降低 DAR、提高 linker 稳定性或选择更低膜通透 payload。</p>
+<h3 id="研究内容三-可解释-ai-模型构建">研究内容三：可解释 AI 模型构建</h3>
+<p>本项目不以黑箱深度学习为第一选择，而采用适合中小样本药物开发数据的可解释模型：</p>
+<ol>
+<li><strong>规则模型</strong></li>
+<p>基于药物化学和 ADC 生物学先验，构建初版 BTW score。</p>
+</ol>
+<ol>
+<li><strong>贝叶斯层级模型</strong></li>
+<p>处理不同 ADC、不同靶点、不同适应症之间的数据层级差异。</p>
+</ol>
+<ol>
+<li><strong>Random forest / XGBoost</strong></li>
+<p>识别影响疗效、旁观者效应和毒性的关键非线性变量。</p>
+</ol>
+<ol>
+<li><strong>Gaussian process</strong></li>
+<p>用于小样本条件下的候选组合排序和不确定性估计。</p>
+</ol>
+<ol>
+<li><strong>SHAP 可解释性分析</strong></li>
+<p>提取设计规则，例如 DAR、payload permeability、normal tissue expression、plasma stability 对治疗窗口的贡献。</p>
+</ol>
+<ol>
+<li><strong>知识图谱模型</strong></li>
+<p>构建 target-antibody-linker-payload-DAR-indication-toxicity 图谱，用于发现相似 ADC 和可迁移设计规则。</p>
+</ol>
+<h3 id="研究内容四-关键假设验证">研究内容四：关键假设验证</h3>
+<p>本项目将重点验证以下假设：</p>
+<h4 id="假设-1-强旁观者效应适用于抗原异质性高的实体瘤">假设 1：强旁观者效应适用于抗原异质性高的实体瘤</h4>
+<p>预期规律：</p>
+<ul>
+<li>HER2-low、TROP2 异质性表达、部分 B7-H3/CLDN18.2 异质性实体瘤更需要旁观者效应；</li>
+<li>抗原均一高表达肿瘤未必需要极强 payload 扩散。</li>
+</ul>
+<h4 id="假设-2-高-dar-的成功依赖-linker-payload-亲水性补偿">假设 2：高 DAR 的成功依赖 linker-payload 亲水性补偿</h4>
+<p>预期规律：</p>
+<ul>
+<li>高 DAR + 高疏水 payload 容易导致聚集和清除；</li>
+<li>高 DAR + 亲水 linker-payload 可能保持较好 PK；</li>
+<li>T-DXd 的 DAR≈8 成功不是 DAR 单因素，而是 linker-payload 系统优化结果。</li>
+</ul>
+<h4 id="假设-3-linker-释放速度存在最佳窗口">假设 3：linker 释放速度存在最佳窗口</h4>
+<p>预期规律：</p>
+<ul>
+<li>释放过慢：疗效不足；</li>
+<li>释放过快：血浆释放和系统毒性升高；</li>
+<li>最优释放速度取决于 target internalization 和 payload permeability。</li>
+</ul>
+<h4 id="假设-4-强膜通透-payload-需要更严格的靶点安全窗">假设 4：强膜通透 payload 需要更严格的靶点安全窗</h4>
+<p>预期规律：</p>
+<ul>
+<li>正常组织表达高的靶点不适合过强 bystander payload；</li>
+<li>强旁观者 payload 应优先用于肿瘤选择性表达好、正常组织低表达、内化充分的靶点。</li>
+</ul>
+<h4 id="假设-5-ild-风险可能与旁观者效应失控相关">假设 5：ILD 风险可能与旁观者效应失控相关</h4>
+<p>预期规律：</p>
+<ul>
+<li>ILD 风险可能受 payload 扩散、肺组织暴露、系统释放、免疫细胞摄取和患者基础肺部状态共同影响；</li>
+<li>公开数据不足以建立患者级预测模型，但可建立药物设计层面的风险评分。</li>
+</ul>
+<hr />
+<h2 id="技术路线">六、技术路线</h2>
+<h3 id="6-1-总体流程">6.1 总体流程</h3>
+<pre><code>公开文献 / 专利 / FDA label / 公司资料 / 临床试验登记
+        ↓
+LLM 辅助信息抽取 + 人工复核
+        ↓
+TopoI-ADC-BTW Atlas 数据库
+        ↓
+payload/linker/ADC/target/safety 特征工程
+        ↓
+Bystander Benefit Score
+Toxicity Risk Score
+Bystander Therapeutic Window Score
+        ↓
+可解释 AI 建模
+        ↓
+设计规则提取
+        ↓
+候选 ADC 组合排序与可视化工具</code></pre>
+<h3 id="6-2-数据抽取流程">6.2 数据抽取流程</h3>
+<ol>
+<li>输入 PDF、网页、专利、label、会议摘要。</li>
+<li>LLM 按预设 schema 抽取字段。</li>
+<li>对每个字段记录 source、page、confidence。</li>
+<li>人工复核关键字段：</li>
+</ol>
+<ul>
+<li>payload；</li>
+<li>linker；</li>
+<li>DAR；</li>
+<li>IC50；</li>
+<li>bystander assay；</li>
+<li>xenograft efficacy；</li>
+<li>clinical response；</li>
+<li>toxicity。</li>
+</ul>
+<ol>
+<li>存入标准化 CSV/SQLite 数据库。</li>
+</ol>
+<h3 id="6-3-特征工程">6.3 特征工程</h3>
+<h4 id="payload-特征">payload 特征</h4>
+<ul>
+<li>molecular weight；</li>
+<li>LogP/LogD proxy；</li>
+<li>TPSA；</li>
+<li>HBD/HBA；</li>
+<li>pKa proxy；</li>
+<li>rotatable bonds；</li>
+<li>membrane permeability proxy；</li>
+<li>efflux liability；</li>
+<li>TOP1 potency；</li>
+<li>released catabolite charge state。</li>
+</ul>
+<h4 id="linker-特征">linker 特征</h4>
+<ul>
+<li>cleavable/non-cleavable；</li>
+<li>peptide sequence；</li>
+<li>hydrophilicity；</li>
+<li>self-immolation；</li>
+<li>plasma stability；</li>
+<li>lysosomal cleavage；</li>
+<li>enzyme specificity；</li>
+<li>spacer chemistry。</li>
+</ul>
+<h4 id="adc-特征">ADC 特征</h4>
+<ul>
+<li>target；</li>
+<li>antibody；</li>
+<li>DAR；</li>
+<li>conjugation chemistry；</li>
+<li>hydrophobicity burden；</li>
+<li>aggregation；</li>
+<li>PK half-life；</li>
+<li>dose；</li>
+<li>species。</li>
+</ul>
+<h4 id="tumor-target-特征">tumor/target 特征</h4>
+<ul>
+<li>tumor expression；</li>
+<li>normal tissue expression；</li>
+<li>antigen heterogeneity；</li>
+<li>internalization evidence；</li>
+<li>cancer type；</li>
+<li>tumor microenvironment context。</li>
+</ul>
+<h4 id="toxicity-特征">toxicity 特征</h4>
+<ul>
+<li>ILD/pneumonitis；</li>
+<li>neutropenia；</li>
+<li>thrombocytopenia；</li>
+<li>GI toxicity；</li>
+<li>discontinuation；</li>
+<li>fatal AE；</li>
+<li>dose reduction。</li>
+</ul>
+<h3 id="6-4-模型训练与解释">6.4 模型训练与解释</h3>
+<p>模型分为三层：</p>
+<h4 id="第一层-规则评分模型">第一层：规则评分模型</h4>
+<p>基于专家规则和文献先验，建立初版 Bystander Therapeutic Window Score。</p>
+<h4 id="第二层-可解释-ml-模型">第二层：可解释 ML 模型</h4>
+<p>使用 Random forest、XGBoost、Gaussian process 预测：</p>
+<ul>
+<li>bystander_score；</li>
+<li>xenograft efficacy；</li>
+<li>clinical response proxy；</li>
+<li>toxicity risk；</li>
+<li>therapeutic window rank。</li>
+</ul>
+<h4 id="第三层-知识图谱模型">第三层：知识图谱模型</h4>
+<p>构建异构图：</p>
+<pre><code>target -- antibody -- linker -- payload -- DAR -- indication -- efficacy/toxicity</code></pre>
+<p>用于发现相似 ADC 和可迁移设计规则。</p>
+<h3 id="6-5-验证策略">6.5 验证策略</h3>
+<h4 id="内部验证">内部验证</h4>
+<ul>
+<li>交叉验证；</li>
+<li>leave-one-target-out；</li>
+<li>leave-one-payload-class-out；</li>
+<li>bootstrap uncertainty；</li>
+<li>SHAP 解释稳定性。</li>
+</ul>
+<h4 id="外部验证">外部验证</h4>
+<p>使用未参与建模的新 ADC 或临床新数据验证：</p>
+<ul>
+<li>Dato-DXd；</li>
+<li>HER3-DXd；</li>
+<li>I-DXd；</li>
+<li>SKB264/sac-TMT；</li>
+<li>sacituzumab govitecan；</li>
+<li>其他公开 Topo I ADC。</li>
+</ul>
+<h4 id="案例解释验证">案例解释验证</h4>
+<p>模型应能解释：</p>
+<ol>
+<li>T-DXd 为什么具有强旁观者效应；</li>
+<li>T-DM1 为什么旁观者效应较弱；</li>
+<li>DAR≈8 为什么在 T-DXd 中可行；</li>
+<li>HER2-low 场景为什么更需要旁观者效应；</li>
+<li>为什么 ILD/pneumonitis 是 T-DXd 的关键安全风险之一；</li>
+<li>哪些靶点不适合强扩散 payload。</li>
+</ol>
+<hr />
+<h2 id="创新点">七、创新点</h2>
+<h3 id="创新点-1-提出-旁观者效应治疗窗口-概念">创新点 1：提出“旁观者效应治疗窗口”概念</h3>
+<p>现有研究常分别讨论 payload potency、linker stability、DAR 或 target expression。本项目将旁观者效应定义为一个治疗窗口问题，首次系统区分：</p>
+<ul>
+<li>有益旁观者效应；</li>
+<li>过度旁观者效应；</li>
+<li>毒性相关旁观者扩散。</li>
+</ul>
+<h3 id="创新点-2-构建-exatecan-dxd-topo-i-adc-专用数据库">创新点 2：构建 Exatecan/DXd/Topo I ADC 专用数据库</h3>
+<p>当前 ADC 领域缺少专门面向 Topo I payload ADC 的结构化数据库。本项目将构建 TopoI-ADC-BTW Atlas，整合药化、连接子、DAR、靶点、生物学、疗效和毒性信息。</p>
+<h3 id="创新点-3-从黑箱预测转向可解释设计规则">创新点 3：从黑箱预测转向可解释设计规则</h3>
+<p>本项目不以“端到端预测临床成功”为目标，而是输出可解释设计规则：</p>
+<ul>
+<li>什么靶点需要强旁观者；</li>
+<li>什么 linker 需要更稳定；</li>
+<li>什么 payload 应限制膜通透性；</li>
+<li>什么情况下 DAR=8 合理；</li>
+<li>什么情况下应降低 DAR 或选择更弱旁观者 payload。</li>
+</ul>
+<h3 id="创新点-4-把-magic-bullet-理念扩展为-controlled-bystander-effect">创新点 4：把 magic bullet 理念扩展为 controlled bystander effect</h3>
+<p>本项目从理论上回应 ADC 领域的重要转变：ADC 不再只是“精准递送毒素”，而是“精准触发、局部扩散、系统限制”的可控旁观者效应平台。</p>
+<h3 id="创新点-5-可直接指导下一代-adc-药物设计">创新点 5：可直接指导下一代 ADC 药物设计</h3>
+<p>项目结果可用于：</p>
+<ul>
+<li>Exatecan/DXd 衍生物筛选；</li>
+<li>linker 释放速率优化；</li>
+<li>DAR 选择；</li>
+<li>靶点优先级排序；</li>
+<li>毒性风险预警；</li>
+<li>dual-payload ADC 或 ISAC 的后续扩展。</li>
+</ul>
+<hr />
+<h2 id="可行性分析">八、可行性分析</h2>
+<h3 id="8-1-数据可行性">8.1 数据可行性</h3>
+<p>公开数据虽不足以支撑患者级临床预测，但足以完成本项目第一阶段目标：</p>
+<ul>
+<li>数据库建设；</li>
+<li>小样本可解释模型；</li>
+<li>旁观者治疗窗口评分；</li>
+<li>设计规则提取；</li>
+<li>候选 ADC 排序。</li>
+</ul>
+<p>可用来源包括：</p>
+<ul>
+<li>PubMed / PMC；</li>
+<li>FDA labels；</li>
+<li>ClinicalTrials.gov；</li>
+<li>FDA approval notices；</li>
+<li>公司年报；</li>
+<li>ASCO/AACR/ESMO 会议摘要；</li>
+<li>专利；</li>
+<li>DrugBank / PubChem；</li>
+<li>Human Protein Atlas；</li>
+<li>TCGA / CPTAC / DepMap。</li>
+</ul>
+<h3 id="8-2-技术可行性">8.2 技术可行性</h3>
+<p>项目所需技术均已成熟：</p>
+<ul>
+<li>LLM 文献抽取；</li>
+<li>RDKit 分子描述符；</li>
+<li>ADMET/QSAR 预测；</li>
+<li>XGBoost / Random forest；</li>
+<li>Bayesian modeling；</li>
+<li>SHAP 可解释性；</li>
+<li>知识图谱；</li>
+<li>Streamlit/网页可视化。</li>
+</ul>
+<p>不依赖不可获得的大规模专有临床数据，也不依赖高成本湿实验。</p>
+<h3 id="8-3-研究路径可控">8.3 研究路径可控</h3>
+<p>项目设计采用“先数据库、再规则、再模型、最后候选排序”的路径，避免一开始就做高风险黑箱深度学习。即使临床毒性数据不足，仍可产出：</p>
+<ul>
+<li>数据库论文；</li>
+<li>系统综述；</li>
+<li>可解释评分体系；</li>
+<li>ADC 设计规则；</li>
+<li>候选组合排序工具。</li>
+</ul>
+<hr />
+<h2 id="实施计划">九、实施计划</h2>
+<h3 id="第-1-阶段-数据库框架与文献清单-第-1-2-周">第 1 阶段：数据库框架与文献清单（第 1-2 周）</h3>
+<p>任务：</p>
+<ol>
+<li>确定数据 schema；</li>
+<li>建立 Zotero/文献库；</li>
+<li>收集 100 篇以上核心文献、专利和 label；</li>
+<li>建立 payload/linker/ADC 初始表。</li>
+</ol>
+<p>产出：</p>
+<ul>
+<li>schema 文档；</li>
+<li>初始文献库；</li>
+<li>30 个 ADC 初始记录；</li>
+<li>50 个 payload/linker 初始记录。</li>
+</ul>
+<h3 id="第-2-阶段-llm-抽取与人工复核-第-3-5-周">第 2 阶段：LLM 抽取与人工复核（第 3-5 周）</h3>
+<p>任务：</p>
+<ol>
+<li>编写 LLM 抽取模板；</li>
+<li>抽取 ADC 结构、DAR、linker、payload、target、疗效和毒性字段；</li>
+<li>人工复核关键数据；</li>
+<li>标准化单位和术语。</li>
+</ol>
+<p>产出：</p>
+<ul>
+<li>TopoI-ADC-BTW Atlas v0.1；</li>
+<li>数据来源与置信度表；</li>
+<li>数据清洗脚本。</li>
+</ul>
+<h3 id="第-3-阶段-特征工程与评分模型-第-6-8-周">第 3 阶段：特征工程与评分模型（第 6-8 周）</h3>
+<p>任务：</p>
+<ol>
+<li>计算 payload 和 linker-payload 分子描述符；</li>
+<li>整合 target expression 和 normal tissue expression；</li>
+<li>构建 Bystander Benefit Score；</li>
+<li>构建 Toxicity Risk Score；</li>
+<li>构建 Therapeutic Window Score。</li>
+</ol>
+<p>产出：</p>
+<ul>
+<li>特征矩阵；</li>
+<li>初版评分模型；</li>
+<li>关键变量相关性分析；</li>
+<li>初步设计规则。</li>
+</ul>
+<h3 id="第-4-阶段-ai-建模与解释-第-9-12-周">第 4 阶段：AI 建模与解释（第 9-12 周）</h3>
+<p>任务：</p>
+<ol>
+<li>建立 XGBoost / Random forest / Bayesian model；</li>
+<li>做交叉验证和 leave-one-target-out 验证；</li>
+<li>用 SHAP 分析关键变量；</li>
+<li>建立知识图谱原型。</li>
+</ol>
+<p>产出：</p>
+<ul>
+<li>可解释 AI 模型；</li>
+<li>模型性能报告；</li>
+<li>SHAP 图；</li>
+<li>ADC 设计规则清单。</li>
+</ul>
+<h3 id="第-5-阶段-案例验证与工具开发-第-13-16-周">第 5 阶段：案例验证与工具开发（第 13-16 周）</h3>
+<p>任务：</p>
+<ol>
+<li>用 T-DXd、Dato-DXd、HER3-DXd、SKB264、sacituzumab govitecan 等案例验证；</li>
+<li>开发网页或 Streamlit 工具；</li>
+<li>输出候选 linker-payload-DAR-target 组合排序。</li>
+</ol>
+<p>产出：</p>
+<ul>
+<li>交互式工具；</li>
+<li>案例分析报告；</li>
+<li>候选设计建议。</li>
+</ul>
+<h3 id="第-6-阶段-论文与项目成果-第-17-20-周">第 6 阶段：论文与项目成果（第 17-20 周）</h3>
+<p>任务：</p>
+<ol>
+<li>完成数据库论文初稿；</li>
+<li>完成方法论文初稿；</li>
+<li>整理 GitHub 仓库；</li>
+<li>准备 ChemRxiv 预印本。</li>
+</ol>
+<p>产出：</p>
+<ul>
+<li>论文初稿 1 篇；</li>
+<li>预印本草稿；</li>
+<li>数据库和代码仓库；</li>
+<li>项目结题报告。</li>
+</ul>
+<hr />
+<h2 id="预期成果">十、预期成果</h2>
+<h3 id="10-1-数据成果">10.1 数据成果</h3>
+<ol>
+<li><strong>TopoI-ADC-BTW Atlas</strong></li>
+<p>面向 Topo I ADC 的结构化数据库。</p>
+</ol>
+<ol>
+<li><strong>标准化数据表</strong></li>
+<p>payloads.csv、linkers.csv、adcs.csv、efficacy.csv、safety.csv。</p>
+</ol>
+<ol>
+<li><strong>文献证据库</strong></li>
+<p>每条数据对应 source、page、confidence 和人工复核状态。</p>
+</ol>
+<h3 id="10-2-方法成果">10.2 方法成果</h3>
+<ol>
+<li>Bystander Benefit Score；</li>
+<li>Toxicity Risk Score；</li>
+<li>Bystander Therapeutic Window Score；</li>
+<li>可解释 AI 模型；</li>
+<li>ADC 设计规则提取框架。</li>
+</ol>
+<h3 id="10-3-应用成果">10.3 应用成果</h3>
+<ol>
+<li>Exatecan/DXd ADC 设计规则；</li>
+<li>靶点适配性排序；</li>
+<li>linker-payload-DAR 组合推荐；</li>
+<li>旁观者效应过强风险预警；</li>
+<li>网页或 Streamlit 可视化工具。</li>
+</ol>
+<h3 id="10-4-论文成果">10.4 论文成果</h3>
+<h4 id="论文-1-数据库论文">论文 1：数据库论文</h4>
+<p>题目：</p>
+<p><strong>TopoI-ADC-BTW Atlas: A Curated Dataset Linking Payload Chemistry, Linker Design, DAR, Bystander Effect and Safety for Topoisomerase-I ADCs</strong></p>
+<p>目标期刊：</p>
+<ul>
+<li>Scientific Data；</li>
+<li>Journal of Cheminformatics；</li>
+<li>Nucleic Acids Research Database Issue；</li>
+<li>Nature Communications，若数据规模和质量足够。</li>
+</ul>
+<h4 id="论文-2-方法论文">论文 2：方法论文</h4>
+<p>题目：</p>
+<p><strong>An Interpretable AI Framework for Predicting the Bystander Therapeutic Window of Exatecan/DXd-Based ADCs</strong></p>
+<p>目标期刊：</p>
+<ul>
+<li>ACS Central Science；</li>
+<li>Chemical Science；</li>
+<li>Journal of Medicinal Chemistry；</li>
+<li>Nature Chemical Biology；</li>
+<li>Nature Biomedical Engineering，若验证充分。</li>
+</ul>
+<hr />
+<h2 id="经费预算">十一、经费预算</h2>
+<h3 id="低成本计算版">低成本计算版</h3>
+<div class="table-wrap"><table><thead><tr><th>项目</th><th>费用</th><th>说明</th></tr></thead><tbody>
+<tr><td>文献和数据库访问</td><td>0-500 美元</td><td>依赖学校/机构权限</td></tr>
+<tr><td>云服务器</td><td>100-300 美元</td><td>LLM 抽取、模型训练</td></tr>
+<tr><td>数据存储</td><td>0-50 美元</td><td>CSV/SQLite/GitHub</td></tr>
+<tr><td>网页部署</td><td>0 美元</td><td>GitHub Pages</td></tr>
+<tr><td>合计</td><td>100-850 美元</td><td>可低成本启动</td></tr>
+</tbody></table></div>
+<h3 id="标准研究版">标准研究版</h3>
+<div class="table-wrap"><table><thead><tr><th>项目</th><th>费用</th><th>说明</th></tr></thead><tbody>
+<tr><td>文献/专利数据库</td><td>0-2000 美元</td><td>取决于机构权限</td></tr>
+<tr><td>API/LLM 调用</td><td>300-1000 美元</td><td>文献抽取</td></tr>
+<tr><td>计算资源</td><td>300-1000 美元</td><td>模型训练与部署</td></tr>
+<tr><td>人工标注</td><td>1000-3000 美元</td><td>数据复核</td></tr>
+<tr><td>合计</td><td>1600-7000 美元</td><td>可支持论文级数据集</td></tr>
+</tbody></table></div>
+<hr />
+<h2 id="风险分析与应对措施">十二、风险分析与应对措施</h2>
+<h3 id="风险-1-公开数据不完整">风险 1：公开数据不完整</h3>
+<p>应对：</p>
+<ul>
+<li>先做可解释规则和排序模型；</li>
+<li>不做过度临床预测；</li>
+<li>每条数据记录置信度；</li>
+<li>对缺失字段做敏感性分析。</li>
+</ul>
+<h3 id="风险-2-不同研究的数据不可比">风险 2：不同研究的数据不可比</h3>
+<p>应对：</p>
+<ul>
+<li>分层建模；</li>
+<li>按 assay type、species、tumor model、dose 标准化；</li>
+<li>使用 rank-based 指标而非绝对值预测。</li>
+</ul>
+<h3 id="风险-3-llm-抽取错误">风险 3：LLM 抽取错误</h3>
+<p>应对：</p>
+<ul>
+<li>关键字段人工复核；</li>
+<li>保留原始句子和来源；</li>
+<li>使用 schema validation；</li>
+<li>多模型交叉抽取。</li>
+</ul>
+<h3 id="风险-4-模型性能不够高">风险 4：模型性能不够高</h3>
+<p>应对：</p>
+<ul>
+<li>将主要成果定位为数据库和设计规则；</li>
+<li>使用可解释分析而非强预测；</li>
+<li>增加外部数据和负样本；</li>
+<li>引入专家规则。</li>
+</ul>
+<h3 id="风险-5-ild-机制数据不足">风险 5：ILD 机制数据不足</h3>
+<p>应对：</p>
+<ul>
+<li>不做患者级 ILD 预测作为第一阶段目标；</li>
+<li>仅做药物设计层面的 toxicity risk score；</li>
+<li>后续与医院或企业合作获取真实世界数据。</li>
+</ul>
+<hr />
+<h2 id="项目团队与分工建议">十三、项目团队与分工建议</h2>
+<div class="table-wrap"><table><thead><tr><th>角色</th><th>任务</th></tr></thead><tbody>
+<tr><td>项目负责人</td><td>科学问题设计、结果解释、论文统筹</td></tr>
+<tr><td>药物化学负责人</td><td>payload/linker 结构审核、物化性质解释</td></tr>
+<tr><td>ADC 生物学负责人</td><td>target、internalization、bystander assay 解释</td></tr>
+<tr><td>数据工程师</td><td>文献抽取、数据库建设、数据清洗</td></tr>
+<tr><td>AI 建模负责人</td><td>评分模型、机器学习、可解释性分析</td></tr>
+<tr><td>临床顾问</td><td>ORR/PFS/ILD/AE 数据解释</td></tr>
+</tbody></table></div>
+<hr />
+<h2 id="项目完成后的核心结论形式">十四、项目完成后的核心结论形式</h2>
+<p>本项目最终应形成类似以下的设计规则：</p>
+<ol>
+<li><strong>当肿瘤抗原异质性高、正常组织表达低时，应增强旁观者效应。</strong></li>
+<li><strong>当靶点正常组织表达较高时，应限制 payload 膜通透性或提高 linker 稳定性。</strong></li>
+<li><strong>DAR=8 适合亲水 linker-payload 和高内化靶点，不适合作为普适最优值。</strong></li>
+<li><strong>强膜通透 payload 需要更严格的 linker 血浆稳定性。</strong></li>
+<li><strong>HER2-low/TROP2 等异质性场景更需要 bystander payload，但也更依赖正常组织安全窗。</strong></li>
+<li><strong>释放速度存在 sweet spot，过快释放和过慢释放均降低治疗窗口。</strong></li>
+<li><strong>ILD 风险应被视为 payload-linker-target-systemic exposure 的系统风险，而非单一靶点风险。</strong></li>
+<li><strong>Topo I ADC 设计应从单变量优化转向 linker-payload-DAR-target 联合优化。</strong></li>
+</ol>
+<hr />
+<h2 id="参考文献与公开资料">十五、参考文献与公开资料</h2>
+<ol>
+<li>AstraZeneca. FY and Q4 2023 results. Enhertu FY2023 combined sales information.</li>
+<p><a href="https://www.astrazeneca.com/content/dam/az/PDF/2023/fy/Full-year-and-Q4-2023-results-announcement.pdf" target="_blank" rel="noopener">https://www.astrazeneca.com/content/dam/az/PDF/2023/fy/Full-year-and-Q4-2023-results-announcement.pdf</a></p>
+</ol>
+<ol>
+<li>ENHERTU HCP. Mechanism of Action. DXd payload, bystander effect, cleavable linker, DAR information.</li>
+<p><a href="https://www.enhertuhcp.com/en/mechanism-of-action" target="_blank" rel="noopener">https://www.enhertuhcp.com/en/mechanism-of-action</a></p>
+</ol>
+<ol>
+<li>Ogitani Y, Hagihara K, Oitate M, Naito H, Agatsuma T. Bystander killing effect of DS-8201a, a novel anti-human epidermal growth factor receptor 2 antibody-drug conjugate, in tumors with human epidermal growth factor receptor 2 heterogeneity. Cancer Science. 2016;107(7):1039-1046.</li>
+</ol>
+<ol>
+<li>ENHERTU HCP. Interstitial Lung Disease/Pneumonitis management and boxed warning information.</li>
+<p><a href="https://www.enhertuhcp.com/en/managing-adverse-reactions/interstitial-lung-disease-pneumonitis" target="_blank" rel="noopener">https://www.enhertuhcp.com/en/managing-adverse-reactions/interstitial-lung-disease-pneumonitis</a></p>
+</ol>
+<ol>
+<li>FDA. FDA grants accelerated approval to fam-trastuzumab deruxtecan-nxki for unresectable or metastatic HER2-positive solid tumors. April 5, 2024.</li>
+<p><a href="https://www.fda.gov/drugs/resources-information-approved-drugs/fda-grants-accelerated-approval-fam-trastuzumab-deruxtecan-nxki-unresectable-or-metastatic-her2" target="_blank" rel="noopener">https://www.fda.gov/drugs/resources-information-approved-drugs/fda-grants-accelerated-approval-fam-trastuzumab-deruxtecan-nxki-unresectable-or-metastatic-her2</a></p>
+</ol>
+<ol>
+<li>Cellular-resolution imaging and modeling studies of ADC payload distribution and bystander effects.</li>
+<p><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8832507/" target="_blank" rel="noopener">https://pmc.ncbi.nlm.nih.gov/articles/PMC8832507/</a></p>
+</ol>
+<hr />
+<h2 id="申请书结论">十六、申请书结论</h2>
+<p>Exatecan/DXd 类 ADC 的核心价值不只是“payload 更强”，而在于其可控旁观者效应可以突破实体瘤抗原异质性限制。但同一旁观者效应也可能造成正常组织毒性，尤其是 ILD/pneumonitis 等临床安全问题。因此，建立一套能够判断“何时需要强旁观者效应、何时必须限制旁观者效应”的 AI 设计规则，是当前 ADC 领域具有重要科学意义和产业价值的关键任务。</p>
+<p>本项目具有明确科学问题、可获得数据基础、成熟 AI 技术路线和高价值应用场景。相比直接生成新 Exatecan 衍生物，本项目更稳健、更可解释、更适合形成数据库、方法学和设计规则三类成果。项目完成后将为下一代 Exatecan/DXd ADC 的 payload、linker、DAR 和 target 联合优化提供系统性指导。</p>
+      <a class="top-link" href="#top">返回顶部</a>
+    </article>
+  </main>
+  <footer class="wrap">Generated from Exatecan_DXd_ADC_旁观者效应治疗窗口_AI立项申请书.md for GitHub Pages.</footer>
+</body>
+</html>
